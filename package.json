@@ -1,42 +1,23 @@
 {
-  "name": "country-stat-city-api-docs",
-  "version": "0.0.1",
+  "name": "csc-website",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "serve": "docusaurus serve",
-    "prettier": "prettier --config .prettierrc --write \"**/*.{js,ts}\"",
-    "prettier:diff": "prettier --config .prettierrc --list-different \"**/*.{js,ts}\"",
-    "prettier-docs": "prettier --config .prettierrc --write \"**/*.md\""
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.5",
-    "@docusaurus/preset-classic": "^3.5",
-    "clsx": "^2.1",
-    "docusaurus-plugin-sass": "~0",
-    "prism-react-renderer": "^2.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "next": "15.4.5"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.5",
-    "prettier": "^3.3"
+    "@tailwindcss/postcss": "^4",
+    "tailwindcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.5",
+    "@eslint/eslintrc": "^3"
   }
 }
