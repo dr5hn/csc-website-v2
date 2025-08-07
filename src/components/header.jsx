@@ -55,7 +55,7 @@ export default function Header() {
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-green rounded-full animate-pulse"></div>
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold text-dark tracking-tight">
+                <span className="text-xl font-bold text-dark">
                   NexusAPI
                 </span>
                 <span className="text-xs text-lightgray -mt-1">
@@ -173,7 +173,7 @@ export default function Header() {
             <div className="lg:hidden border-t border-light/50 bg-white/95 backdrop-blur-xl rounded-b-xl">
               <nav className="py-6 space-y-2">
                 <div className="px-4 py-2">
-                  <div className="text-sm font-semibold text-lightgray uppercase tracking-wider mb-3">
+                  <div className="text-sm font-semibold text-lightgray uppercase mb-3">
                     Products
                   </div>
                   <Link
