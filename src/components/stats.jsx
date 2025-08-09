@@ -64,7 +64,7 @@ function useCountUp(target, { duration = 900, start = 0, run = true } = {}) {
   return Math.round(val);
 }
 
-export default function StatsModern({
+export default function Stats({
   countries = 249,
   clients = 12800,
   exported = 12_500_000,

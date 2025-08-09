@@ -1,12 +1,12 @@
 import HeroSection from "@/components/hero";
 import Products from "@/components/products";
-import StatsModern from "@/components/stats-modern";
+import Stats from "@/components/stats";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <StatsModern />
+      <Stats />
       <Products />
     </>
   );
