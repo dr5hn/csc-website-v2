@@ -72,7 +72,7 @@ export default function HeroSection() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               The most accurate{" "}
               <span className="bg-gradient-to-r from-blue to-green bg-clip-text text-transparent">
                 Country, State, and City

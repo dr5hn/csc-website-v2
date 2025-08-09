@@ -1,9 +1,6 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Download, Globe2, Users2 } from "lucide-react";
-import { cn } from "@/lib/utils";
+
+import { useEffect, useMemo, useRef, useState } from "react";
 
 function formatNumber(value, compact = true) {
   try {
@@ -16,22 +13,45 @@ function formatNumber(value, compact = true) {
   }
 }
 
-function useCounter(
-  target,
-  { duration = 900, start = 0, enabled = true } = {}
-) {
-  const [val, setVal] = useState(enabled ? start : target);
-  const raf = useRef();
+function useInView(options) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
   useEffect(() => {
-    if (!enabled) {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            setInView(true);
+            obs.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: 0.2, root: null, ...options }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [options]);
+
+  return { ref, inView };
+}
+
+function useCountUp(target, { duration = 900, start = 0, run = true } = {}) {
+  const [val, setVal] = useState(run ? start : target);
+  const raf = useRef(null);
+
+  useEffect(() => {
+    if (!run) {
       setVal(target);
       return;
     }
     const t0 = performance.now();
     const tick = (now) => {
       const p = Math.min(1, (now - t0) / duration);
-      // easeOutCubic
-      const eased = 1 - Math.pow(1 - p, 3);
+      const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
       setVal(start + (target - start) * eased);
       if (p < 1) raf.current = requestAnimationFrame(tick);
     };
@@ -39,88 +59,52 @@ function useCounter(
     return () => {
       if (raf.current) cancelAnimationFrame(raf.current);
     };
-  }, [target, duration, start, enabled]);
-  return Math.round(val);
-}
+  }, [target, duration, start, run]);
 
-function Stat({
-  icon: Icon,
-  label,
-  value,
-  suffix,
-  compact = true,
-  animate = true,
-}) {
-  const n = useCounter(value, { enabled: animate });
-  return (
-    <>
-      <Card className="relative overflow-hidden gap-4 md:gap-6">
-        <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="text-sm font-medium text-muted-foreground">
-            {label}
-          </CardTitle>
-          <Icon className="h-5 w-5 text-muted-foreground" aria-hidden="true" />
-        </CardHeader>
-        <CardContent>
-          <div className="text-3xl 2xl:text-5xl font-semibold tabular-nums">
-            {formatNumber(n, compact)}
-            {suffix ? (
-              <>
-                {" "}
-                <span className="text-base font-normal text-muted-foreground">
-                  {suffix}
-                </span>
-              </>
-            ) : null}
-          </div>
-        </CardContent>
-      </Card>
-    </>
-  );
+  return Math.round(val);
 }
 
 export default function StatsModern({
   countries = 249,
   clients = 12800,
-  exported = 12500000,
-  exportedUnit = "rows",
+  exported = 12_500_000,
   compact = true,
   animate = true,
 }) {
+  const { ref, inView } = useInView();
+  const run = animate && inView;
+
+  const c = useCountUp(countries, { run });
+  const u = useCountUp(clients, { run });
+  const e = useCountUp(exported, { run });
+
+  const stats = useMemo(
+    () => [
+      { value: formatNumber(c, compact), label: "Countries" },
+      { value: formatNumber(u, compact), label: "Clients served" },
+      { value: `${formatNumber(e, compact)}`, label: "Rows of data exported" },
+    ],
+    [c, u, e, compact]
+  );
+
   return (
-    <>
-      <section className="relative container mx-auto px-4 py-6 lg:py-12">
-        <p className="text-3xl font-semibold text-foreground text-center">
-          Live Dataset Stats
-        </p>
-        <p className="mt-2 text-sm text-muted-foreground text-center">
-          Coverage & usage at a glance
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-6 md:mt-12">
-          <Stat
-            icon={Globe2}
-            label="Countries"
-            value={countries}
-            compact={compact}
-            animate={animate}
-          />
-          <Stat
-            icon={Users2}
-            label="Clients served"
-            value={clients}
-            compact={compact}
-            animate={animate}
-          />
-          <Stat
-            icon={Download}
-            label="Data exported"
-            value={exported}
-            compact={compact}
-            animate={animate}
-            suffix={exportedUnit}
-          />
+    <section
+      ref={ref}
+      className="relative container mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center"
+    >
+      {stats.map((s) => (
+        <div key={s.label}>
+          <p
+            className="text-4xl font-extrabold"
+            aria-label={s.value}
+          >
+            {s.value}
+          </p>
+          <p className="mt-2 text-sm font-semibold text-lightgray tracking-wider">
+            {s.label}
+          </p>
         </div>
-      </section>
-    </>
+      ))}
+    </section>
   );
 }
