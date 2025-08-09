@@ -90,7 +90,7 @@ export default function StatsModern({
   return (
     <>
       <section className="relative container mx-auto px-4 py-6 lg:py-12">
-        <p className="text-3xl font-semibold tracking-tight text-foreground text-center">
+        <p className="text-3xl font-semibold text-foreground text-center">
           Live Dataset Stats
         </p>
         <p className="mt-2 text-sm text-muted-foreground text-center">
