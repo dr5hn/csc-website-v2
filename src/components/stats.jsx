@@ -90,7 +90,7 @@ export default function Stats({
   return (
     <section
       ref={ref}
-      className="relative container mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center"
+      className="relative mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center bg-white/80 border-y border-light/50"
     >
       {stats.map((s) => (
         <div key={s.label}>

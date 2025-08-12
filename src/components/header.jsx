@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   Menu,
   X,
-  Github,
   ChevronDown,
   Zap,
   Code,
@@ -13,6 +12,7 @@ import {
   Users,
   DollarSign,
 } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 
 export default function Header() {
@@ -123,16 +123,6 @@ export default function Header() {
               </Link>
 
               <Link
-                href="https://github.com"
-                className="flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="w-4 h-4" />
-                <span>GitHub</span>
-              </Link>
-
-              <Link
                 href="/contact"
                 className="flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
               >
@@ -210,16 +200,6 @@ export default function Header() {
                   >
                     <BookOpen className="w-5 h-5" />
                     <span>Documentation</span>
-                  </Link>
-                  <Link
-                    href="https://github.com"
-                    className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg mx-4"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <Github className="w-5 h-5" />
-                    <span>GitHub</span>
                   </Link>
                   <Link
                     href="/contact"
