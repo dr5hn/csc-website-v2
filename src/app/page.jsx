@@ -1,3 +1,4 @@
+import CommunitySection from "@/components/community";
 import CTA from "@/components/cta";
 import HeroSection from "@/components/hero";
 import Products from "@/components/products";
@@ -10,6 +11,7 @@ export default function Home() {
       <Stats />
       <Products />
       <CTA />
+      <CommunitySection />
     </>
   );
 }
