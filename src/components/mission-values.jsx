@@ -55,7 +55,7 @@ export default function MissionValues() {
               Our Mission
             </span>
           </div>
-          <h2 className="mt-4 text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue to-green bg-clip-text text-transparent mb-4">
+          <h2 className="mt-4 text-4xl md:text-5xl font-bold mb-4">
             Built on accuracy, accessibility, and community
           </h2>
           <p className="text-darkgray max-w-2xl mx-auto">

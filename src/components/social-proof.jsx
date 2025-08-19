@@ -73,7 +73,10 @@ export default function SocialProof() {
     <section className="relative overflow-hidden py-10 lg:py-20 container mx-auto px-4 text-center">
       {/* Main Headline */}
       <h2 className="mt-4 text-4xl md:text-5xl font-bold mb-4">
-        Powering developers, analysts, and businesses everywhere
+        <span className="bg-gradient-to-r from-blue to-green bg-clip-text text-transparent">
+          Powering developers,
+        </span>{" "}
+        analysts, and businesses everywhere
       </h2>
 
       {/* Supporting Text */}
