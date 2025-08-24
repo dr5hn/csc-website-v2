@@ -17,13 +17,14 @@ export default function CTA() {
 
         {/* Main Headline */}
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-          Start free, <span className="text-white">upgrade anytime</span>
+          Ready to Build Something Amazing?
         </h2>
 
         {/* Subtext */}
         <p className="text-xl text-white/80 mb-6 md:mb-12 max-w-2xl mx-auto">
-          Get instant access to accurate location data. No credit card required.
-          Scale as you grow with transparent pricing.
+          Join thousands of developers using our platform to power
+          location-based features. Start building today with our generous free
+          tier and scale as you grow.
         </p>
 
         {/* Feature Pills */}

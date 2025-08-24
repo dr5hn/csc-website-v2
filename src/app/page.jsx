@@ -4,12 +4,14 @@ import HeroSection from "@/components/hero";
 import Products from "@/components/products";
 import SkipTheHassle from "@/components/skip-the-hassle";
 import Stats from "@/components/stats";
+import WhyChooseUs from "@/components/why-choose-us";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
       <Stats />
+      <WhyChooseUs />
       <Products />
       <SkipTheHassle />
       <CTA />

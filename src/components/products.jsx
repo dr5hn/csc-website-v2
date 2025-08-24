@@ -6,6 +6,7 @@ import {
   Download,
   SquareTerminal,
   ArrowRight,
+  Star,
 } from "lucide-react";
 
 function AccentIcon({ Icon, accent = "blue" }) {
@@ -109,7 +110,7 @@ export default function Products() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-6 md:mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6 md:mt-12">
           <ProductCard
             title="API Access"
             description="Query countries, states, and cities via fast REST and GraphQL endpoints with rock‑solid accuracy."
@@ -124,6 +125,14 @@ export default function Products() {
             href="/products/manager"
             accent="green"
             Icon={MessageSquare}
+          />
+
+          <ProductCard
+            title="Database Repository"
+            description="Open-source geographical database with global coverage, 9+ export formats (JSON, SQL, CSV, XML, YAML, MongoDB), MIT licensed for unlimited commercial use."
+            href="/products/database-repo"
+            accent="green"
+            Icon={Star}
           />
 
           <ProductCard
