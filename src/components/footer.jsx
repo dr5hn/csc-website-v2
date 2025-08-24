@@ -1,6 +1,8 @@
 import Link from "next/link";
 import XIcon from "@/icons/XIcon";
 import GitHubIcon from "@/icons/GitHub";
+import { ExternalLink, Linkedin } from "lucide-react";
+import KaggleIcon from "@/icons/KaggleIcon";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -25,7 +27,9 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm text-darkgray leading-relaxed mb-6">
-              The most accurate location data API for developers worldwide.
+              The world's most comprehensive geographical database, trusted by
+              developers worldwide for accurate location data in their
+              applications. Built by the community, for the community.
             </p>
 
             {/* Social Links */}
@@ -48,6 +52,24 @@ export default function Footer() {
               >
                 <XIcon className="w-4 h-4 text-darkgray group-hover:text-dark transition-colors duration-200" />
               </Link>
+              <Link
+                href="https://www.kaggle.com/datasets/darshangada/countries-states-cities-database"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-light/50 hover:bg-light transition-colors duration-200 group"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Kaggle"
+              >
+                <KaggleIcon className="w-4 h-4 text-darkgray group-hover:text-dark transition-colors duration-200" />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/dr5hn/"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-light/50 hover:bg-light transition-colors duration-200 group"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4 text-darkgray group-hover:text-dark transition-colors duration-200" />
+              </Link>
             </div>
           </div>
 
@@ -59,10 +81,10 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/products/api"
+                  href="/products/database"
                   className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
                 >
-                  REST API
+                  Database
                 </Link>
               </li>
               <li>
@@ -70,7 +92,7 @@ export default function Footer() {
                   href="/products/graphql"
                   className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
                 >
-                  GraphQL
+                  API Service
                 </Link>
               </li>
               <li>
@@ -78,7 +100,7 @@ export default function Footer() {
                   href="/products/manager"
                   className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
                 >
-                  Manager
+                  Export Tool
                 </Link>
               </li>
               <li>
@@ -86,7 +108,7 @@ export default function Footer() {
                   href="/products/export"
                   className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
                 >
-                  Export Tool
+                  Update Tool
                 </Link>
               </li>
             </ul>
@@ -108,26 +130,35 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/guides"
-                  className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
+                  href="https://status.countrystatecity.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm text-darkgray hover:text-blue transition-colors duration-200"
                 >
-                  Guides
+                  Status
+                  <ExternalLink className="w-3 h-3" />
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/examples"
-                  className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
+                  href="https://playground.countrystatecity.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm text-darkgray hover:text-blue transition-colors duration-200"
                 >
-                  Examples
+                  Playground
+                  <ExternalLink className="w-3 h-3" />
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/status"
-                  className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
+                  href="https://demo.countrystatecity.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm text-darkgray hover:text-blue transition-colors duration-200"
                 >
-                  API Status
+                  Database Demo
+                  <ExternalLink className="w-3 h-3" />
                 </Link>
               </li>
             </ul>
@@ -144,31 +175,31 @@ export default function Footer() {
                   href="/about"
                   className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
                 >
-                  About
+                  About Us
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/pricing"
                   className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
                 >
-                  Contact
+                  Pricing
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/privacy"
+                  href="/faqs"
                   className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
                 >
-                  Privacy Policy
+                  FAQs
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/terms"
+                  href="/support"
                   className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
                 >
-                  Terms of Service
+                  Support
                 </Link>
               </li>
             </ul>

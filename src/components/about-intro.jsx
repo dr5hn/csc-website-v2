@@ -35,13 +35,13 @@ export default function AboutIntro() {
           <div className="flex items-center gap-2">
             <div className="w-12 h-0.5 bg-gradient-to-r from-blue to-transparent rounded-full"></div>
             <div className="text-sm font-medium text-lightgray uppercase">
-              Est. 2020
+              Est. 2018
             </div>
           </div>
           <div className="w-1 h-1 bg-lightgray rounded-full"></div>
           <div className="flex items-center gap-2">
             <div className="text-sm font-medium text-lightgray uppercase">
-              10K+ Developers
+              35K+ Developers
             </div>
             <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue rounded-full"></div>
           </div>

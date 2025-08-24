@@ -11,6 +11,15 @@ import {
   BookOpen,
   Users,
   DollarSign,
+  User,
+  Database,
+  Download,
+  PencilLine,
+  CircleHelp,
+  MessageCircleQuestion,
+  MessageCircle,
+  LogIn,
+  FileText,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -55,9 +64,7 @@ export default function Header() {
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-green rounded-full animate-pulse"></div>
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold text-dark">
-                  NexusAPI
-                </span>
+                <span className="text-xl font-bold text-dark">NexusAPI</span>
                 <span className="text-xs text-lightgray -mt-1">
                   by Nexus Labs
                 </span>
@@ -66,6 +73,14 @@ export default function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1">
+              <Link
+                href="/about"
+                className="flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
+              >
+                <User className="w-4 h-4" />
+                <span>About</span>
+              </Link>
+
               <div className="relative group">
                 <button className="cursor-pointer flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5">
                   <Code className="w-4 h-4" />
@@ -75,16 +90,44 @@ export default function Header() {
                 <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl border border-light/50 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                   <div className="p-2">
                     <Link
-                      href="/api"
+                      href="/product/database"
                       className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200 group"
                     >
                       <div className="w-8 h-8 bg-blue/10 group-hover:bg-blue/20 rounded-lg flex items-center justify-center transition-colors duration-200">
-                        <Code className="w-4 h-4 text-blue" />
+                        <Database className="w-4 h-4 text-blue" />
                       </div>
                       <div>
-                        <div className="font-medium text-dark">REST API</div>
+                        <div className="font-medium text-dark">Database</div>
+                        <div className="text-sm text-lightgray">
+                          Geographical database
+                        </div>
+                      </div>
+                    </Link>
+                    <Link
+                      href="/api"
+                      className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200 group"
+                    >
+                      <div className="w-8 h-8 bg-green/10 group-hover:bg-green/20 rounded-lg flex items-center justify-center transition-colors duration-200">
+                        <Code className="w-4 h-4 text-green" />
+                      </div>
+                      <div>
+                        <div className="font-medium text-dark">API Service</div>
                         <div className="text-sm text-lightgray">
                           RESTful endpoints
+                        </div>
+                      </div>
+                    </Link>
+                    <Link
+                      href="/graphql"
+                      className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200 group"
+                    >
+                      <div className="w-8 h-8 bg-blue/10 group-hover:bg-blue/20 rounded-lg flex items-center justify-center transition-colors duration-200">
+                        <Download className="w-4 h-4 text-blue" />
+                      </div>
+                      <div>
+                        <div className="font-medium text-dark">Export Tool</div>
+                        <div className="text-sm text-lightgray">
+                          Flexible queries
                         </div>
                       </div>
                     </Link>
@@ -93,10 +136,10 @@ export default function Header() {
                       className="flex items-center space-x-3 p-3 rounded-lg hover:bg-green/10 transition-colors duration-200 group"
                     >
                       <div className="w-8 h-8 bg-green/10 group-hover:bg-green/20 rounded-lg flex items-center justify-center transition-colors duration-200">
-                        <Zap className="w-4 h-4 text-green" />
+                        <PencilLine className="w-4 h-4 text-green" />
                       </div>
                       <div>
-                        <div className="font-medium text-dark">GraphQL</div>
+                        <div className="font-medium text-dark">Update Tool</div>
                         <div className="text-sm text-lightgray">
                           Flexible queries
                         </div>
@@ -115,39 +158,80 @@ export default function Header() {
               </Link>
 
               <Link
-                href="/docs"
+                href="/faqs"
                 className="flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
               >
-                <BookOpen className="w-4 h-4" />
-                <span>Docs</span>
+                <MessageCircleQuestion className="w-4 h-4" />
+                <span>FAQs</span>
               </Link>
 
               <Link
                 href="/contact"
                 className="flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
               >
-                <Users className="w-4 h-4" />
-                <span>Contact</span>
+                <MessageCircle className="w-4 h-4" />
+                <span>Support</span>
               </Link>
             </nav>
 
             {/* CTA Buttons - Desktop */}
             <div className="hidden lg:flex items-center space-x-3">
+              {/* Login Dropdown */}
+              <div className="relative group">
+                <Button
+                  variant="ghost"
+                  className="text-darkgray hover:text-blue hover:bg-blue/5 font-medium flex items-center space-x-1"
+                >
+                  <LogIn className="w-4 h-4" />
+                  <span>Login</span>
+                  <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
+                </Button>
+                <div className="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-xl border border-light/50 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                  <div className="p-2">
+                    <Link
+                      href="/api"
+                      className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200"
+                    >
+                      <Code className="w-4 h-4 text-blue" />
+                      <span className="font-medium text-dark">API</span>
+                    </Link>
+                    <Link
+                      href="/export"
+                      className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200"
+                    >
+                      <Download className="w-4 h-4 text-blue" />
+                      <span className="font-medium text-dark">Export Tool</span>
+                    </Link>
+                    <Link
+                      href="/update"
+                      className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200"
+                    >
+                      <PencilLine className="w-4 h-4 text-blue" />
+                      <span className="font-medium text-dark">Update Tool</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
               <Button
-                variant="ghost"
-                className="text-darkgray hover:text-blue hover:bg-blue/5 font-medium"
+                asChild
+                className="bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6"
               >
-                Dashboard
-              </Button>
-              <Button className="bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6">
-                Get Started
+                <Link href="/docs" className="flex items-center space-x-2">
+                  <FileText className="w-4 h-4" />
+                  <span>Docs</span>
+                </Link>
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className={`cursor-pointer lg:hidden p-2 text-darkgray transition-colors duration-200 rounded-lg ${isMenuOpen ? "hover:bg-danger/5 hover:text-danger" : "hover:bg-blue/5 hover:text-blue"}`}
+              className={`cursor-pointer lg:hidden p-2 text-darkgray transition-colors duration-200 rounded-lg ${
+                isMenuOpen
+                  ? "hover:bg-danger/5 hover:text-danger"
+                  : "hover:bg-blue/5 hover:text-blue"
+              }`}
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
