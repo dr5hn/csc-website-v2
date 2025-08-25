@@ -12,7 +12,7 @@ function FAQSearch({ searchTerm, setSearchTerm, onSearch }) {
           placeholder="Search frequently asked questions..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          onKeyPress={(e) => e.key === "Enter" && onSearch()}
+          // onKeyDown={(e) => e.key === "Enter" && onSearch()}
           className="w-full pl-12 pr-6 py-4 rounded-2xl bg-white border-2 border-light/50 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue/20 focus:border-blue/50 text-dark placeholder-darkgray/60 text-lg transition-all duration-300 hover:shadow-md"
         />
       </div>
