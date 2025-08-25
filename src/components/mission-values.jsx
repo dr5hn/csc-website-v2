@@ -1,15 +1,5 @@
 "use client";
-
-import Link from "next/link";
-import {
-  MessageSquare,
-  Download,
-  SquareTerminal,
-  ArrowRight,
-  Target,
-  Users,
-  GitBranch,
-} from "lucide-react";
+import { Target, Users, GitBranch } from "lucide-react";
 
 function AccentIcon({ Icon, accent = "blue" }) {
   const cls =
@@ -52,37 +42,60 @@ export default function MissionValues() {
               aria-hidden="true"
             ></span>
             <span className="text-[11px] font-semibold tracking-wider uppercase text-darkgray">
-              Our Mission
+              Mission & Vision
             </span>
           </div>
           <h2 className="mt-4 text-4xl md:text-5xl font-bold mb-4">
-            Built on accuracy, accessibility, and community
+            Our Mission & Vision
           </h2>
           <p className="text-darkgray max-w-2xl mx-auto">
-            We believe clean, reliable location data should be easy to access
-            for everyone — from developers to analysts to enterprises.
+            Empowering developers worldwide with accurate geographical data
+            while fostering innovation and breaking down barriers.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-6 md:mt-12">
+          {/* First row (Mission cards) */}
           <MissionCard
-            title="Accuracy first"
-            description="Data is always fresh and reliable."
+            title="Our Mission"
+            description="To provide the world's most accurate, comprehensive, and accessible geographical database, empowering developers to build location-aware applications that connect people globally."
             accent="blue"
             Icon={Target}
           />
 
           <MissionCard
-            title="Built for everyone"
-            description="Easy exports for non-devs, fast API for devs."
+            title="Open Source & Community"
+            description="Open source and community-driven development with enterprise-grade reliability and performance, accessible to developers worldwide."
             accent="green"
             Icon={Users}
           />
 
           <MissionCard
-            title="Community-driven"
-            description="Actively maintained on GitHub, with an open feedback loop."
+            title="Global Accessibility"
+            description="Making geographical data accessible to developers worldwide, removing barriers to innovation and enabling global connectivity."
             accent="blue"
+            Icon={GitBranch}
+          />
+
+          {/* Second row (Vision cards) */}
+          <MissionCard
+            title="Our Vision"
+            description="A world where geographical data barriers don't exist, enabling innovation and connection across borders through technology and community collaboration."
+            accent="green"
+            Icon={Target}
+          />
+
+          <MissionCard
+            title="Breaking Data Silos"
+            description="Breaking down data silos globally while fostering innovation through accessibility and building bridges through technology."
+            accent="blue"
+            Icon={Users}
+          />
+
+          <MissionCard
+            title="Innovation Through Access"
+            description="Building bridges through technology and fostering innovation by making comprehensive geographical data freely accessible to all."
+            accent="green"
             Icon={GitBranch}
           />
         </div>
