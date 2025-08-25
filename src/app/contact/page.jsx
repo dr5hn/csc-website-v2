@@ -1,97 +1,13 @@
 "use client";
 
-import { Mail, Plus, Minus } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useState } from "react";
 import GitHubIcon from "@/icons/GitHub";
 import XIcon from "@/icons/XIcon";
-
-const faqs = [
-  {
-    question: "How do I get started with the API?",
-    answer:
-      "You can start by exploring our open-source dataset on GitHub or sign up for API access. Our documentation provides step-by-step integration guides for all major programming languages.",
-    category: "Getting Started",
-  },
-  {
-    question: "What's the difference between the free and paid plans?",
-    answer:
-      "The free plan gives you access to our complete open-source dataset via GitHub. The paid API provides fast, reliable endpoints with higher rate limits, multiple output formats, and priority support.",
-    category: "Pricing",
-  },
-  {
-    question: "How accurate and up-to-date is your data?",
-    answer:
-      "Our data is continuously updated and maintained by our community. We verify changes through multiple sources and have a rigorous review process for all updates to ensure accuracy.",
-    category: "Data Quality",
-  },
-  {
-    question: "Can I use this data commercially?",
-    answer:
-      "Yes! Our open-source data is available under a permissive license for commercial use. For API access, our paid plans are designed specifically for commercial applications.",
-    category: "Licensing",
-  },
-  {
-    question: "Do you provide custom data formats?",
-    answer:
-      "Absolutely. Our Custom plan includes any format you need - CSV, JSON, SQL, Excel, or custom formats. We can also provide one-time or recurring exports based on your requirements.",
-    category: "Custom Solutions",
-  },
-  {
-    question: "What kind of support do you offer?",
-    answer:
-      "We provide community support through GitHub for open-source users, email support for API customers, and dedicated account management for enterprise clients.",
-    category: "Support",
-  },
-];
-
-function FAQItem({ faq, index, isOpen, onToggle }) {
-  return (
-    <div className="group">
-      <button
-        className="w-full p-4 md:p-6 text-left flex items-start justify-between bg-white/40 backdrop-blur-sm border border-light/30 rounded-2xl hover:bg-white/60 hover:border-light/50 transition-all duration-300"
-        onClick={onToggle}
-      >
-        <div className="flex-1 pr-4">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="text-xs font-bold text-blue/70 uppercase">
-              {faq.category}
-            </span>
-          </div>
-          <h3 className="text-lg font-semibold text-dark group-hover:text-blue transition-colors duration-200">
-            {faq.question}
-          </h3>
-        </div>
-        <div className="flex-shrink-0 ml-4">
-          <div className="w-8 h-8 rounded-full bg-blue/10 flex items-center justify-center group-hover:bg-blue/20 transition-colors duration-200">
-            {isOpen ? (
-              <Minus className="w-4 h-4 text-blue" />
-            ) : (
-              <Plus className="w-4 h-4 text-blue" />
-            )}
-          </div>
-        </div>
-      </button>
-
-      {isOpen && (
-        <div className="mt-3 mx-4 md:mx-6">
-          <div className="p-4 md:p-6 border-l-4 border-blue/30">
-            <p className="text-darkgray">{faq.answer}</p>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+import FAQs from "@/components/faq";
 
 export default function Contact() {
-  const [openFAQ, setOpenFAQ] = useState(null);
-
-  const toggleFAQ = (index) => {
-    setOpenFAQ(openFAQ === index ? null : index);
-  };
-
   return (
     <div className="container mx-auto px-4 py-10 lg:py-20">
       {/* Hero Section */}
@@ -199,42 +115,7 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* FAQs Section */}
-      <div className="mb-8 lg:mb-20">
-        <div className="text-center mb-6 md:mb-12">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue/10 border border-blue/20 text-blue text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-blue rounded-full mr-2 animate-pulse"></span>
-            Support
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-4">
-            Frequently asked questions
-          </h2>
-          <p className="text-lg text-darkgray max-w-2xl mx-auto">
-            Everything you need to know about our API and services. Can't find
-            what you're looking for?
-            <Link
-              href="mailto:support@countrystatecity.in"
-              className="text-blue hover:text-blue/80 font-medium ml-1"
-            >
-              Contact our support team
-            </Link>
-          </p>
-        </div>
-
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <FAQItem
-                key={index}
-                faq={faq}
-                index={index}
-                isOpen={openFAQ === index}
-                onToggle={() => toggleFAQ(index)}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
+      <FAQs />
 
       {/* Community & Support */}
       <div className="text-center">
