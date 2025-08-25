@@ -51,7 +51,7 @@ function FeatureCard({ feature }) {
 
 export default function PricingHero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue/[0.02] to-green/[0.03] py-20 lg:py-32">
+    <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue/[0.02] to-green/[0.03] py-10 lg:py-32">
       <div className="relative container mx-auto px-4">
         <div className="max-w-5xl mx-auto text-center">
           {/* Badge */}

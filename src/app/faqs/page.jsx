@@ -3,7 +3,17 @@
 import { useState } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { Plus, Minus, Search, Mail, MessageCircle } from "lucide-react";
+import {
+  Plus,
+  Minus,
+  Search,
+  Mail,
+  MessageCircle,
+  Users,
+  BookOpen,
+  Play,
+  CheckCircle,
+} from "lucide-react";
 import FAQHero from "@/components/faq-hero";
 
 const faqs = [
@@ -92,6 +102,92 @@ const categories = [
   "Data Formats",
   "Custom Solutions",
 ];
+
+const supportOptions = [
+  {
+    icon: MessageCircle,
+    title: "Contact Support",
+    description:
+      "Get direct help from our support team for technical issues and account questions.",
+    color: "from-blue to-blue/90",
+    details: ["Email Support", "24h Response"],
+    href: "#contact",
+  },
+  {
+    icon: Users,
+    title: "Community Forum",
+    description:
+      "Connect with other developers, share experiences, and get community support.",
+    color: "from-green to-green/90",
+    details: ["Active Community", "GitHub Discussions"],
+    href: "https://github.com/dr5hn/countries-states-cities-database/discussions",
+  },
+  {
+    icon: BookOpen,
+    title: "Documentation",
+    description:
+      "Comprehensive guides, tutorials, and API documentation for all products.",
+    color: "from-blue to-green",
+    details: ["API Reference", "Code Examples"],
+    href: "https://docs.countrystatecity.in",
+  },
+  {
+    icon: Play,
+    title: "Video Tutorials",
+    description:
+      "Step-by-step video guides for getting started with each product.",
+    color: "from-orange to-orange/90",
+    details: ["Getting Started", "Integration Guide"],
+    href: "#tutorials",
+  },
+];
+
+function SupportCard({ option, index }) {
+  const Icon = option.icon;
+
+  return (
+    <div className="group relative">
+      {/* Gradient border shell */}
+      <div className="rounded-2xl p-[1px] bg-gradient-to-br from-light to-transparent group-hover:from-blue/20 group-hover:to-green/10 transition-colors duration-300">
+        {/* Card surface */}
+        <div className="rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] hover:shadow-[0_1px_0_rgba(15,23,42,0.06),0_16px_40px_rgba(2,6,23,0.08)] transition-all duration-300">
+          <div className="relative p-6 sm:p-7 flex flex-col h-full">
+            {/* Icon and Title */}
+            <div className="relative flex items-center gap-4 mb-4">
+              <div
+                className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r ${option.color} group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+              >
+                <Icon className="h-6 w-6 text-white" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold text-dark">
+                  {option.title}
+                </h3>
+              </div>
+            </div>
+
+            {/* Description */}
+            <p className="text-darkgray leading-relaxed mb-6">
+              {option.description}
+            </p>
+
+            {/* Details Grid */}
+            <div className="grid grid-cols-1 gap-3 mt-auto">
+              {option.details.map((detail, idx) => (
+                <div key={idx} className="flex items-center">
+                  <CheckCircle className="h-4 w-4 text-success mr-2 flex-shrink-0" />
+                  <span className="text-sm text-darkgray font-medium">
+                    {detail}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function FAQItem({ faq, index, isOpen, onToggle }) {
   return (
@@ -210,32 +306,34 @@ export default function FAQsPage() {
         )}
       </div>
 
-      {/* Contact Support Section */}
-      <div className="max-w-4xl mx-auto mt-16">
-        <div className="bg-white/60 backdrop-blur-sm border border-light/50 rounded-2xl p-8 text-center shadow-lg">
-          <h3 className="text-2xl font-bold text-dark mb-4">
-            Still have questions?
-          </h3>
-          <p className="text-darkgray mb-6">
-            Can't find what you're looking for? Our support team is here to help
-            you get the most out of our platform.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="mailto:support@countrystatecity.in"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue text-white rounded-full font-semibold hover:bg-blue/90 transition-colors duration-200"
-            >
-              <Mail className="w-4 h-4" />
-              Email Support
-            </a>
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white/80 text-blue border border-blue/20 rounded-full font-semibold hover:bg-white transition-colors duration-200"
-            >
-              <MessageCircle className="w-4 h-4" />
-              Contact Us
-            </a>
+      {/* Still Need Help Section */}
+      <div className="container mx-auto px-4 my-16">
+        <div className="text-center mb-10">
+          <div
+            className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 ring-1 ring-light shadow-sm transition-shadow hover:shadow-md"
+            aria-label="Support"
+          >
+            <span
+              className="h-1.5 w-1.5 rounded-full bg-blue animate-pulse"
+              aria-hidden="true"
+            ></span>
+            <span className="text-[11px] font-semibold tracking-wider uppercase text-darkgray">
+              Support
+            </span>
           </div>
+          <h2 className="mt-4 text-3xl md:text-4xl font-bold text-dark">
+            Still Need Help?
+          </h2>
+          <p className="mt-3 text-darkgray">
+            Our support team and community are here to help you succeed with the
+            CSC Platform
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {supportOptions.map((option, index) => (
+            <SupportCard key={index} option={option} index={index} />
+          ))}
         </div>
       </div>
     </>

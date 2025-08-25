@@ -1,11 +1,8 @@
-"use client";
-
 import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import GitHubIcon from "@/icons/GitHub";
 import XIcon from "@/icons/XIcon";
-import FAQs from "@/components/faq";
 
 export default function Contact() {
   return (
@@ -114,8 +111,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-
-      <FAQs />
 
       {/* Community & Support */}
       <div className="text-center">
