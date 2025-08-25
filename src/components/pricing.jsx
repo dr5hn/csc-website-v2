@@ -174,43 +174,53 @@ function PricingCard({ plan, index }) {
 
 export default function PricingSection() {
   return (
-    <section className="py-10 lg:py-20 container mx-auto px-4">
-      {/* Header Section */}
-      <div className="text-center mb-10 md:mb-16">
-        {/* Main Headline */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-          <span className="bg-gradient-to-r from-blue via-blue to-green bg-clip-text text-transparent">
-            Simple, transparent pricing
-          </span>
-        </h1>
-
-        {/* Supporting Text */}
-        <p className="text-xl text-darkgray md:mb-8 max-w-4xl mx-auto">
-          Start free with our open-source data, or unlock the full API for
-          production use. Need a special format? We've got you covered.
-        </p>
+    <>
+      <div>
+        <div className="h-px bg-gradient-to-r from-transparent via-light to-transparent"></div>
+        <div className="h-px bg-gradient-to-r from-transparent via-blue/20 to-transparent transform translate-y-[-1px]"></div>
       </div>
+      <section className="py-10 lg:py-20 container mx-auto px-4">
+        {/* Header Section */}
+        <div className="text-center mb-10 md:mb-16">
+          {/* Main Headline */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-blue via-blue to-green bg-clip-text text-transparent">
+              Simple, transparent pricing
+            </span>
+          </h1>
 
-      {/* Pricing Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {plans.map((plan, index) => (
-          <PricingCard key={index} plan={plan} index={index} />
-        ))}
-      </div>
+          {/* Supporting Text */}
+          <p className="text-xl text-darkgray md:mb-8 max-w-4xl mx-auto">
+            Start free with our open-source data, or unlock the full API for
+            production use. Need a special format? We've got you covered.
+          </p>
+        </div>
 
-      {/* Bottom Note */}
-      <div className="text-center mt-10 md:mt-16">
-        <p className="text-lightgray">
-          All plans include our comprehensive documentation and community
-          support.{" "}
-          <Link
-            href="/contact"
-            className="text-blue hover:text-blue/80 font-semibold"
-          >
-            Questions? Contact us
-          </Link>
-        </p>
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {plans.map((plan, index) => (
+            <PricingCard key={index} plan={plan} index={index} />
+          ))}
+        </div>
+
+        {/* Bottom Note */}
+        <div className="text-center mt-10 md:mt-16">
+          <p className="text-lightgray">
+            All plans include our comprehensive documentation and community
+            support.{" "}
+            <Link
+              href="/contact"
+              className="text-blue hover:text-blue/80 font-semibold"
+            >
+              Questions? Contact us
+            </Link>
+          </p>
+        </div>
+      </section>
+      <div>
+        <div className="h-px bg-gradient-to-r from-transparent via-light to-transparent"></div>
+        <div className="h-px bg-gradient-to-r from-transparent via-blue/20 to-transparent transform translate-y-[-1px]"></div>
       </div>
-    </section>
+    </>
   );
 }
