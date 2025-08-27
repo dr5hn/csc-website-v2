@@ -63,6 +63,27 @@
   --color-warning: #facc15;
 
   --font-cal: "Cal Sans", sans-serif;
+
+  --animate-canopy-horizontal: canopy-x 50s linear infinite;
+  --animate-canopy-vertical: canopy-y 50s linear infinite;
+}
+
+@keyframes canopy-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes canopy-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
 }
 
 body {
