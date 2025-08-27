@@ -171,7 +171,7 @@ export const Testimonials = ({
 }) => (
   <>
     <section className="py-6 md:py-10 xl:py-16">
-      <div className="text-center mb-6 md:mb-12">
+      <div className="text-center mb-6 md:mb-12 container mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4 tracking-tight">
           Loved by developers worldwide
         </h2>
