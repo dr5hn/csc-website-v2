@@ -8,6 +8,7 @@ import "prismjs/components/prism-json";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Copy, Check, Play, Key } from "lucide-react";
+import Globe from "./ui/globe";
 
 export default function HeroSection() {
   const [copied, setCopied] = useState(false);
@@ -104,56 +105,11 @@ export default function HeroSection() {
 
           {/* Right Column - Code Example */}
           <div className="relative">
-            <div className="bg-dark/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-darkgray/20 overflow-hidden">
-              {/* Terminal Header */}
-              <div className="flex items-center justify-between p-4 bg-darkgray/20 border-b border-darkgray/20">
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-red rounded-full"></div>
-                  <div className="w-3 h-3 bg-warning rounded-full"></div>
-                  <div className="w-3 h-3 bg-success rounded-full"></div>
-                </div>
-                <div className="text-lightgray text-sm font-medium">
-                  API Example
-                </div>
-                <button
-                  onClick={copyToClipboard}
-                  className="flex items-center space-x-2 px-3 py-1 rounded-lg bg-blue/10 hover:bg-blue/20 text-blue transition-colors duration-200 cursor-pointer"
-                >
-                  {copied ? (
-                    <>
-                      <Check className="w-4 h-4" />
-                      <span className="text-sm">Copied!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-4 h-4" />
-                      <span className="text-sm">Copy</span>
-                    </>
-                  )}
-                </button>
-              </div>
-
-              {/* Code Content */}
-              <div className="p-4">
-                {/* Request */}
-                <pre className="!bg-transparent !p-0 !m-0 language-bash">
-                  <code className="language-bash text-sm">{requestCode}</code>
-                </pre>
-
-                {/* Response */}
-                <div className="mt-4 pt-4 border-t border-darkgray/20">
-                  <pre className="!bg-transparent !p-0 !m-0">
-                    <code className="language-json text-sm">
-                      {responseCode}
-                    </code>
-                  </pre>
-                </div>
-              </div>
-            </div>
-
-            {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue/20 rounded-full animate-pulse"></div>
-            <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-green/20 rounded-full animate-pulse delay-1000"></div>
+            <Globe
+              baseColor={[0.133, 0.588, 0.953]} // this affects everything
+              markerColor={[]} // no markers
+              glowColor={null} // disable glow
+            />
           </div>
         </div>
       </div>
