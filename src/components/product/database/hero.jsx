@@ -77,7 +77,7 @@ export default function ProductDatabaseHero() {
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-dark">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] text-dark">
                 The world's most
                 <br />
                 <span className="bg-gradient-to-r from-blue via-blue to-green bg-clip-text text-transparent">

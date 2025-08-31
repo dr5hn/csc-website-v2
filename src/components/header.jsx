@@ -104,7 +104,7 @@ export default function Header() {
                       </div>
                     </Link>
                     <Link
-                      href="/api"
+                      href="/product/api"
                       className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200 group"
                     >
                       <div className="w-8 h-8 bg-green/10 group-hover:bg-green/20 rounded-lg flex items-center justify-center transition-colors duration-200">
