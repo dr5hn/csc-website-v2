@@ -124,10 +124,7 @@ function FormatCard({ item, index }) {
 
 export default function ChooseYourFormat() {
   return (
-    <section
-      id="formats"
-      className="relative bg-gradient-to-br from-white via-light/30 to-blue/5"
-    >
+    <section className="relative bg-gradient-to-br from-white via-light/30 to-blue/5">
       <div className="container mx-auto px-4 py-6 lg:py-12">
         {/* Header matches Products: pill + gradient headline */}
         <div className="flex flex-col items-center text-center">
