@@ -118,7 +118,7 @@ export default function Header() {
                       </div>
                     </Link>
                     <Link
-                      href="/graphql"
+                      href="/product/export-tool"
                       className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200 group"
                     >
                       <div className="w-8 h-8 bg-blue/10 group-hover:bg-blue/20 rounded-lg flex items-center justify-center transition-colors duration-200">
@@ -196,7 +196,7 @@ export default function Header() {
                       <span className="font-medium text-dark">API</span>
                     </Link>
                     <Link
-                      href="/export"
+                      href="/product/export-tool"
                       className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200"
                     >
                       <Download className="w-4 h-4 text-blue" />
