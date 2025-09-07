@@ -101,11 +101,15 @@ function AnimatedCounter({ end, decimals = 0, suffix = "" }) {
 }
 
 // Main Stats component
-export default function HomepageStats() {
+export default function Stats() {
   const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
 
   return (
     <>
+      <div>
+        <div className="h-px bg-gradient-to-r from-transparent via-light to-transparent"></div>
+        <div className="h-px bg-gradient-to-r from-transparent via-blue/20 to-transparent transform translate-y-[-1px]"></div>
+      </div>
       <section ref={ref} className="relative py-4 md:py-10">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-16">
