@@ -57,7 +57,7 @@ const plans = [
 
 export default function ApiPricingSection() {
   return (
-    <section className="relative bg-gradient-to-br from-white via-light/30 to-blue/5 py-10 lg:py-20">
+    <section className="relative pt-10 lg:pt-20">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-12">
           <div
@@ -80,7 +80,7 @@ export default function ApiPricingSection() {
             no surprises.
           </p>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {plans.map((plan, index) => (
             <PricingCard key={index} plan={plan} />
           ))}

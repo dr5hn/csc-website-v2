@@ -38,7 +38,7 @@ export default function FAQs() {
   };
 
   return (
-    <div className="my-8 lg:my-20">
+    <section className="pb-10 md:pb-20 container mx-auto px-4">
       <div className="text-center mb-6 md:mb-12">
         <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue/10 border border-blue/20 text-blue text-sm font-medium mb-6">
           <span className="w-2 h-2 bg-blue rounded-full mr-2 animate-pulse"></span>
@@ -72,7 +72,7 @@ export default function FAQs() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

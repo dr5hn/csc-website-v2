@@ -5,7 +5,7 @@ import { ArrowRight, Play, Zap, Shield, Clock } from "lucide-react";
 
 export default function CTA() {
   return (
-    <section className="relative container mx-auto px-4 py-6 lg:py-12 xl:py-20">
+    <section className="relative container mx-auto px-4 py-6 lg:py-10 xl:py-20">
       <div className="bg-dark rounded-3xl px-4 py-10 lg:p-12 xl:p-16 text-center">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 rounded-full bg-blue/20 px-4 py-2 mb-6 md:mb-8">

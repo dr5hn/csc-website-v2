@@ -124,92 +124,90 @@ export default function EasyIntegration() {
   const copyText = useMemo(() => sanitizeCommands(code), [code]);
 
   return (
-    <section className="relative bg-gradient-to-br from-white via-light/30 to-blue/5">
-      <div className="container mx-auto px-4 py-10 lg:py-20">
-        {/* Header */}
-        <div className="text-center">
-          <div
-            className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 ring-1 ring-light shadow-sm"
-            aria-label="Setup"
-          >
-            <span
-              className="h-1.5 w-1.5 rounded-full bg-green"
-              aria-hidden="true"
-            />
-            <span className="text-[11px] font-semibold tracking-wider uppercase text-darkgray">
-              Integration
-            </span>
-          </div>
-
-          <h2 className="mt-4 text-4xl md:text-5xl font-bold">
-            <span className="bg-gradient-to-r from-blue to-green bg-clip-text text-transparent">
-              Easy Integration
-            </span>
-          </h2>
-          <p className="mt-2 max-w-prose mx-auto text-darkgray">
-            Get started in minutes with our simple RESTful API.
-          </p>
+    <section className="relative container mx-auto px-4">
+      {/* Header */}
+      <div className="text-center">
+        <div
+          className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 ring-1 ring-light shadow-sm"
+          aria-label="Setup"
+        >
+          <span
+            className="h-1.5 w-1.5 rounded-full bg-green"
+            aria-hidden="true"
+          />
+          <span className="text-[11px] font-semibold tracking-wider uppercase text-darkgray">
+            Integration
+          </span>
         </div>
 
-        {/* Tabs + Code */}
-        <div className="mt-8 rounded-2xl bg-white/70 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] overflow-hidden">
-          {/* Tabs */}
-          <div
-            role="tablist"
-            aria-label="Code examples"
-            className="flex flex-wrap items-center gap-2 border-b border-light/60 bg-white/80 p-2"
-          >
-            {Object.keys(EXAMPLES).map((key, i) => {
-              const k = key;
-              const isActive = active === k;
-              const isBlue = i % 2 === 0;
-              const Icon = EXAMPLES[k].icon;
-              return (
-                <button
-                  key={k}
-                  role="tab"
-                  aria-selected={isActive}
-                  aria-controls={`panel-${k}`}
-                  id={`tab-${k}`}
-                  onClick={() => setActive(k)}
+        <h2 className="mt-4 text-4xl md:text-5xl font-bold">
+          <span className="bg-gradient-to-r from-blue to-green bg-clip-text text-transparent">
+            Easy Integration
+          </span>
+        </h2>
+        <p className="mt-2 max-w-prose mx-auto text-darkgray">
+          Get started in minutes with our simple RESTful API.
+        </p>
+      </div>
+
+      {/* Tabs + Code */}
+      <div className="mt-8 rounded-2xl bg-white/70 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] overflow-hidden">
+        {/* Tabs */}
+        <div
+          role="tablist"
+          aria-label="Code examples"
+          className="flex flex-wrap items-center gap-2 border-b border-light/60 bg-white/80 p-2"
+        >
+          {Object.keys(EXAMPLES).map((key, i) => {
+            const k = key;
+            const isActive = active === k;
+            const isBlue = i % 2 === 0;
+            const Icon = EXAMPLES[k].icon;
+            return (
+              <button
+                key={k}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`panel-${k}`}
+                id={`tab-${k}`}
+                onClick={() => setActive(k)}
+                className={cn(
+                  "inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-semibold transition-colors focus:outline-none",
+                  isActive
+                    ? isBlue
+                      ? "bg-blue/10 text-blue ring-1 ring-blue"
+                      : "bg-green/10 text-green ring-1 ring-green"
+                    : "text-darkgray hover:bg-white"
+                )}
+              >
+                <Icon
                   className={cn(
-                    "inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-semibold transition-colors focus:outline-none",
+                    "h-4 w-4",
                     isActive
                       ? isBlue
-                        ? "bg-blue/10 text-blue ring-1 ring-blue"
-                        : "bg-green/10 text-green ring-1 ring-green"
-                      : "text-darkgray hover:bg-white"
+                        ? "text-blue"
+                        : "text-green"
+                      : "text-darkgray"
                   )}
-                >
-                  <Icon
-                    className={cn(
-                      "h-4 w-4",
-                      isActive
-                        ? isBlue
-                          ? "text-blue"
-                          : "text-green"
-                        : "text-darkgray"
-                    )}
-                    aria-hidden="true"
-                  />
-                  {EXAMPLES[k].title}
-                </button>
-              );
-            })}
-          </div>
+                  aria-hidden="true"
+                />
+                {EXAMPLES[k].title}
+              </button>
+            );
+          })}
+        </div>
 
-          {/* Code panel */}
-          <div
-            id={`panel-${active}`}
-            role="tabpanel"
-            aria-labelledby={`tab-${active}`}
-            className="relative"
-          >
-            <CopyButton text={copyText} />
-            <pre className="m-0 overflow-x-auto p-4 md:p-6 text-sm leading-6 text-white bg-dark">
-              <code>{code}</code>
-            </pre>
-          </div>
+        {/* Code panel */}
+        <div
+          id={`panel-${active}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${active}`}
+          className="relative"
+        >
+          <CopyButton text={copyText} />
+          <pre className="m-0 overflow-x-auto p-4 md:p-6 text-sm leading-6 text-white bg-dark">
+            <code>{code}</code>
+          </pre>
         </div>
       </div>
     </section>
