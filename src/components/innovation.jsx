@@ -13,6 +13,9 @@ import {
   RefreshCw,
   Server,
   Activity,
+  Database,
+  Star,
+  ShieldCheck,
 } from "lucide-react";
 
 const innovationItems = [
@@ -163,17 +166,61 @@ function ItemRow({ item }) {
 
 function StatsRibbon() {
   const stats = [
-    { icon: Server, value: "99.9%", label: "Uptime SLA" },
-    { icon: Zap, value: "<200ms", label: "Response Time" },
-    { icon: Globe, value: "50+", label: "CDN Locations" },
-    { icon: Activity, value: "24/7", label: "Monitoring" },
+    {
+      icon: Zap,
+      value: 1.2,
+      suffix: "B+",
+      label: "API Requests Monthly",
+      color: "blue",
+      decimals: 1,
+    },
+    {
+      icon: Users,
+      value: 40,
+      suffix: "K+",
+      label: "Developers Worldwide",
+      color: "green",
+      decimals: 0,
+    },
+    {
+      icon: Database,
+      value: 151,
+      suffix: "K+",
+      label: "Cities & States",
+      color: "orange",
+      decimals: 0,
+    },
+    {
+      icon: Globe,
+      value: 250,
+      suffix: "+",
+      label: "Countries Covered",
+      color: "blue",
+      decimals: 0,
+    },
+    {
+      icon: Star,
+      value: 6.8,
+      suffix: "K+",
+      label: "Open Source Stars",
+      color: "green",
+      decimals: 1,
+    },
+    {
+      icon: ShieldCheck,
+      value: 99.9,
+      suffix: "%",
+      label: "API Uptime",
+      color: "orange",
+      decimals: 1,
+    },
   ];
 
   return (
     <div className="relative mt-10">
       <div className="rounded-2xl p-[1px] bg-gradient-to-r from-blue/30 to-green/30">
         <div className="bg-gradient-to-r from-blue to-blue/90 rounded-[calc(1rem-1px)] p-3 md:px-6 md:py-5">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-white">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-white">
             {stats.map((s, i) => {
               const Icon = s.icon;
               return (
