@@ -3,6 +3,7 @@ import XIcon from "@/icons/XIcon";
 import GitHubIcon from "@/icons/GitHub";
 import { ExternalLink, Linkedin } from "lucide-react";
 import KaggleIcon from "@/icons/KaggleIcon";
+import Logo from "./logo";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,20 +13,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-6 lg:py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
           <div className="md:col-span-1">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="relative">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue via-blue to-green rounded-lg flex items-center justify-center shadow-md">
-                  <div className="w-5 h-5 bg-white rounded-sm flex items-center justify-center">
-                    <div className="w-2.5 h-2.5 bg-gradient-to-br from-blue to-green rounded-sm"></div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <span className="text-lg font-bold text-dark tracking-tight">
-                  NexusAPI
-                </span>
-              </div>
-            </div>
+            <Logo />
             <p className="text-sm text-darkgray leading-relaxed mb-6">
               The world's most comprehensive geographical database, trusted by
               developers worldwide for accurate location data in their

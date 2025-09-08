@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import Logo from "./logo";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,21 +55,8 @@ export default function Header() {
             className={`flex items-center justify-between transition-all duration-300 h-16`}
           >
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue via-blue to-green rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105">
-                  <div className="w-6 h-6 bg-white rounded-md flex items-center justify-center">
-                    <div className="w-3 h-3 bg-gradient-to-br from-blue to-green rounded-sm"></div>
-                  </div>
-                </div>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-green rounded-full animate-pulse"></div>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold text-dark">NexusAPI</span>
-                <span className="text-xs text-lightgray -mt-1">
-                  by Nexus Labs
-                </span>
-              </div>
+            <Link href="/" className="group">
+              <Logo />
             </Link>
 
             {/* Desktop Navigation */}
