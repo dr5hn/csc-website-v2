@@ -1,64 +1,78 @@
 "use client";
 
 import GitHubIcon from "@/icons/GitHub";
-import { Rocket, Code, Download, Users, Building, Globe } from "lucide-react";
+import { Rocket, Code, Users, Database, Package, Zap, DownloadCloud, TrendingUp, LayoutDashboard } from "lucide-react";
 
 const milestones = [
   {
-    year: "2019",
+    year: "2018",
     title: "The Beginning",
     description:
-      "Started as a simple GitHub repository to solve the problem of scattered geographical data. Darshan Gada (@dr5hn) created the first version to help developers access structured location data easily.",
+      "Started as a simple GitHub repository to solve the problem of scattered geographical data for a client project. Darshan Gada (@dr5hn) created the first commit to help developers access structured location data easily.",
     icon: Rocket,
-    accent: "blue",
+  },
+  {
+    year: "2019",
+    title: "Open Source Growth",
+    description:
+      "The project gained momentum with 100+ GitHub stars. Community contributors started helping improve data accuracy and coverage across different regions.",
+    icon: GitHubIcon,
   },
   {
     year: "2020",
-    title: "Open Source Growth",
+    title: "Database Restructure",
     description:
       "The project gained momentum with 1,000+ GitHub stars. Community contributors started helping improve data accuracy and coverage across different regions.",
-    icon: GitHubIcon,
-    accent: "green",
+    icon: Database,
   },
   {
     year: "2021",
     title: "API Launch",
     description:
-      "Launched the first REST API to serve geographical data programmatically. Started handling 1M+ requests monthly as developers integrated the API into their applications.",
+      "Launched the first REST API to serve geographical data programmatically along with dedicated website and comprehensive documentation. Started handling 1M+ requests monthly as developers integrated the API into their applications. API keys requested via Google Forms and database hits 1K+ stars.",
     icon: Code,
-    accent: "blue",
   },
   {
     year: "2022",
-    title: "Export Tool Release",
+    title: "Multi-Format Distribution",
     description:
-      "Introduced the Export Tool to help developers get custom datasets in their preferred formats. Credit-based system launched to sustain the project's growth.",
-    icon: Download,
-    accent: "green",
+      "Responded to community feedback by launching multiple database formats and distributions including JSON, MySQL, PostgreSQL, SQLite, SQL Server, MongoDB, XML, YAML, and CSV. Database reaches 3K+ stars.",
+    icon: Package,
   },
   {
     year: "2023",
-    title: "Community Platform",
+    title: "Automation & Platform Expansion",
     description:
-      "Launched the Update Tool, enabling community members to contribute data improvements directly. Automated verification system ensures data quality and accuracy.",
-    icon: Users,
-    accent: "blue",
+      "Added CI/CD automations to generate all formats automatically. Launched database on platforms like data.world and Kaggle, gaining 5K+ bookmarks overnight. Database hits 5K+ stars.",
+    icon: Zap,
   },
   {
     year: "2024",
-    title: "Enterprise Scale",
+    title: "Community Platform",
     description:
-      "Reached 1B+ API requests monthly. Trusted by major companies worldwide. Enhanced infrastructure with 99.9% uptime SLA and global CDN deployment.",
-    icon: Building,
-    accent: "green",
+      "Launched the Update Tool, enabling community members to contribute data improvements directly. Automated verification system ensures data quality and accuracy. Database reaches 7K+ stars.",
+    icon: Users,
   },
   {
     year: "2025",
-    title: "Global Impact",
+    title: "Export Tool Release",
     description:
-      "Serving 10,000+ developers worldwide. Complete ecosystem with 250+ countries, 5,000+ states, and 151,000+ cities. Continuing to innovate and expand.",
-    icon: Globe,
-    accent: "blue",
+      "Introduced the Export Tool to help developers get custom datasets in their preferred formats. Credit-based system launched to sustain the project's growth. Database hits 8K+ stars and counting.",
+    icon: DownloadCloud,
+  },
+  {
+    year: "2025",
+    title: "Enterprise Scale Achievement",
+    description:
+      "API reaches massive scale milestone of 1B+ requests monthly, demonstrating the platform's reliability and widespread adoption by production applications worldwide.",
+    icon: TrendingUp,
+  },
+  {
+    year: "2025",
+    title: "API Dashboard (Coming Soon)",
+    description:
+      "Working on restructuring API access with a comprehensive dashboard and streamlined API key generation. Adding enhanced filters and routes to expand data source capabilities.",
+    icon: LayoutDashboard,
   },
 ];
 
@@ -67,11 +81,10 @@ const TimelineItem = ({
   title,
   description,
   icon: Icon,
-  accent,
   index,
 }) => {
   const isLeft = index % 2 !== 0;
-  const isBlue = accent === "blue";
+  const isBlue = index % 2 === 0;
   const accentColor = isBlue
     ? "text-blue bg-blue/10"
     : "text-green bg-green/10";
@@ -107,11 +120,10 @@ const TimelineItem = ({
               className={`rounded-2xl p-[1px] bg-gradient-to-br from-light/50 to-transparent ${gradientBorder} transition-all duration-500`}
             >
               <div
-                className={`rounded-[calc(1rem-1px)] backdrop-blur-sm border shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] hover:shadow-[0_1px_0_rgba(15,23,42,0.06),0_16px_40px_rgba(2,6,23,0.08)] transition-all duration-500 ${
-                  isBlue
-                    ? "bg-white/90 border-blue/10"
-                    : "bg-white/90 border-green/10"
-                }`}
+                className={`rounded-[calc(1rem-1px)] backdrop-blur-sm border shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] hover:shadow-[0_1px_0_rgba(15,23,42,0.06),0_16px_40px_rgba(2,6,23,0.08)] transition-all duration-500 ${isBlue
+                  ? "bg-white/90 border-blue/10"
+                  : "bg-white/90 border-green/10"
+                  }`}
               >
                 <div className="relative p-4 sm:p-6">
                   <div
@@ -155,24 +167,21 @@ const TimelineItem = ({
 
       {/* Desktop Layout (alternating) */}
       <div
-        className={`hidden lg:flex items-center ${
-          isLeft ? "flex-row-reverse" : ""
-        }`}
+        className={`hidden lg:flex items-center ${isLeft ? "flex-row-reverse" : ""
+          }`}
       >
         <div
-          className={`group relative w-1/2 ${
-            isLeft ? "pl-8 lg:pl-12" : "pr-8 lg:pr-12"
-          }`}
+          className={`group relative w-1/2 ${isLeft ? "pl-8 lg:pl-12" : "pr-8 lg:pr-12"
+            }`}
         >
           <div
             className={`rounded-2xl p-[1px] bg-gradient-to-br from-light/50 to-transparent ${gradientBorder} transition-all duration-500`}
           >
             <div
-              className={`rounded-[calc(1rem-1px)] backdrop-blur-sm border shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] hover:shadow-[0_1px_0_rgba(15,23,42,0.06),0_16px_40px_rgba(2,6,23,0.08)] transition-all duration-500 relative p-6 sm:p-8 ${
-                isBlue
-                  ? "bg-white/90 border-blue/10"
-                  : "bg-white/90 border-green/10"
-              }`}
+              className={`rounded-[calc(1rem-1px)] backdrop-blur-sm border shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] hover:shadow-[0_1px_0_rgba(15,23,42,0.06),0_16px_40px_rgba(2,6,23,0.08)] transition-all duration-500 relative p-6 sm:p-8 ${isBlue
+                ? "bg-white/90 border-blue/10"
+                : "bg-white/90 border-green/10"
+                }`}
             >
               <span
                 className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-bold mb-6 shadow-sm ${badgeColor}`}

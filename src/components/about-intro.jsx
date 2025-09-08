@@ -10,7 +10,7 @@ export default function AboutIntro() {
 
         {/* Main Headline */}
         <h1 className="text-5xl lg:text-7xl font-black text-dark mb-8 leading-[0.9] transition-all duration-1000 delay-300">
-          Accurate location data,{" "}
+          Comprehensive location data,{" "}
           <span className="relative">
             <span className="bg-gradient-to-r from-blue via-blue to-green bg-clip-text text-transparent">
               made simple
@@ -41,7 +41,7 @@ export default function AboutIntro() {
           <div className="w-1 h-1 bg-lightgray rounded-full"></div>
           <div className="flex items-center gap-2">
             <div className="text-sm font-medium text-lightgray uppercase">
-              35K+ Developers
+              40K+ Developers
             </div>
             <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue rounded-full"></div>
           </div>

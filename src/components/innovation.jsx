@@ -21,7 +21,7 @@ const innovationItems = [
     title: "AI-Powered Validation",
     description:
       "Machine learning validates and cross‑references geographical data from multiple sources for maximum accuracy.",
-    kind: "Innovation",
+    kind: "Coming Soon",
     accent: "green",
   },
   {
@@ -45,20 +45,12 @@ const innovationItems = [
     title: "Enterprise Security",
     description:
       "Hardened infrastructure with rate limiting, API key controls, domain restrictions, and continuous monitoring.",
-    kind: "Innovation",
+    kind: "Coming Soon",
     accent: "orange",
   },
 ];
 
 const valuesItems = [
-  {
-    icon: Target,
-    title: "Accuracy First",
-    description:
-      "Every data point is verified through layered reviews and automated checks. Precision over speed.",
-    kind: "Value",
-    accent: "blue",
-  },
   {
     icon: Users,
     title: "Community Ownership",
@@ -91,14 +83,6 @@ const valuesItems = [
     kind: "Value",
     accent: "blue",
   },
-  {
-    icon: Zap,
-    title: "Innovation Drive",
-    description:
-      "We continually push geodata forward—from AI‑powered validation to real‑time sync systems.",
-    kind: "Value",
-    accent: "green",
-  },
 ];
 
 function AccentIcon({ Icon, accent }) {
@@ -106,14 +90,14 @@ function AccentIcon({ Icon, accent }) {
     accent === "green"
       ? "bg-green/10"
       : accent === "orange"
-      ? "bg-orange/10"
-      : "bg-blue/10";
+        ? "bg-orange/10"
+        : "bg-blue/10";
   const color =
     accent === "green"
       ? "text-green"
       : accent === "orange"
-      ? "text-orange"
-      : "text-blue";
+        ? "text-orange"
+        : "text-blue";
 
   return (
     <div
@@ -132,8 +116,8 @@ function ItemRow({ item }) {
     item.accent === "green"
       ? "from-green/40 to-green/0"
       : item.accent === "orange"
-      ? "from-orange/40 to-orange/0"
-      : "from-blue/40 to-blue/0";
+        ? "from-orange/40 to-orange/0"
+        : "from-blue/40 to-blue/0";
 
   const badge =
     item.kind === "Innovation"
