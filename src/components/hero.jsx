@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Play, Key } from "lucide-react";
+import { Play, Key, Rocket, Star } from "lucide-react";
 import Globe from "./ui/globe";
 
 export default function HeroSection() {
@@ -18,37 +18,38 @@ export default function HeroSection() {
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue/10 border border-blue/20 text-blue text-sm font-medium mb-8">
               <span className="w-2 h-2 bg-blue rounded-full mr-2 animate-pulse"></span>
-              Trusted by 10,000+ developers worldwide
+              Trusted by 40,000+ developers worldwide
             </div>
 
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              The most accurate{" "}
+              The World's Most{" "}
               <span className="bg-gradient-to-r from-blue to-green bg-clip-text text-transparent">
-                Country, State, and City
+                Comprehensive
               </span>{" "}
-              data API
+              Geographical Database
             </h1>
 
             {/* Subtext */}
             <p className="text-xl text-darkgray mb-8 leading-relaxed max-w-2xl lg:max-w-none">
-              Built for developers. Clean, fast, and easy to integrate. Get
-              comprehensive location data with a single API call.
+              Power your applications with accurate data from <strong>250+ countries, 5,000+ states and 151,000+ cities</strong>. Trusted by developers worldwide with <strong>1B+ API requests monthly.</strong>
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button className="bg-blue hover:bg-blue/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg cursor-pointer">
-                <Key className="w-5 h-5 mr-2" />
-                Get API Key
+                <Rocket className="w-5 h-5 mr-2" />
+                Get Started for Free
               </Button>
-              <Button
-                variant="outline"
-                className="border-2 border-blue text-blue hover:bg-blue hover:text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg cursor-pointer"
-              >
-                <Play className="w-5 h-5 mr-2" />
-                Try Now
-              </Button>
+              <a href="http://github.com/dr5hn/csc-website/" target="_blank" rel="noopener noreferrer">
+                <Button
+                  variant="outline"
+                  className="border-2 border-blue text-blue hover:bg-blue hover:text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg cursor-pointer"
+                >
+                  <Star className="w-5 h-5 mr-2" />
+                  Star us on Github
+                </Button>
+              </a>
             </div>
           </div>
 

@@ -52,7 +52,7 @@ export default function CTA() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button className="bg-orange text-white hover:bg-orange/90 font-semibold transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg group">
-            Get Started Free
+            Start Building Free
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-0.5 transition-transform duration-200" />
           </Button>
         </div>

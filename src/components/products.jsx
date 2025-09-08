@@ -44,6 +44,7 @@ function ProductCard({
   href = "#",
   accent = "blue",
   Icon,
+  linkText = "Learn more",
 }) {
   return (
     <div className="border-2 border-blue/20 rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] hover:shadow-[0_1px_0_rgba(15,23,42,0.06),0_16px_40px_rgba(2,6,23,0.08)] transition-all duration-300 h-full relative p-6 sm:p-7 flex flex-col justify-between h-full">
@@ -65,14 +66,13 @@ function ProductCard({
       <div className="relative mt-6 flex items-center justify-between">
         <Link
           href={href}
-          className={`group/lnk inline-flex items-center gap-1.5 text-sm font-semibold ${
-            accent === "green"
-              ? "text-green hover:text-green/90"
-              : "text-blue hover:text-blue/90"
-          }`}
+          className={`group/lnk inline-flex items-center gap-1.5 text-sm font-semibold ${accent === "green"
+            ? "text-green hover:text-green/90"
+            : "text-blue hover:text-blue/90"
+            }`}
           aria-label={`Learn more about ${title}`}
         >
-          Learn more
+          {linkText}
           <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover/lnk:translate-x-0.5" />
         </Link>
 
@@ -113,33 +113,37 @@ export default function Products() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6 md:mt-12">
           <ProductCard
             title="API Access"
-            description="Query countries, states, and cities via fast REST and GraphQL endpoints with rock‑solid accuracy."
-            href="/products/api"
+            description="Query countries, states, and cities via fast REST and GraphQL endpoints."
+            href="/product/api"
             accent="blue"
+            linkText="Get API Access"
             Icon={SquareTerminal}
           />
 
           <ProductCard
-            title="Manager"
+            title="Update Tool"
             description="Submit feedback, report issues, or suggest new data."
-            href="/products/manager"
+            href="/product/update-tool"
             accent="green"
+            linkText="Contribute Now"
             Icon={MessageSquare}
           />
 
           <ProductCard
             title="Database Repository"
             description="Open-source geographical database with global coverage, 9+ export formats (JSON, SQL, CSV, XML, YAML, MongoDB), MIT licensed for unlimited commercial use."
-            href="/products/database-repo"
+            href="https://github.com/dr5hn/countries-states-cities-database"
             accent="green"
+            linkText="View on Github"
             Icon={Star}
           />
 
           <ProductCard
             title="Export Tool"
             description="Download curated datasets in CSV, JSON, or SQL. Free and paid formats available."
-            href="/products/export"
+            href="/product/export-tool"
             accent="blue"
+            linkText="Start Exporting"
             Icon={Download}
           />
         </div>

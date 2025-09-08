@@ -16,7 +16,7 @@ const stats = [
   },
   {
     icon: Users,
-    value: 35,
+    value: 40,
     suffix: "K+",
     label: "Developers Worldwide",
     color: "green",
@@ -129,15 +129,15 @@ export default function Stats() {
                 stat.color === "green"
                   ? "bg-green/10 text-green"
                   : stat.color === "orange"
-                  ? "bg-orange/10 text-orange"
-                  : "bg-blue/10 text-blue";
+                    ? "bg-orange/10 text-orange"
+                    : "bg-blue/10 text-blue";
 
               const gradientText =
                 stat.color === "green"
                   ? "from-green to-green/80"
                   : stat.color === "orange"
-                  ? "from-orange to-orange/80"
-                  : "from-blue to-blue/80";
+                    ? "from-orange to-orange/80"
+                    : "from-blue to-blue/80";
 
               return (
                 <div

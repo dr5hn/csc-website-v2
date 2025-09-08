@@ -73,9 +73,9 @@ export default function CommunitySection() {
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <MessageCircle className="w-5 h-5 text-success" />
-              <span className="text-2xl font-bold text-dark">&lt; 2h</span>
+              <span className="text-2xl font-bold text-dark">1B+</span>
             </div>
-            <p className="text-sm text-darkgray">Average response time</p>
+            <p className="text-sm text-darkgray">API Requests a month</p>
           </div>
 
           <div className="text-center">

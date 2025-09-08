@@ -30,7 +30,7 @@ const features = [
     description:
       "RESTful APIs, comprehensive docs, and tools designed by developers for developers.",
     color: "from-blue to-green",
-    details: ["REST APIs", "Live Docs", "Code Examples", "SDKs"],
+    details: ["REST APIs", "Live Docs", "Code Examples"],
   },
   {
     icon: RefreshCw,
@@ -49,9 +49,9 @@ const features = [
     icon: Heart,
     title: "Open Source",
     description:
-      "MIT licensed core database with transparent development, community contributions, and full access.",
+      "ODbL-1.0 Licensed core database with transparent development, community contributions, and full access.",
     color: "from-green to-green/90",
-    details: ["MIT License", "Open Source", "Community Driven", "Transparent"],
+    details: ["ODbL-1.0 License", "Open Source", "Community Driven", "Transparent"],
   },
 ];
 
@@ -84,9 +84,9 @@ export default function WhyChooseUs() {
         {features.map((feature, index) => (
           <div key={index} className="group relative">
             {/* Gradient border shell */}
-            <div className="rounded-2xl p-[1px] bg-gradient-to-br from-light to-transparent group-hover:from-blue/20 group-hover:to-green/10 transition-colors duration-300">
+            <div className="rounded-2xl p-[1px] bg-gradient-to-br from-light to-transparent group-hover:from-blue/20 group-hover:to-green/10 transition-colors duration-300 h-full">
               {/* Card surface */}
-              <div className="rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] hover:shadow-[0_1px_0_rgba(15,23,42,0.06),0_16px_40px_rgba(2,6,23,0.08)] transition-all duration-300">
+              <div className="rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] hover:shadow-[0_1px_0_rgba(15,23,42,0.06),0_16px_40px_rgba(2,6,23,0.08)] transition-all duration-300 h-full">
                 <div className="relative p-6 sm:p-7 flex flex-col h-full">
                   {/* Icon and Title */}
                   <div className="relative flex items-start gap-4 mb-4">

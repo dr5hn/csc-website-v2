@@ -1,8 +1,8 @@
 import WorldIcon from "@/icons/World";
 
-export default function Logo() {
+export default function Logo({ classes }) {
   return (
-    <div className="flex items-center space-x-3">
+    <div className={`flex items-center space-x-3 ${classes}`}>
       <div className="relative">
         <WorldIcon />
       </div>

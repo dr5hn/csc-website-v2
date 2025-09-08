@@ -4,6 +4,7 @@ import GitHubIcon from "@/icons/GitHub";
 import { ExternalLink, Linkedin } from "lucide-react";
 import KaggleIcon from "@/icons/KaggleIcon";
 import Logo from "./logo";
+import DataWorldIcon from "@/icons/DataWorld";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,7 +14,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-6 lg:py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
           <div className="md:col-span-1">
-            <Logo />
+            <Logo classes="mb-4" />
             <p className="text-sm text-darkgray leading-relaxed mb-6">
               The world's most comprehensive geographical database, trusted by
               developers worldwide for accurate location data in their
@@ -22,6 +23,15 @@ export default function Footer() {
 
             {/* Social Links */}
             <div className="flex items-center space-x-4">
+              <Link
+                href="https://www.linkedin.com/in/dr5hn/"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-light/50 hover:bg-light transition-colors duration-200 group"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4 text-darkgray group-hover:text-dark transition-colors duration-200" />
+              </Link>
               <Link
                 href="https://github.com"
                 className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-light/50 hover:bg-light transition-colors duration-200 group"
@@ -50,13 +60,13 @@ export default function Footer() {
                 <KaggleIcon className="w-4 h-4 text-darkgray group-hover:text-dark transition-colors duration-200" />
               </Link>
               <Link
-                href="https://www.linkedin.com/in/dr5hn/"
+                href="https://data.world/dr5hn/country-state-city"
                 className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-light/50 hover:bg-light transition-colors duration-200 group"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
+                aria-label="Kaggle"
               >
-                <Linkedin className="w-4 h-4 text-darkgray group-hover:text-dark transition-colors duration-200" />
+                <DataWorldIcon className="w-7 h-7 text-darkgray group-hover:text-dark transition-colors duration-200" />
               </Link>
             </div>
           </div>
@@ -110,10 +120,13 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/docs"
-                  className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
+                  href="https://countrystatecity.in/docs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm text-darkgray hover:text-blue transition-colors duration-200"
                 >
                   Documentation
+                  <ExternalLink className="w-3 h-3" />
                 </Link>
               </li>
               <li>
@@ -195,29 +208,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-light/50 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div className="text-sm text-lightgray">
-            © {currentYear} NexusAPI. All rights reserved.
-          </div>
-          <div className="flex items-center space-x-6">
-            <Link
-              href="/pricing"
-              className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/changelog"
-              className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
-            >
-              Changelog
-            </Link>
-            <Link
-              href="/support"
-              className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
-            >
-              Support
-            </Link>
+        <div className="mt-12 pt-8 border-t border-light/50 text-sm text-lightgray text-center">
+          <div className="">
+            Made with 💚 in India 🇮🇳
           </div>
         </div>
       </div>
