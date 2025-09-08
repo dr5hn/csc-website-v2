@@ -2,16 +2,14 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Code, Download, PencilLine, Database } from "lucide-react";
+import { Code, Download, Database } from "lucide-react";
 import ApiPricing from "./api-pricing";
 import ExportPricing from "./export-pricing";
-import UpdateToolPricing from "./update-tool-pricing";
 import DatabasePricing from "./database-pricing";
 
 const tabs = [
   { key: "api", label: "API", icon: Code },
   { key: "export", label: "Export Tool", icon: Download },
-  { key: "update", label: "Update Tool", icon: PencilLine },
   { key: "database", label: "Database", icon: Database },
 ];
 
@@ -24,8 +22,6 @@ export default function PricingTabs() {
         return <ApiPricing />;
       case "export":
         return <ExportPricing />;
-      case "update":
-        return <UpdateToolPricing />;
       case "database":
         return <DatabasePricing />;
       default:
