@@ -121,7 +121,7 @@ export default function HowItWorks() {
   }, [isDesktop]);
 
   return (
-    <section className="bg-light/40 py-10 lg:py-20">
+    <section className="bg-light/40 py-10 lg:py-20" id="how-it-works">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-16">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 ring-1 ring-light shadow-sm">

@@ -20,19 +20,29 @@ const channels = [
   {
     key: "support",
     title: "Support",
-    description: "Technical questions and API support",
+    description: "Happy to help you",
     href: "mailto:support@countrystatecity.in",
+    emails: [
+      {
+        label: "API Support Email",
+        email: "api@countrystatecity.in"
+      },
+      {
+        label: "Export Support Email",
+        email: "export@countrystatecity.in"
+      }
+    ],
     icon: Mail,
     actionLabel: "Email support",
   },
-  {
-    key: "sales",
-    title: "Sales & Partnerships",
-    description: "Enterprise solutions and custom integrations",
-    href: "mailto:sales@countrystatecity.in",
-    icon: Mail,
-    actionLabel: "Email sales",
-  },
+  // {
+  //   key: "sales",
+  //   title: "Sales & Partnerships",
+  //   description: "Enterprise solutions and custom integrations",
+  //   href: "mailto:sales@countrystatecity.in",
+  //   icon: Mail,
+  //   actionLabel: "Email sales",
+  // },
   {
     key: "social",
     title: "Social",
@@ -49,14 +59,14 @@ function IconBadge({ Icon, tone = "blue" }) {
     tone === "green"
       ? "bg-green/10"
       : tone === "dark"
-      ? "bg-dark/5"
-      : "bg-blue/10";
+        ? "bg-dark/5"
+        : "bg-blue/10";
   const color =
     tone === "green"
       ? "text-green"
       : tone === "dark"
-      ? "text-dark"
-      : "text-blue";
+        ? "text-dark"
+        : "text-blue";
 
   return (
     <div
@@ -76,8 +86,8 @@ function ChannelRow({ channel }) {
     channel.key === "support" || channel.key === "sales"
       ? "green"
       : channel.key === "github"
-      ? "blue"
-      : "dark";
+        ? "blue"
+        : "dark";
 
   return (
     <Link
@@ -101,12 +111,14 @@ function ChannelRow({ channel }) {
 
           {/* Inline link for emails/social for quick copy/scan */}
           {channel.key === "support" && (
-            <div className="mt-2 text-sm">
-              <span className="text-lightgray">Email: </span>
-              <span className="font-medium text-dark">
-                support@countrystatecity.in
-              </span>
-            </div>
+            channel.emails.map((emailObj) => (
+              <div key={emailObj.email} className="mt-2 text-sm">
+                <span className="text-lightgray">{emailObj.label}: </span>
+                <span className="font-medium text-dark break-all">
+                  {emailObj.email}
+                </span>
+              </div>
+            ))
           )}
           {channel.key === "sales" && (
             <div className="mt-2 text-sm">
@@ -221,7 +233,7 @@ export default function ContactPage() {
 
           {/* Optional small note */}
           <div className="mt-6 text-sm text-lightgray">
-            We aim to respond within 24 hours on business days.
+            We aim to respond within 24-48 hours on business days.
           </div>
         </div>
       </div>

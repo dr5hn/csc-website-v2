@@ -24,12 +24,12 @@ const options = [
     href: "#",
   },
   {
-    title: "Review Submissions",
+    title: "Review Submissions (coming soon)",
     description: "Help verify and discuss submissions from other contributors.",
     icon: Users,
     action: "Start Reviewing",
     color: "orange",
-    href: "#",
+    // href: "#",
   },
   {
     title: "Report Issues",
@@ -46,18 +46,18 @@ function AccentIcon({ Icon, accent }) {
     accent === "green"
       ? "bg-green/10"
       : accent === "orange"
-      ? "bg-orange/10"
-      : accent === "dark"
-      ? "bg-dark/10"
-      : "bg-blue/10";
+        ? "bg-orange/10"
+        : accent === "dark"
+          ? "bg-dark/10"
+          : "bg-blue/10";
   const color =
     accent === "green"
       ? "text-green"
       : accent === "orange"
-      ? "text-orange"
-      : accent === "dark"
-      ? "text-dark"
-      : "text-blue";
+        ? "text-orange"
+        : accent === "dark"
+          ? "text-dark"
+          : "text-blue";
 
   return (
     <div
@@ -75,41 +75,41 @@ function ActionRow({ option }) {
   const { icon: Icon, title, description, action, color, href } = option;
 
   return (
-    <Link
-      href={href}
-      target={href.startsWith("http") ? "_blank" : undefined}
-      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-      className="group relative block focus:outline-none"
-    >
-      <div className="relative flex flex-col sm:flex-row items-start gap-4 rounded-xl p-4 transition-all duration-300 hover:bg-white/70">
-        <AccentIcon Icon={Icon} accent={color} />
-        <div className="flex-1 min-w-0">
-          <h3 className="text-lg font-semibold text-dark leading-tight">
-            {title}
-          </h3>
-          <p className="text-darkgray mt-1">{description}</p>
-        </div>
-        <div className="mt-2 sm:mt-0 sm:ml-4">
-          <Button
-            size="sm"
-            className={cn(
-              "font-semibold transition-all duration-300 transform group-hover:-translate-y-0.5",
-              color === "blue"
-                ? "bg-blue text-white hover:bg-blue/90"
-                : color === "green"
-                ? "bg-green text-white hover:bg-green/90"
-                : color === "orange"
-                ? "bg-orange text-white hover:bg-orange/90"
-                : "bg-dark text-white hover:bg-dark/90"
-            )}
-          >
-            {action}
-            <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </Button>
-        </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-light to-transparent"></div>
+    <div className="relative flex flex-col sm:flex-row items-start gap-4 rounded-xl p-4 transition-all duration-300 hover:bg-white/70">
+      <AccentIcon Icon={Icon} accent={color} />
+      <div className="flex-1 min-w-0">
+        <h3 className="text-lg font-semibold text-dark leading-tight">
+          {title}
+        </h3>
+        <p className="text-darkgray mt-1">{description}</p>
       </div>
-    </Link>
+      {href && (
+        <div className="mt-2 sm:mt-0 sm:ml-4">
+          <Link
+            href={href}
+            target={href.startsWith("http") ? "_blank" : undefined}
+            className="group relative block focus:outline-none">
+            <Button
+              size="sm"
+              className={cn(
+                "font-semibold transition-all duration-300 transform group-hover:-translate-y-0.5",
+                color === "blue"
+                  ? "bg-blue text-white hover:bg-blue/90"
+                  : color === "green"
+                    ? "bg-green text-white hover:bg-green/90"
+                    : color === "orange"
+                      ? "bg-orange text-white hover:bg-orange/90"
+                      : "bg-dark text-white hover:bg-dark/90"
+              )}
+            >
+              {action}
+              <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Button>
+          </Link>
+        </div>
+      )}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-light to-transparent"></div>
+    </div>
   );
 }
 

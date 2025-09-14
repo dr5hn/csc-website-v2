@@ -112,16 +112,18 @@ export default function HeroUpdateTool() {
                 worldwide.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <Button className="bg-gradient-to-r from-orange to-orange/90 hover:from-orange/90 hover:to-orange text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12">
-                  <Rocket className="h-5 w-5 mr-2" aria-hidden />
-                  Submit First Change
+                <Button asChild className="bg-gradient-to-r from-orange to-orange/90 hover:from-orange/90 hover:to-orange text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12">
+                  <Link href="https://manager.countrystatecity.in" target="_blank">
+                    <Rocket className="h-5 w-5 mr-2" aria-hidden />
+                    Submit First Change
+                  </Link>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
                   className="border-2 border-dark text-dark hover:bg-dark hover:text-white font-semibold transition-all duration-300 px-6 h-12 bg-transparent"
                 >
-                  <Link href="/docs/contribution-guide">
+                  <Link href="#how-it-works">
                     <FileText className="h-5 w-5 mr-2" aria-hidden />
                     View Process
                   </Link>

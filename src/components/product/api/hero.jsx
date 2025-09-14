@@ -55,9 +55,11 @@ export function HeroApi() {
 
               {/* CTAs */}
               <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <Button className="bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12">
-                  <Rocket className="h-5 w-5 mr-2" aria-hidden />
-                  Get Free API Key
+                <Button asChild className="bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12">
+                  <Link href="https://forms.gle/ckZ8Gub6jS9sUihJA" target="_blank">
+                    <Rocket className="h-5 w-5 mr-2" aria-hidden />
+                    Get Free API Key
+                  </Link>
                 </Button>
 
                 <Button
@@ -65,7 +67,7 @@ export function HeroApi() {
                   variant="outline"
                   className="border-2 border-dark text-dark hover:bg-dark hover:text-white font-semibold transition-all duration-300 px-6 h-12 bg-transparent"
                 >
-                  <Link href="/docs">
+                  <Link href="https://docs.countrystatecity.in/" target="_blank">
                     <BookOpen className="h-5 w-5 mr-2" aria-hidden />
                     View Documentation
                   </Link>
@@ -73,7 +75,7 @@ export function HeroApi() {
               </div>
 
               {/* Feature points */}
-              <div className="mt-6 flex flex-wrap items-center gap-3">
+              {/* <div className="mt-6 flex flex-wrap items-center gap-3">
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark">
                   <Check className="h-4 w-4 text-green" aria-hidden />
                   1,000 Free Requests
@@ -86,7 +88,7 @@ export function HeroApi() {
                   <ShieldCheck className="h-4 w-4 text-green" aria-hidden />
                   Enterprise Security
                 </span>
-              </div>
+              </div> */}
             </div>
 
             {/* Right: Live API Response */}

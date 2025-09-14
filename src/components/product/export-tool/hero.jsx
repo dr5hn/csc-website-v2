@@ -106,9 +106,8 @@ function CreditCalculator() {
                   <option key={format} value={format}>
                     {format.toUpperCase()}{" "}
                     {formatCosts[format] > 0
-                      ? `(+${formatCosts[format]} credit${
-                          formatCosts[format] > 1 ? "s" : ""
-                        })`
+                      ? `(+${formatCosts[format]} credit${formatCosts[format] > 1 ? "s" : ""
+                      })`
                       : "(FREE)"}
                   </option>
                 ))}
@@ -167,16 +166,16 @@ export default function HeroExportTool() {
               <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Button className="bg-gradient-to-r from-orange to-orange/90 hover:from-orange/90 hover:to-orange text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12">
                   <Target className="h-5 w-5 mr-2" aria-hidden />
-                  Start Free Trial
+                  Get Started for FREE
                 </Button>
                 <Button
                   asChild
                   variant="outline"
                   className="border-2 border-dark text-dark hover:bg-dark hover:text-white font-semibold transition-all duration-300 px-6 h-12 bg-transparent"
                 >
-                  <Link href="/docs/export-tool">
+                  <Link href="#export-preview">
                     <FileText className="h-5 w-5 mr-2" aria-hidden />
-                    See Examples
+                    Preview Export Formats
                   </Link>
                 </Button>
               </div>

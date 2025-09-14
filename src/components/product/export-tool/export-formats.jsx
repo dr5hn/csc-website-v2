@@ -97,7 +97,7 @@ export default function ExportPreview() {
   const code = useMemo(() => PREVIEWS[active].code, [active]);
 
   return (
-    <section className="relative bg-white py-10 lg:py-20">
+    <section className="relative bg-white py-10 lg:py-20" id="export-preview">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center">

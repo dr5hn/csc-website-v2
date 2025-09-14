@@ -49,16 +49,6 @@ export default function CtaUpdateTool() {
               <Rocket className="w-5 h-5 ml-2 group-hover:rotate-12 transition-transform duration-200" />
             </Link>
           </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="border-2 border-white/40 text-white hover:bg-white hover:text-dark font-semibold transition-all duration-300 px-8 py-4 text-lg group bg-transparent backdrop-blur-sm"
-          >
-            <Link href="#">
-              Join Discord Community
-              <MessageCircle className="w-5 h-5 ml-2" />
-            </Link>
-          </Button>
         </div>
 
         {/* Feature Pills */}

@@ -1,20 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
 import {
   Plus,
   Minus,
   Search,
-  Mail,
   MessageCircle,
   Users,
   BookOpen,
-  Play,
   CheckCircle,
 } from "lucide-react";
 import FAQHero from "@/components/faq-hero";
+import Link from "next/link";
 
 const faqs = [
   {
@@ -110,8 +107,8 @@ const supportOptions = [
     description:
       "Get direct help from our support team for technical issues and account questions.",
     color: "from-blue to-blue/90",
-    details: ["Email Support", "24h Response"],
-    href: "#contact",
+    details: ["Email Support", "1-2 days response time"],
+    href: "/contact",
   },
   {
     icon: Users,
@@ -120,7 +117,7 @@ const supportOptions = [
       "Connect with other developers, share experiences, and get community support.",
     color: "from-green to-green/90",
     details: ["Active Community", "GitHub Discussions"],
-    href: "https://github.com/dr5hn/countries-states-cities-database/discussions",
+    href: "https://github.com/dr5hn/countries-states-cities-database/issues",
   },
   {
     icon: BookOpen,
@@ -130,16 +127,7 @@ const supportOptions = [
     color: "from-blue to-green",
     details: ["API Reference", "Code Examples"],
     href: "https://docs.countrystatecity.in",
-  },
-  {
-    icon: Play,
-    title: "Video Tutorials",
-    description:
-      "Step-by-step video guides for getting started with each product.",
-    color: "from-orange to-orange/90",
-    details: ["Getting Started", "Integration Guide"],
-    href: "#tutorials",
-  },
+  }
 ];
 
 function SupportCard({ option, index }) {
@@ -153,7 +141,7 @@ function SupportCard({ option, index }) {
         <div className="rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] hover:shadow-[0_1px_0_rgba(15,23,42,0.06),0_16px_40px_rgba(2,6,23,0.08)] transition-all duration-300">
           <div className="relative p-6 sm:p-7 flex flex-col h-full">
             {/* Icon and Title */}
-            <div className="relative flex items-center gap-4 mb-4">
+            <div className="flex items-center gap-4 mb-4">
               <div
                 className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r ${option.color} group-hover:scale-110 transition-transform duration-300 shadow-lg`}
               >
@@ -161,7 +149,9 @@ function SupportCard({ option, index }) {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-semibold text-dark">
-                  {option.title}
+                  <Link href={option.href} target="_blank" rel="noopener noreferrer" className="before:absolute before:inset-0 before:content-['']">
+                    {option.title}
+                  </Link>
                 </h3>
               </div>
             </div>
@@ -268,11 +258,10 @@ export default function FAQsPage() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                selectedCategory === category
-                  ? "bg-blue text-white shadow-lg"
-                  : "bg-white/60 text-darkgray hover:bg-white/80 hover:text-blue border border-light/50"
-              }`}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${selectedCategory === category
+                ? "bg-blue text-white shadow-lg"
+                : "bg-white/60 text-darkgray hover:bg-white/80 hover:text-blue border border-light/50"
+                }`}
             >
               {category}
             </button>
@@ -330,7 +319,7 @@ export default function FAQsPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {supportOptions.map((option, index) => (
             <SupportCard key={index} option={option} index={index} />
           ))}

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Play, Key, Rocket, Star } from "lucide-react";
-import Globe from "./ui/globe";
+import { Rocket, Star } from "lucide-react";
+import { Globe } from "./globe";
 
 export default function HeroSection() {
   return (
@@ -12,7 +12,7 @@ export default function HeroSection() {
       </div>
 
       <div className="relative container mx-auto px-4 py-10 lg:py-20">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-12 lg:gap-16 items-center">
           {/* Left Column - Content */}
           <div className="text-center lg:text-left">
             {/* Badge */}

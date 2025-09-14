@@ -72,6 +72,7 @@
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(calc(-100% - var(--gap)));
   }
@@ -81,9 +82,14 @@
   from {
     transform: translateY(0);
   }
+
   to {
     transform: translateY(calc(-100% - var(--gap)));
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -163,6 +169,7 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

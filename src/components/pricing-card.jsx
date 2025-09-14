@@ -26,7 +26,7 @@ export default function PricingCard({ plan }) {
       <div className="relative rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] h-full flex flex-col p-8">
         {plan.badge && (
           <div className="absolute top-4 right-4">
-            <span className="inline-flex items-center rounded-full bg-blue/10 text-blue px-2.5 py-1 text-xs font-semibold">
+            <span className={cn("inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold", plan.accent == "blue" && "bg-blue/10 text-blue", plan.accent == "orange" && "bg-orange/10 text-orange")}>
               {plan.badge}
             </span>
           </div>
@@ -75,9 +75,9 @@ export default function PricingCard({ plan }) {
             className={cn(
               "w-full text-lg font-bold h-14 rounded-xl transform hover:-translate-y-0.5 transition-all duration-300 shadow-lg",
               plan.accent === "orange" &&
-                "bg-gradient-to-r from-orange to-orange/90 hover:from-orange/90 hover:to-orange text-white",
+              "bg-gradient-to-r from-orange to-orange/90 hover:from-orange/90 hover:to-orange text-white",
               plan.accent === "blue" &&
-                "bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white",
+              "bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white",
               plan.accent === "gray" && "bg-dark text-white hover:bg-dark/90"
             )}
           >

@@ -12,23 +12,23 @@ const features = [
     icon: Zap,
     title: "Lightning Fast Response",
     description:
-      "Average response time under 200ms globally with our CDN network spanning 15+ locations worldwide.",
+      "Average response time under 200ms globally.",
     color: "from-orange to-orange/90",
   },
-  {
-    icon: ShieldCheck,
-    title: "Enterprise Security",
-    description:
-      "Advanced security with API key authentication, domain restrictions, rate limiting, and comprehensive audit logs.",
-    color: "from-blue to-green",
-  },
-  {
-    icon: BarChart2,
-    title: "Real-Time Analytics",
-    description:
-      "Detailed usage analytics, performance metrics, and insights to optimize your application performance.",
-    color: "from-green to-green/90",
-  },
+  // {
+  //   icon: ShieldCheck,
+  //   title: "Enterprise Security",
+  //   description:
+  //     "Advanced security with API key authentication, domain restrictions, rate limiting, and comprehensive audit logs.",
+  //   color: "from-blue to-green",
+  // },
+  // {
+  //   icon: BarChart2,
+  //   title: "Real-Time Analytics",
+  //   description:
+  //     "Detailed usage analytics, performance metrics, and insights to optimize your application performance.",
+  //   color: "from-green to-green/90",
+  // },
   {
     icon: RefreshCw,
     title: "Always Up-to-Date",
@@ -43,13 +43,13 @@ const features = [
       "RESTful design, comprehensive documentation, code examples, and SDKs for popular programming languages.",
     color: "from-blue to-green",
   },
-  {
-    icon: Globe,
-    title: "Global Coverage",
-    description:
-      "Complete coverage of 250+ countries, 5,000+ states, and 150,000+ cities with detailed metadata.",
-    color: "from-orange to-orange/90",
-  },
+  // {
+  //   icon: Globe,
+  //   title: "Global Coverage",
+  //   description:
+  //     "Complete coverage of 250+ countries, 5,000+ states, and 150,000+ cities with detailed metadata.",
+  //   color: "from-orange to-orange/90",
+  // },
 ];
 
 export default function WhyChooseOurApi() {
