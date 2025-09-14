@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Rocket, Star } from "lucide-react";
+import { Clock, Rocket, Shield, Star } from "lucide-react";
 import { Globe } from "./globe";
 
 export default function HeroSection() {
@@ -50,6 +50,25 @@ export default function HeroSection() {
                   Star us on Github
                 </Button>
               </a>
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 justify-center lg:justify-start">
+              <div className="flex items-center gap-2 text-darkgray">
+                <Shield className="h-5 w-5 text-success" />
+                <span className="font-semibold text-sm">99.9% Uptime SLA</span>
+              </div>
+              <div className="flex items-center gap-2 text-darkgray">
+                <Star className="h-5 w-5 text-orange" />
+                <span className="font-semibold text-sm">
+                  4.9/5 Developer Rating
+                </span>
+              </div>
+              <div className="flex items-center gap-2 text-darkgray">
+                <Clock className="h-5 w-5 text-blue" />
+                <span className="font-semibold text-sm">
+                  Sub-200ms Response
+                </span>
+              </div>
             </div>
           </div>
 

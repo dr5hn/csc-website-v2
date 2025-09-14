@@ -11,8 +11,6 @@ import {
   Cpu,
   Cloud,
   RefreshCw,
-  Server,
-  Activity,
   Database,
   Star,
   ShieldCheck,
@@ -230,7 +228,7 @@ function StatsRibbon() {
                   </div>
                   <div>
                     <div className="text-xl font-black font-mono leading-none">
-                      {s.value}
+                      {s.value} {s.suffix}
                     </div>
                     <div className="text-xs opacity-90">{s.label}</div>
                   </div>

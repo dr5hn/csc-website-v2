@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import {
   Download,
@@ -20,13 +18,84 @@ import SQLiteIcon from "@/icons/SQLite";
 
 const repoUrl = "https://github.com/dr5hn/countries-states-cities-database";
 
+// Function to fetch full repository stats from GitHub API
+async function getRepoStats() {
+  const repo = "dr5hn/countries-states-cities-database";
+  const headers = {};
+  if (process.env.GITHUB_TOKEN) {
+    headers['Authorization'] = `token ${process.env.GITHUB_TOKEN}`;
+  }
+
+  try {
+    // 1. Fetch main repo data (stars, forks, watchers)
+    const repoRes = await fetch(`https://api.github.com/repos/${repo}`, {
+      headers,
+      next: { revalidate: 3600 } // Re-fetch data every hour
+    });
+
+    if (!repoRes.ok) {
+      console.error(`GitHub API Error (Repo): ${repoRes.status}`);
+      throw new Error('Failed to fetch repo stats');
+    }
+    const repoData = await repoRes.json();
+
+    // 2. Fetch contributor count (paginated)
+    let contributorCount = 0;
+    let page = 1;
+    let hasMore = true;
+    while (hasMore) {
+      const contributorsRes = await fetch(
+        `https://api.github.com/repos/${repo}/contributors?per_page=100&page=${page}&anon=1`,
+        {
+          headers,
+          next: { revalidate: 3600 }
+        }
+      );
+      if (!contributorsRes.ok) {
+        console.error(`GitHub API Error (Contributors): ${contributorsRes.status}`);
+        throw new Error('Failed to fetch contributors');
+      }
+      const contributors = await contributorsRes.json();
+      contributorCount += contributors.length;
+
+      const linkHeader = contributorsRes.headers.get('Link');
+      if (linkHeader && linkHeader.includes('rel="next"')) {
+        page++;
+      } else {
+        hasMore = false;
+      }
+    }
+
+    return {
+      stars: repoData.stargazers_count,
+      forks: repoData.forks_count,
+      watchers: repoData.subscribers_count,
+      contributors: contributorCount
+    };
+  } catch (error) {
+    console.error("Error fetching GitHub stats on server:", error);
+    // Return fallback stats in case of an error
+    return {
+      stars: 6860,
+      forks: 2346,
+      watchers: 302,
+      contributors: 127
+    };
+  }
+}
+
+const repoStats = await getRepoStats();
+
 const stats = [
   { label: "Countries", value: "250+" },
   { label: "States", value: "5,000+" },
   { label: "Cities", value: "150,000+" },
-  // { label: "Size", value: "44MB+" },
   { label: "Formats", value: "9+" },
 ];
+
+if (repoStats.stars) {
+  stats.push({ label: "GitHub Stars", value: Intl.NumberFormat("en", { notation: "compact" }).format(repoStats.stars) });
+}
 
 const formats = [
   { label: "JSON", Icon: FileJson },
