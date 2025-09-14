@@ -10,11 +10,13 @@ import {
   FileStack,
   Boxes,
   Globe,
+  DatabaseZap,
 } from "lucide-react";
 import GitHubIcon from "@/icons/GitHub";
-import GitHubStats from "@/components/github-stats";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import PostgreSQLIcon from "@/icons/PostgreSQLIcon";
+import SQLiteIcon from "@/icons/SQLite";
 
 const repoUrl = "https://github.com/dr5hn/countries-states-cities-database";
 
@@ -22,17 +24,20 @@ const stats = [
   { label: "Countries", value: "250+" },
   { label: "States", value: "5,000+" },
   { label: "Cities", value: "150,000+" },
-  { label: "Size", value: "44MB+" },
-  { label: "Formats", value: "9" },
+  // { label: "Size", value: "44MB+" },
+  { label: "Formats", value: "9+" },
 ];
 
 const formats = [
   { label: "JSON", Icon: FileJson },
-  { label: "SQL", Icon: FileCode2 },
+  { label: "SQL Server", Icon: FileCode2 },
   { label: "CSV", Icon: FileStack },
   { label: "XML", Icon: FileCode2 },
   { label: "YAML", Icon: FileCode2 },
   { label: "MongoDB", Icon: Database },
+  { label: "MySQL", Icon: DatabaseZap },
+  { label: "Postgres SQL", Icon: PostgreSQLIcon },
+  { label: "SQLite", Icon: SQLiteIcon },
 ];
 
 function Pill({ children, className = "" }) {
@@ -88,9 +93,7 @@ export default function ProductDatabaseHero() {
 
               {/* Description */}
               <p className="mt-5 text-lg md:text-xl text-darkgray/90 leading-relaxed max-w-2xl">
-                44MB+ of comprehensive geographical data covering 250+
-                countries, 5,000+ states, and 150,000+ cities. Available in 9
-                formats, trusted by thousands of developers worldwide.
+                Comprehensive geographical data covering 250+ countries, 5,000+ states, and 150,000+ cities. Available in 9+ formats, trusted by thousands of developers worldwide.
               </p>
 
               {/* CTAs */}
@@ -100,7 +103,7 @@ export default function ProductDatabaseHero() {
                   className="bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12"
                 >
                   <Link
-                    href={repoUrl}
+                    href="https://github.com/dr5hn/countries-states-cities-database/releases/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Download database"
@@ -131,15 +134,15 @@ export default function ProductDatabaseHero() {
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <Pill>
                   <Globe className="h-4 w-4 text-blue" />
-                  Global coverage
+                  Community Driven
                 </Pill>
                 <Pill>
                   <Boxes className="h-4 w-4 text-green" />
-                  Weekly updates
+                  Monthly updates
                 </Pill>
                 <Pill>
                   <Star className="h-4 w-4 text-orange" />
-                  MIT License
+                  ODbL-1.0 License
                 </Pill>
               </div>
             </div>
@@ -202,21 +205,7 @@ export default function ProductDatabaseHero() {
                           </div>
                         </div>
                       ))}
-                      {/* Last cell spans for visual rhythm */}
-                      <div className="col-span-2 md:col-span-3 mt-3 grid grid-cols-3 gap-3">
-                        <div className="h-1 rounded-full bg-gradient-to-r from-blue to-blue/40"></div>
-                        <div className="h-1 rounded-full bg-gradient-to-r from-green to-green/40"></div>
-                        <div className="h-1 rounded-full bg-gradient-to-r from-blue to-green"></div>
-                      </div>
                     </div>
-                  </div>
-
-                  {/* Divider */}
-                  <div className="h-px bg-light/60"></div>
-
-                  {/* GitHub repository metrics */}
-                  <div className="px-6 py-5">
-                    <GitHubStats />
                   </div>
                 </div>
               </div>

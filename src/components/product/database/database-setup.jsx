@@ -20,7 +20,7 @@ git clone https://github.com/dr5hn/countries-states-cities-database.git
 cd countries-states-cities-database
 
 # Navigate to your preferred format
-cd json  # or mysql, postgresql, mongodb, etc.
+cd json  # or mysql, psql, mongodb, etc.
 
 # Use the data files in your project
 cp countries.json /path/to/your/project/`,
@@ -220,7 +220,7 @@ export default function DatabaseSetup() {
         {/* Helper note */}
         <p className="mt-4 text-center text-sm text-darkgray">
           Tip: Replace <span className="font-mono">json</span> in paths with
-          your preferred format (mysql, postgresql, mongodb, csv, sql, etc.).
+          your preferred format (mysql, psql, mongodb, csv, sql, etc.).
         </p>
       </div>
     </section>

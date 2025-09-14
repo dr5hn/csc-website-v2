@@ -128,7 +128,7 @@ export default function DatabaseCTA() {
         })}
       </div>
 
-      <div className="mb-4 flex items-center gap-2 mt-6 lg:mt-10">
+      {/* <div className="mb-4 flex items-center gap-2 mt-6 lg:mt-10">
         <Trophy className="h-4 w-4 text-blue" aria-hidden="true" />
         <h3 className="text-sm font-semibold text-dark">Project Statistics</h3>
       </div>
@@ -161,7 +161,7 @@ export default function DatabaseCTA() {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </section>
   );
 }

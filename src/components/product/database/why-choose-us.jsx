@@ -18,7 +18,7 @@ const dbFeatures = [
   },
   {
     icon: Package,
-    title: "9 Ready‑to‑Use Formats",
+    title: "9+ Ready-to-Use Formats",
     description:
       "Pick the shape you need, from relational databases to documents and flat files.",
     tags: [
@@ -31,6 +31,7 @@ const dbFeatures = [
       "XML",
       "YAML",
       "SQL Server",
+      "DuckDB",
     ],
   },
   {
@@ -41,7 +42,7 @@ const dbFeatures = [
   },
   {
     icon: RefreshCw,
-    title: "Regular Weekly Updates",
+    title: "Regular Monthly Updates",
     description:
       "Automated and community‑verified updates ensure accuracy and freshness across the entire dataset.",
   },
