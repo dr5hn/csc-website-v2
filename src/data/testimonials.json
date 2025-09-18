@@ -1,0 +1,754 @@
+{
+    "testimonials": [
+        {
+            "id": 1,
+            "name": "Hk",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Thank you so much for the generous access and the incredibly thoughtful message — it truly made my day! I'll be sure to mention this amazing initiative and your generosity in my project documentation as a reference. It's always inspiring to come across such open and community-driven work.",
+            "useCase": "Project documentation with geographic data references",
+            "avatar": "https://ui-avatars.com/api/?name=Hk&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 2,
+            "name": "Raj Maurya",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Thank you so much for the warm welcome and the generous access to your API! I'm genuinely excited to dive in and start exploring the data. I really appreciate the open usage policy—it's refreshing to see such accessibility and community spirit.",
+            "useCase": "Exploring geographic data for application development",
+            "avatar": "https://ui-avatars.com/api/?name=Raj%20Maurya&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 3,
+            "name": "Zahid Farooq",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Thank you so much for providing access to your incredible API and for the warm welcome! I've already started using the API and must say, I am thoroughly impressed with the data quality and ease of integration. It has truly been a seamless experience so far.",
+            "useCase": "Integration with existing web application",
+            "avatar": "https://ui-avatars.com/api/?name=Zahid%20Farooq&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 4,
+            "name": "The ICT Hub",
+            "role": "Business Owner",
+            "company": "Theicthub",
+            "testimonial": "Thanks for the API Key. We really appreciate your time and effort for building this API and making this available for the people around. We will love to use this API for our ecommerce site. Keep it up bro!!",
+            "useCase": "Ecommerce platform with location-based features",
+            "avatar": "https://logo.clearbit.com/theicthub.com",
+            "product": "API Service"
+        },
+        {
+            "id": 5,
+            "name": "Sumit Sahni",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Thank you for sharing the API key with us. We've started integrating it into our platform, and it's proving to be really valuable.",
+            "useCase": "Platform integration with location data",
+            "avatar": "https://ui-avatars.com/api/?name=Sumit%20Sahni&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 6,
+            "name": "Kent Noetico",
+            "role": "Business Owner",
+            "company": "Noetico",
+            "testimonial": "Thank you so much. The service works great. I appreciate. Very helpful. I will remember to donate when the business takes off.",
+            "useCase": "Business application with geographic components",
+            "avatar": "https://logo.clearbit.com/noetico.com",
+            "product": "API Service"
+        },
+        {
+            "id": 7,
+            "name": "Johnson Mercy",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "I'm so thrilled to receive this kind gesture from you. I so appreciate your kindness. This indeed will add great value to my journey in building this wonderful app (talee).",
+            "useCase": "Mobile app development with location features",
+            "avatar": "https://ui-avatars.com/api/?name=Johnson%20Mercy&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 8,
+            "name": "Ed Seffrin",
+            "role": "Developer",
+            "company": "Insidecenter",
+            "testimonial": "I liked your database very much and it would be very helpful to use it for my application.",
+            "useCase": "Application development with geographic data",
+            "avatar": "https://logo.clearbit.com/insidecenter.com.br",
+            "product": "Database Repository"
+        },
+        {
+            "id": 9,
+            "name": "Elias Sanchez",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Thank you Darshan, You are doing a great job.",
+            "useCase": "Web development with location data",
+            "avatar": "https://ui-avatars.com/api/?name=Elias%20Sanchez&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 10,
+            "name": "Shreyash Shinde",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "thank u so much..",
+            "useCase": "Student project with geographic components",
+            "avatar": "https://ui-avatars.com/api/?name=Shreyash%20Shinde&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 11,
+            "name": "Adesoji Adesesan",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Thank you for your good job.",
+            "useCase": "Web application with location selection",
+            "avatar": "https://ui-avatars.com/api/?name=Adesoji%20Adesesan&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 12,
+            "name": "Mohamed Elsayed",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Hi Darshan, Thank you for kindly sharing the API key — I appreciate your support.",
+            "useCase": "Location-based service development",
+            "avatar": "https://ui-avatars.com/api/?name=Mohamed%20Elsayed&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 13,
+            "name": "Edwin Gah",
+            "role": "Developer",
+            "company": "Zingersystems",
+            "testimonial": "Thank you very much.",
+            "useCase": "System integration with geographic data",
+            "avatar": "https://logo.clearbit.com/zingersystems.com",
+            "product": "Database Repository"
+        },
+        {
+            "id": 14,
+            "name": "Oluwadamilola Samuel",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Good day. Thank you for this service you made available to the world.",
+            "useCase": "Global application with location features",
+            "avatar": "https://ui-avatars.com/api/?name=Oluwadamilola%20Samuel&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 15,
+            "name": "Tyke",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Thank you Darshan! I really appreciate your contribution towards the community!",
+            "useCase": "Community project with geographic data",
+            "avatar": "https://ui-avatars.com/api/?name=Tyke&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 16,
+            "name": "Ashok GV",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Hi Darshan, Thank you so much for sharing the API key and for the warm welcome to your platform! I'm excited to explore the world of data. The effort and thoughtfulness in your email definitely show how much you care about the developer community—kudos to you and the team!",
+            "useCase": "Data exploration and integration",
+            "avatar": "https://ui-avatars.com/api/?name=Ashok%20GV&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 17,
+            "name": "Danu Rahadi",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Hello Darshan, Thank you for the API key. I really appreciate that.",
+            "useCase": "Web development with location features",
+            "avatar": "https://ui-avatars.com/api/?name=Danu%20Rahadi&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 18,
+            "name": "Juvance FITAHIANJANAHARY",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Thank you for your kindness 😊 Many thanks",
+            "useCase": "Application with geographic data requirements",
+            "avatar": "https://ui-avatars.com/api/?name=Juvance%20FITAHIANJANAHARY&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 19,
+            "name": "Andry Razafinjatovo",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Dear Darshan Gada, Thanks for a api key, it work as expected",
+            "useCase": "Integration testing with geographic data",
+            "avatar": "https://ui-avatars.com/api/?name=Andry%20Razafinjatovo&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 20,
+            "name": "Sagar Sonara",
+            "role": "Developer",
+            "company": "Cognisun",
+            "testimonial": "Dear Darshan, Thank you for sharing the API key and for your amazing work in making this data accessible! 🚀 We truly appreciate the effort you've put into this resource.",
+            "useCase": "Data accessibility for web applications",
+            "avatar": "https://logo.clearbit.com/cognisun.com",
+            "product": "Database Repository"
+        },
+        {
+            "id": 21,
+            "name": "Rohit Singh",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Hi Darshan, Thanks for the API key! I appreciate you providing unrestricted API usage too.",
+            "useCase": "Unrestricted data access for application",
+            "avatar": "https://ui-avatars.com/api/?name=Rohit%20Singh&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 22,
+            "name": "Muniraj M",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Thanks Darshan..",
+            "useCase": "PHP development with location data",
+            "avatar": "https://ui-avatars.com/api/?name=Muniraj%20M&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 23,
+            "name": "Vinay P",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Hi Darshan, Thank you for sharing the API Key. We're still in the development stage and our usage will be minimal. Once we start earning some bucks will surely Sponsor you. Keep up the amazing work",
+            "useCase": "Development stage project with location features",
+            "avatar": "https://ui-avatars.com/api/?name=Vinay%20P&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 24,
+            "name": "Tini NK",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Hi there, Thanks very much. It's really helpful to me.",
+            "useCase": "Web development with location selection",
+            "avatar": "https://ui-avatars.com/api/?name=Tini%20NK&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 25,
+            "name": "Daniel Jaramillo",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "My god, thank you so much Darshan !!!",
+            "useCase": "Application with geographic requirements",
+            "avatar": "https://ui-avatars.com/api/?name=Daniel%20Jaramillo&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 26,
+            "name": "Larson Jaide",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Greetings, I received with love and I thank for understanding. :)",
+            "useCase": "Web project with location data",
+            "avatar": "https://ui-avatars.com/api/?name=Larson%20Jaide&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 27,
+            "name": "Zakiullah Khan",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Hello Darshan Gada, Thank you so much, highly appreciated for sharing access to your hard work!",
+            "useCase": "Application development with location features",
+            "avatar": "https://ui-avatars.com/api/?name=Zakiullah%20Khan&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 28,
+            "name": "Vishal Shah",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Hello Darshan, I hope this message finds you well. I wanted to express my sincere gratitude for providing me with the API key for the Country State City API. I am truly excited to explore the wealth of data and possibilities that this API offers.",
+            "useCase": "Exploring geographic data possibilities",
+            "avatar": "https://ui-avatars.com/api/?name=Vishal%20Shah&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 29,
+            "name": "Victory Onorhime",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Hello 👋, I really wanna show my appreciation for providing me with an api key Thank you very much",
+            "useCase": "Web development with location features",
+            "avatar": "https://ui-avatars.com/api/?name=Victory%20Onorhime&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 30,
+            "name": "Amal K Jose",
+            "role": "Developer",
+            "company": "Adbytes",
+            "testimonial": "It is a good initiate to provide these data, which is most relevant for more apps.",
+            "useCase": "Android App required to find nearest city of user.",
+            "avatar": "https://logo.clearbit.com/adbytes.com",
+            "product": "Database Repository"
+        },
+        {
+            "id": 31,
+            "name": "Nikhil Kamboj",
+            "role": "User",
+            "company": null,
+            "testimonial": "Thanks for the api 😊.",
+            "useCase": "I am using it for my website as it is my first website😊",
+            "avatar": "https://ui-avatars.com/api/?name=Nikhil%20Kamboj&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 32,
+            "name": "Mahmudul Hasan Sagar",
+            "role": "User",
+            "company": null,
+            "testimonial": "You are doing a great job.",
+            "useCase": "For personal use",
+            "avatar": "https://ui-avatars.com/api/?name=Mahmudul%20Hasan%20Sagar&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 33,
+            "name": "Siril Pappula",
+            "role": "User",
+            "company": "Techsophy",
+            "testimonial": "Thanks it would be great if i could use it.",
+            "useCase": "For a demo on POC",
+            "avatar": "https://logo.clearbit.com/techsophy.com",
+            "product": "API Service"
+        },
+        {
+            "id": 34,
+            "name": "Cedric Borreguín",
+            "role": "User",
+            "company": null,
+            "testimonial": "Thank you for making this database, is really useful.",
+            "useCase": "To help users fill out a form asking for state/city information in a site that will launch in various countries.",
+            "avatar": "https://ui-avatars.com/api/?name=Cedric%20Borregu%C3%ADn&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 35,
+            "name": "Brendan",
+            "role": "User",
+            "company": null,
+            "testimonial": "Not yet, but thank you for building such a useful tool.",
+            "useCase": "A job site",
+            "avatar": "https://ui-avatars.com/api/?name=Brendan&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 36,
+            "name": "Ameer Hamza",
+            "role": "User",
+            "company": null,
+            "testimonial": "Great work guys. Kudos to you! <3.",
+            "useCase": "For a dummy project I am working on.",
+            "avatar": "https://ui-avatars.com/api/?name=Ameer%20Hamza&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 37,
+            "name": "Johan Walhout",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Great Job on this.",
+            "useCase": "In our app PalGo we have a process where the user has to provide a Country (Worldwide), State and City, this API look therefor awesome!",
+            "avatar": "https://ui-avatars.com/api/?name=Johan%20Walhout&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 38,
+            "name": "Akash",
+            "role": "User",
+            "company": null,
+            "testimonial": "I am using this first time so i hove it will be good.",
+            "useCase": "I am using this api for address in registeration",
+            "avatar": "https://ui-avatars.com/api/?name=Akash&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 39,
+            "name": "Hiren Chauhan",
+            "role": "User",
+            "company": null,
+            "testimonial": "Thanks a lot for this database, this is awesome! I'll talk with the client for the donations if they're satisfied with the results.",
+            "useCase": "I need this API to make a universal address registration form for a client.",
+            "avatar": "https://ui-avatars.com/api/?name=Hiren%20Chauhan&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 40,
+            "name": "BRANDON LAKINYU",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "I looked at the demo and loved it.",
+            "useCase": "I wish to use the API in my android app in a spinner to display the list of countries and cities",
+            "avatar": "https://ui-avatars.com/api/?name=BRANDON%20LAKINYU&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 41,
+            "name": "Sonu Kumar",
+            "role": "User",
+            "company": null,
+            "testimonial": "You done a great job.",
+            "useCase": "Will use it in my existing project",
+            "avatar": "https://ui-avatars.com/api/?name=Sonu%20Kumar&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 42,
+            "name": "Atul j",
+            "role": "User",
+            "company": null,
+            "testimonial": "Good, but need to changes requires.",
+            "useCase": "For testing purpose",
+            "avatar": "https://ui-avatars.com/api/?name=Atul%20j&background=007bff&color=fff",
+            "product": "Update Tool"
+        },
+        {
+            "id": 43,
+            "name": "Mike Lettona",
+            "role": "User",
+            "company": null,
+            "testimonial": "Thank you for a wonderful tool!",
+            "useCase": "Verify validation information in x509 certificates.",
+            "avatar": "https://ui-avatars.com/api/?name=Mike%20Lettona&background=007bff&color=fff",
+            "product": "Export Tool"
+        },
+        {
+            "id": 44,
+            "name": "Manish Raj",
+            "role": "User",
+            "company": null,
+            "testimonial": "You all are making it very easy for developer.",
+            "useCase": "I am creating the user profile api where i want to make a dropdown menu which shows state, city as per the country selected.",
+            "avatar": "https://ui-avatars.com/api/?name=Manish%20Raj&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 45,
+            "name": "Kailash G",
+            "role": "User",
+            "company": null,
+            "testimonial": "A nice initiative.",
+            "useCase": "Knowledge purpose",
+            "avatar": "https://ui-avatars.com/api/?name=Kailash%20G&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 46,
+            "name": "Mo Kakwan",
+            "role": "User",
+            "company": "Blabberize",
+            "testimonial": "Thanks for putting this together!",
+            "useCase": "When users pay for our service we need to gather their location for tax purposes.",
+            "avatar": "https://logo.clearbit.com/blabberize.com",
+            "product": "API Service"
+        },
+        {
+            "id": 47,
+            "name": "Hanish Rao",
+            "role": "Founder",
+            "company": "Thewebpeople",
+            "testimonial": "Nothing else. I would love to try it and feedback & sure we will help the repo in some or the other way. Thankyou.",
+            "useCase": "I want to use it for our company projects that includes eCommerce, Health, Matrimony Related sites",
+            "avatar": "https://logo.clearbit.com/thewebpeople.com",
+            "product": "Database Repository"
+        },
+        {
+            "id": 48,
+            "name": "Grace Frank",
+            "role": "User",
+            "company": null,
+            "testimonial": "Thank you for the service😘.",
+            "useCase": "A website",
+            "avatar": "https://ui-avatars.com/api/?name=Grace%20Frank&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 49,
+            "name": "Vishal Rana",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "This API is really a big help, this is exactly what I was searching for.....",
+            "useCase": "I am a Pre Final year undergraduate student at NIT Rourkela, I am building a personal project and I am planning to use this API in a form in that website to collect the address data of all students of NIT Rourkela",
+            "avatar": "https://ui-avatars.com/api/?name=Vishal%20Rana&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 50,
+            "name": "Tushar Agarwal",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "This project is amazing and I have been looking for such a service for a long time. I think that you are doing great work here and I would be glad to contribute to this project...",
+            "useCase": "I am building a prototype project where I need to integrate a list of countries/states/cities in a form and collect information from the user.",
+            "avatar": "https://ui-avatars.com/api/?name=Tushar%20Agarwal&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 51,
+            "name": "Akshay Rai Priyadarshi",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "The documentation looks good and I hope it helps me get what I'm hoping for.",
+            "useCase": "Creating a web application project to track covid news around the world, I'm searching for apis that can give as much info as possible for free, as this is individual and non profit project.",
+            "avatar": "https://ui-avatars.com/api/?name=Akshay%20Rai%20Priyadarshi&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 52,
+            "name": "Shahzaib Minhas",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Amazing, keep it up.",
+            "useCase": "I'm working on a startup social media app, your solution will be a good fit for it",
+            "avatar": "https://ui-avatars.com/api/?name=Shahzaib%20Minhas&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 53,
+            "name": "Bendicht Eggimann",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "You are awesome! this API rules!!",
+            "useCase": "I Am building an international darts-league",
+            "avatar": "https://ui-avatars.com/api/?name=Bendicht%20Eggimann&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 54,
+            "name": "Bodnariu Daniel-Iustin",
+            "role": "Student",
+            "company": null,
+            "testimonial": "I'll be grateful.",
+            "useCase": "I need access in scope of using in it in educational pourpose for a project at university",
+            "avatar": "https://ui-avatars.com/api/?name=Bodnariu%20Daniel-Iustin&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 55,
+            "name": "Magio",
+            "role": "User",
+            "company": "Magiobus",
+            "testimonial": "Great job, it's been very useful till now :).",
+            "useCase": "Using it for a form",
+            "avatar": "https://logo.clearbit.com/magiobus.com",
+            "product": "API Service"
+        },
+        {
+            "id": 56,
+            "name": "Coding Psycho",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Impressed to see the quality in the api. Amazing work. Always a fan for things from India.",
+            "useCase": "Display list of countries on a website. Mainly use it for testing and learning how to develop websites",
+            "avatar": "https://ui-avatars.com/api/?name=Coding%20Psycho&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 57,
+            "name": "Douglas Huertas",
+            "role": "User",
+            "company": "Payvms",
+            "testimonial": "Excellent job with your API.",
+            "useCase": "I need the api for credit card add process.",
+            "avatar": "https://logo.clearbit.com/payvms.com",
+            "product": "API Service"
+        },
+        {
+            "id": 58,
+            "name": "Jesus David Santiago Jarava",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "This API is really useful, thank you so much.",
+            "useCase": "I'm planning to use this API to get Colombia's cities to populate a select component in a small web application I'm workin on",
+            "avatar": "https://ui-avatars.com/api/?name=Jesus%20David%20Santiago%20Jarava&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 59,
+            "name": "Shivam",
+            "role": "Designer",
+            "company": null,
+            "testimonial": "Awesome, I love it indeed!",
+            "useCase": "I am planning to use this API Key in my project which is all about to show the Catalogs of different things on the basis of cities and your API is the best fit for my requirements",
+            "avatar": "https://ui-avatars.com/api/?name=Shivam&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 60,
+            "name": "Gabriel Rajendran",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "It's a great service you are providing and it's from my country India💙.",
+            "useCase": "I will be using it to build a web Application for my personal project in school which requires autocompletion of country state and city",
+            "avatar": "https://ui-avatars.com/api/?name=Gabriel%20Rajendran&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 61,
+            "name": "Muhammed Balta",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Nice job I gave you a star on github.",
+            "useCase": "I'm developing a site like https://www.humblebundle.com/. I will use your api for customer and NGO adresses",
+            "avatar": "https://ui-avatars.com/api/?name=Muhammed%20Balta&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 62,
+            "name": "souren",
+            "role": "User",
+            "company": null,
+            "testimonial": "Super amazing, thank you prior to anything, all the best.",
+            "useCase": "Using in a form",
+            "avatar": "https://ui-avatars.com/api/?name=souren&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 63,
+            "name": "gurjari",
+            "role": "Student",
+            "company": "Gurjarimall",
+            "testimonial": "Thank you for help.",
+            "useCase": "Testing and learning",
+            "avatar": "https://logo.clearbit.com/gurjarimall.com",
+            "product": "Database Repository"
+        },
+        {
+            "id": 64,
+            "name": "Omair",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Excellent Website and Great Service you are providing.",
+            "useCase": "I am building a website on ramadan, I need to get prayer timings based on location thats why I need country, state and cities data",
+            "avatar": "https://ui-avatars.com/api/?name=Omair&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 65,
+            "name": "Jamtech Pvt. Ltd.",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "I had see this api demo and it is very cool API. Thank you.",
+            "useCase": "User can select their country & base on it states, cities are list and also apply some filters in our system base on country, state, city.",
+            "avatar": "https://ui-avatars.com/api/?name=Jamtech%20Pvt.%20Ltd.&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 66,
+            "name": "Perekpo Paulinus Emmanuel",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "I want to try and make the api key generation automatic. please hurry up. thanks!",
+            "useCase": "I want building a platform that requires users to put state country, state/provide, city information",
+            "avatar": "https://ui-avatars.com/api/?name=Perekpo%20Paulinus%20Emmanuel&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 67,
+            "name": "bhaskar sengupta",
+            "role": "User",
+            "company": null,
+            "testimonial": "You guys are just amazing.",
+            "useCase": "I am making a form which takes country state and city",
+            "avatar": "https://ui-avatars.com/api/?name=bhaskar%20sengupta&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 68,
+            "name": "Onur Gösteriş",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "Thank you very much if you help me finish my project.",
+            "useCase": "I am a Computer Engineering 4th grade student. I am developing an overseas education consultancy project for my graduation project. I need an API that I need to pull all countries, cities and counties.",
+            "avatar": "https://ui-avatars.com/api/?name=Onur%20G%C3%B6steri%C5%9F&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 69,
+            "name": "Gabriel",
+            "role": "Developer",
+            "company": "Hayduk",
+            "testimonial": "Your data is very complete and useful.",
+            "useCase": "I need it to practice and test for a development where the municipalities of countries are required",
+            "avatar": "https://logo.clearbit.com/hayduk.com",
+            "product": "Database Repository"
+        },
+        {
+            "id": 70,
+            "name": "Amol Shah",
+            "role": "User",
+            "company": "Me",
+            "testimonial": "Gr8 work.. keep going.. thank you ;).",
+            "useCase": "Ecommerce site",
+            "avatar": "https://logo.clearbit.com/me.com",
+            "product": "API Service"
+        },
+        {
+            "id": 71,
+            "name": "Sabit bin hamid",
+            "role": "User",
+            "company": null,
+            "testimonial": "It will be very helpful for me.",
+            "useCase": "I want this API key because I want to make a simple JavaScript project",
+            "avatar": "https://ui-avatars.com/api/?name=Sabit%20bin%20hamid&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 72,
+            "name": "Carlos Arenas",
+            "role": "User",
+            "company": null,
+            "testimonial": "Thank you so much.",
+            "useCase": "Testing",
+            "avatar": "https://ui-avatars.com/api/?name=Carlos%20Arenas&background=007bff&color=fff",
+            "product": "Export Tool"
+        },
+        {
+            "id": 73,
+            "name": "Guille Acosta",
+            "role": "User",
+            "company": null,
+            "testimonial": "I'm using your data in other project and it's working just fine. Thanks!",
+            "useCase": "To get user input location from a form",
+            "avatar": "https://ui-avatars.com/api/?name=Guille%20Acosta&background=007bff&color=fff",
+            "product": "API Service"
+        },
+        {
+            "id": 74,
+            "name": "Thiago Oliveira",
+            "role": "Developer",
+            "company": null,
+            "testimonial": "I would like to know if it is possible to obtain the zip code through the name of a city?",
+            "useCase": "I'm working in a project that admin must be able to create users and there is a form to insert user data, such as name, email and address, I need this api because it has a good structure, there is emojis and the database is very complete.",
+            "avatar": "https://ui-avatars.com/api/?name=Thiago%20Oliveira&background=007bff&color=fff",
+            "product": "Database Repository"
+        },
+        {
+            "id": 75,
+            "name": "Elias Mamo",
+            "role": "Developer",
+            "company": "Yandex",
+            "testimonial": "What I've seen so far looks awesome.",
+            "useCase": "To use in in-house app form",
+            "avatar": "https://logo.clearbit.com/yandex.com",
+            "product": "API Service"
+        }
+    ]
+}

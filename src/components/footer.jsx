@@ -7,8 +7,6 @@ import Logo from "./logo";
 import DataWorldIcon from "@/icons/DataWorld";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="relative border-t border-light/50 bg-white/80">
       <div className="container mx-auto px-4 py-6 lg:py-12">
@@ -33,7 +31,7 @@ export default function Footer() {
                 <Linkedin className="w-4 h-4 text-darkgray group-hover:text-dark transition-colors duration-200" />
               </Link>
               <Link
-                href="https://github.com"
+                href="https://github.com/dr5hn"
                 className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-light/50 hover:bg-light transition-colors duration-200 group"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -42,7 +40,7 @@ export default function Footer() {
                 <GitHubIcon className="w-4 h-4 text-darkgray group-hover:text-dark transition-colors duration-200" />
               </Link>
               <Link
-                href="https://twitter.com"
+                href="https://x.com/dr5hn"
                 className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-light/50 hover:bg-light transition-colors duration-200 group"
                 target="_blank"
                 rel="noopener noreferrer"

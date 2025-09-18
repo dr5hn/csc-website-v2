@@ -64,8 +64,8 @@
 
   --font-cal: "Cal Sans", sans-serif;
 
-  --animate-canopy-horizontal: canopy-x 50s linear infinite;
-  --animate-canopy-vertical: canopy-y 50s linear infinite;
+  --animate-canopy-horizontal: canopy-x 250s linear infinite;
+  --animate-canopy-vertical: canopy-y 250s linear infinite;
 }
 
 @keyframes canopy-x {

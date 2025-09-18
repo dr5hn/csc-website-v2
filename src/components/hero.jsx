@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Clock, Rocket, Shield, Star } from "lucide-react";
 import { Globe } from "./globe";
+import GitHubStars from "./githubstars";
 
 export default function HeroSection() {
   return (
@@ -41,7 +42,7 @@ export default function HeroSection() {
                 <Rocket className="w-5 h-5 mr-2" />
                 Get Started for Free
               </Button>
-              <a href="http://github.com/dr5hn/csc-website/" target="_blank" rel="noopener noreferrer">
+              {/* <a href="http://github.com/dr5hn/csc-website/" target="_blank" rel="noopener noreferrer">
                 <Button
                   variant="outline"
                   className="border-2 border-blue text-blue hover:bg-blue hover:text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg cursor-pointer"
@@ -49,7 +50,8 @@ export default function HeroSection() {
                   <Star className="w-5 h-5 mr-2" />
                   Star us on Github
                 </Button>
-              </a>
+              </a> */}
+              <GitHubStars />
             </div>
 
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 justify-center lg:justify-start">

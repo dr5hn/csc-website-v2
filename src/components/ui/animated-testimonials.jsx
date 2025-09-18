@@ -1,79 +1,5 @@
 import { cn } from "@/lib/utils";
-
-const testimonials = [
-  {
-    name: "Sarah Chen",
-    handle: "@sarahdev",
-    company: "TechFlow Inc",
-    role: "Senior Developer",
-    image: "/placeholder.svg",
-    description:
-      "The CountryStateCity API saved us weeks of development time. Clean, fast, and exactly what we needed for our global app.",
-  },
-  {
-    name: "Marcus Rodriguez",
-    handle: "@marcusbuilds",
-    company: "StartupLab",
-    role: "CTO",
-    image: "/placeholder.svg",
-    description:
-      "Best location data API I've used. The documentation is excellent and the response times are incredibly fast.",
-  },
-  {
-    name: "Emily Watson",
-    handle: "@emilycodes",
-    company: "DataViz Pro",
-    role: "Full Stack Developer",
-    image: "/placeholder.svg",
-    description:
-      "Switched from building our own location database to using this API. Game changer for our productivity and accuracy.",
-  },
-  {
-    name: "David Kim",
-    handle: "@davidkimdev",
-    company: "GlobalTech Solutions",
-    role: "Lead Engineer",
-    image: "/placeholder.svg",
-    description:
-      "The open-source approach combined with the API service is perfect. We use both depending on our project needs.",
-  },
-  {
-    name: "Lisa Thompson",
-    handle: "@lisabuilds",
-    company: "InnovateCorp",
-    role: "Product Manager",
-    image: "/placeholder.svg",
-    description:
-      "Our team loves how easy it is to integrate. The data quality is outstanding and support is responsive.",
-  },
-  {
-    name: "Alex Johnson",
-    handle: "@alexcodes",
-    company: "DevStudio",
-    role: "Frontend Developer",
-    image: "/placeholder.svg",
-    description:
-      "Perfect for our e-commerce platform. The city/state/country data is always up-to-date and comprehensive.",
-  },
-  {
-    name: "Maria Garcia",
-    handle: "@mariadev",
-    company: "CloudFirst",
-    role: "Backend Engineer",
-    image: "/placeholder.svg",
-    description:
-      "Reliable, fast, and well-documented. This API has become an essential part of our development stack.",
-  },
-  {
-    name: "James Wilson",
-    handle: "@jameswilson",
-    company: "TechVentures",
-    role: "Software Architect",
-    image: "/placeholder.svg",
-    description:
-      "The combination of free open-source data and premium API access gives us flexibility for all our projects.",
-  },
-];
+import { testimonials } from "@/data/testimonials.json";
 
 const Canopy = ({
   children,
@@ -130,16 +56,13 @@ const TestimonialCard = ({ testimonial, className }) => (
       <div className="flex items-start gap-4 mb-4">
         <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border-2 border-light/50 group-hover:border-blue/30 transition-colors duration-300">
           <img
-            src={testimonial.image || "/placeholder.svg"}
+            src={testimonial.avatar || "/placeholder.svg"}
             alt={testimonial.name}
             className="h-full w-full object-cover"
           />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-sm font-bold text-dark truncate">
-              {testimonial.name}
-            </span>
             <span className="text-xs text-blue font-medium">
               {testimonial.handle}
             </span>
@@ -154,7 +77,7 @@ const TestimonialCard = ({ testimonial, className }) => (
 
       {/* Testimonial text */}
       <p className="text-sm text-darkgray leading-relaxed line-clamp-3 flex-1">
-        "{testimonial.description}"
+        "{testimonial.useCase}"
       </p>
 
       {/* Decorative elements */}
@@ -185,7 +108,7 @@ export const Testimonials = ({
           <Canopy
             key={`Canopy-${index}`}
             reverse={reverse}
-            className="[--duration:25s]"
+            className="[--duration:200s]"
             pauseOnHover
             applyMask={false}
             repeat={3}

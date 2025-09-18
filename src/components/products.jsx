@@ -132,7 +132,7 @@ export default function Products() {
           <ProductCard
             title="Database Repository"
             description="Open-source geographical database with global coverage, 9+ export formats (JSON, SQL, CSV, XML, YAML, MongoDB), MIT licensed for unlimited commercial use."
-            href="https://github.com/dr5hn/countries-states-cities-database"
+            href="/product/database"
             accent="green"
             linkText="View on Github"
             Icon={Star}
