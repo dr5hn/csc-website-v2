@@ -90,9 +90,9 @@ export default function HeroUpdateTool() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             {/* Left Content */}
             <div>
-              <div className="inline-flex items-center px-5 py-2.5 rounded-full bg-gradient-to-r from-green/10 to-blue/10 border border-green/20 text-green text-sm font-bold uppercase tracking-[0.1em] mb-6 shadow-md backdrop-blur-sm">
+              <div className="inline-flex items-center px-5 py-2.5 rounded-full bg-gradient-to-r from-blue/10 to-green/10 border border-blue/20 text-blue text-sm font-bold uppercase tracking-[0.1em] mb-6 shadow-md backdrop-blur-sm">
                 <span
-                  className="w-2 h-2 bg-green rounded-full mr-3"
+                  className="w-2 h-2 bg-blue rounded-full mr-3"
                   aria-hidden
                 ></span>
                 Community Contribution Platform
@@ -128,20 +128,6 @@ export default function HeroUpdateTool() {
                     View Process
                   </Link>
                 </Button>
-              </div>
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark">
-                  <Check className="h-4 w-4 text-green" aria-hidden />
-                  Free Forever
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark">
-                  <Trophy className="h-4 w-4 text-blue" aria-hidden />
-                  Contributor Recognition
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark">
-                  <Globe className="h-4 w-4 text-green" aria-hidden />
-                  Global Impact
-                </span>
               </div>
             </div>
 

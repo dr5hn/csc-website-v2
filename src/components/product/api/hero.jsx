@@ -67,7 +67,7 @@ export function HeroApi() {
                   variant="outline"
                   className="border-2 border-dark text-dark hover:bg-dark hover:text-white font-semibold transition-all duration-300 px-6 h-12 bg-transparent"
                 >
-                  <Link href="https://docs.countrystatecity.in/" target="_blank">
+                  <Link href="/docs/">
                     <BookOpen className="h-5 w-5 mr-2" aria-hidden />
                     View Documentation
                   </Link>

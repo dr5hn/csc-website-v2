@@ -22,7 +22,7 @@ const milestones = [
     year: "2020",
     title: "Database Restructure",
     description:
-      "The project gained momentum with 1,000+ GitHub stars. Community contributors started helping improve data accuracy and coverage across different regions.",
+      "Restructured the entire database architecture to make it more flexible and usable. Improved data organization and added standardized field structures for better developer experience.",
     icon: Database,
   },
   {

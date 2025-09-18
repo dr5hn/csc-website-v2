@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { testimonials } from "@/data/testimonials.json";
+import testimonials from "@/data/testimonials.json";
 
 const Canopy = ({
   children,
@@ -88,7 +88,7 @@ const TestimonialCard = ({ testimonial, className }) => (
 );
 
 export const Testimonials = ({
-  data = testimonials,
+  data = testimonials["testimonials"],
   className,
   cardClassName,
 }) => (

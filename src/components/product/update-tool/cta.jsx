@@ -44,37 +44,11 @@ export default function CtaUpdateTool() {
             asChild
             className="bg-orange text-white hover:bg-orange/90 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg group"
           >
-            <Link href="#">
+            <Link href="https://manager.countrystatecity.in/login" target="_blank">
               Make First Contribution
               <Rocket className="w-5 h-5 ml-2 group-hover:rotate-12 transition-transform duration-200" />
             </Link>
           </Button>
-        </div>
-
-        {/* Feature Pills */}
-        <div className="flex flex-wrap justify-center gap-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
-            <CheckCircle2 className="w-4 h-4 text-green" />
-            <span className="text-sm font-medium text-white">Always free</span>
-          </div>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
-            <Trophy className="w-4 h-4 text-orange" />
-            <span className="text-sm font-medium text-white">
-              Contributor recognition
-            </span>
-          </div>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
-            <Globe className="w-4 h-4 text-blue" />
-            <span className="text-sm font-medium text-white">
-              Global impact
-            </span>
-          </div>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
-            <Users className="w-4 h-4 text-green" />
-            <span className="text-sm font-medium text-white">
-              Supportive community
-            </span>
-          </div>
         </div>
       </div>
     </section>

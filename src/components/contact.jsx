@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, ArrowRight } from "lucide-react";
+import { Mail, ArrowRight, LinkedinIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import GitHubIcon from "@/icons/GitHub";
 import XIcon from "@/icons/XIcon";
@@ -50,6 +50,15 @@ const channels = [
     href: "https://x.com/dr5hn",
     icon: XIcon,
     actionLabel: "X",
+    external: true,
+  },
+  {
+    key: "linkedin",
+    title: "Social",
+    description: "Follow us on LinkedIn for updates and announcements",
+    href: "https://www.linkedin.com/in/dr5hn/",
+    icon: LinkedinIcon,
+    actionLabel: "LinkedIn",
     external: true,
   },
 ];
@@ -140,6 +149,12 @@ function ChannelRow({ channel }) {
             <div className="mt-2 text-sm">
               <span className="text-lightgray">Follow: </span>
               <span className="font-medium text-dark">X</span>
+            </div>
+          )}
+          {channel.key === "linkedin" && (
+            <div className="mt-2 text-sm">
+              <span className="text-lightgray">Follow: </span>
+              <span className="font-medium text-dark">LinkedIn</span>
             </div>
           )}
         </div>
