@@ -28,6 +28,8 @@ import Logo from "./logo";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const [isLoginDropdownOpen, setIsLoginDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,9 +43,25 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleKeyDown = (event, action) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      action();
+    }
+  };
+
   return (
     <>
+      {/* Skip to main content link for accessibility */}
+      <Link
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] bg-blue text-white px-4 py-2 rounded-md font-medium"
+      >
+        Skip to main content
+      </Link>
+      
       <header
+        role="banner"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border border-transparent ${
           isScrolled
             ? "backdrop-blur-xl border-light/50 shadow-2xl shadow-blue/5"
@@ -55,12 +73,12 @@ export default function Header() {
             className={`flex items-center justify-between transition-all duration-300 h-16`}
           >
             {/* Logo */}
-            <Link href="/" className="group">
+            <Link href="/" className="group" aria-label="CSC Database - Home">
               <Logo />
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1">
+            <nav className="hidden lg:flex items-center space-x-1" role="navigation" aria-label="Main navigation">
               <Link
                 href="/about"
                 className="flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
@@ -70,12 +88,27 @@ export default function Header() {
               </Link>
 
               <div className="relative group">
-                <button className="cursor-pointer flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5">
+                <button 
+                  className="cursor-pointer flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
+                  aria-expanded={isProductsDropdownOpen}
+                  aria-haspopup="true"
+                  aria-label="Products menu"
+                  onMouseEnter={() => setIsProductsDropdownOpen(true)}
+                  onMouseLeave={() => setIsProductsDropdownOpen(false)}
+                  onFocus={() => setIsProductsDropdownOpen(true)}
+                  onBlur={() => setIsProductsDropdownOpen(false)}
+                >
                   <Code className="w-4 h-4" />
                   <span>Products</span>
                   <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
                 </button>
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl border border-light/50 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                <div 
+                  className={`absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl border border-light/50 rounded-xl shadow-2xl transition-all duration-300 transform ${
+                    isProductsDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'
+                  }`}
+                  role="menu"
+                  aria-labelledby="products-button"
+                >
                   <div className="p-2">
                     <Link
                       href="/product/database"
@@ -220,7 +253,9 @@ export default function Header() {
                   ? "hover:bg-danger/5 hover:text-danger"
                   : "hover:bg-blue/5 hover:text-blue"
               }`}
-              aria-label="Toggle menu"
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -232,8 +267,13 @@ export default function Header() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="lg:hidden border-t border-light/50 bg-white/95 backdrop-blur-xl rounded-b-xl">
-              <nav className="py-6 space-y-2">
+            <div 
+              id="mobile-menu" 
+              className="lg:hidden border-t border-light/50 bg-white/95 backdrop-blur-xl rounded-b-xl"
+              role="dialog"
+              aria-label="Mobile navigation menu"
+            >
+              <nav className="py-6 space-y-2" role="navigation" aria-label="Mobile navigation">
                 <div className="px-4 py-2">
                   <div className="text-sm font-semibold text-lightgray uppercase mb-3">
                     Products

@@ -5,7 +5,10 @@ import GitHubStars from "./githubstars";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-white via-light/30 to-blue/5">
+    <section 
+      className="relative overflow-hidden bg-gradient-to-br from-white via-light/30 to-blue/5"
+      aria-labelledby="hero-heading"
+    >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue/5 rounded-full blur-3xl"></div>
@@ -23,7 +26,10 @@ export default function HeroSection() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 
+              id="hero-heading"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+            >
               The World's Most{" "}
               <span className="bg-gradient-to-r from-blue to-green bg-clip-text text-transparent">
                 Comprehensive
@@ -38,8 +44,11 @@ export default function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button className="bg-blue hover:bg-blue/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg cursor-pointer">
-                <Rocket className="w-5 h-5 mr-2" />
+              <Button 
+                className="bg-blue hover:bg-blue/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg cursor-pointer"
+                aria-label="Get started with CSC Database for free"
+              >
+                <Rocket className="w-5 h-5 mr-2" aria-hidden="true" />
                 Get Started for Free
               </Button>
               {/* <a href="http://github.com/dr5hn/csc-website/" target="_blank" rel="noopener noreferrer">

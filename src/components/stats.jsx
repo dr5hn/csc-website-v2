@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { Zap, Users, Database, Globe, Star, ShieldCheck } from "lucide-react";
+import { useGitHubStars } from "@/hooks/use-github-stars";
 
-// Data for the stats section
-const stats = [
+// Base data for the stats section (GitHub stars will be added dynamically)
+const baseStats = [
   {
     icon: Zap,
     value: 1.2,
@@ -37,14 +38,6 @@ const stats = [
     label: "Countries Covered",
     color: "blue",
     decimals: 0,
-  },
-  {
-    icon: Star,
-    value: 6.8,
-    suffix: "K+",
-    label: "Open Source Stars",
-    color: "green",
-    decimals: 1,
   },
   {
     icon: ShieldCheck,
@@ -103,6 +96,21 @@ function AnimatedCounter({ end, decimals = 0, suffix = "" }) {
 // Main Stats component
 export default function Stats() {
   const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
+  const { formattedStars, loading: starsLoading } = useGitHubStars("dr5hn", "countries-states-cities-database");
+
+  // Create stats array with dynamic GitHub stars
+  const stats = [
+    ...baseStats.slice(0, 4), // First 4 stats
+    {
+      icon: Star,
+      value: starsLoading ? 6.8 : formattedStars.value, // Use formatted value or fallback
+      suffix: starsLoading ? "K+" : formattedStars.suffix,
+      label: "Open Source Stars",
+      color: "green",
+      decimals: starsLoading ? 1 : formattedStars.decimals,
+    },
+    ...baseStats.slice(4), // Remaining stats
+  ];
 
   return (
     <>
