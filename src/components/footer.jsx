@@ -164,7 +164,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="https://countrystatecity.in/docs/"
+                  href="https://docs.countrystatecity.in/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-sm text-darkgray hover:text-blue transition-colors duration-200"

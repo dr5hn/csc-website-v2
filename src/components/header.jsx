@@ -247,7 +247,7 @@ export default function Header() {
                 asChild
                 className="bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6"
               >
-                <Link href="https://countrystatecity.in/docs/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
+                <Link href="https://docs.countrystatecity.in/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
                   <FileText className="w-4 h-4" />
                   <span>Docs</span>
                 </Link>
@@ -331,7 +331,7 @@ export default function Header() {
                     <span>Pricing</span>
                   </Link>
                   <Link
-                    href="https://countrystatecity.in/docs/"
+                    href="https://docs.countrystatecity.in/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg mx-4"

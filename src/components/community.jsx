@@ -52,7 +52,7 @@ export default function CommunitySection() {
 
           {/* Support Docs */}
           <Link
-            href="/docs/support"
+            href="https://docs.countrystatecity.in/support"
             className="group p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-light/50 hover:border-light transition-all duration-300 hover:shadow-lg"
           >
             <div className="flex items-center gap-4 mb-4">

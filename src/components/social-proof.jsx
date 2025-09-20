@@ -18,7 +18,7 @@ const actions = [
     title: "Develop",
     description:
       "Build applications with our APIs and tools to create location‑aware experiences.",
-    href: "/docs/",
+    href: "https://docs.countrystatecity.in/",
     accent: "green",
   },
   {
