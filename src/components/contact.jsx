@@ -9,6 +9,7 @@ import XIcon from "@/icons/XIcon";
 import KaggleIcon from "@/icons/KaggleIcon";
 import DataWorldIcon from "@/icons/DataWorld";
 import { cn } from "@/lib/utils";
+import { trackContact, trackTool } from "@/lib/analytics";
 
 // Email obfuscation function to protect from bots
 function obfuscateEmail(email) {
@@ -177,6 +178,7 @@ function ChannelRow({ channel }) {
                       e.preventDefault();
                       // The email is already obfuscated, so deobfuscate it
                       const realEmail = deobfuscateEmail(emailObj.email);
+                      trackContact.emailClick(emailObj.label, realEmail);
                       window.location.href = `mailto:${realEmail}`;
                     }}
                     data-obfuscated={emailObj.email}
@@ -206,6 +208,7 @@ function ChannelRow({ channel }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 p-2 rounded-lg bg-light/30 hover:bg-light/50 transition-colors duration-200 group"
+                      onClick={() => trackContact.social(social.platform.toLowerCase(), 'contact_page')}
                     >
                       <div className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/70">
                         <SocialIcon className="h-3.5 w-3.5 text-darkgray" />
@@ -232,7 +235,7 @@ function ChannelRow({ channel }) {
     );
   }
 
-  return (
+    return (
     <Link
       href={channel.href}
       target={"external" in channel && channel.external ? "_blank" : undefined}
@@ -243,6 +246,11 @@ function ChannelRow({ channel }) {
       }
       className="group relative block focus:outline-none"
       aria-label={channel.actionLabel}
+      onClick={() => {
+        if (channel.key === "github") {
+          trackTool.visitGitHub('contact_page');
+        }
+      }}
     >
       <div className="relative flex items-start gap-4 rounded-xl p-4 transition-all duration-300 hover:bg-white/70">
         <IconBadge Icon={Icon} tone={tone} />
@@ -337,6 +345,7 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Report an Issue on GitHub"
+                    onClick={() => trackContact.githubIssue()}
                   >
                     <GitHubIcon className="w-5 h-5 mr-2" />
                     Report an Issue
@@ -359,6 +368,7 @@ export default function ContactPage() {
                           onClick={(e) => {
                             e.preventDefault();
                             const realEmail = deobfuscateEmail(obfuscatedSupportEmail);
+                            trackContact.emailClick('Support Email (CTA)', realEmail);
                             window.location.href = `mailto:${realEmail}`;
                           }}
                           data-obfuscated={obfuscatedSupportEmail}

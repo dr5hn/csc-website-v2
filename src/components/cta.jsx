@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Shield, Clock } from "lucide-react";
 import Link from "next/link";
+import { trackAPI } from "@/lib/analytics";
 
 export default function CTA({ href = "/product/api", target = "_self" }) {
   return (
@@ -53,7 +54,11 @@ export default function CTA({ href = "/product/api", target = "_self" }) {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button asChild className="bg-orange text-white hover:bg-orange/90 font-semibold transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg group">
-            <Link href={href} target={target}>
+            <Link 
+              href={href} 
+              target={target}
+              onClick={() => trackAPI.requestKey('main_cta')}
+            >
               Start Building Free
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-0.5 transition-transform duration-200" />
             </Link>

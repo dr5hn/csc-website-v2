@@ -9,6 +9,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { trackAPI, trackTool, trackExternalLink } from "@/lib/analytics";
 
 const actions = [
   {
@@ -70,6 +71,25 @@ function ActionRow({ action, i }) {
   const Icon = action.icon;
   const accent = Accent({ accent: action.accent });
 
+  const handleClick = () => {
+    switch (action.title) {
+      case "Start Free":
+        trackTool.visitGitHub('pricing_cta');
+        break;
+      case "Try API":
+        trackAPI.requestKey('pricing_cta');
+        break;
+      case "Export Data":
+        trackTool.useExport('pricing_cta');
+        break;
+      case "Contribute":
+        trackTool.useUpdate('pricing_cta');
+        break;
+      default:
+        trackExternalLink(action.href, 'pricing_cta', action.title);
+    }
+  };
+
   return (
     <Link
       href={action.href}
@@ -77,6 +97,7 @@ function ActionRow({ action, i }) {
       rel={action.external ? "noopener noreferrer" : undefined}
       aria-label={action.title}
       className="group relative block focus:outline-none"
+      onClick={handleClick}
     >
       <div className="relative flex items-center gap-4 rounded-xl p-4 transition-all duration-300 hover:bg-white/60">
         {/* Icon */}
