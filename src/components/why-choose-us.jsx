@@ -1,6 +1,7 @@
 "use client";
 
 import { Globe, Zap, Code, RefreshCw, Heart, CheckCircle } from "lucide-react";
+import { TEXT_STATS } from "@/lib/stats";
 
 const features = [
   {
@@ -12,7 +13,7 @@ const features = [
     details: [
       `${TEXT_STATS.countries} Countries`,
       `${TEXT_STATS.states} States`,
-      `${TEXT_STATS.citiesAlt} Cities`,
+      `${TEXT_STATS.cities} Cities`,
       "Monthly Updates",
     ],
   },

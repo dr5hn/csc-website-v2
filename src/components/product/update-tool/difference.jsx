@@ -13,7 +13,7 @@ const options = [
     icon: Wrench,
     action: "Submit Correction",
     color: "blue",
-    href: "#", // Placeholder link
+    href: "https://manager.countrystatecity.in",
   },
   {
     title: "Add Missing Data",
@@ -21,7 +21,7 @@ const options = [
     icon: PlusCircle,
     action: "Add New Entry",
     color: "green",
-    href: "#",
+    href: "https://manager.countrystatecity.in",
   },
   {
     title: "Review Submissions (coming soon)",
@@ -83,16 +83,16 @@ function ActionRow({ option }) {
         </h3>
         <p className="text-darkgray mt-1">{description}</p>
       </div>
-      {href && (
-        <div className="mt-2 sm:mt-0 sm:ml-4">
+      <div className="mt-2 sm:mt-0 sm:ml-4">
+        {href ? (
           <Link
             href={href}
             target={href.startsWith("http") ? "_blank" : undefined}
-            className="group relative block focus:outline-none">
+            className="group relative block focus:outline-none cursor-pointer">
             <Button
               size="sm"
               className={cn(
-                "font-semibold transition-all duration-300 transform group-hover:-translate-y-0.5",
+                "font-semibold transition-all duration-300 transform group-hover:-translate-y-0.5 cursor-pointer",
                 color === "blue"
                   ? "bg-blue text-white hover:bg-blue/90"
                   : color === "green"
@@ -106,8 +106,26 @@ function ActionRow({ option }) {
               <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Button>
           </Link>
-        </div>
-      )}
+        ) : (
+          <Button
+            size="sm"
+            disabled
+            className={cn(
+              "font-semibold cursor-not-allowed opacity-50",
+              color === "blue"
+                ? "bg-blue/50 text-white"
+                : color === "green"
+                  ? "bg-green/50 text-white"
+                  : color === "orange"
+                    ? "bg-orange/50 text-white"
+                    : "bg-dark/50 text-white"
+            )}
+          >
+            {action}
+            <ArrowRight className="ml-1.5 h-4 w-4" />
+          </Button>
+        )}
+      </div>
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-light to-transparent"></div>
     </div>
   );

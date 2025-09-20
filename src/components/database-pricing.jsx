@@ -16,9 +16,9 @@ import Link from "next/link";
 
 const dbFeatures = [
   "Complete global coverage (250+ countries)",
-  "Multiple formats (JSON, SQL, CSV, XML, YAML)",
-  "MIT license for commercial use",
-  "Weekly community updates",
+  "Multiple formats (JSON, SQL, CSV, XML, YAML, MongoDB, MySQL, Postgres SQL, SQLite)",
+  "ODbL 1.0 license",
+  "Monthly community updates",
   "Comprehensive documentation",
 ];
 
@@ -76,7 +76,7 @@ export default function DatabasePricing() {
                 Download Free
               </Link>
             </Button>
-            <Button
+            {/* <Button
               asChild
               variant="outline"
               className="border-2 border-blue text-blue px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue/5 transition-colors inline-flex items-center h-14 bg-transparent"
@@ -85,7 +85,7 @@ export default function DatabasePricing() {
                 <BookOpen className="mr-3 h-6 w-6" />
                 View Docs
               </Link>
-            </Button>
+            </Button> */}
           </div>
         </div>
 

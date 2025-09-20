@@ -23,8 +23,8 @@ const actions = [
   {
     icon: Code,
     title: "Try API",
-    subtitle: "1,000 free requests monthly",
-    href: "https://countrystatecity.in",
+    subtitle: "3,000 free requests monthly",
+    href: "https://forms.gle/ckZ8Gub6jS9sUihJA",
     accent: "green",
     badge: "API Key",
     external: true,
@@ -35,17 +35,26 @@ const actions = [
     subtitle: "5 free trial credits",
     href: "https://export.countrystatecity.in",
     accent: "orange",
-    badge: "Trial",
+    badge: "Tool",
+    external: true,
+  },
+  {
+    icon: Code,
+    title: "Contribute",
+    subtitle: "Help improve global data accuracy",
+    href: "https://manager.countrystatecity.in",
+    accent: "purple",
+    badge: "Open Source",
     external: true,
   },
 ];
 
-const guarantees = [
-  "No setup fees",
-  "Cancel anytime",
-  "30-day money back",
-  "Enterprise support available",
-];
+// const guarantees = [
+//   "No setup fees",
+//   "Cancel anytime",
+//   "30-day money back",
+//   "Enterprise support available",
+// ];
 
 function Accent({ accent }) {
   const cls =
@@ -152,7 +161,7 @@ export default function PricingCTA() {
           </div>
 
           {/* Guarantees */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          {/* <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             {guarantees.map((g) => (
               <div
                 key={g}
@@ -162,7 +171,7 @@ export default function PricingCTA() {
                 <span className="font-medium">{g}</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

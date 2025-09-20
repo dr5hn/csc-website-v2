@@ -2,7 +2,7 @@
 
 export default function ContactHero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue/[0.02] to-green/[0.03] py-10 lg:py-32">
+    <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue/[0.02] to-green/[0.03] py-10 lg:py-20">
       <div className="relative container mx-auto px-4">
         <div className="max-w-5xl mx-auto text-center">
           {/* Badge */}
@@ -22,8 +22,8 @@ export default function ContactHero() {
 
           {/* Meta Description */}
           <p className="text-xl md:text-2xl text-darkgray/90 leading-relaxed font-medium max-w-4xl mx-auto">
-            Reach our team for support, sales, or partnership inquiries. You can
-            also search topics to find quick answers before contacting us.
+            Have questions about our API, need technical support, or want to discuss enterprise solutions? 
+            Our team is ready to help you succeed with your project.
           </p>
         </div>
       </div>

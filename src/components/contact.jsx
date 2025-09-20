@@ -1,11 +1,31 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import { Mail, ArrowRight, LinkedinIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import GitHubIcon from "@/icons/GitHub";
 import XIcon from "@/icons/XIcon";
+import KaggleIcon from "@/icons/KaggleIcon";
+import DataWorldIcon from "@/icons/DataWorld";
 import { cn } from "@/lib/utils";
+
+// Email obfuscation function to protect from bots
+function obfuscateEmail(email) {
+  return email.replace(/[a-zA-Z]/g, function(c) {
+    return String.fromCharCode(
+      c <= "Z" ? 90 - (c.charCodeAt(0) - 65) : 122 - (c.charCodeAt(0) - 97)
+    );
+  });
+}
+
+function deobfuscateEmail(obfuscatedEmail) {
+  return obfuscatedEmail.replace(/[a-zA-Z]/g, function(c) {
+    return String.fromCharCode(
+      c <= "Z" ? 90 - (c.charCodeAt(0) - 65) : 122 - (c.charCodeAt(0) - 97)
+    );
+  });
+}
 
 const channels = [
   {
@@ -21,15 +41,21 @@ const channels = [
     key: "support",
     title: "Support",
     description: "Happy to help you",
-    href: "mailto:support@countrystatecity.in",
     emails: [
       {
         label: "API Support Email",
-        email: "api@countrystatecity.in"
+        email: obfuscateEmail("api@countrystatecity.in"),
+        originalEmail: "api@countrystatecity.in"
       },
       {
-        label: "Export Support Email",
-        email: "export@countrystatecity.in"
+        label: "Export Support Email", 
+        email: obfuscateEmail("export@countrystatecity.in"),
+        originalEmail: "export@countrystatecity.in"
+      },
+      {
+        label: "General Support Email",
+        email: obfuscateEmail("gadadarshan@gmail.com"),
+        originalEmail: "gadadarshan@gmail.com"
       }
     ],
     icon: Mail,
@@ -42,23 +68,39 @@ const channels = [
   //   href: "mailto:sales@countrystatecity.in",
   //   icon: Mail,
   //   actionLabel: "Email sales",
-  // },
+  //   },
   {
     key: "social",
-    title: "Social",
-    description: "Follow us for updates and announcements",
-    href: "https://x.com/dr5hn",
-    icon: XIcon,
-    actionLabel: "X",
-    external: true,
-  },
-  {
-    key: "linkedin",
-    title: "Social",
-    description: "Follow us on LinkedIn for updates and announcements",
-    href: "https://www.linkedin.com/in/dr5hn/",
+    title: "Social & Community",
+    description: "Follow us across platforms for updates and connect with our community",
+    socialLinks: [
+      {
+        platform: "LinkedIn",
+        href: "https://www.linkedin.com/in/dr5hn/",
+        icon: LinkedinIcon,
+        handle: "@dr5hn"
+      },
+      {
+        platform: "X (Twitter)",
+        href: "https://x.com/dr5hn",
+        icon: XIcon,
+        handle: "@dr5hn"
+      },
+      {
+        platform: "Kaggle",
+        href: "https://www.kaggle.com/datasets/darshangada/countries-states-cities-database",
+        icon: KaggleIcon,
+        handle: "Dataset"
+      },
+      {
+        platform: "Data.World",
+        href: "https://data.world/dr5hn/country-state-city",
+        icon: DataWorldIcon,
+        handle: "Dataset"
+      }
+    ],
     icon: LinkedinIcon,
-    actionLabel: "LinkedIn",
+    actionLabel: "Follow us",
     external: true,
   },
 ];
@@ -98,6 +140,98 @@ function ChannelRow({ channel }) {
         ? "blue"
         : "dark";
 
+  // For support and social channels, don't wrap the entire thing in a Link since we have multiple links
+  if (channel.key === "support" || channel.key === "social") {
+    return (
+      <div className="group relative block focus:outline-none">
+        <div className="relative flex items-start gap-4 rounded-xl p-4 transition-all duration-300 hover:bg-white/70">
+          <IconBadge Icon={Icon} tone={tone} />
+          <div className="flex-1 min-w-0">
+            <h3 className="text-lg font-semibold text-dark leading-tight">
+              {channel.title}
+            </h3>
+            <p className="text-darkgray">{channel.description}</p>
+            
+            {/* Tip for users about email obfuscation */}
+            {channel.key === "support" && (
+              <div className="mt-3 mb-2 flex items-center gap-2 text-xs text-lightgray bg-blue/5 rounded-lg px-3 py-2 border border-blue/10">
+                <svg className="w-3 h-3 text-blue flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+                <span>Hover over email addresses to reveal real addresses</span>
+              </div>
+            )}
+
+            {/* Individual clickable email links */}
+            {channel.emails && channel.emails.map((emailObj, index) => {
+              const EmailButton = () => {
+                const [showReal, setShowReal] = React.useState(false);
+                
+                return (
+                  <button
+                    type="button"
+                    className="font-medium text-dark hover:text-blue break-all underline-offset-4 hover:underline transition-colors duration-200 cursor-pointer bg-transparent border-none p-0 text-left"
+                    onMouseEnter={() => setShowReal(true)}
+                    onMouseLeave={() => setShowReal(false)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      // The email is already obfuscated, so deobfuscate it
+                      const realEmail = deobfuscateEmail(emailObj.email);
+                      window.location.href = `mailto:${realEmail}`;
+                    }}
+                    data-obfuscated={emailObj.email}
+                  >
+                    {showReal ? emailObj.originalEmail : emailObj.email}
+                  </button>
+                );
+              };
+
+              return (
+                <div key={emailObj.email} className="mt-2 text-sm">
+                  <span className="text-lightgray">{emailObj.label}: </span>
+                  <EmailButton />
+                </div>
+              );
+            })}
+
+            {/* Individual clickable social links */}
+            {channel.socialLinks && (
+              <div className="mt-3 grid grid-cols-2 gap-3">
+                {channel.socialLinks.map((social, index) => {
+                  const SocialIcon = social.icon;
+                  return (
+                    <Link
+                      key={social.platform}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 p-2 rounded-lg bg-light/30 hover:bg-light/50 transition-colors duration-200 group"
+                    >
+                      <div className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/70">
+                        <SocialIcon className="h-3.5 w-3.5 text-darkgray" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-medium text-dark group-hover:text-blue transition-colors duration-200">
+                          {social.platform}
+                        </div>
+                        <div className="text-xs text-lightgray">
+                          {social.handle}
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Divider shimmer */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-light to-transparent"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Link
       href={channel.href}
@@ -117,18 +251,6 @@ function ChannelRow({ channel }) {
             {channel.title}
           </h3>
           <p className="text-darkgray">{channel.description}</p>
-
-          {/* Inline link for emails/social for quick copy/scan */}
-          {channel.key === "support" && (
-            channel.emails.map((emailObj) => (
-              <div key={emailObj.email} className="mt-2 text-sm">
-                <span className="text-lightgray">{emailObj.label}: </span>
-                <span className="font-medium text-dark break-all">
-                  {emailObj.email}
-                </span>
-              </div>
-            ))
-          )}
           {channel.key === "sales" && (
             <div className="mt-2 text-sm">
               <span className="text-lightgray">Email: </span>
@@ -143,18 +265,6 @@ function ChannelRow({ channel }) {
               <span className="font-medium text-dark break-all">
                 github.com/dr5hn/countries-states-cities-database
               </span>
-            </div>
-          )}
-          {channel.key === "social" && (
-            <div className="mt-2 text-sm">
-              <span className="text-lightgray">Follow: </span>
-              <span className="font-medium text-dark">X</span>
-            </div>
-          )}
-          {channel.key === "linkedin" && (
-            <div className="mt-2 text-sm">
-              <span className="text-lightgray">Follow: </span>
-              <span className="font-medium text-dark">LinkedIn</span>
             </div>
           )}
         </div>
@@ -233,15 +343,38 @@ export default function ContactPage() {
                   </Link>
                 </Button>
 
-                <p className="mt-4 text-sm text-blue-100">
-                  Prefer email?{" "}
-                  <Link
-                    href="mailto:support@countrystatecity.in"
-                    className="underline-offset-4 hover:underline"
-                  >
-                    support@countrystatecity.in
-                  </Link>
-                </p>
+                <div className="mt-4">
+                  <p className="text-sm text-blue-100">
+                    Prefer email?{" "}
+                    {(() => {
+                      const [showRealEmail, setShowRealEmail] = React.useState(false);
+                      const obfuscatedSupportEmail = obfuscateEmail("support@countrystatecity.in");
+                      
+                      return (
+                        <button
+                          type="button"
+                          className="underline-offset-4 hover:underline bg-transparent border-none p-0 cursor-pointer text-blue-100 font-inherit"
+                          onMouseEnter={() => setShowRealEmail(true)}
+                          onMouseLeave={() => setShowRealEmail(false)}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const realEmail = deobfuscateEmail(obfuscatedSupportEmail);
+                            window.location.href = `mailto:${realEmail}`;
+                          }}
+                          data-obfuscated={obfuscatedSupportEmail}
+                        >
+                          {showRealEmail ? "support@countrystatecity.in" : obfuscatedSupportEmail}
+                        </button>
+                      );
+                    })()}
+                  </p>
+                  <p className="mt-1 text-xs text-blue-200/70 flex items-center gap-1">
+                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                    </svg>
+                    Hover to reveal email address
+                  </p>
+                </div>
               </div>
             </div>
           </div>

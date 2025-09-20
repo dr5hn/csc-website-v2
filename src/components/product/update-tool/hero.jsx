@@ -1,30 +1,31 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Rocket, FileText, Globe, Check, Trophy } from "lucide-react";
+import { Rocket, FileText, Globe, Check, Trophy, MapPin, Users, Target } from "lucide-react";
+import { TEXT_STATS } from "@/lib/stats";
 
-function ContributionStats() {
-  const [activeContributors, setActiveContributors] = useState(1247);
-  const [pendingChanges, setPendingChanges] = useState(89);
-  const [verifiedChanges, setVerifiedChanges] = useState(15420);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (Math.random() > 0.7) {
-        setActiveContributors((prev) => prev + Math.floor(Math.random() * 3));
-      }
-      if (Math.random() > 0.8) {
-        setPendingChanges((prev) =>
-          Math.max(0, prev + (Math.random() > 0.5 ? 1 : -1))
-        );
-      }
-      setVerifiedChanges((prev) => prev + 1);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
+function DatabaseOverview() {
+  const stats = [
+    {
+      value: TEXT_STATS.countries,
+      label: "Countries Covered",
+      icon: Globe,
+      color: "from-blue to-blue/80"
+    },
+    {
+      value: TEXT_STATS.states,
+      label: "States/Regions",
+      icon: MapPin,
+      color: "from-green to-green/80"
+    },
+    {
+      value: TEXT_STATS.cities,
+      label: "Cities & Towns",
+      icon: Target,
+      color: "from-orange to-orange/80"
+    }
+  ];
 
   return (
     <div className="relative">
@@ -32,44 +33,39 @@ function ContributionStats() {
         <div className="rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_24px_64px_rgba(2,6,23,0.1)] overflow-hidden">
           <div className="px-6 py-4 flex items-center justify-between">
             <div className="inline-flex items-center gap-2">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-green/10">
-                <Globe className="h-5 w-5 text-green" />
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue/10">
+                <Globe className="h-5 w-5 text-blue" />
               </div>
               <div>
                 <div className="text-sm font-bold text-dark leading-tight">
-                  Live Community Impact
+                  Global Database Scope
                 </div>
                 <div className="text-xs text-lightgray">
-                  Updated in real-time
+                  Comprehensive worldwide coverage
                 </div>
               </div>
             </div>
           </div>
           <div className="h-px bg-light/60"></div>
           <div className="p-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-            <div>
-              <div className="text-3xl font-black font-mono bg-gradient-to-r from-green to-emerald-400 bg-clip-text text-transparent mb-1">
-                {activeContributors.toLocaleString()}
+            {stats.map((stat, index) => (
+              <div key={index}>
+                <div className="flex items-center justify-center mb-2">
+                  <stat.icon className="h-5 w-5 text-lightgray" />
+                </div>
+                <div className={`text-3xl font-black font-mono bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1`}>
+                  {stat.value}
+                </div>
+                <div className="text-xs font-semibold uppercase tracking-wide text-lightgray">
+                  {stat.label}
+                </div>
               </div>
-              <div className="text-xs font-semibold uppercase tracking-wide text-lightgray">
-                Active Contributors
-              </div>
-            </div>
-            <div>
-              <div className="text-3xl font-black font-mono bg-gradient-to-r from-orange to-amber-400 bg-clip-text text-transparent mb-1">
-                {pendingChanges}
-              </div>
-              <div className="text-xs font-semibold uppercase tracking-wide text-lightgray">
-                Pending Review
-              </div>
-            </div>
-            <div>
-              <div className="text-3xl font-black font-mono bg-gradient-to-r from-blue to-cyan-400 bg-clip-text text-transparent mb-1">
-                {verifiedChanges.toLocaleString()}
-              </div>
-              <div className="text-xs font-semibold uppercase tracking-wide text-lightgray">
-                Changes Verified
-              </div>
+            ))}
+          </div>
+          <div className="px-6 pb-4">
+            <div className="flex items-center justify-center gap-2 text-xs text-lightgray">
+              <Users className="h-3 w-3" />
+              <span>Your contributions help millions of developers worldwide</span>
             </div>
           </div>
         </div>
@@ -112,8 +108,8 @@ export default function HeroUpdateTool() {
                 worldwide.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <Button asChild className="bg-gradient-to-r from-orange to-orange/90 hover:from-orange/90 hover:to-orange text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12">
-                  <Link href="https://manager.countrystatecity.in" target="_blank">
+                <Button asChild className="bg-gradient-to-r from-orange to-orange/90 hover:from-orange/90 hover:to-orange text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12 cursor-pointer">
+                  <Link href="https://manager.countrystatecity.in" target="_blank" className="cursor-pointer">
                     <Rocket className="h-5 w-5 mr-2" aria-hidden />
                     Submit First Change
                   </Link>
@@ -121,9 +117,9 @@ export default function HeroUpdateTool() {
                 <Button
                   asChild
                   variant="outline"
-                  className="border-2 border-dark text-dark hover:bg-dark hover:text-white font-semibold transition-all duration-300 px-6 h-12 bg-transparent"
+                  className="border-2 border-dark text-dark hover:bg-dark hover:text-white font-semibold transition-all duration-300 px-6 h-12 bg-transparent cursor-pointer"
                 >
-                  <Link href="#how-it-works">
+                  <Link href="#how-it-works" className="cursor-pointer">
                     <FileText className="h-5 w-5 mr-2" aria-hidden />
                     View Process
                   </Link>
@@ -131,8 +127,8 @@ export default function HeroUpdateTool() {
               </div>
             </div>
 
-            {/* Right: Contribution Stats */}
-            <ContributionStats />
+            {/* Right: Database Overview */}
+            <DatabaseOverview />
           </div>
         </div>
       </section>

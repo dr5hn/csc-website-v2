@@ -121,7 +121,7 @@ export default function Header() {
                       <div>
                         <div className="font-medium text-dark">Database</div>
                         <div className="text-sm text-lightgray">
-                          Geographical database
+                          Complete open-source data
                         </div>
                       </div>
                     </Link>
@@ -135,7 +135,7 @@ export default function Header() {
                       <div>
                         <div className="font-medium text-dark">API Service</div>
                         <div className="text-sm text-lightgray">
-                          RESTful endpoints
+                          Enterprise-grade API
                         </div>
                       </div>
                     </Link>
@@ -149,7 +149,7 @@ export default function Header() {
                       <div>
                         <div className="font-medium text-dark">Export Tool</div>
                         <div className="text-sm text-lightgray">
-                          Flexible queries
+                          Custom data exports
                         </div>
                       </div>
                     </Link>
@@ -163,7 +163,7 @@ export default function Header() {
                       <div>
                         <div className="font-medium text-dark">Update Tool</div>
                         <div className="text-sm text-lightgray">
-                          Flexible queries
+                          Community contributions
                         </div>
                       </div>
                     </Link>
@@ -179,6 +179,7 @@ export default function Header() {
                 <span>Pricing</span>
               </Link>
 
+              {/* Temporarily hidden - will launch later
               <Link
                 href="/faqs"
                 className="flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
@@ -186,6 +187,7 @@ export default function Header() {
                 <MessageCircleQuestion className="w-4 h-4" />
                 <span>FAQs</span>
               </Link>
+              */}
 
               <Link
                 href="/contact"

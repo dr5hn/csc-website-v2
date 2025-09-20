@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Clock, Rocket, Shield, Star } from "lucide-react";
 import { Globe } from "./globe";
 import GitHubStars from "./githubstars";
+import { TEXT_STATS, STAT_DESCRIPTIONS } from "@/lib/stats";
 
 export default function HeroSection() {
   return (

@@ -2,6 +2,7 @@
 
 import { Globe, Users, GitBranch, Trophy } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { TEXT_STATS } from "@/lib/stats";
 
 const whyContribute = [
   {

@@ -42,9 +42,9 @@ export default function CtaUpdateTool() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 md:mb-12">
           <Button
             asChild
-            className="bg-orange text-white hover:bg-orange/90 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg group"
+            className="bg-orange text-white hover:bg-orange/90 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg group cursor-pointer"
           >
-            <Link href="https://manager.countrystatecity.in/login" target="_blank">
+            <Link href="https://manager.countrystatecity.in" target="_blank" className="cursor-pointer">
               Make First Contribution
               <Rocket className="w-5 h-5 ml-2 group-hover:rotate-12 transition-transform duration-200" />
             </Link>
