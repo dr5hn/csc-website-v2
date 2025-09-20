@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import FAQHero from "@/components/faq-hero";
 import Link from "next/link";
+import { STAT_DESCRIPTIONS, TEXT_STATS } from "@/lib/stats";
 
 const faqs = [
   {
@@ -26,7 +27,7 @@ const faqs = [
     category: "Pricing",
     question: "What's the difference between the free and paid plans?",
     answer:
-      "The free plan gives you access to our complete open-source dataset via GitHub download. The paid API provides fast, reliable REST endpoints with higher rate limits (100k+ requests/month), multiple output formats (JSON, CSV, SQL), priority email support, and 99.9% uptime SLA.",
+      `The free plan gives you access to our complete open-source dataset via GitHub download. The paid API provides fast, reliable REST endpoints with higher rate limits (100k+ requests/month), multiple output formats (JSON, CSV, SQL), priority email support, and ${TEXT_STATS.uptime} uptime SLA.`,
   },
   {
     id: 3,
@@ -54,7 +55,7 @@ const faqs = [
     category: "Data Coverage",
     question: "How many countries, states, and cities do you cover?",
     answer:
-      "We provide complete coverage with 250+ countries, 5,000+ states/provinces, and 150,000+ cities worldwide. This includes all UN-recognized countries, major administrative divisions, and populated places with coordinate data.",
+      `We provide complete coverage with ${STAT_DESCRIPTIONS.fullCoverageAlt} worldwide. This includes all UN-recognized countries, major administrative divisions, and populated places with coordinate data.`,
   },
   {
     id: 7,

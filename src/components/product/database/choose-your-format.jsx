@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { TEXT_STATS } from "@/lib/stats";
 import {
   FileJson,
   Database,
@@ -181,7 +182,7 @@ export default function ChooseYourFormat() {
             <div className="text-center">
               <Map className="mx-auto h-8 w-8" />
               <div className="mt-2 text-base font-semibold text-dark">
-                5,000+ States
+                {TEXT_STATS.states} States
               </div>
               <div className="text-sm text-darkgray">
                 Provinces, regions, administrative divisions
@@ -190,7 +191,7 @@ export default function ChooseYourFormat() {
             <div className="text-center">
               <Building2 className="mx-auto h-8 w-8" />
               <div className="mt-2 text-base font-semibold text-dark">
-                150,000+ Cities
+                {TEXT_STATS.cities} Cities
               </div>
               <div className="text-sm text-darkgray">
                 Towns, districts, with coordinates

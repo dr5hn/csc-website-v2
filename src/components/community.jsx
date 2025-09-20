@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BookOpen, MessageCircle, Heart } from "lucide-react";
+import { TEXT_STATS } from "@/lib/stats";
 
 import GitHubIcon from "@/icons/GitHub";
 
@@ -121,7 +122,7 @@ export default async function CommunitySection() {
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <MessageCircle className="w-5 h-5 text-success" />
-              <span className="text-2xl font-bold text-dark">1B+</span>
+              <span className="text-2xl font-bold text-dark">{TEXT_STATS.apiRequests}</span>
             </div>
             <p className="text-sm text-darkgray">API Requests a month</p>
           </div>

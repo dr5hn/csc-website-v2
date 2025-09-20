@@ -1,6 +1,7 @@
 "use client";
 
 import GitHubIcon from "@/icons/GitHub";
+import { TEXT_STATS } from "@/lib/stats";
 import { Rocket, Code, Users, Database, Package, Zap, DownloadCloud, TrendingUp, LayoutDashboard } from "lucide-react";
 
 const milestones = [
@@ -64,7 +65,7 @@ const milestones = [
     year: "2025",
     title: "Enterprise Scale Achievement",
     description:
-      "API reaches massive scale milestone of 1B+ requests monthly, demonstrating the platform's reliability and widespread adoption by production applications worldwide.",
+      `API reaches massive scale milestone of ${TEXT_STATS.apiRequests} requests monthly, demonstrating the platform's reliability and widespread adoption by production applications worldwide.`,
     icon: TrendingUp,
   },
   {

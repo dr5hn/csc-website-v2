@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { UPDATE_TOOL_STATS } from "@/lib/stats";
 import {
   CheckCircle,
   Heart,
@@ -11,20 +12,20 @@ import Link from "next/link";
 
 const stats = [
   {
-    label: "Active Contributors",
-    value: "1.2K+",
+    label: UPDATE_TOOL_STATS.activeContributors.label,
+    value: UPDATE_TOOL_STATS.activeContributors.value,
     Icon: Users,
     accent: "green",
   },
   {
-    label: "Pending Reviews",
-    value: "89",
+    label: UPDATE_TOOL_STATS.pendingReviews.label,
+    value: UPDATE_TOOL_STATS.pendingReviews.value,
     Icon: FileClock,
     accent: "orange",
   },
   {
-    label: "Changes Verified",
-    value: "15K+",
+    label: UPDATE_TOOL_STATS.changesVerified.label,
+    value: UPDATE_TOOL_STATS.changesVerified.value,
     Icon: ShieldCheck,
     accent: "blue",
   },

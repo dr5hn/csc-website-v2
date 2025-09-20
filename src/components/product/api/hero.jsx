@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { TEXT_STATS } from "@/lib/stats";
 import {
   Rocket,
   BookOpen,
@@ -45,7 +46,7 @@ export function HeroApi() {
               <p className="mt-5 text-lg md:text-xl text-darkgray/90 leading-relaxed max-w-2xl">
                 Power your applications with the world&apos;s most comprehensive
                 geographical data API. Trusted by thousands of developers,
-                handling 1B+ requests monthly with 99.9% uptime.
+                handling {TEXT_STATS.apiRequests} requests monthly with {TEXT_STATS.uptime} uptime.
               </p>
 
               {/* Status */}

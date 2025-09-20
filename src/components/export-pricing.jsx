@@ -1,54 +1,12 @@
 import PricingCard from "./pricing-card";
 import { Check, Database, Equal, FileJson, FileText, Plus } from "lucide-react";
-
-const plans = [
-  {
-    name: "Starter",
-    price: "$5",
-    credits: "5 Credits",
-    description: "Perfect for a single small project.",
-    features: ["Credits never expire", "All data types available"],
-    cta: "Get 5 Credits",
-    accent: "gray",
-    popular: false,
-  },
-  {
-    name: "Developer",
-    price: "$15",
-    credits: "20 Credits",
-    description: "Ideal for multiple projects or larger datasets.",
-    features: [
-      "Credits never expire",
-      "All data types available",
-      "Includes all formats",
-    ],
-    cta: "Get 20 Credits",
-    accent: "orange",
-    popular: true,
-    badge: "Best Value",
-  },
-  {
-    name: "Business",
-    price: "$50",
-    credits: "100 Credits",
-    description: "For heavy users and business needs.",
-    features: [
-      "Credits never expire",
-      "All data types available",
-      "Includes all formats",
-      "Priority support",
-    ],
-    cta: "Get 100 Credits",
-    accent: "blue",
-    popular: false,
-  },
-];
+import { exportPricingPlans } from "@/data/export-pricing";
 
 export default function ExportPricing() {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-        {plans.map((plan, index) => (
+        {exportPricingPlans.map((plan, index) => (
           <PricingCard key={index} plan={plan} />
         ))}
       </div>

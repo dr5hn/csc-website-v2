@@ -1,4 +1,8 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { useGitHubStars } from "@/hooks/use-github-stars";
+import { REPOSITORY_STATS, createGitHubStarsStat } from "@/lib/stats";
 import {
   CheckCircle,
   BookOpen,
@@ -10,12 +14,6 @@ import {
 import GitHubIcon from "@/icons/GitHub";
 import Link from "next/link";
 
-const stats = [
-  { label: "Export Formats", value: "9+", Icon: GitBranch, accent: "blue" },
-  { label: "GitHub Stars", value: "6.8K+", Icon: Star, accent: "orange" },
-  { label: "Contributors", value: "500+", Icon: Users, accent: "green" },
-];
-
 const dbFeatures = [
   "Complete global coverage (250+ countries)",
   "Multiple formats (JSON, SQL, CSV, XML, YAML)",
@@ -25,6 +23,18 @@ const dbFeatures = [
 ];
 
 export default function DatabasePricing() {
+  const { formattedStars, loading: starsLoading } = useGitHubStars("dr5hn", "countries-states-cities-database");
+
+  const stats = [
+    { label: REPOSITORY_STATS.exportFormats.label, value: REPOSITORY_STATS.exportFormats.value, Icon: GitBranch, accent: "blue" },
+    { 
+      label: "GitHub Stars", 
+      value: starsLoading ? "6.8K+" : `${formattedStars.value}${formattedStars.suffix}`, 
+      Icon: Star, 
+      accent: "orange" 
+    },
+    { label: REPOSITORY_STATS.contributors.label, value: REPOSITORY_STATS.contributors.value, Icon: Users, accent: "green" },
+  ];
   return (
     <div className="rounded-2xl p-[1px] bg-gradient-to-br from-blue/20 to-green/20">
       <div className="rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-xl p-8 md:p-12 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">

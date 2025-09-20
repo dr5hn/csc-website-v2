@@ -22,7 +22,7 @@ export default function HeroSection() {
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue/10 border border-blue/20 text-blue text-sm font-medium mb-8">
               <span className="w-2 h-2 bg-blue rounded-full mr-2 animate-pulse"></span>
-              Trusted by 40,000+ developers worldwide
+              Trusted by {TEXT_STATS.developers} developers worldwide
             </div>
 
             {/* Main Headline */}
@@ -39,7 +39,7 @@ export default function HeroSection() {
 
             {/* Subtext */}
             <p className="text-xl text-darkgray mb-8 leading-relaxed max-w-2xl lg:max-w-none">
-              Power your applications with accurate data from <strong>250+ countries, 5,000+ states and 151,000+ cities</strong>. Trusted by developers worldwide with <strong>1B+ API requests monthly.</strong>
+              Power your applications with accurate data from <strong>{STAT_DESCRIPTIONS.fullCoverage}</strong>. Trusted by developers worldwide with <strong>{TEXT_STATS.apiRequests} API requests monthly.</strong>
             </p>
 
             {/* CTA Buttons */}
@@ -66,7 +66,7 @@ export default function HeroSection() {
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 justify-center lg:justify-start">
               <div className="flex items-center gap-2 text-darkgray">
                 <Shield className="h-5 w-5 text-success" />
-                <span className="font-semibold text-sm">99.9% Uptime SLA</span>
+                <span className="font-semibold text-sm">{TEXT_STATS.uptime} Uptime SLA</span>
               </div>
               <div className="flex items-center gap-2 text-darkgray">
                 <Star className="h-5 w-5 text-orange" />

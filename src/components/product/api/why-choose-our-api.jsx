@@ -47,7 +47,7 @@ const features = [
   //   icon: Globe,
   //   title: "Global Coverage",
   //   description:
-  //     "Complete coverage of 250+ countries, 5,000+ states, and 150,000+ cities with detailed metadata.",
+  //     "Complete coverage with detailed metadata.",
   //   color: "from-orange to-orange/90",
   // },
 ];

@@ -1,20 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Star, GitFork, Eye, Users } from "lucide-react";
+import { Star, GitFork, Users } from "lucide-react";
+import { useGitHubStars } from "@/hooks/use-github-stars";
+import { REPOSITORY_STATS } from "@/lib/stats";
 
-const baseStats = [
-  { label: "Stars", value: 6860, Icon: Star, color: "orange" },
-  { label: "Forks", value: 2346, Icon: GitFork, color: "blue" },
-  { label: "Watchers", value: 302, Icon: Eye, color: "blue" },
-  { label: "Contributors", value: 127, Icon: Users, color: "green" },
+const getBaseStats = (stars, forks) => [
+  { label: "Stars", value: stars || 6860, Icon: Star, color: "orange" },
+  { label: "Forks", value: forks || 2300, Icon: GitFork, color: "blue" },
+  { label: "Contributors", value: parseInt(REPOSITORY_STATS.contributors.value), Icon: Users, color: "green" },
 ];
 
 export default function GitHubStats() {
-  const [stats, setStats] = useState(baseStats);
+  const { stars, forks } = useGitHubStars("dr5hn", "countries-states-cities-database");
+  const [stats, setStats] = useState(getBaseStats(stars, forks));
 
   useEffect(() => {
-    // Simulate light “live” updates like the attached snippet
+    // Update stats when stars or forks change
+    setStats(getBaseStats(stars, forks));
+  }, [stars, forks]);
+
+  useEffect(() => {
+    // Simulate light "live" updates like the attached snippet
     const interval = setInterval(() => {
       setStats((prev) =>
         prev.map((s) => {
@@ -22,8 +29,6 @@ export default function GitHubStats() {
             return { ...s, value: s.value + Math.floor(Math.random() * 3) };
           if (s.label === "Forks")
             return { ...s, value: s.value + (Math.random() > 0.5 ? 1 : 0) };
-          if (s.label === "Watchers")
-            return { ...s, value: s.value + (Math.random() > 0.8 ? 1 : 0) };
           return s;
         })
       );

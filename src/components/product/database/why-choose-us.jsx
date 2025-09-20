@@ -8,6 +8,7 @@ import {
   Archive,
   Users,
 } from "lucide-react";
+import { STAT_DESCRIPTIONS } from "@/lib/stats";
 
 const dbFeatures = [
   {
@@ -38,7 +39,7 @@ const dbFeatures = [
     icon: Globe,
     title: "Complete Global Coverage",
     description:
-      "250+ countries, 5,000+ states/regions, and 150,000+ cities with coordinates, codes, and metadata.",
+      `${STAT_DESCRIPTIONS.fullCoverageAlt} with coordinates, codes, and metadata.`,
   },
   {
     icon: RefreshCw,

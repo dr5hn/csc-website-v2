@@ -1,6 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { useGitHubStars } from "@/hooks/use-github-stars";
+import { getMainStatsWithGitHub, TEXT_STATS } from "@/lib/stats";
 import {
   Target,
   Users,
@@ -80,7 +82,7 @@ const valuesItems = [
     icon: Shield,
     title: "Trust & Reliability",
     description:
-      "99.9% uptime, robust security, and transparent operations that teams can depend on.",
+      `${TEXT_STATS.uptime} uptime, robust security, and transparent operations that teams can depend on.`,
     kind: "Value",
     accent: "blue",
   },
@@ -163,56 +165,9 @@ function ItemRow({ item }) {
 }
 
 function StatsRibbon() {
-  const stats = [
-    {
-      icon: Zap,
-      value: 1.2,
-      suffix: "B+",
-      label: "API Requests Monthly",
-      color: "blue",
-      decimals: 1,
-    },
-    {
-      icon: Users,
-      value: 40,
-      suffix: "K+",
-      label: "Developers Worldwide",
-      color: "green",
-      decimals: 0,
-    },
-    {
-      icon: Database,
-      value: 151,
-      suffix: "K+",
-      label: "Cities & States",
-      color: "orange",
-      decimals: 0,
-    },
-    {
-      icon: Globe,
-      value: 250,
-      suffix: "+",
-      label: "Countries Covered",
-      color: "blue",
-      decimals: 0,
-    },
-    {
-      icon: Star,
-      value: 6.8,
-      suffix: "K+",
-      label: "Open Source Stars",
-      color: "green",
-      decimals: 1,
-    },
-    {
-      icon: ShieldCheck,
-      value: 99.9,
-      suffix: "%",
-      label: "API Uptime",
-      color: "orange",
-      decimals: 1,
-    },
-  ];
+  const { formattedStars, loading } = useGitHubStars("dr5hn", "countries-states-cities-database");
+  
+  const stats = getMainStatsWithGitHub(formattedStars, loading);
 
   return (
     <div className="relative mt-10">

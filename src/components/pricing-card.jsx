@@ -26,7 +26,12 @@ export default function PricingCard({ plan }) {
       <div className="relative rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] h-full flex flex-col p-8">
         {plan.badge && (
           <div className="absolute top-4 right-4">
-            <span className={cn("inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold", plan.accent == "blue" && "bg-blue/10 text-blue", plan.accent == "orange" && "bg-orange/10 text-orange")}>
+            <span className={cn(
+              "inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold", 
+              plan.accent === "blue" && "bg-blue/10 text-blue", 
+              plan.accent === "orange" && "bg-orange/10 text-orange",
+              plan.accent === "green" && "bg-green/10 text-green"
+            )}>
               {plan.badge}
             </span>
           </div>
@@ -48,6 +53,11 @@ export default function PricingCard({ plan }) {
             </span>
             {plan.period && (
               <span className="text-lightgray ml-2">{plan.period}</span>
+            )}
+            {plan.pricePerCredit && (
+              <div className="text-sm text-lightgray mt-1">
+                {plan.pricePerCredit}
+              </div>
             )}
           </div>
 
@@ -78,10 +88,16 @@ export default function PricingCard({ plan }) {
               "bg-gradient-to-r from-orange to-orange/90 hover:from-orange/90 hover:to-orange text-white",
               plan.accent === "blue" &&
               "bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white",
+              plan.accent === "green" &&
+              "bg-gradient-to-r from-green to-green/90 hover:from-green/90 hover:to-green text-white", 
               plan.accent === "gray" && "bg-dark text-white hover:bg-dark/90"
             )}
           >
-            <Link href={plan.href || "#"}>
+            <Link 
+              href={plan.href || "#"}
+              target={plan.target || "_self"}
+              rel={plan.target === "_blank" ? "noopener noreferrer" : undefined}
+            >
               {Icon && <Icon className="w-5 h-5 mr-2" />}
               {plan.cta}
             </Link>

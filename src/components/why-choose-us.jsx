@@ -10,9 +10,9 @@ const features = [
       "Complete data for every country, state, and city worldwide with weekly updates and community verification.",
     color: "from-blue to-blue/90",
     details: [
-      "250+ Countries",
-      "5,000+ States",
-      "151,000+ Cities",
+      `${TEXT_STATS.countries} Countries`,
+      `${TEXT_STATS.states} States`,
+      `${TEXT_STATS.citiesAlt} Cities`,
       "Monthly Updates",
     ],
   },
@@ -20,9 +20,9 @@ const features = [
     icon: Zap,
     title: "Lightning Fast",
     description:
-      "Sub-200ms response times with 99.9% uptime backed by global CDN and enterprise infrastructure.",
+      `Sub-${TEXT_STATS.responseTime.replace('<', '')} response times with ${TEXT_STATS.uptime} uptime backed by global CDN and enterprise infrastructure.`,
     color: "from-orange to-orange/90",
-    details: ["<200ms Response", "99.9% Uptime", "Global CDN", "Auto-scaling"],
+    details: [`${TEXT_STATS.responseTime} Response`, `${TEXT_STATS.uptime} Uptime`, "Global CDN", "Auto-scaling"],
   },
   {
     icon: Code,

@@ -1,58 +1,7 @@
 "use client";
 
 import PricingCard from "@/components/pricing-card";
-
-const plans = [
-  {
-    name: "Basic Pack",
-    price: "$4.99",
-    credits: "10 Credits",
-    description: "Perfect for a single small project.",
-    features: [
-      "All Countries in JSON format",
-      "States/Regions for any country in JSON",
-      "Cities for any state in JSON",
-      "Countries + States in CSV format",
-      "Complete country data in SQL format",
-    ],
-    cta: "Get 10 Credits",
-    accent: "gray",
-    popular: false,
-  },
-  {
-    name: "Standard Pack",
-    price: "$9.99",
-    credits: "25 Credits",
-    description: "Ideal for multiple projects or larger datasets.",
-    features: [
-      "All Countries in JSON format",
-      "States/Regions for any country in JSON",
-      "Cities for any state in JSON",
-      "Countries + States in CSV format",
-      "Complete country data in SQL format",
-    ],
-    cta: "Get 25 Credits",
-    accent: "blue",
-    popular: false,
-  },
-  {
-    name: "Premium Pack",
-    price: "$19.99",
-    credits: "60 Credits",
-    description: "For heavy users and business needs.",
-    features: [
-      "All Countries in JSON format",
-      "States/Regions for any country in JSON",
-      "Cities for any state in JSON",
-      "Countries + States in CSV format",
-      "Complete country data in SQL format",
-    ],
-    cta: "Get 60 Credits",
-    accent: "orange",
-    popular: true,
-    badge: "Best Value",
-  },
-];
+import { exportPricingPlans } from "@/data/export-pricing";
 
 export default function ExportToolPricingSection() {
   return (
@@ -79,8 +28,8 @@ export default function ExportToolPricingSection() {
             custom datasets. Credits never expire.
           </p>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          {plans.map((plan, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+          {exportPricingPlans.map((plan, index) => (
             <PricingCard key={index} plan={plan} />
           ))}
         </div>

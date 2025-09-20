@@ -9,7 +9,7 @@ const whyContribute = [
     description:
       "Your corrections improve data used by millions of applications and billions of users worldwide.",
     icon: Globe,
-    stats: "1B+ users affected",
+    stats: `${TEXT_STATS.apiRequests} users affected`,
     color: "from-blue to-blue/90",
   },
   {
@@ -25,7 +25,7 @@ const whyContribute = [
     description:
       "Contribute to one of the most comprehensive open-source geographical databases ever created.",
     icon: GitBranch,
-    stats: "250+ countries covered",
+    stats: `${TEXT_STATS.countries} countries covered`,
     color: "from-orange to-orange/90",
   },
   {

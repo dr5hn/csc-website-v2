@@ -1,13 +1,14 @@
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { STAT_DESCRIPTIONS } from "@/lib/stats";
 
 export const metadata = {
   title: {
     default: "CSC - Countries States Cities Database | World's Most Comprehensive Geographical Data",
     template: "%s | CSC Database"
   },
-  description: "Access accurate geographical data from 250+ countries, 5,000+ states and 151,000+ cities. Trusted by 40,000+ developers worldwide with 1B+ monthly API requests. Get started for free.",
+  description: `Access accurate geographical data from ${STAT_DESCRIPTIONS.fullCoverage}. ${STAT_DESCRIPTIONS.developerTrust}. Get started for free.`,
   keywords: ["countries", "states", "cities", "geographical database", "API", "location data", "world data", "country data", "REST API", "GraphQL", "CSV", "JSON", "SQL"],
   authors: [{ name: "CSC Team" }],
   creator: "CSC Database",
@@ -21,7 +22,7 @@ export const metadata = {
     locale: 'en_US',
     url: 'https://countrystatecity.in',
     title: 'CSC - World\'s Most Comprehensive Geographical Database',
-    description: 'Power your applications with accurate data from 250+ countries, 5,000+ states and 151,000+ cities. Trusted by developers worldwide.',
+    description: `Power your applications with accurate data from ${STAT_DESCRIPTIONS.fullCoverage}. Trusted by developers worldwide.`,
     siteName: 'CSC Database',
     images: [
       {
@@ -35,7 +36,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'CSC - World\'s Most Comprehensive Geographical Database',
-    description: 'Access accurate data from 250+ countries, 5,000+ states and 151,000+ cities. Get started for free.',
+    description: `Access accurate data from ${STAT_DESCRIPTIONS.fullCoverage}. Get started for free.`,
     images: ['/twitter-image.jpg'],
   },
   robots: {
@@ -77,7 +78,7 @@ export default function RootLayout({ children }) {
     "alternateName": "Countries States Cities Database",
     "url": "https://countrystatecity.in",
     "logo": "https://countrystatecity.in/logo.png",
-    "description": "World's most comprehensive geographical database providing data for 250+ countries, 5,000+ states and 151,000+ cities",
+    "description": `World's most comprehensive geographical database providing data for ${STAT_DESCRIPTIONS.fullCoverage}`,
     "foundingDate": "2019",
     "contactPoint": {
       "@type": "ContactPoint",

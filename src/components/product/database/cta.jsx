@@ -1,5 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { useGitHubStars } from "@/hooks/use-github-stars";
+import { getRepositoryStatsWithGitHub } from "@/lib/stats";
 import {
   Star,
   Bug,
@@ -47,14 +49,10 @@ const actions = [
   },
 ];
 
-const stats = [
-  { label: "GitHub Stars", value: "6.8K+", icon: Star, accent: "blue" },
-  { label: "Forks", value: "2.3K+", icon: GitBranch, accent: "green" },
-  { label: "Contributors", value: "127", icon: Users, accent: "green" },
-  { label: "Downloads", value: "50M+", icon: Download, accent: "blue" },
-];
-
 export default function DatabaseCTA() {
+  const { formattedStars, formattedForks, loading: starsLoading } = useGitHubStars("dr5hn", "countries-states-cities-database");
+
+  const stats = getRepositoryStatsWithGitHub(formattedStars, formattedForks, starsLoading);
   return (
     <section className="relative container mx-auto px-4 py-6 md:py-10 xl:py-16">
       <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 ring-1 ring-light shadow-sm">

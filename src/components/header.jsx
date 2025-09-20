@@ -29,7 +29,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
-  const [isLoginDropdownOpen, setIsLoginDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,14 +86,16 @@ export default function Header() {
                 <span>About</span>
               </Link>
 
-              <div className="relative group">
+              <div 
+                className="relative group"
+                onMouseEnter={() => setIsProductsDropdownOpen(true)}
+                onMouseLeave={() => setIsProductsDropdownOpen(false)}
+              >
                 <button 
                   className="cursor-pointer flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
                   aria-expanded={isProductsDropdownOpen}
                   aria-haspopup="true"
                   aria-label="Products menu"
-                  onMouseEnter={() => setIsProductsDropdownOpen(true)}
-                  onMouseLeave={() => setIsProductsDropdownOpen(false)}
                   onFocus={() => setIsProductsDropdownOpen(true)}
                   onBlur={() => setIsProductsDropdownOpen(false)}
                 >
@@ -103,7 +104,7 @@ export default function Header() {
                   <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
                 </button>
                 <div 
-                  className={`absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl border border-light/50 rounded-xl shadow-2xl transition-all duration-300 transform ${
+                  className={`absolute top-full left-0 mt-1 w-64 bg-white/95 backdrop-blur-xl border border-light/50 rounded-xl shadow-2xl transition-all duration-300 transform ${
                     isProductsDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'
                   }`}
                   role="menu"

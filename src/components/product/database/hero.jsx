@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DATABASE_STATS, STAT_DESCRIPTIONS, TEXT_STATS } from "@/lib/stats";
 import {
   Download,
   Star,
@@ -27,7 +28,7 @@ async function getRepoStats() {
   }
 
   try {
-    // 1. Fetch main repo data (stars, forks, watchers)
+    // 1. Fetch main repo data (stars, forks)
     const repoRes = await fetch(`https://api.github.com/repos/${repo}`, {
       headers,
       next: { revalidate: 3600 } // Re-fetch data every hour
@@ -69,7 +70,6 @@ async function getRepoStats() {
     return {
       stars: repoData.stargazers_count,
       forks: repoData.forks_count,
-      watchers: repoData.subscribers_count,
       contributors: contributorCount
     };
   } catch (error) {
@@ -78,7 +78,6 @@ async function getRepoStats() {
     return {
       stars: 6860,
       forks: 2346,
-      watchers: 302,
       contributors: 127
     };
   }
@@ -87,10 +86,10 @@ async function getRepoStats() {
 const repoStats = await getRepoStats();
 
 const stats = [
-  { label: "Countries", value: "250+" },
-  { label: "States", value: "5,000+" },
-  { label: "Cities", value: "150,000+" },
-  { label: "Formats", value: "9+" },
+  { label: DATABASE_STATS.countries.label, value: DATABASE_STATS.countries.value },
+  { label: DATABASE_STATS.states.label, value: DATABASE_STATS.states.value },
+  { label: DATABASE_STATS.cities.label, value: DATABASE_STATS.cities.value },
+  { label: DATABASE_STATS.formats.label, value: DATABASE_STATS.formats.value },
 ];
 
 if (repoStats.stars) {
@@ -162,7 +161,7 @@ export default function ProductDatabaseHero() {
 
               {/* Description */}
               <p className="mt-5 text-lg md:text-xl text-darkgray/90 leading-relaxed max-w-2xl">
-                Comprehensive geographical data covering 250+ countries, 5,000+ states, and 150,000+ cities. Available in 9+ formats, trusted by thousands of developers worldwide.
+                Comprehensive geographical data covering {STAT_DESCRIPTIONS.fullCoverageAlt}. Available in {TEXT_STATS.formats} formats, trusted by thousands of developers worldwide.
               </p>
 
               {/* CTAs */}

@@ -4,50 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { Zap, Users, Database, Globe, Star, ShieldCheck } from "lucide-react";
 import { useGitHubStars } from "@/hooks/use-github-stars";
-
-// Base data for the stats section (GitHub stars will be added dynamically)
-const baseStats = [
-  {
-    icon: Zap,
-    value: 1.2,
-    suffix: "B+",
-    label: "API Requests Monthly",
-    color: "blue",
-    decimals: 1,
-  },
-  {
-    icon: Users,
-    value: 40,
-    suffix: "K+",
-    label: "Developers Worldwide",
-    color: "green",
-    decimals: 0,
-  },
-  {
-    icon: Database,
-    value: 151,
-    suffix: "K+",
-    label: "Cities & States",
-    color: "orange",
-    decimals: 0,
-  },
-  {
-    icon: Globe,
-    value: 250,
-    suffix: "+",
-    label: "Countries Covered",
-    color: "blue",
-    decimals: 0,
-  },
-  {
-    icon: ShieldCheck,
-    value: 99.9,
-    suffix: "%",
-    label: "API Uptime",
-    color: "orange",
-    decimals: 1,
-  },
-];
+import { getMainStatsWithGitHub } from "@/lib/stats";
 
 // Custom hook to detect when an element is in view
 function useInView(options) {
@@ -98,19 +55,8 @@ export default function Stats() {
   const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
   const { formattedStars, loading: starsLoading } = useGitHubStars("dr5hn", "countries-states-cities-database");
 
-  // Create stats array with dynamic GitHub stars
-  const stats = [
-    ...baseStats.slice(0, 4), // First 4 stats
-    {
-      icon: Star,
-      value: starsLoading ? 6.8 : formattedStars.value, // Use formatted value or fallback
-      suffix: starsLoading ? "K+" : formattedStars.suffix,
-      label: "Open Source Stars",
-      color: "green",
-      decimals: starsLoading ? 1 : formattedStars.decimals,
-    },
-    ...baseStats.slice(4), // Remaining stats
-  ];
+  // Get centralized stats with dynamic GitHub stars
+  const stats = getMainStatsWithGitHub(formattedStars, starsLoading);
 
   return (
     <>
