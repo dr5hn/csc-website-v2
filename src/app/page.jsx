@@ -16,7 +16,7 @@ export default function Home() {
       <Products />
       <SkipTheHassle />
       <Testimonials />
-      <CTA />
+      <CTA href="/product/api"/>
       <CommunitySection />
     </>
   );

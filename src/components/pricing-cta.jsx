@@ -32,7 +32,7 @@ const actions = [
   {
     icon: Download,
     title: "Export Data",
-    subtitle: "3 free trial credits",
+    subtitle: "5 free trial credits",
     href: "https://export.countrystatecity.in",
     accent: "orange",
     badge: "Trial",

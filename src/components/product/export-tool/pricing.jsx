@@ -1,6 +1,7 @@
 "use client";
 
 import PricingCard from "@/components/pricing-card";
+import CustomCredits from "@/components/custom-credits";
 import { exportPricingPlans } from "@/data/export-pricing";
 
 export default function ExportToolPricingSection() {
@@ -24,14 +25,29 @@ export default function ExportToolPricingSection() {
             Fair, Credit-Based Pricing
           </h2>
           <p className="mt-3 text-lg md:text-xl text-darkgray">
-            Pay only for what you need. Purchase credits and use them to export
-            custom datasets. Credits never expire.
+            Start with 5 free credits, then pay only for what you need. Credits never expire.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+        
+        {/* Pricing Plans */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-start mb-12">
           {exportPricingPlans.map((plan, index) => (
             <PricingCard key={index} plan={plan} />
           ))}
+        </div>
+
+        {/* Custom Credits Section */}
+        <div className="text-center mb-8">
+          <h3 className="text-2xl font-bold text-dark mb-2">
+            Need a Different Amount?
+          </h3>
+          <p className="text-darkgray">
+            Purchase custom credits at $1 per credit - buy exactly what you need.
+          </p>
+        </div>
+        
+        <div className="max-w-md mx-auto">
+          <CustomCredits />
         </div>
       </div>
     </section>

@@ -24,7 +24,7 @@ export default function CtaExportTool() {
         {/* Subtext */}
         <p className="text-xl text-white/80 mb-6 md:mb-12 max-w-2xl mx-auto">
           Join thousands of developers who've saved hours of data processing
-          time. Start with 3 free credits - no credit card required.
+          time. Start with 5 free credits - no credit card required.
         </p>
 
         {/* CTA Buttons */}
@@ -33,7 +33,7 @@ export default function CtaExportTool() {
             asChild
             className="bg-orange text-white hover:bg-orange/90 font-semibold transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg group"
           >
-            <Link href="https://export.countrystatecity.in/" target="_blank" rel="noopener noreferrer">
+            <Link href="https://export.countrystatecity.in" target="_blank" rel="noopener noreferrer">
               Start Free Trial
               <Target className="w-5 h-5 ml-2 group-hover:translate-x-0.5 transition-transform duration-200" />
             </Link>
@@ -55,7 +55,7 @@ export default function CtaExportTool() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
             <Check className="w-4 h-4 text-success" />
             <span className="text-sm font-medium text-white">
-              3 free credits
+              5 free credits
             </span>
           </div>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">

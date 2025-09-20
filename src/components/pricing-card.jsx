@@ -30,7 +30,8 @@ export default function PricingCard({ plan }) {
               "inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold", 
               plan.accent === "blue" && "bg-blue/10 text-blue", 
               plan.accent === "orange" && "bg-orange/10 text-orange",
-              plan.accent === "green" && "bg-green/10 text-green"
+              plan.accent === "green" && "bg-green/10 text-green",
+              plan.accent === "purple" && "bg-purple-500/10 text-purple-600"
             )}>
               {plan.badge}
             </span>
@@ -89,7 +90,9 @@ export default function PricingCard({ plan }) {
               plan.accent === "blue" &&
               "bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white",
               plan.accent === "green" &&
-              "bg-gradient-to-r from-green to-green/90 hover:from-green/90 hover:to-green text-white", 
+              "bg-gradient-to-r from-green to-green/90 hover:from-green/90 hover:to-green text-white",
+              plan.accent === "purple" &&
+              "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white", 
               plan.accent === "gray" && "bg-dark text-white hover:bg-dark/90"
             )}
           >

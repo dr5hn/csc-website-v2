@@ -164,9 +164,18 @@ export default function HeroExportTool() {
                 in seconds with our credit-based system.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <Button className="bg-gradient-to-r from-orange to-orange/90 hover:from-orange/90 hover:to-orange text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12">
-                  <Target className="h-5 w-5 mr-2" aria-hidden />
-                  Get Started for FREE
+                <Button 
+                  asChild
+                  className="bg-gradient-to-r from-orange to-orange/90 hover:from-orange/90 hover:to-orange text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12"
+                >
+                  <Link 
+                    href="https://export.countrystatecity.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Target className="h-5 w-5 mr-2" aria-hidden />
+                    Get Started for FREE
+                  </Link>
                 </Button>
                 <Button
                   asChild
@@ -181,7 +190,7 @@ export default function HeroExportTool() {
               </div>
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark">
-                  <Check className="h-4 w-4 text-green" aria-hidden />3 Free
+                  <Check className="h-4 w-4 text-green" aria-hidden />5 Free
                   Credits
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark">

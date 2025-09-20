@@ -24,7 +24,7 @@ export default function Page() {
       <WhyChooseOurApi />
       <EasyIntegration />
       <ApiPricingSection />
-      <CTA />
+      <CTA href="https://forms.gle/ckZ8Gub6jS9sUihJA" target="_blank" />
     </>
   );
 }

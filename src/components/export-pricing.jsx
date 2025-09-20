@@ -1,15 +1,31 @@
 import PricingCard from "./pricing-card";
+import CustomCredits from "./custom-credits";
 import { Check, Database, Equal, FileJson, FileText, Plus } from "lucide-react";
 import { exportPricingPlans } from "@/data/export-pricing";
 
 export default function ExportPricing() {
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-start mb-12">
         {exportPricingPlans.map((plan, index) => (
           <PricingCard key={index} plan={plan} />
         ))}
       </div>
+      
+      {/* Custom Credits Section */}
+      <div className="text-center mb-8">
+        <h3 className="text-2xl font-bold text-dark mb-2">
+          Need a Different Amount?
+        </h3>
+        <p className="text-darkgray">
+          Purchase custom credits at $1 per credit - buy exactly what you need.
+        </p>
+      </div>
+      
+      <div className="max-w-md mx-auto mb-12">
+        <CustomCredits />
+      </div>
+      
       <HowCreditsWork />
     </>
   );
