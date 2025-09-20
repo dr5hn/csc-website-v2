@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import XIcon from "@/icons/XIcon";
 import GitHubIcon from "@/icons/GitHub";
@@ -23,7 +25,7 @@ export default function Footer() {
       </button>
 
       <div className="container mx-auto px-4 py-8 lg:py-16">
-        {/* Newsletter Section */}
+        {/* Newsletter Section - Temporarily hidden
         <div className="mb-12 p-6 lg:p-8 bg-gradient-to-r from-blue/5 to-purple/5 rounded-2xl border border-light/50">
           <div className="text-center max-w-2xl mx-auto">
             <div className="inline-flex items-center justify-center w-12 h-12 bg-blue/10 rounded-full mb-4">
@@ -47,6 +49,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        */}
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
           <div className="md:col-span-1">
@@ -58,65 +61,69 @@ export default function Footer() {
             </p>
 
             {/* Social Links */}
-            <div className="flex items-center space-x-4">
+            <div>
+              <h4 className="text-sm font-medium text-dark mb-3">Follow Us</h4>
+              <div className="flex items-center flex-wrap gap-3">
               <Link
                 href="https://www.linkedin.com/in/dr5hn/"
-                className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-light/50 hover:bg-light transition-colors duration-200 group"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-light/50 hover:bg-blue hover:shadow-lg transition-all duration-300 group hover:scale-110"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="w-4 h-4 text-darkgray group-hover:text-dark transition-colors duration-200" />
+                <Linkedin className="w-4 h-4 text-darkgray group-hover:text-white transition-colors duration-300" />
               </Link>
               <Link
                 href="https://github.com/dr5hn"
-                className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-light/50 hover:bg-light transition-colors duration-200 group"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-light/50 hover:bg-blue hover:shadow-lg transition-all duration-300 group hover:scale-110"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
               >
-                <GitHubIcon className="w-4 h-4 text-darkgray group-hover:text-dark transition-colors duration-200" />
+                <GitHubIcon className="w-4 h-4 text-darkgray group-hover:text-white transition-colors duration-300" />
               </Link>
               <Link
                 href="https://x.com/dr5hn"
-                className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-light/50 hover:bg-light transition-colors duration-200 group"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-light/50 hover:bg-blue hover:shadow-lg transition-all duration-300 group hover:scale-110"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="X (Twitter)"
               >
-                <XIcon className="w-4 h-4 text-darkgray group-hover:text-dark transition-colors duration-200" />
+                <XIcon className="w-4 h-4 text-darkgray group-hover:text-white transition-colors duration-300" />
               </Link>
               <Link
                 href="https://www.kaggle.com/datasets/darshangada/countries-states-cities-database"
-                className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-light/50 hover:bg-light transition-colors duration-200 group"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-light/50 hover:bg-blue hover:shadow-lg transition-all duration-300 group hover:scale-110"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Kaggle"
               >
-                <KaggleIcon className="w-4 h-4 text-darkgray group-hover:text-dark transition-colors duration-200" />
+                <KaggleIcon className="w-4 h-4 text-darkgray group-hover:text-white transition-colors duration-300" />
               </Link>
               <Link
                 href="https://data.world/dr5hn/country-state-city"
-                className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-light/50 hover:bg-light transition-colors duration-200 group"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-light/50 hover:bg-blue hover:shadow-lg transition-all duration-300 group hover:scale-110"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Data.World"
               >
-                <DataWorldIcon className="w-7 h-7 text-darkgray group-hover:text-dark transition-colors duration-200" />
+                <DataWorldIcon className="w-6 h-6 text-darkgray group-hover:text-white transition-colors duration-300" />
               </Link>
+              </div>
             </div>
           </div>
 
           {/* Products */}
           <div>
-            <h3 className="text-sm font-semibold text-dark mb-4 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-dark mb-6 uppercase tracking-wider relative">
               Products
+              <div className="absolute -bottom-2 left-0 w-8 h-0.5 bg-blue/30 rounded-full"></div>
             </h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/product/database"
-                  className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
+                  className="text-sm text-darkgray hover:text-blue transition-all duration-200 hover:translate-x-1"
                 >
                   Database
                 </Link>
@@ -124,7 +131,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/product/api"
-                  className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
+                  className="text-sm text-darkgray hover:text-blue transition-all duration-200 hover:translate-x-1"
                 >
                   API Service
                 </Link>
@@ -132,7 +139,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/product/export-tool"
-                  className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
+                  className="text-sm text-darkgray hover:text-blue transition-all duration-200 hover:translate-x-1"
                 >
                   Export Tool
                 </Link>
@@ -140,7 +147,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/product/update-tool"
-                  className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
+                  className="text-sm text-darkgray hover:text-blue transition-all duration-200 hover:translate-x-1"
                 >
                   Update Tool
                 </Link>
@@ -150,8 +157,9 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-sm font-semibold text-dark mb-4 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-dark mb-6 uppercase tracking-wider relative">
               Resources
+              <div className="absolute -bottom-2 left-0 w-8 h-0.5 bg-blue/30 rounded-full"></div>
             </h3>
             <ul className="space-y-3">
               <li>
@@ -203,14 +211,15 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-sm font-semibold text-dark mb-4 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-dark mb-6 uppercase tracking-wider relative">
               Company
+              <div className="absolute -bottom-2 left-0 w-8 h-0.5 bg-blue/30 rounded-full"></div>
             </h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/about"
-                  className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
+                  className="text-sm text-darkgray hover:text-blue transition-all duration-200 hover:translate-x-1"
                 >
                   About Us
                 </Link>
@@ -218,7 +227,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/pricing"
-                  className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
+                  className="text-sm text-darkgray hover:text-blue transition-all duration-200 hover:translate-x-1"
                 >
                   Pricing
                 </Link>
@@ -227,7 +236,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/faqs"
-                  className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
+                  className="text-sm text-darkgray hover:text-blue transition-all duration-200 hover:translate-x-1"
                 >
                   FAQs
                 </Link>
@@ -236,7 +245,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-sm text-darkgray hover:text-blue transition-colors duration-200"
+                  className="text-sm text-darkgray hover:text-blue transition-all duration-200 hover:translate-x-1"
                 >
                   Contact
                 </Link>
@@ -246,9 +255,17 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-light/50 text-sm text-lightgray text-center">
-          <div className="">
-            Made with 💚 in India 🇮🇳
+        <div className="mt-12 pt-8 border-t border-light/50">
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-4 text-sm text-darkgray">
+            <div className="text-center lg:text-left">
+              <p>© {new Date().getFullYear()} Country State City. All rights reserved.</p>
+            </div>
+            <div className="flex items-center gap-2 text-lightgray">
+              <span>Made with</span>
+              <span className="text-red-500 animate-pulse">💚</span>
+              <span>in India</span>
+              <span className="text-lg">🇮🇳</span>
+            </div>
           </div>
         </div>
       </div>

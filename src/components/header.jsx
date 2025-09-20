@@ -213,21 +213,27 @@ export default function Header() {
                 <div className="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-xl border border-light/50 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                   <div className="p-2">
                     <Link
-                      href="/api"
+                      href="https://forms.gle/ckZ8Gub6jS9sUihJA"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200"
                     >
                       <Code className="w-4 h-4 text-blue" />
-                      <span className="font-medium text-dark">API</span>
+                      <span className="font-medium text-dark">Get API Key</span>
                     </Link>
                     <Link
-                      href="/product/export-tool"
+                      href="https://export.countrystatecity.in/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200"
                     >
                       <Download className="w-4 h-4 text-blue" />
                       <span className="font-medium text-dark">Export Tool</span>
                     </Link>
                     <Link
-                      href="/product/update-tool"
+                      href="https://manager.countrystatecity.in/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200"
                     >
                       <PencilLine className="w-4 h-4 text-blue" />
@@ -241,7 +247,7 @@ export default function Header() {
                 asChild
                 className="bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6"
               >
-                <Link href="/docs" className="flex items-center space-x-2">
+                <Link href="https://countrystatecity.in/docs/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
                   <FileText className="w-4 h-4" />
                   <span>Docs</span>
                 </Link>
@@ -282,20 +288,36 @@ export default function Header() {
                     Products
                   </div>
                   <Link
-                    href="/api"
+                    href="/product/database"
+                    className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <Database className="w-5 h-5" />
+                    <span>Database</span>
+                  </Link>
+                  <Link
+                    href="/product/api"
                     className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <Code className="w-5 h-5" />
-                    <span>REST API</span>
+                    <span>API Service</span>
                   </Link>
                   <Link
-                    href="/graphql"
+                    href="/product/export-tool"
                     className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    <Zap className="w-5 h-5" />
-                    <span>GraphQL</span>
+                    <Download className="w-5 h-5" />
+                    <span>Export Tool</span>
+                  </Link>
+                  <Link
+                    href="/product/update-tool"
+                    className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <PencilLine className="w-5 h-5" />
+                    <span>Update Tool</span>
                   </Link>
                 </div>
 
@@ -309,7 +331,9 @@ export default function Header() {
                     <span>Pricing</span>
                   </Link>
                   <Link
-                    href="/docs"
+                    href="https://countrystatecity.in/docs/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg mx-4"
                     onClick={() => setIsMenuOpen(false)}
                   >

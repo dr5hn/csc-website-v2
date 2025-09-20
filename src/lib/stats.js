@@ -6,7 +6,7 @@ const CORE_VALUES = {
   states: "5,000+",
   cities: "151,000+", // Single canonical value
   developers: "40,000+",
-  apiRequests: "1B+",
+  apiRequests: "1.2B+",
   uptime: "99.9%",
   responseTime: "<200ms",
   formats: "9+",
