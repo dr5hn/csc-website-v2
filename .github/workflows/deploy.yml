@@ -1,0 +1,225 @@
+name: Deploy CSC Website to Production
+
+on:
+  # push:
+  #   branches: [ main ]
+  workflow_dispatch:
+
+env:
+  DEPLOY_DIR: /var/www/csc-website
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'yarn'
+        cache-dependency-path: yarn.lock
+
+    # Build Next.js application as static export
+    - name: Install dependencies and build static export
+      env:
+        NODE_ENV: production
+      run: |
+        yarn install --frozen-lockfile
+        yarn build
+        echo "✅ Next.js static export built successfully"
+
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+    - name: Add server to known hosts
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+
+    # Create release directory on server
+    - name: Create release directory
+      run: |
+        TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+        echo "TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
+        echo "RELEASE_DIR=${{ env.DEPLOY_DIR }}/releases/$TIMESTAMP" >> $GITHUB_ENV
+
+        ssh root@${{ secrets.SERVER_IP }} "
+          # Create release directory structure
+          mkdir -p ${{ env.DEPLOY_DIR }}/releases/$TIMESTAMP
+
+          # Debug: Show the structure
+          echo 'Created release directory structure:'
+          ls -la ${{ env.DEPLOY_DIR }}/releases/$TIMESTAMP/
+        "
+        echo "🚀 Created release directory: $TIMESTAMP"
+
+    # Deploy static files to server
+    - name: Deploy static files
+      run: |
+        echo "📦 Deploying static files to server"
+        echo "Target: ${{ env.RELEASE_DIR }}/"
+
+        # Rsync only the static export files to server
+        rsync -avz --delete \
+          -e ssh \
+          out/ root@${{ secrets.SERVER_IP }}:${{ env.RELEASE_DIR }}/
+
+        # Debug: Verify deployment
+        ssh root@${{ secrets.SERVER_IP }} "
+          echo 'Static files deployment result:'
+          ls -la '${{ env.RELEASE_DIR }}/' | head -10
+          
+          # Verify static export exists
+          if [ -f '${{ env.RELEASE_DIR }}/index.html' ]; then
+            echo '✅ Static export found (index.html exists)'
+          else
+            echo '❌ Static export missing (no index.html)'
+            exit 1
+          fi
+        "
+
+    # No shared resources needed for static files
+
+    # Test the release before switching
+    - name: Test new release
+      run: |
+        echo "🧪 Testing new release"
+        ssh root@${{ secrets.SERVER_IP }} "
+          # Verify static files exist
+          if [ ! -f '${{ env.RELEASE_DIR }}/index.html' ]; then
+            echo '❌ index.html not found'
+            exit 1
+          fi
+
+          # Verify assets directory exists (Next.js static export structure)
+          if [ ! -d '${{ env.RELEASE_DIR }}/_next' ]; then
+            echo '⚠️  _next directory not found, but proceeding (might be expected for some builds)'
+          fi
+
+          echo '✅ Static files validation passed'
+        "
+
+    # Switch to new release atomically
+    - name: Switch to new release
+      run: |
+        echo "🔄 Switching to new release: ${{ env.TIMESTAMP }}"
+        ssh root@${{ secrets.SERVER_IP }} "
+          cd '${{ env.DEPLOY_DIR }}'
+
+          # Check if current exists and what type it is
+          if [ -e 'current' ]; then
+            if [ -L 'current' ]; then
+              echo 'Current is a symlink (correct), removing...'
+              rm -f current
+            elif [ -d 'current' ]; then
+              echo 'Current is a directory (incorrect), backing up...'
+              mv current current_backup_\$(date +%Y%m%d_%H%M%S)
+            else
+              echo 'Current is a file (unexpected), removing...'
+              rm -f current
+            fi
+          fi
+
+          # Create new symlink directly as current
+          ln -sf 'releases/${{ env.TIMESTAMP }}' current
+
+          # Verify the symlink
+          if [ -L 'current' ] && [ \"\$(readlink current)\" = 'releases/${{ env.TIMESTAMP }}' ]; then
+            echo '✅ Switched to release: ${{ env.TIMESTAMP }}'
+          else
+            echo '❌ Failed to create proper symlink'
+            ls -la current
+            exit 1
+          fi
+        "
+
+    # No application restart needed for static files
+
+    # Reload Nginx
+    - name: Reload Nginx
+      run: |
+        echo "🌐 Reloading Nginx"
+        ssh root@${{ secrets.SERVER_IP }} "
+          # Test configuration first
+          if sudo nginx -t; then
+            sudo systemctl reload nginx
+            echo '✅ Nginx reloaded successfully'
+          else
+            echo '❌ Nginx configuration test failed'
+            exit 1
+          fi
+        "
+
+    # Health checks
+    - name: Run health checks
+      run: |
+        echo "🏥 Running health checks"
+        
+        # Wait a moment for nginx to serve the new files
+        sleep 5
+
+        # Check website health (with retries) from GitHub runner
+        for i in {1..5}; do
+          if curl -f -s --max-time 10 "https://countrystatecity.in" > /dev/null; then
+            echo "✅ Website health check passed"
+            break
+          else
+            if [ $i -eq 5 ]; then
+              echo "❌ Website health check failed after 5 attempts"
+              echo "The static files are deployed but nginx might need configuration"
+              exit 1
+            fi
+            echo "⏳ Website health check attempt $i failed, retrying..."
+            sleep 3
+          fi
+        done
+
+        echo "🎉 Static website is live!"
+
+    # Cleanup old releases
+    - name: Cleanup old releases
+      run: |
+        echo "🧹 Cleaning up old releases"
+        ssh root@${{ secrets.SERVER_IP }} "
+          cd '${{ env.DEPLOY_DIR }}/releases'
+
+          # Keep last 5 releases
+          RELEASES_TO_DELETE=\$(ls -t | tail -n +6)
+          if [ -n \"\$RELEASES_TO_DELETE\" ]; then
+            echo \"\$RELEASES_TO_DELETE\" | xargs rm -rf
+            echo '✅ Cleaned up old releases: '\$RELEASES_TO_DELETE
+          else
+            echo '✅ No old releases to clean up'
+          fi
+        "
+
+    # Deployment summary
+    - name: Deployment summary
+      if: always()
+      run: |
+        echo ""
+        echo "📊 Deployment Summary"
+        echo "===================="
+        echo "🕐 Time: $(date)"
+        echo "📍 Release: ${{ env.TIMESTAMP }}"
+        echo "📁 Path: ${{ env.RELEASE_DIR }}"
+
+        ssh root@${{ secrets.SERVER_IP }} "
+          echo '🔗 Current: '\$(readlink ${{ env.DEPLOY_DIR }}/current)
+        " || echo "❌ Could not check current symlink"
+
+        echo ""
+
+        if [ ${{ job.status }} == 'success' ]; then
+          echo "✅ Production deployment completed successfully!"
+          echo "🌐 Live URL: https://countrystatecity.in"
+          echo "🚀 No PM2 or Node.js server needed - just static files!"
+        else
+          echo "❌ Deployment failed!"
+        fi
