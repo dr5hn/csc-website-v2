@@ -20,6 +20,7 @@ import {
   MessageCircle,
   LogIn,
   FileText,
+  ExternalLink,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -177,6 +178,16 @@ export default function Header() {
               >
                 <DollarSign className="w-4 h-4" />
                 <span>Pricing</span>
+              </Link>
+
+              <Link
+                href="https://demo.countrystatecity.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span>Demo</span>
               </Link>
 
               {/* Temporarily hidden - will launch later
@@ -339,6 +350,16 @@ export default function Header() {
                   >
                     <BookOpen className="w-5 h-5" />
                     <span>Documentation</span>
+                  </Link>
+                  <Link
+                    href="https://demo.countrystatecity.in/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg mx-4"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                    <span>Demo</span>
                   </Link>
                   <Link
                     href="/contact"
