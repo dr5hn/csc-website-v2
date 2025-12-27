@@ -20,14 +20,12 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '22'
-        cache: 'yarn'
-        cache-dependency-path: yarn.lock
 
     # Build Next.js application as static export
     - name: Install dependencies and build static export
       run: |
-        yarn install --frozen-lockfile
-        yarn build
+        npm ci
+        npm run build
         echo "✅ Next.js static export built successfully"
 
     - name: Setup SSH
@@ -72,7 +70,7 @@ jobs:
         ssh root@${{ secrets.SERVER_IP }} "
           echo 'Static files deployment result:'
           ls -la '${{ env.RELEASE_DIR }}/' | head -10
-          
+
           # Verify static export exists
           if [ -f '${{ env.RELEASE_DIR }}/index.html' ]; then
             echo '✅ Static export found (index.html exists)'
@@ -158,7 +156,7 @@ jobs:
     - name: Run health checks
       run: |
         echo "🏥 Running health checks"
-        
+
         # Wait a moment for nginx to serve the new files
         sleep 5
 
