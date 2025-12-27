@@ -5,10 +5,10 @@ import { STAT_DESCRIPTIONS } from "@/lib/stats";
 
 export const metadata = {
   title: {
-    default: "CSC - Countries States Cities Database | World's Most Comprehensive Geographical Data",
+    default: "Country State City API - World's Most Comprehensive Geographic Database for Developers",
     template: "%s | CSC Database"
   },
-  description: `Access accurate geographical data from ${STAT_DESCRIPTIONS.fullCoverage}. ${STAT_DESCRIPTIONS.developerTrust}. Get started for free.`,
+  description: "Access 250+ countries, 5,000+ states & 151,000+ cities via fast REST API. Trusted by 40,000+ developers with 99.9% uptime. Free tier available - start building today!",
   keywords: ["countries", "states", "cities", "geographical database", "API", "location data", "world data", "country data", "REST API", "GraphQL", "CSV", "JSON", "SQL"],
   authors: [{ name: "CSC Team" }],
   creator: "CSC Database",
@@ -21,8 +21,8 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://countrystatecity.in',
-    title: 'CSC - World\'s Most Comprehensive Geographical Database',
-    description: `Power your applications with accurate data from ${STAT_DESCRIPTIONS.fullCoverage}. Trusted by developers worldwide.`,
+    title: 'Country State City API - World\'s Most Comprehensive Geographic Database for Developers',
+    description: 'Access 250+ countries, 5,000+ states & 151,000+ cities via fast REST API. Trusted by 40,000+ developers with 99.9% uptime.',
     siteName: 'CSC Database',
     images: [
       {
@@ -35,8 +35,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CSC - World\'s Most Comprehensive Geographical Database',
-    description: `Access accurate data from ${STAT_DESCRIPTIONS.fullCoverage}. Get started for free.`,
+    title: 'Country State City API - World\'s Most Comprehensive Geographic Database for Developers',
+    description: 'Access 250+ countries, 5,000+ states & 151,000+ cities via fast REST API. Trusted by 40,000+ developers with 99.9% uptime.',
     images: ['/twitter-image.jpg'],
   },
   robots: {
@@ -49,10 +49,6 @@ export const metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  verification: {
-    google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code',
   },
   icons: {
     icon: [

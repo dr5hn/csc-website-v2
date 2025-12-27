@@ -206,6 +206,17 @@ export default function Footer() {
                   <ExternalLink className="w-3 h-3" />
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="https://countrystatecity.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm text-darkgray hover:text-blue transition-colors duration-200"
+                >
+                  Geographic Encyclopedia
+                  <ExternalLink className="w-3 h-3" />
+                </Link>
+              </li>
             </ul>
           </div>
 

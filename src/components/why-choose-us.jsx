@@ -6,30 +6,30 @@ import { TEXT_STATS } from "@/lib/stats";
 const features = [
   {
     icon: Globe,
-    title: "Global Coverage",
+    title: "Complete Global Coverage",
     description:
-      "Complete data for every country, state, and city worldwide with weekly updates and community verification.",
+      "Access every country, state, and city worldwide with weekly updates. 250+ countries, 5,000+ states, 151,000+ cities at your fingertips.",
     color: "from-blue to-blue/90",
     details: [
       `${TEXT_STATS.countries} Countries`,
       `${TEXT_STATS.states} States`,
       `${TEXT_STATS.cities} Cities`,
-      "Monthly Updates",
+      "Weekly Updates",
     ],
   },
   {
     icon: Zap,
-    title: "Lightning Fast",
+    title: "Lightning-Fast Geographic API",
     description:
-      `Sub-${TEXT_STATS.responseTime.replace('<', '')} response times with ${TEXT_STATS.uptime} uptime backed by global CDN and enterprise infrastructure.`,
+      `Sub-${TEXT_STATS.responseTime.replace('<', '')} response times with ${TEXT_STATS.uptime} uptime backed by global CDN. Perfect for real-time location features in web and mobile apps.`,
     color: "from-orange to-orange/90",
     details: [`${TEXT_STATS.responseTime} Response`, `${TEXT_STATS.uptime} Uptime`, "Global CDN", "Auto-scaling"],
   },
   {
     icon: Code,
-    title: "Developer First",
+    title: "Developer-First Design",
     description:
-      "RESTful APIs, comprehensive docs, and tools designed by developers for developers.",
+      "RESTful APIs, comprehensive documentation, code examples in multiple languages. Built by developers, for developers.",
     color: "from-blue to-green",
     details: ["REST APIs", "Live Docs", "Code Examples"],
   },
@@ -73,7 +73,7 @@ export default function WhyChooseUs() {
           </span>
         </div>
         <h2 className="mt-4 text-3xl md:text-4xl font-bold text-dark">
-          Built for developers, by developers
+          Why Developers Choose Our Geographic API
         </h2>
         <p className="mt-3 text-darkgray">
           Everything you need for geographical data in one comprehensive

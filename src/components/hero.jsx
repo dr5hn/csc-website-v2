@@ -6,7 +6,7 @@ import { TEXT_STATS, STAT_DESCRIPTIONS } from "@/lib/stats";
 
 export default function HeroSection() {
   return (
-    <section 
+    <section
       className="relative overflow-hidden bg-gradient-to-br from-white via-light/30 to-blue/5"
       aria-labelledby="hero-heading"
     >
@@ -27,25 +27,25 @@ export default function HeroSection() {
             </div>
 
             {/* Main Headline */}
-            <h1 
+            <h1
               id="hero-heading"
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight"
             >
-              The World's Most{" "}
+              Country State City API -{" "}
               <span className="bg-gradient-to-r from-blue to-green bg-clip-text text-transparent">
-                Comprehensive
+                The World's Most Comprehensive
               </span>{" "}
-              Geographical Database
+              Geographic Database for Developers
             </h1>
 
             {/* Subtext */}
             <p className="text-xl text-darkgray mb-8 leading-relaxed max-w-2xl lg:max-w-none">
-              Power your applications with accurate data from <strong>{STAT_DESCRIPTIONS.fullCoverage}</strong>. Trusted by developers worldwide with <strong>{TEXT_STATS.apiRequests} API requests monthly.</strong>
+              Build location-aware applications with accurate data from <strong>{STAT_DESCRIPTIONS.fullCoverage}</strong>. Trusted by {TEXT_STATS.developers} developers worldwide with <strong>{TEXT_STATS.apiRequests} API requests monthly</strong> and {TEXT_STATS.uptime} uptime guarantee.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button 
+              <Button
                 className="bg-blue hover:bg-blue/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg cursor-pointer"
                 aria-label="Get started with CSC Database for free"
               >
@@ -84,13 +84,9 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column - Code Example */}
+          {/* Right Column - Globe */}
           <div className="relative">
-            <Globe
-              baseColor={[0.133, 0.588, 0.953]} // this affects everything
-              markerColor={[]} // no markers
-              glowColor={null} // disable glow
-            />
+            <Globe />
           </div>
         </div>
       </div>

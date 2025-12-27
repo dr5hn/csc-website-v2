@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Menu,
   X,
@@ -29,6 +30,14 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
+
+  const isProductActive = pathname.startsWith("/product");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,19 +89,27 @@ export default function Header() {
             <nav className="hidden lg:flex items-center space-x-1" role="navigation" aria-label="Main navigation">
               <Link
                 href="/about"
-                className="flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
+                className={`flex items-center space-x-1 px-4 py-2 transition-all duration-200 font-medium rounded-lg ${
+                  isActive("/about")
+                    ? "text-blue bg-blue/10"
+                    : "text-darkgray hover:text-blue hover:bg-blue/5"
+                }`}
               >
                 <User className="w-4 h-4" />
                 <span>About</span>
               </Link>
 
-              <div 
+              <div
                 className="relative group"
                 onMouseEnter={() => setIsProductsDropdownOpen(true)}
                 onMouseLeave={() => setIsProductsDropdownOpen(false)}
               >
-                <button 
-                  className="cursor-pointer flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
+                <button
+                  className={`cursor-pointer flex items-center space-x-1 px-4 py-2 transition-all duration-200 font-medium rounded-lg ${
+                    isProductActive
+                      ? "text-blue bg-blue/10"
+                      : "text-darkgray hover:text-blue hover:bg-blue/5"
+                  }`}
                   aria-expanded={isProductsDropdownOpen}
                   aria-haspopup="true"
                   aria-label="Products menu"
@@ -173,7 +190,11 @@ export default function Header() {
 
               <Link
                 href="/pricing"
-                className="flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
+                className={`flex items-center space-x-1 px-4 py-2 transition-all duration-200 font-medium rounded-lg ${
+                  isActive("/pricing")
+                    ? "text-blue bg-blue/10"
+                    : "text-darkgray hover:text-blue hover:bg-blue/5"
+                }`}
               >
                 <DollarSign className="w-4 h-4" />
                 <span>Pricing</span>
@@ -182,7 +203,11 @@ export default function Header() {
               {/* Temporarily hidden - will launch later
               <Link
                 href="/faqs"
-                className="flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
+                className={`flex items-center space-x-1 px-4 py-2 transition-all duration-200 font-medium rounded-lg ${
+                  isActive("/faqs")
+                    ? "text-blue bg-blue/10"
+                    : "text-darkgray hover:text-blue hover:bg-blue/5"
+                }`}
               >
                 <MessageCircleQuestion className="w-4 h-4" />
                 <span>FAQs</span>
@@ -191,7 +216,11 @@ export default function Header() {
 
               <Link
                 href="/contact"
-                className="flex items-center space-x-1 px-4 py-2 text-darkgray hover:text-blue transition-all duration-200 font-medium rounded-lg hover:bg-blue/5"
+                className={`flex items-center space-x-1 px-4 py-2 transition-all duration-200 font-medium rounded-lg ${
+                  isActive("/contact")
+                    ? "text-blue bg-blue/10"
+                    : "text-darkgray hover:text-blue hover:bg-blue/5"
+                }`}
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>Support</span>

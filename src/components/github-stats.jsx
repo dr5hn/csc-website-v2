@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Star, GitFork, Users } from "lucide-react";
 import { useGitHubStars } from "@/hooks/use-github-stars";
 import { REPOSITORY_STATS } from "@/lib/stats";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const getBaseStats = (stars, forks) => [
   { label: "Stars", value: stars || 6860, Icon: Star, color: "orange" },
@@ -11,8 +12,18 @@ const getBaseStats = (stars, forks) => [
   { label: "Contributors", value: parseInt(REPOSITORY_STATS.contributors.value), Icon: Users, color: "green" },
 ];
 
+function StatSkeleton() {
+  return (
+    <div className="text-center rounded-xl bg-white/60 border border-light/60 p-3 sm:p-4">
+      <Skeleton className="mx-auto mb-2 h-9 w-9 rounded-lg" />
+      <Skeleton className="mx-auto h-7 w-16 mb-1" />
+      <Skeleton className="mx-auto h-3 w-12" />
+    </div>
+  );
+}
+
 export default function GitHubStats() {
-  const { stars, forks } = useGitHubStars("dr5hn", "countries-states-cities-database");
+  const { stars, forks, loading } = useGitHubStars("dr5hn", "countries-states-cities-database");
   const [stats, setStats] = useState(getBaseStats(stars, forks));
 
   useEffect(() => {
@@ -40,44 +51,52 @@ export default function GitHubStats() {
     <div className="rounded-2xl bg-white/70 backdrop-blur-sm border border-light/60 p-4 sm:p-5">
       <div className="mb-4 flex items-center justify-between">
         <div className="text-sm font-bold text-dark">Repository Metrics</div>
-        <div className="text-xs text-lightgray">Sample data</div>
+        <div className="text-xs text-lightgray">{loading ? "Loading..." : "Live data"}</div>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-        {stats.map(({ label, value, Icon, color }) => {
-          const colorCls =
-            color === "green"
-              ? "text-green"
-              : color === "orange"
-              ? "text-orange"
-              : "text-blue";
-          const grad =
-            color === "green"
-              ? "from-green to-green/80"
-              : color === "orange"
-              ? "from-orange to-orange/80"
-              : "from-blue to-blue/80";
-          return (
-            <div
-              key={label}
-              className="text-center rounded-xl bg-white/60 border border-light/60 p-3 sm:p-4"
-            >
+        {loading ? (
+          <>
+            <StatSkeleton />
+            <StatSkeleton />
+            <StatSkeleton />
+          </>
+        ) : (
+          stats.map(({ label, value, Icon, color }) => {
+            const colorCls =
+              color === "green"
+                ? "text-green"
+                : color === "orange"
+                ? "text-orange"
+                : "text-blue";
+            const grad =
+              color === "green"
+                ? "from-green to-green/80"
+                : color === "orange"
+                ? "from-orange to-orange/80"
+                : "from-blue to-blue/80";
+            return (
               <div
-                className={`mx-auto mb-2 inline-flex h-9 w-9 items-center justify-center rounded-lg ${colorCls} bg-current/10`}
+                key={label}
+                className="text-center rounded-xl bg-white/60 border border-light/60 p-3 sm:p-4"
               >
-                <Icon className="h-5 w-5" />
+                <div
+                  className={`mx-auto mb-2 inline-flex h-9 w-9 items-center justify-center rounded-lg ${colorCls} bg-current/10`}
+                >
+                  <Icon className="h-5 w-5" />
+                </div>
+                <div
+                  className={`bg-gradient-to-r ${grad} bg-clip-text text-transparent text-2xl font-extrabold leading-none`}
+                  aria-label={`${value.toLocaleString()} ${label}`}
+                >
+                  {value.toLocaleString()}
+                </div>
+                <div className="mt-0.5 text-xs font-medium text-darkgray">
+                  {label}
+                </div>
               </div>
-              <div
-                className={`bg-gradient-to-r ${grad} bg-clip-text text-transparent text-2xl font-extrabold leading-none`}
-                aria-label={`${value.toLocaleString()} ${label}`}
-              >
-                {value.toLocaleString()}
-              </div>
-              <div className="mt-0.5 text-xs font-medium text-darkgray">
-                {label}
-              </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
       </div>
     </div>
   );
