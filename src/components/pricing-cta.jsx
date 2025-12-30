@@ -25,7 +25,7 @@ const actions = [
     icon: Code,
     title: "Try API",
     subtitle: "3,000 free requests monthly",
-    href: "https://forms.gle/ckZ8Gub6jS9sUihJA",
+    href: "https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=pricing_cta",
     accent: "green",
     badge: "API Key",
     external: true,

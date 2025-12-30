@@ -18,7 +18,7 @@ const plans = [
       "Best effort SLA"
     ],
     cta: "Start for Free",
-    href: "https://forms.gle/ckZ8Gub6jS9sUihJA",
+    href: "https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=api_pricing_community",
     target: "_blank",
     accent: "gray",
     popular: false,
