@@ -190,7 +190,7 @@ export default function HeroExportTool() {
               </div>
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark">
-                  <Check className="h-4 w-4 text-green" aria-hidden />5 Free
+                  <Check className="h-4 w-4 text-green" aria-hidden />2 Free
                   Credits
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark">

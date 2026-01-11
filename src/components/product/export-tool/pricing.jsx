@@ -25,7 +25,7 @@ export default function ExportToolPricingSection() {
             Fair, Credit-Based Pricing
           </h2>
           <p className="mt-3 text-lg md:text-xl text-darkgray">
-            Start with 5 free credits, then pay only for what you need. Credits never expire.
+            Start with 2 free trial credits, then pay only for what you need. Credits never expire.
           </p>
         </div>
         

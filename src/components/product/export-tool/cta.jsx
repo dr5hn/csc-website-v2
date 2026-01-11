@@ -24,7 +24,7 @@ export default function CtaExportTool() {
         {/* Subtext */}
         <p className="text-xl text-white/80 mb-6 md:mb-12 max-w-2xl mx-auto">
           Join thousands of developers who've saved hours of data processing
-          time. Start with 5 free credits - no credit card required.
+          time. Start with 2 free trial credits - no credit card required.
         </p>
 
         {/* CTA Buttons */}
@@ -55,7 +55,7 @@ export default function CtaExportTool() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
             <Check className="w-4 h-4 text-success" />
             <span className="text-sm font-medium text-white">
-              5 free credits
+              2 free credits
             </span>
           </div>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
