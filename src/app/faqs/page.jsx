@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import FAQHero from "@/components/faq-hero";
 import Link from "next/link";
-import { STAT_DESCRIPTIONS, TEXT_STATS } from "@/lib/stats";
+import { STAT_DESCRIPTIONS } from "@/lib/stats";
 
 const faqs = [
   {
@@ -27,7 +27,7 @@ const faqs = [
     category: "Pricing",
     question: "What's the difference between the free and paid plans?",
     answer:
-      `The free plan gives you access to our complete open-source dataset via GitHub download. The paid API provides fast, reliable REST endpoints with higher rate limits (100k+ requests/month), multiple output formats (JSON, CSV, SQL), priority email support, and ${TEXT_STATS.uptime} uptime SLA.`,
+      `The free Community plan gives you 4,500 API requests/month with basic fields. Paid plans unlock extended data fields, higher limits, and premium features. Supporter ($9/mo) adds 30,000 requests and extended fields. Professional ($29/mo) provides 100,000 requests with full data access. Business ($79/mo) offers 750,000 requests with all current and upcoming features.`,
   },
   {
     id: 3,
@@ -41,7 +41,7 @@ const faqs = [
     category: "API Usage",
     question: "What are the API rate limits?",
     answer:
-      "Free tier includes 1,000 requests per month. Pro plan includes 100,000 requests per month. Enterprise plans offer unlimited requests with dedicated infrastructure. All plans include burst capacity for traffic spikes.",
+      "Community (free): 4,500 requests/month (150/day). Supporter ($9/mo): 30,000 requests/month (1,000/day). Professional ($29/mo): 100,000 requests/month (3,300/day). Business ($79/mo): 750,000 requests/month (25,000/day). Custom plans available for higher volumes.",
   },
   {
     id: 5,
