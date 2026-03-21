@@ -1,6 +1,4 @@
 import PricingCard from "./pricing-card";
-import { Check, Star, Mail } from "lucide-react";
-import { TEXT_STATS } from "@/lib/stats";
 
 const plans = [
   {
@@ -9,13 +7,11 @@ const plans = [
     period: "/ month",
     description: "Perfect for personal projects & exploration.",
     features: [
-      "3,000 API Requests/month (100/day)",
-      "2 requests/second rate limit",
+      "4,500 API Requests/month (150/day)",
       "7 core endpoints available",
-      "Basic fields: name, id, iso2, iso3, capital, currency, region, emoji, latitude, longitude, country_code, state_code",
+      "Basic fields: name, id, iso2, iso3, capital, currency, region, emoji, lat/lng, timezones",
       "Open access (no domain whitelisting)",
       "Community support & documentation",
-      "Best effort SLA"
     ],
     cta: "Start for Free",
     href: "https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=api_pricing_community",
@@ -27,52 +23,65 @@ const plans = [
     name: "Supporter",
     price: "$9",
     period: "/ month",
-    description: "Ideal for growing applications with enhanced features.",
+    description: "Ideal for growing applications with enhanced data.",
     features: [
       "30,000 API Requests/month (1,000/day)",
-      "10 requests/second rate limit",
-      "All 7 current + 8 new region/search endpoints",
-      "Full field access: all basic fields plus phonecode, currency_name, currency_symbol, tld, native, nationality, timezones, translations, and more",
+      "All core endpoints + Bulk States",
+      "Extended fields: population, GDP, area, TLD, nationality, postal codes, and more",
+      "Search endpoint (coming soon)",
       "Domain whitelisting (up to 3 domains)",
-      "Basic filtering & sorting",
-      "Priority email support (48h response)",
-      "99.5% Uptime SLA"
+      "Founder-led email support (2-3 business days)",
     ],
-    cta: "Coming Soon",
-    ctaIcon: Mail,
+    cta: "Get Started",
+    href: "https://app.countrystatecity.in/pricing?plan=supporter&utm_source=website&utm_medium=cta&utm_content=api_pricing_supporter",
+    target: "_blank",
     accent: "orange",
-    href: "#",
     popular: true,
-    badge: "Coming Soon",
+    badge: "Most Popular",
   },
   {
     name: "Professional",
     price: "$29",
     period: "/ month",
-    description: "Advanced features for production applications.",
+    description: "Full data access for production applications.",
     features: [
-      "150,000 API Requests/month (5,000/day)",
-      "25 requests/second rate limit",
-      "All Supporter endpoints + 6 advanced geospatial endpoints",
-      "GraphQL API access for complex queries",
-      "Advanced filtering: radius search, multi-field search, fuzzy search",
-      "Multiple API keys (up to 5 keys)",
-      "Domain whitelisting (up to 10 domains) + IP whitelisting",
-      "Priority support (24h response)",
-      `${TEXT_STATS.uptime} Uptime SLA`
+      "100,000 API Requests/month (3,300/day)",
+      "Full field access including translations & wiki data",
+      "Multiple API keys (up to 5)",
+      "GraphQL, geospatial, regions, bulk cities (coming soon)",
+      "Domain + IP whitelisting (up to 10)",
+      "Founder-led priority support (~1 business day)",
     ],
-    cta: "Coming Soon",
-    ctaIcon: Mail,
+    cta: "Get Started",
+    href: "https://app.countrystatecity.in/pricing?plan=professional&utm_source=website&utm_medium=cta&utm_content=api_pricing_professional",
+    target: "_blank",
     accent: "blue",
-    href: "#",
     popular: false,
-    badge: "Coming Soon",
+  },
+  {
+    name: "Business",
+    price: "$79",
+    period: "/ month",
+    description: "High-volume access with all premium features.",
+    features: [
+      "750,000 API Requests/month (25,000/day)",
+      "Full field access including translations & wiki data",
+      "Multiple API keys (up to 10)",
+      "All current and upcoming premium features",
+      "Domain + IP whitelisting (up to 25)",
+      "Founder-led priority support (~1 business day)",
+    ],
+    cta: "Get Started",
+    href: "https://app.countrystatecity.in/pricing?plan=business&utm_source=website&utm_medium=cta&utm_content=api_pricing_business",
+    target: "_blank",
+    accent: "blue",
+    popular: false,
   },
 ];
 
 export default function ApiPricing() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
       {plans.map((plan, index) => (
         <PricingCard key={index} plan={plan} />
       ))}

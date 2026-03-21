@@ -23,7 +23,7 @@ export default function PricingCard({ plan }) {
         </div>
       )}
 
-      <div className="relative rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] h-full flex flex-col p-8">
+      <div className="relative rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] h-full flex flex-col p-6 lg:p-7">
         {plan.badge && (
           <div className="absolute top-4 right-4">
             <span className={cn(
@@ -49,7 +49,7 @@ export default function PricingCard({ plan }) {
 
           {/* Price */}
           <div className="mb-4">
-            <span className="text-5xl font-black text-dark font-mono">
+            <span className="text-4xl lg:text-5xl font-black text-dark font-mono">
               {plan.price}
             </span>
             {plan.period && (
@@ -84,7 +84,7 @@ export default function PricingCard({ plan }) {
           <Button
             asChild
             className={cn(
-              "w-full text-lg font-bold h-14 rounded-xl transform hover:-translate-y-0.5 transition-all duration-300 shadow-lg",
+              "w-full text-base lg:text-lg font-bold h-12 lg:h-14 rounded-xl transform hover:-translate-y-0.5 transition-all duration-300 shadow-lg",
               plan.accent === "orange" &&
               "bg-gradient-to-r from-orange to-orange/90 hover:from-orange/90 hover:to-orange text-white",
               plan.accent === "blue" &&
