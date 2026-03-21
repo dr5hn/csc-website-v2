@@ -7,8 +7,8 @@ const plans = [
     period: "/ month",
     description: "Perfect for personal projects & exploration.",
     features: [
-      "4,500 API Requests/month (150/day)",
-      "7 core endpoints available",
+      "3,000 API Requests/month (100/day)",
+      "States by country and cities by state endpoints",
       "Basic fields: name, id, iso2, iso3, capital, currency, region, emoji, lat/lng, timezones",
       "Open access (no domain whitelisting)",
       "Community support & documentation",
@@ -20,15 +20,34 @@ const plans = [
     popular: false,
   },
   {
+    name: "Starter",
+    price: "$5",
+    period: "/ month",
+    description: "More headroom for side projects and prototypes.",
+    features: [
+      "9,000 API Requests/month (300/day)",
+      "Same features as Community with higher limits",
+      "Basic fields: name, id, iso2, iso3, capital, currency, region, emoji, lat/lng, timezones",
+      "Open access (no domain whitelisting)",
+      "Community support & documentation",
+    ],
+    cta: "Get Started",
+    href: "https://app.countrystatecity.in/pricing?plan=starter&utm_source=website&utm_medium=cta&utm_content=api_pricing_starter",
+    target: "_blank",
+    accent: "sky",
+    popular: false,
+  },
+  {
     name: "Supporter",
     price: "$9",
     period: "/ month",
     description: "Ideal for growing applications with enhanced data.",
     features: [
       "30,000 API Requests/month (1,000/day)",
-      "All core endpoints + Bulk States",
-      "Extended fields: population, GDP, area, TLD, nationality, postal codes, and more",
-      "Search endpoint (coming soon)",
+      "Extended fields + all bulk states + cities by state + search",
+      "Extended fields: population, GDP, area, TLD, nationality, postal codes, coordinates, and more",
+      "Search endpoint",
+      "Bulk cities by state",
       "Domain whitelisting (up to 3 domains)",
       "Founder-led email support (2-3 business days)",
     ],
@@ -46,9 +65,11 @@ const plans = [
     description: "Full data access for production applications.",
     features: [
       "100,000 API Requests/month (3,300/day)",
+      "Full data access + cities by country + coming soon: GraphQL, geospatial, regions",
       "Full field access including translations & wiki data",
+      "Cities by country endpoint",
       "Multiple API keys (up to 5)",
-      "GraphQL, geospatial, regions, bulk cities (coming soon)",
+      "Coming soon: GraphQL, geospatial, regions",
       "Domain + IP whitelisting (up to 10)",
       "Founder-led priority support (~1 business day)",
     ],
@@ -81,7 +102,7 @@ const plans = [
 
 export default function ApiPricing() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-start">
       {plans.map((plan, index) => (
         <PricingCard key={index} plan={plan} />
       ))}

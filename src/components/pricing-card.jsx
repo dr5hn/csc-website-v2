@@ -93,6 +93,8 @@ export default function PricingCard({ plan }) {
               "bg-gradient-to-r from-green to-green/90 hover:from-green/90 hover:to-green text-white",
               plan.accent === "purple" &&
               "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white", 
+              plan.accent === "sky" &&
+              "bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-600 hover:to-sky-700 text-white",
               plan.accent === "gray" && "bg-dark text-white hover:bg-dark/90"
             )}
           >
