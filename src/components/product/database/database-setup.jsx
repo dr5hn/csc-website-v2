@@ -3,18 +3,18 @@
 import { useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import {
-  LinkIcon,
-  Download,
+  GitBranch,
   Package,
-  Rocket,
+  Terminal,
   CopyIcon,
   CheckIcon,
 } from "lucide-react";
+import PythonIcon from "@/icons/PythonIcon";
 
 const GUIDES = {
   clone: {
     title: "Git Clone",
-    icon: LinkIcon,
+    icon: GitBranch,
     code: `# Clone the repository
 git clone https://github.com/dr5hn/countries-states-cities-database.git
 cd countries-states-cities-database
@@ -22,36 +22,48 @@ cd countries-states-cities-database
 # Navigate to your preferred format
 cd json  # or mysql, psql, mongodb, etc.
 
-# Use the data files in your project
-cp countries.json /path/to/your/project/`,
-  },
-  download: {
-    title: "Direct Download",
-    icon: Download,
-    code: `# Download specific format (replace 'json' with your format)
+# Or download specific files directly
 wget https://github.com/dr5hn/countries-states-cities-database/raw/master/json/countries.json
 wget https://github.com/dr5hn/countries-states-cities-database/raw/master/json/states.json
-wget https://github.com/dr5hn/countries-states-cities-database/raw/master/json/cities.json
-
-# Or download the complete ZIP
-curl -L https://github.com/dr5hn/countries-states-cities-database/archive/master.zip -o csc-database.zip`,
+wget https://github.com/dr5hn/countries-states-cities-database/raw/master/json/cities.json`,
   },
   npm: {
-    title: "NPM Package",
+    title: "NPM",
     icon: Package,
-    code: `# Install via npm (community package)
-npm install country-state-city
+    code: `# Core package — countries, states, cities
+npm install @countrystatecity/countries
 
-# Usage in JavaScript/Node.js
-const csc = require('country-state-city');
+# Browser-optimized with CDN support
+npm install @countrystatecity/countries-browser
 
-// Get all countries
-const countries = csc.getAllCountries();
-console.log(countries);
+# Timezone data & conversion utilities
+npm install @countrystatecity/timezones
 
-// Get states of a country
-const states = csc.getStatesOfCountry('IN');
-console.log(states);`,
+# Quick usage
+import { getCountries } from '@countrystatecity/countries';
+const countries = await getCountries();`,
+  },
+  pypi: {
+    title: "PyPI",
+    icon: PythonIcon,
+    code: `# Install via pip
+pip install countrystatecity-countries
+
+# Usage
+from countrystatecity_countries import get_countries
+countries = get_countries()`,
+  },
+  cli: {
+    title: "CLI",
+    icon: Terminal,
+    code: `# Install globally
+npm install -g @countrystatecity/cli
+
+# Search countries, states, cities
+csc search "united"
+
+# Explore interactively
+csc explore`,
   },
 };
 
@@ -84,7 +96,7 @@ function sanitizeCommands(raw) {
 
   // allowlist of command starters we consider "runnable"
   const isCommand = (s) =>
-    /^(git|cd|cp|mv|rm|mkdir|wget|curl|npm|yarn|pnpm|npx|node|psql|mysql|mongo|docker|kubectl|helm|tar|unzip)\b/.test(
+    /^(git|cd|cp|mv|rm|mkdir|wget|curl|npm|yarn|pnpm|npx|node|pip|csc|psql|mysql|mongo|docker|kubectl|helm|tar|unzip)\b/.test(
       s
     );
 
@@ -219,8 +231,7 @@ export default function DatabaseSetup() {
 
         {/* Helper note */}
         <p className="mt-4 text-center text-sm text-darkgray">
-          Tip: Replace <span className="font-mono">json</span> in paths with
-          your preferred format (mysql, psql, mongodb, csv, sql, etc.).
+          All packages are MIT licensed. Database data is licensed under ODbL-1.0.
         </p>
       </div>
     </section>
