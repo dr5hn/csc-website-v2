@@ -61,7 +61,7 @@ const faqSchema = {
       "name": "How many countries, states, and cities do you cover?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We provide complete coverage with 250+ countries, 5,000+ states, and 150,000+ cities worldwide. This includes all UN-recognized countries, major administrative divisions, and populated places with coordinate data."
+        "text": "We provide complete coverage with 250+ countries, 5,000+ states, and 151,000+ cities worldwide. This includes all UN-recognized countries, major administrative divisions, and populated places with coordinate data."
       }
     },
     {

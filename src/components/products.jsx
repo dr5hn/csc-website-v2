@@ -7,6 +7,7 @@ import {
   SquareTerminal,
   ArrowRight,
   Star,
+  Terminal,
 } from "lucide-react";
 
 function AccentIcon({ Icon, accent = "blue" }) {
@@ -110,7 +111,7 @@ export default function Products() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6 md:mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-6 md:mt-12">
           <ProductCard
             title="API Access"
             description="Query countries, states, and cities via fast REST and GraphQL endpoints."
@@ -121,12 +122,12 @@ export default function Products() {
           />
 
           <ProductCard
-            title="Update Tool"
-            description="Submit feedback, report issues, or suggest new data."
-            href="/product/update-tool"
-            accent="green"
-            linkText="Contribute Now"
-            Icon={MessageSquare}
+            title="CLI Tool"
+            description="Search, explore, and generate code from geographic data — right from your terminal."
+            href="https://cli.countrystatecity.in"
+            accent="blue"
+            linkText="Install CLI"
+            Icon={Terminal}
           />
 
           <ProductCard
@@ -145,6 +146,15 @@ export default function Products() {
             accent="blue"
             linkText="Start Exporting"
             Icon={Download}
+          />
+
+          <ProductCard
+            title="Update Tool"
+            description="Submit feedback, report issues, or suggest new data."
+            href="/product/update-tool"
+            accent="green"
+            linkText="Contribute Now"
+            Icon={MessageSquare}
           />
         </div>
       </div>

@@ -6,7 +6,7 @@ import ProductDatabaseHero from "@/components/product/database/hero";
 import WhyChooseUs from "@/components/product/database/why-choose-us";
 
 export const metadata = {
-  title: "Geographic Database - 250+ Countries, 5000+ States, 150K+ Cities",
+  title: "Geographic Database - 250+ Countries, 5000+ States, 151K+ Cities",
   description:
     "Access the world's most comprehensive open-source geographic database. Available via NPM, PyPI, and CLI. Download complete datasets in JSON, CSV, SQL, XML, and YAML formats. ODbL licensed for data, MIT for packages.",
   keywords: [
@@ -29,13 +29,13 @@ export const metadata = {
   openGraph: {
     title: "Geographic Database - Complete World Location Data",
     description:
-      "Download the world's most comprehensive geographic database with 250+ countries, 5000+ states, and 150K+ cities. Available via NPM, PyPI, and CLI.",
+      "Download the world's most comprehensive geographic database with 250+ countries, 5000+ states, and 151K+ cities. Available via NPM, PyPI, and CLI.",
     url: "https://countrystatecity.in/product/database/",
   },
   twitter: {
     title: "Geographic Database - Complete World Location Data",
     description:
-      "Download the world's most comprehensive geographic database with 250+ countries, 5000+ states, and 150K+ cities. Available via NPM, PyPI, and CLI.",
+      "Download the world's most comprehensive geographic database with 250+ countries, 5000+ states, and 151K+ cities. Available via NPM, PyPI, and CLI.",
   },
   alternates: {
     canonical: "/product/database/",
