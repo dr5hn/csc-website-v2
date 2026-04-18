@@ -25,39 +25,13 @@ export default function Footer() {
       </button>
 
       <div className="container mx-auto px-4 py-8 lg:py-16">
-        {/* Newsletter Section - Temporarily hidden
-        <div className="mb-12 p-6 lg:p-8 bg-gradient-to-r from-blue/5 to-purple/5 rounded-2xl border border-light/50">
-          <div className="text-center max-w-2xl mx-auto">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue/10 rounded-full mb-4">
-              <Mail className="w-5 h-5 text-blue" />
-            </div>
-            <h3 className="text-xl font-semibold text-dark mb-2">
-              Stay Updated with CSC
-            </h3>
-            <p className="text-sm text-darkgray mb-6">
-              Get notified about new features, updates, and developer resources straight to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 border border-light rounded-lg focus:outline-none focus:ring-2 focus:ring-blue/20 focus:border-blue transition-colors"
-              />
-              <button className="px-6 py-3 bg-blue text-white rounded-lg hover:bg-blue/90 transition-colors font-medium whitespace-nowrap">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-        */}
-
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
           <div className="md:col-span-1">
             <Logo classes="mb-4" />
             <p className="text-sm text-darkgray leading-relaxed mb-6">
               The world's most comprehensive geographical database, trusted by
-              developers worldwide for accurate location data in their
-              applications. Built by the community, for the community.
+              developers worldwide for accurate location data. Built and
+              maintained by Darshan Gada, powered by community data contributions.
             </p>
 
             {/* Social Links */}
@@ -122,14 +96,6 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/product/database"
-                  className="text-sm text-darkgray hover:text-blue transition-all duration-200 hover:translate-x-1"
-                >
-                  Database
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/product/api"
                   className="text-sm text-darkgray hover:text-blue transition-all duration-200 hover:translate-x-1"
                 >
@@ -142,6 +108,14 @@ export default function Footer() {
                   className="text-sm text-darkgray hover:text-blue transition-all duration-200 hover:translate-x-1"
                 >
                   Export Tool
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/product/database"
+                  className="text-sm text-darkgray hover:text-blue transition-all duration-200 hover:translate-x-1"
+                >
+                  Database
                 </Link>
               </li>
               <li>

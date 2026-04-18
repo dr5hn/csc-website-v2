@@ -122,6 +122,15 @@ export default function Products() {
           />
 
           <ProductCard
+            title="Export Tool"
+            description="Download curated datasets in CSV, JSON, or SQL. Free and paid formats available."
+            href="/product/export-tool"
+            accent="blue"
+            linkText="Start Exporting"
+            Icon={Download}
+          />
+
+          <ProductCard
             title="CLI Tool"
             description="Search, explore, and generate code from geographic data — right from your terminal."
             href="https://cli.countrystatecity.in"
@@ -137,15 +146,6 @@ export default function Products() {
             accent="green"
             linkText="View on Github"
             Icon={Star}
-          />
-
-          <ProductCard
-            title="Export Tool"
-            description="Download curated datasets in CSV, JSON, or SQL. Free and paid formats available."
-            href="/product/export-tool"
-            accent="blue"
-            linkText="Start Exporting"
-            Icon={Download}
           />
 
           <ProductCard

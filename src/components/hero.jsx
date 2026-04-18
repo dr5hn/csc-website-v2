@@ -46,21 +46,19 @@ export default function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button
+                asChild
                 className="bg-blue hover:bg-blue/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg cursor-pointer"
                 aria-label="Get started with CSC Database for free"
               >
-                <Rocket className="w-5 h-5 mr-2" aria-hidden="true" />
-                Get Started for Free
-              </Button>
-              {/* <a href="http://github.com/dr5hn/csc-website/" target="_blank" rel="noopener noreferrer">
-                <Button
-                  variant="outline"
-                  className="border-2 border-blue text-blue hover:bg-blue hover:text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg cursor-pointer"
+                <a
+                  href="https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=hero_signup"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Star className="w-5 h-5 mr-2" />
-                  Star us on Github
-                </Button>
-              </a> */}
+                  <Rocket className="w-5 h-5 mr-2" aria-hidden="true" />
+                  Get Started for Free
+                </a>
+              </Button>
               <GitHubStars />
             </div>
 

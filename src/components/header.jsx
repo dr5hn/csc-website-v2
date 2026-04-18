@@ -21,6 +21,7 @@ import {
   MessageCircle,
   LogIn,
   FileText,
+  Sparkles,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -99,6 +100,18 @@ export default function Header() {
                 <span>About</span>
               </Link>
 
+              <Link
+                href="/ecosystem"
+                className={`flex items-center space-x-1 px-4 py-2 transition-all duration-200 font-medium rounded-lg ${
+                  isActive("/ecosystem")
+                    ? "text-blue bg-blue/10"
+                    : "text-darkgray hover:text-blue hover:bg-blue/5"
+                }`}
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>Ecosystem</span>
+              </Link>
+
               <div
                 className="relative group"
                 onMouseEnter={() => setIsProductsDropdownOpen(true)}
@@ -129,20 +142,6 @@ export default function Header() {
                 >
                   <div className="p-2">
                     <Link
-                      href="/product/database"
-                      className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200 group"
-                    >
-                      <div className="w-8 h-8 bg-blue/10 group-hover:bg-blue/20 rounded-lg flex items-center justify-center transition-colors duration-200">
-                        <Database className="w-4 h-4 text-blue" />
-                      </div>
-                      <div>
-                        <div className="font-medium text-dark">Database</div>
-                        <div className="text-sm text-lightgray">
-                          Complete open-source data
-                        </div>
-                      </div>
-                    </Link>
-                    <Link
                       href="/product/api"
                       className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200 group"
                     >
@@ -167,6 +166,20 @@ export default function Header() {
                         <div className="font-medium text-dark">Export Tool</div>
                         <div className="text-sm text-lightgray">
                           Custom data exports
+                        </div>
+                      </div>
+                    </Link>
+                    <Link
+                      href="/product/database"
+                      className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200 group"
+                    >
+                      <div className="w-8 h-8 bg-blue/10 group-hover:bg-blue/20 rounded-lg flex items-center justify-center transition-colors duration-200">
+                        <Database className="w-4 h-4 text-blue" />
+                      </div>
+                      <div>
+                        <div className="font-medium text-dark">Database</div>
+                        <div className="text-sm text-lightgray">
+                          Complete open-source data
                         </div>
                       </div>
                     </Link>
@@ -317,14 +330,6 @@ export default function Header() {
                     Products
                   </div>
                   <Link
-                    href="/product/database"
-                    className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <Database className="w-5 h-5" />
-                    <span>Database</span>
-                  </Link>
-                  <Link
                     href="/product/api"
                     className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg"
                     onClick={() => setIsMenuOpen(false)}
@@ -341,6 +346,14 @@ export default function Header() {
                     <span>Export Tool</span>
                   </Link>
                   <Link
+                    href="/product/database"
+                    className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <Database className="w-5 h-5" />
+                    <span>Database</span>
+                  </Link>
+                  <Link
                     href="/product/update-tool"
                     className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg"
                     onClick={() => setIsMenuOpen(false)}
@@ -351,6 +364,14 @@ export default function Header() {
                 </div>
 
                 <div className="border-t border-light/50 pt-4">
+                  <Link
+                    href="/ecosystem"
+                    className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg mx-4"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <Sparkles className="w-5 h-5" />
+                    <span>Ecosystem</span>
+                  </Link>
                   <Link
                     href="/pricing"
                     className="flex items-center space-x-3 px-4 py-3 text-darkgray hover:text-blue hover:bg-blue/5 transition-all duration-200 font-medium rounded-lg mx-4"

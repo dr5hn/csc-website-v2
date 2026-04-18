@@ -2,7 +2,7 @@
 
 import GitHubIcon from "@/icons/GitHub";
 import { TEXT_STATS } from "@/lib/stats";
-import { Rocket, Code, Users, Database, Package, Zap, DownloadCloud, TrendingUp, LayoutDashboard } from "lucide-react";
+import { Rocket, Code, Users, Database, Package, Zap, DownloadCloud, LayoutDashboard, Sparkles } from "lucide-react";
 
 const milestones = [
   {
@@ -23,56 +23,56 @@ const milestones = [
     year: "2020",
     title: "Database Restructure",
     description:
-      "Restructured the entire database architecture to make it more flexible and usable. Improved data organization and added standardized field structures for better developer experience.",
+      "Restructured the entire database architecture to make it more flexible and usable. Improved data organization and added standardized field structures for a better developer experience.",
     icon: Database,
   },
   {
     year: "2021",
     title: "API Launch",
     description:
-      "Launched the first REST API to serve geographical data programmatically along with dedicated website and comprehensive documentation. Started handling 1M+ requests monthly as developers integrated the API into their applications. API keys requested via Google Forms and database hits 1K+ stars.",
+      "Launched the first REST API to serve geographical data programmatically, along with a dedicated website and comprehensive documentation. Early users integrated the API into their applications, and the database crossed 1K+ stars.",
     icon: Code,
   },
   {
     year: "2022",
     title: "Multi-Format Distribution",
     description:
-      "Responded to community feedback by launching multiple database formats and distributions including JSON, MySQL, PostgreSQL, SQLite, SQL Server, MongoDB, XML, YAML, and CSV. Database reaches 3K+ stars.",
+      "Responded to community feedback by launching multiple database formats and distributions including JSON, MySQL, PostgreSQL, SQLite, SQL Server, MongoDB, XML, YAML, and CSV. Database reached 3K+ stars.",
     icon: Package,
   },
   {
     year: "2023",
     title: "Automation & Platform Expansion",
     description:
-      "Added CI/CD automations to generate all formats automatically. Launched database on platforms like data.world and Kaggle, gaining 5K+ bookmarks overnight. Database hits 5K+ stars.",
+      "Added CI/CD automations to generate all formats automatically. Launched the database on platforms like data.world and Kaggle, gaining thousands of bookmarks overnight. Database reached 5K+ stars.",
     icon: Zap,
   },
   {
     year: "2024",
     title: "Community Platform",
     description:
-      "Launched the Update Tool, enabling community members to contribute data improvements directly. Automated verification system ensures data quality and accuracy. Database reaches 7K+ stars.",
+      "Launched the Update Tool so community members can submit data corrections directly. Automated verification ensures data quality and accuracy at scale. Database crossed 7K+ stars.",
     icon: Users,
   },
   {
     year: "2025",
-    title: "Export Tool Release",
+    title: "Export Tool & API Dashboard",
     description:
-      "Introduced the Export Tool to help developers get custom datasets in their preferred formats. Credit-based system launched to sustain the project's growth. Database hits 8K+ stars and counting.",
+      "Launched the Export Tool for custom datasets with credit-based pricing. Shipped the full API Dashboard at app.countrystatecity.in with self-serve API keys, usage analytics, and plan management. Database crossed 8K+ stars.",
     icon: DownloadCloud,
   },
   {
-    year: "2025",
-    title: "Enterprise Scale Achievement",
+    year: "2026",
+    title: "Ecosystem Expansion",
     description:
-      `API reaches massive scale milestone of ${TEXT_STATS.apiRequests} requests monthly, demonstrating the platform's reliability and widespread adoption by production applications worldwide.`,
-    icon: TrendingUp,
+      `Expanded into a nine-channel developer platform spanning GitHub, REST API, NPM and PyPI packages, a CLI, interactive playground, live demo, export tool, and community manager. Traffic reached ${TEXT_STATS.apiRequests} monthly API requests, with ${TEXT_STATS.developers} developers using the ecosystem and the database crossing 9K+ stars.`,
+    icon: Sparkles,
   },
   {
-    year: "2025",
-    title: "API Dashboard (Coming Soon)",
+    year: "Next",
+    title: "What's Ahead",
     description:
-      "Working on restructuring API access with a comprehensive dashboard and streamlined API key generation. Adding enhanced filters and routes to expand data source capabilities.",
+      "Framework integrations (React, Vue, Next.js, WordPress), LLM and AI-agent tooling, premium endpoints for fuzzy search and nearby-city lookups, and deeper community moderation tooling — all designed to keep the ecosystem the most comprehensive, trusted source of geographical data for developers.",
     icon: LayoutDashboard,
   },
 ];

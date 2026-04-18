@@ -75,7 +75,7 @@ export default function RootLayout({ children }) {
     "url": "https://countrystatecity.in",
     "logo": "https://countrystatecity.in/logo.png",
     "description": `World's most comprehensive geographical database providing data for ${STAT_DESCRIPTIONS.fullCoverage}`,
-    "foundingDate": "2019",
+    "foundingDate": "2018",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+1-XXX-XXX-XXXX",

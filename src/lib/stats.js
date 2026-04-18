@@ -6,7 +6,7 @@ const CORE_VALUES = {
   states: "5,000+",
   cities: "151,000+", // Single canonical value
   developers: "40,000+",
-  apiRequests: "1.2B+",
+  apiRequests: "50M+",
   uptime: "99.9%",
   responseTime: "<200ms",
   formats: "9+",
@@ -20,10 +20,10 @@ const CORE_VALUES = {
 // Core platform statistics (using numerical values for animations)
 export const PLATFORM_STATS = {
   apiRequestsMonthly: {
-    value: 1.2,
-    suffix: "B+",
+    value: 50,
+    suffix: "M+",
     label: "API Requests Monthly",
-    decimals: 1,
+    decimals: 0,
   },
   developersWorldwide: {
     value: 40,
