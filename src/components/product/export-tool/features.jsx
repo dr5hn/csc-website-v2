@@ -35,9 +35,9 @@ const features = [
   },
   {
     icon: Package,
-    title: "Multiple Export Formats",
+    title: "13 Export Formats",
     description:
-      "JSON, CSV, XML, YAML, and SQL formats. Choose the format that fits perfectly with your tech stack.",
+      "Tabular (CSV, Excel, Markdown), Structured (JSON, NDJSON, XML, YAML), Database (SQL, PostgreSQL, SQL Server, SQLite3, MongoDB), and Geospatial (GeoJSON). Database formats produce dialect-specific schema with type inference and indexes — ready to import.",
     color: "blue",
   },
   {

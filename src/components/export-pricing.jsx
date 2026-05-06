@@ -60,10 +60,10 @@ function HowCreditsWork() {
                 Countries: <strong>1 Credit</strong>
               </li>
               <li>
-                States: <strong>2 Credits</strong>
+                States: <strong>3 Credits</strong>
               </li>
               <li>
-                Cities: <strong>3 Credits</strong>
+                Cities: <strong>4 Credits</strong>
               </li>
             </ul>
           </div>
@@ -87,13 +87,16 @@ function HowCreditsWork() {
             </div>
             <ul className="space-y-2 text-sm text-darkgray">
               <li>
-                JSON/CSV: <strong>+1 Credit</strong>
+                JSON / NDJSON / XML / YAML: <strong>+2 Credits</strong>
               </li>
               <li>
-                XML/YAML: <strong>+2 Credits</strong>
+                CSV / Markdown / SQL: <strong>+3–4 Credits</strong>
               </li>
               <li>
-                SQL formats: <strong>+3 Credits</strong>
+                Excel / GeoJSON: <strong>+4 Credits</strong>
+              </li>
+              <li>
+                PostgreSQL / SQL Server / SQLite3: <strong>+5 Credits</strong>
               </li>
             </ul>
           </div>
@@ -111,8 +114,8 @@ function HowCreditsWork() {
               Exporting <strong>Countries + States</strong> in{" "}
               <strong>JSON</strong> format costs:
             </p>
-            <p className="text-3xl font-bold text-orange mt-4">4 Credits</p>
-            <p className="text-xs text-lightgray mt-1">(1 + 2 + 1)</p>
+            <p className="text-3xl font-bold text-orange mt-4">6 Credits</p>
+            <p className="text-xs text-lightgray mt-1">(1 + 3 + 2)</p>
           </div>
         </div>
       </div>

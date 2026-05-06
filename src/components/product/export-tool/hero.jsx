@@ -21,8 +21,25 @@ function CreditCalculator() {
   });
   const [selectedFormat, setSelectedFormat] = useState("json");
 
-  const formatCosts = { json: 0, csv: 1, xml: 2, yaml: 2, sql: 3 };
-  const dataCosts = { countries: 1, states: 2, cities: 3 };
+  // NOTE: keep these costs in sync with csc-export-tool/src/config/pricing.js.
+  // Grouped to match the in-app picker (Tabular / Structured / Database / Geospatial).
+  const formatCosts = {
+    // Tabular
+    csv: 3, xlsx: 4, markdown: 3,
+    // Structured
+    json: 2, ndjson: 2, xml: 2, yaml: 2,
+    // Database
+    sql: 4, postgresql: 5, sqlserver: 5, sqlite3: 5, mongodb: 3,
+    // Geospatial
+    geojson: 4,
+  };
+  const formatLabels = {
+    csv: 'CSV', xlsx: 'Excel', markdown: 'Markdown',
+    json: 'JSON', ndjson: 'NDJSON', xml: 'XML', yaml: 'YAML',
+    sql: 'SQL', postgresql: 'PostgreSQL', sqlserver: 'SQL Server', sqlite3: 'SQLite3', mongodb: 'MongoDB',
+    geojson: 'GeoJSON',
+  };
+  const dataCosts = { countries: 1, states: 3, cities: 4 };
 
   const calculateCredits = () => {
     let total = Object.keys(selectedData).reduce((acc, key) => {
@@ -104,11 +121,7 @@ function CreditCalculator() {
               >
                 {Object.keys(formatCosts).map((format) => (
                   <option key={format} value={format}>
-                    {format.toUpperCase()}{" "}
-                    {formatCosts[format] > 0
-                      ? `(+${formatCosts[format]} credit${formatCosts[format] > 1 ? "s" : ""
-                      })`
-                      : "(FREE)"}
+                    {formatLabels[format]} (+{formatCosts[format]} credit{formatCosts[format] > 1 ? "s" : ""})
                   </option>
                 ))}
               </select>
@@ -190,7 +203,7 @@ export default function HeroExportTool() {
               </div>
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark">
-                  <Check className="h-4 w-4 text-green" aria-hidden />2 Free
+                  <Check className="h-4 w-4 text-green" aria-hidden />5 Free
                   Credits
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark">
