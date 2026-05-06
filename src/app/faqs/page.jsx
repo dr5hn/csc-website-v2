@@ -76,7 +76,7 @@ const faqs = [
     category: "Data Formats",
     question: "What data formats are available?",
     answer:
-      "We support multiple formats including JSON (default), CSV, SQL, XML, YAML, and MongoDB. Our Export Tool allows you to download custom datasets in your preferred format, and the API can return data in JSON or CSV format.",
+      "We support 13 export formats grouped by use case — Tabular (CSV, Excel, Markdown), Structured (JSON default, NDJSON, XML, YAML), Database (SQL, PostgreSQL, SQL Server, SQLite3, MongoDB Extended JSON), and Geospatial (GeoJSON). The Export Tool also supports translation locales, multi-country filters (1–10 countries), region/subregion filters, sort by field, and a flag-image bundle (PNG + SVG). The API returns data in JSON or CSV format.",
   },
   {
     id: 10,

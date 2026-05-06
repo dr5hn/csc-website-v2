@@ -1,16 +1,18 @@
-// Shared export tool pricing data
+// Shared export tool pricing data.
+// Source of truth: csc-export-tool/src/config/pricing.js — keep these in sync
+// whenever credit pricing changes in the main app.
 export const exportPricingPlans = [
   {
     name: "Free Trial",
     price: "$0",
-    credits: "2 Credits",
+    credits: "5 Credits",
     pricePerCredit: "Free",
     description: "Get started with your first export for free.",
     features: [
       "All export formats supported",
       "Access to complete country, state & city data",
       "Credits never expire",
-      "Perfect for trying the service"
+      "Enough for at least one full export"
     ],
     cta: "Start Free Trial",
     href: "https://export.countrystatecity.in",
@@ -20,17 +22,17 @@ export const exportPricingPlans = [
   },
   {
     name: "Starter Pack",
-    price: "$2.99",
-    credits: "6 Credits",
-    pricePerCredit: "$0.498/credit",
+    price: "$4.99",
+    credits: "10 Credits",
+    pricePerCredit: "$0.499/credit",
     description: "Perfect for small to medium exports.",
     features: [
       "All export formats supported",
       "Access to complete country, state & city data",
       "Credits never expire",
-      "Perfect for small to medium exports"
+      "Comfortably covers 1–2 typical exports"
     ],
-    cta: "Buy 6 Credits",
+    cta: "Buy 10 Credits",
     href: "https://export.countrystatecity.in",
     target: "_blank",
     accent: "gray",
@@ -38,9 +40,9 @@ export const exportPricingPlans = [
   },
   {
     name: "Basic Pack",
-    price: "$4.99",
-    credits: "10 Credits",
-    pricePerCredit: "$0.499/credit",
+    price: "$9.99",
+    credits: "16 Credits",
+    pricePerCredit: "$0.624/credit",
     description: "Best value for regular usage.",
     features: [
       "All export formats supported",
@@ -48,7 +50,7 @@ export const exportPricingPlans = [
       "Credits never expire",
       "Best value for regular usage"
     ],
-    cta: "Buy 10 Credits",
+    cta: "Buy 16 Credits",
     href: "https://export.countrystatecity.in",
     target: "_blank",
     accent: "green",
@@ -57,36 +59,36 @@ export const exportPricingPlans = [
   },
   {
     name: "Standard Pack",
-    price: "$9.99",
-    credits: "25 Credits",
-    pricePerCredit: "$0.400/credit",
-    description: "20% savings compared to Basic.",
+    price: "$19.99",
+    credits: "40 Credits",
+    pricePerCredit: "$0.499/credit",
+    description: "50% savings compared to Custom Credits.",
     features: [
       "All export formats supported",
       "Access to all data types",
       "Credits never expire",
       "Valid for all exports"
     ],
-    cta: "Buy 25 Credits",
+    cta: "Buy 40 Credits",
     href: "https://export.countrystatecity.in",
     target: "_blank",
     accent: "blue",
     popular: false,
-    badge: "Save 20%",
+    badge: "Save 50%",
   },
   {
     name: "Premium Pack",
-    price: "$19.99",
-    credits: "60 Credits",
-    pricePerCredit: "$0.333/credit",
-    description: "33% savings - best value for heavy users.",
+    price: "$29.99",
+    credits: "85 Credits",
+    pricePerCredit: "$0.353/credit",
+    description: "65% savings — best value for heavy users.",
     features: [
       "All export formats supported",
       "Access to all data types",
       "Priority support",
       "Valid for all exports"
     ],
-    cta: "Buy 60 Credits",
+    cta: "Buy 85 Credits",
     href: "https://export.countrystatecity.in",
     target: "_blank",
     accent: "orange",
@@ -100,10 +102,10 @@ export const customCreditsOption = {
   name: "Custom Credits",
   price: "$1.00",
   pricePerCredit: "$1.00 per credit",
-  description: "Buy exactly what you need - $1 per credit",
+  description: "Buy exactly what you need — $1 per credit",
   features: [
     "Buy exactly what you need",
-    "Perfect for small exports",
+    "Perfect for small top-ups",
     "No minimum purchase"
   ],
   cta: "Purchase Custom Credits",

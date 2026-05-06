@@ -21,7 +21,7 @@ const steps = [
     icon: Download,
     title: "Download Your Export",
     description:
-      "Your custom dataset is generated instantly. Download it in your chosen format (JSON, CSV, SQL) and integrate it in minutes.",
+      "Your custom dataset is generated instantly. Download it in any of 13 formats — JSON, CSV, Excel, Markdown, XML, YAML, NDJSON, SQL, PostgreSQL, SQL Server, SQLite3, MongoDB, or GeoJSON — and integrate it in minutes.",
     accent: "orange",
   },
 ];
