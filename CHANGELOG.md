@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-05-20
+
+### Added
+
+- **API pricing bullets** updated to surface four newly shipped features:
+  - All plans: Timezone lookup endpoints (country, state, city) with DST awareness
+  - Starter+: ISO 3166 lookup endpoints (alpha-2, alpha-3, numeric, subdivision conversion)
+  - Supporter+: Phone dial code endpoints (lookup, reverse lookup, E.164 parser)
+  - Supporter+: Field filtering (`?fields=`) and custom sort (`?sort=`) on every geographic endpoint
+- **Why Choose Our API** feature grid expanded with three new cards: "Shape Your Response" (fields/sort), "DST-Aware Timezones", and "Phone & ISO Helpers"
+
 ## [1.0.0] - 2026-03-28
 
 ### Added
