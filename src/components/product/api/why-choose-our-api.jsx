@@ -5,6 +5,9 @@ import {
   RefreshCw,
   Code,
   Globe,
+  Filter,
+  Clock,
+  Phone,
 } from "lucide-react";
 
 const features = [
@@ -15,20 +18,27 @@ const features = [
       "Average response time under 200ms globally.",
     color: "from-orange to-orange/90",
   },
-  // {
-  //   icon: ShieldCheck,
-  //   title: "Enterprise Security",
-  //   description:
-  //     "Advanced security with API key authentication, domain restrictions, rate limiting, and comprehensive audit logs.",
-  //   color: "from-blue to-green",
-  // },
-  // {
-  //   icon: BarChart2,
-  //   title: "Real-Time Analytics",
-  //   description:
-  //     "Detailed usage analytics, performance metrics, and insights to optimize your application performance.",
-  //   color: "from-green to-green/90",
-  // },
+  {
+    icon: Filter,
+    title: "Shape Your Response",
+    description:
+      "?fields= trims responses to only the columns you need. ?sort= orders list results server-side. Pay for the data you use, not what you discard.",
+    color: "from-green to-green/90",
+  },
+  {
+    icon: Clock,
+    title: "DST-Aware Timezones",
+    description:
+      "Resolve any country, state, or city to its canonical IANA timezone with current DST state, standard offset, and daylight offset in one call.",
+    color: "from-blue to-blue/90",
+  },
+  {
+    icon: Phone,
+    title: "Phone & ISO Helpers",
+    description:
+      "Parse E.164 numbers into country + national parts, look up dial codes, and convert ISO 3166 codes between alpha-2, alpha-3, and numeric formats.",
+    color: "from-orange to-orange/90",
+  },
   {
     icon: RefreshCw,
     title: "Always Up-to-Date",
@@ -43,13 +53,6 @@ const features = [
       "RESTful design, comprehensive documentation, code examples, and SDKs for popular programming languages.",
     color: "from-blue to-green",
   },
-  // {
-  //   icon: Globe,
-  //   title: "Global Coverage",
-  //   description:
-  //     "Complete coverage with detailed metadata.",
-  //   color: "from-orange to-orange/90",
-  // },
 ];
 
 export default function WhyChooseOurApi() {
