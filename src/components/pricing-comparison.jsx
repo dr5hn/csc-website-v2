@@ -3,6 +3,9 @@ import { Check, Minus } from "lucide-react";
 import { TIERS, COMPARISON_SECTIONS } from "@/data/pricing-tiers";
 
 function Cell({ value }) {
+  if (value === undefined || value === null) {
+    return <Minus className="mx-auto h-4 w-4 text-darkgray/40" aria-label="Not included" />;
+  }
   if (value === true) {
     return <Check className="mx-auto h-5 w-5 text-green" aria-label="Included" />;
   }
@@ -33,12 +36,13 @@ export default function PricingComparison() {
         <table className="w-full min-w-[820px] border-collapse text-left">
           <thead>
             <tr className="border-b border-light/60">
-              <th className="sticky left-0 z-10 bg-white/90 px-4 py-4 text-sm font-semibold text-dark">
+              <th scope="col" className="sticky left-0 z-10 bg-white/90 px-4 py-4 text-sm font-semibold text-dark">
                 Feature
               </th>
               {TIERS.map((tier) => (
                 <th
                   key={tier.key}
+                  scope="col"
                   className={`px-4 py-4 text-center text-sm font-bold ${
                     tier.highlighted ? "text-blue" : "text-dark"
                   }`}
@@ -76,10 +80,10 @@ function FragmentSection({ section }) {
         </td>
       </tr>
       {section.rows.map((row) => (
-        <tr key={row.label} className="border-b border-light/40 last:border-0">
-          <td className="sticky left-0 z-10 bg-white/90 px-4 py-3 text-sm text-darkgray">
+        <tr key={`${section.section}:${row.label}`} className="border-b border-light/40 last:border-0">
+          <th scope="row" className="sticky left-0 z-10 bg-white/90 px-4 py-3 text-sm text-darkgray font-normal">
             {row.label}
-          </td>
+          </th>
           {TIERS.map((tier) => (
             <td key={tier.key} className="px-4 py-3 text-center align-middle">
               <Cell value={row.values[tier.key]} />
