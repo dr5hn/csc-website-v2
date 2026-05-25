@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-05-25
+
+### Added
+
+- **Full tier × feature comparison table** on the `/pricing` (API tab) and `/product/api` pages. Driven by a new structured `src/data/pricing-tiers.js` that mirrors the csc-app dashboard comparison. Includes ISO lookup and timezone rows. Renders via a shared `<PricingComparison />` embedded in the `ApiPricing` component, so both pages stay in sync from one source.
+
 ## [1.1.0] - 2026-05-20
 
 ### Added

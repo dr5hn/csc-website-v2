@@ -1,4 +1,5 @@
 import PricingCard from "./pricing-card";
+import PricingComparison from "./pricing-comparison";
 import { Mail } from "lucide-react";
 import Link from "next/link";
 
@@ -106,31 +107,34 @@ const plans = [
 
 export default function ApiPricing() {
   return (
-    <div className="space-y-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-start">
-        {plans.map((plan, index) => (
-          <PricingCard key={index} plan={plan} />
-        ))}
-      </div>
+    <>
+      <div className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-start">
+          {plans.map((plan, index) => (
+            <PricingCard key={index} plan={plan} />
+          ))}
+        </div>
 
-      {/* Custom Plan CTA */}
-      <div className="relative rounded-2xl p-[1px] bg-gradient-to-r from-purple-500/30 to-blue/30">
-        <div className="rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div>
-            <h3 className="text-xl font-bold text-dark">Need higher limits or custom features?</h3>
-            <p className="text-darkgray mt-1">
-              We offer tailored plans with negotiated limits, custom data access levels, and dedicated support.
-            </p>
+        {/* Custom Plan CTA */}
+        <div className="relative rounded-2xl p-[1px] bg-gradient-to-r from-purple-500/30 to-blue/30">
+          <div className="rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+              <h3 className="text-xl font-bold text-dark">Need higher limits or custom features?</h3>
+              <p className="text-darkgray mt-1">
+                We offer tailored plans with negotiated limits, custom data access levels, and dedicated support.
+              </p>
+            </div>
+            <Link
+              href="mailto:gadadarshan@gmail.com?subject=Custom%20Plan%20Inquiry&utm_source=website&utm_medium=cta&utm_content=api_pricing_custom"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-bold text-base shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap"
+            >
+              <Mail className="w-5 h-5" />
+              Contact Us
+            </Link>
           </div>
-          <Link
-            href="mailto:gadadarshan@gmail.com?subject=Custom%20Plan%20Inquiry&utm_source=website&utm_medium=cta&utm_content=api_pricing_custom"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-bold text-base shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap"
-          >
-            <Mail className="w-5 h-5" />
-            Contact Us
-          </Link>
         </div>
       </div>
-    </div>
+      <PricingComparison />
+    </>
   );
 }
