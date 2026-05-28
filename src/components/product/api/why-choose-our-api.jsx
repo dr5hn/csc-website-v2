@@ -8,6 +8,7 @@ import {
   Filter,
   Clock,
   Phone,
+  Search,
 } from "lucide-react";
 
 const features = [
@@ -38,6 +39,13 @@ const features = [
     description:
       "Parse E.164 numbers into country + national parts, look up dial codes, and convert ISO 3166 codes between alpha-2, alpha-3, and numeric formats.",
     color: "from-orange to-orange/90",
+  },
+  {
+    icon: Search,
+    title: "Typo-Tolerant Search",
+    description:
+      "Fuzzy search resolves misspellings, transliterations, and native-script queries — 'Banglore' finds Bangalore — with a confidence score on every match.",
+    color: "from-green to-green/90",
   },
   {
     icon: RefreshCw,

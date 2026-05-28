@@ -75,6 +75,7 @@ const plans = [
       "All endpoints including cities by country",
       "Regions, subregions, ISO, phone dial code, and timezone APIs",
       "Field filtering (?fields=) and custom sort (?sort=) on every geographic endpoint",
+      "Fuzzy / typo-tolerant search across cities, states & countries",
       "Domain + IP whitelisting (up to 10)",
       "Founder-led priority support (~1 business day)",
       "Coming soon: GraphQL, geospatial search",
