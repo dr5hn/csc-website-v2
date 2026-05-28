@@ -109,6 +109,7 @@ export const COMPARISON_SECTIONS = [
       { label: "Timezone Lookup (country/state/city)", values: { community: true, starter: true, supporter: true, professional: true, business: true } },
       { label: "Fields Filtering (?fields=)", values: { community: false, starter: false, supporter: true, professional: true, business: true } },
       { label: "Sorting (?sort=)", values: { community: false, starter: false, supporter: true, professional: true, business: true } },
+      { label: "Fuzzy / Typo-Tolerant Search", values: { community: false, starter: false, supporter: false, professional: true, business: true } },
       { label: "GraphQL API", values: { community: false, starter: false, supporter: false, professional: "coming_soon", business: "coming_soon" } },
       { label: "Nearby / Geospatial Search", values: { community: false, starter: false, supporter: false, professional: "coming_soon", business: "coming_soon" } },
     ],
