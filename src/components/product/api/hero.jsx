@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { TEXT_STATS } from "@/lib/stats";
+import { usePlatformStats } from "@/hooks/use-platform-stats";
 import {
   Rocket,
   BookOpen,
@@ -12,6 +14,7 @@ import {
 import APIStatusWidget from "../database/api-status-widget";
 
 export function HeroApi() {
+  const { totalRequests } = usePlatformStats();
   return (
     <>
       <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue/[0.02] to-green/[0.03]">
@@ -46,7 +49,7 @@ export function HeroApi() {
               <p className="mt-5 text-lg md:text-xl text-darkgray/90 leading-relaxed max-w-2xl">
                 Power your applications with the world&apos;s most comprehensive
                 geographical data API. Trusted by thousands of developers,
-                handling {TEXT_STATS.apiRequests} requests monthly with {TEXT_STATS.uptime} uptime.
+                handling {totalRequests.value}{totalRequests.suffix} total requests with 99.9% uptime.
               </p>
 
               {/* Status */}

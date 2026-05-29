@@ -3,24 +3,25 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Rocket, FileText, Globe, Check, Trophy, MapPin, Users, Target } from "lucide-react";
-import { TEXT_STATS } from "@/lib/stats";
+import { usePlatformStats } from "@/hooks/use-platform-stats";
 
 function DatabaseOverview() {
+  const { countries, states, cities } = usePlatformStats();
   const stats = [
     {
-      value: TEXT_STATS.countries,
+      value: `${countries.value}+`,
       label: "Countries Covered",
       icon: Globe,
       color: "from-blue to-blue/80"
     },
     {
-      value: TEXT_STATS.states,
+      value: `${states.value}${states.suffix}`,
       label: "States/Regions",
       icon: MapPin,
       color: "from-green to-green/80"
     },
     {
-      value: TEXT_STATS.cities,
+      value: `${cities.value}${cities.suffix}`,
       label: "Cities & Towns",
       icon: Target,
       color: "from-orange to-orange/80"

@@ -25,9 +25,9 @@ export default function PricingCard({ plan }) {
 
       <div className="relative rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_rgba(2,6,23,0.06)] h-full flex flex-col p-6 lg:p-7">
         {plan.badge && (
-          <div className="absolute -top-4 right-4 z-10">
+          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
             <span className={cn(
-              "inline-flex items-center rounded-full px-3 py-1.5 text-xs font-bold shadow-md",
+              "inline-flex items-center rounded-full px-3 py-1.5 text-xs font-bold shadow-md whitespace-nowrap",
               plan.accent === "blue" && "bg-blue text-white",
               plan.accent === "orange" && "bg-orange text-white",
               plan.accent === "green" && "bg-green text-white",

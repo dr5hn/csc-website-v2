@@ -1,5 +1,7 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { TEXT_STATS } from "@/lib/stats";
+import { usePlatformStats } from "@/hooks/use-platform-stats";
 import {
   FileJson,
   Database,
@@ -130,6 +132,7 @@ function FormatCard({ item, index }) {
 }
 
 export default function ChooseYourFormat() {
+  const { countries, states, cities } = usePlatformStats();
   return (
     <section className="relative bg-gradient-to-br from-white via-light/30 to-blue/5">
       <div className="container mx-auto px-4 py-6 lg:py-12">
@@ -173,7 +176,7 @@ export default function ChooseYourFormat() {
             <div className="text-center">
               <Globe className="mx-auto h-8 w-8" />
               <div className="mt-2 text-base font-semibold text-dark">
-                {TEXT_STATS.countries} Countries
+                {countries.value}+ Countries
               </div>
               <div className="text-sm text-darkgray">
                 Complete with ISO codes, capitals, currencies
@@ -182,7 +185,7 @@ export default function ChooseYourFormat() {
             <div className="text-center">
               <Map className="mx-auto h-8 w-8" />
               <div className="mt-2 text-base font-semibold text-dark">
-                {TEXT_STATS.states} States
+                {states.value}{states.suffix} States
               </div>
               <div className="text-sm text-darkgray">
                 Provinces, regions, administrative divisions
@@ -191,7 +194,7 @@ export default function ChooseYourFormat() {
             <div className="text-center">
               <Building2 className="mx-auto h-8 w-8" />
               <div className="mt-2 text-base font-semibold text-dark">
-                {TEXT_STATS.cities} Cities
+                {cities.value}{cities.suffix} Cities
               </div>
               <div className="text-sm text-darkgray">
                 Towns, districts, with coordinates

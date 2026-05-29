@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { DATABASE_STATS, STAT_DESCRIPTIONS, TEXT_STATS } from "@/lib/stats";
+import { TEXT_STATS } from "@/lib/stats";
 import {
   Download,
   Star,
@@ -15,6 +15,7 @@ import {
   Users,
 } from "lucide-react";
 import { useGithubStats } from "@/hooks/use-github-stats";
+import { usePlatformStats } from "@/hooks/use-platform-stats";
 import GitHubIcon from "@/icons/GitHub";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -22,13 +23,6 @@ import PostgreSQLIcon from "@/icons/PostgreSQLIcon";
 import SQLiteIcon from "@/icons/SQLite";
 
 const repoUrl = "https://github.com/dr5hn/countries-states-cities-database";
-
-const baseStats = [
-  { label: DATABASE_STATS.countries.label, value: DATABASE_STATS.countries.value },
-  { label: DATABASE_STATS.states.label, value: DATABASE_STATS.states.value },
-  { label: DATABASE_STATS.cities.label, value: DATABASE_STATS.cities.value },
-  { label: DATABASE_STATS.formats.label, value: DATABASE_STATS.formats.value },
-];
 
 const formats = [
   { label: "JSON", Icon: FileJson },
@@ -66,13 +60,21 @@ function FormatPill({ label, Icon }) {
 
 export default function ProductDatabaseHero() {
   const { stars, loading: githubLoading } = useGithubStats();
-  
+  const { countries, states, cities } = usePlatformStats();
+
+  const baseStats = [
+    { label: "Countries", value: `${countries.value}+` },
+    { label: "States",    value: `${states.value}${states.suffix}` },
+    { label: "Cities",    value: `${cities.value}${cities.suffix}` },
+    { label: "Formats",   value: TEXT_STATS.formats },
+  ];
+
   // Build stats array dynamically
   const stats = [...baseStats];
   if (stars && !githubLoading) {
-    stats.push({ 
-      label: "GitHub Stars", 
-      value: Intl.NumberFormat("en", { notation: "compact" }).format(stars) 
+    stats.push({
+      label: "GitHub Stars",
+      value: Intl.NumberFormat("en", { notation: "compact" }).format(stars)
     });
   }
   return (
@@ -105,7 +107,7 @@ export default function ProductDatabaseHero() {
 
               {/* Description */}
               <p className="mt-5 text-lg md:text-xl text-darkgray/90 leading-relaxed max-w-2xl">
-                Comprehensive geographical data covering {STAT_DESCRIPTIONS.fullCoverageAlt}. Available in {TEXT_STATS.formats} formats, trusted by thousands of developers worldwide.
+                Comprehensive geographical data covering {countries.value}+ countries, {states.value}{states.suffix} states, and {cities.value}{cities.suffix} cities. Available in {TEXT_STATS.formats} formats, trusted by thousands of developers worldwide.
               </p>
 
               {/* CTAs */}

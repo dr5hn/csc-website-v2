@@ -4,7 +4,7 @@ import { Zap, Users, Database, Globe, Star, ShieldCheck, GitBranch, Download, Ey
 const CORE_VALUES = {
   countries: "250+",
   states: "5,000+",
-  cities: "151,000+",
+  cities: "150,000+",
   developers: "40,000+",
   developersShort: "40K+",
   apiRequests: "50M+",

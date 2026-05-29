@@ -17,6 +17,7 @@ import {
   Database,
   Star,
   ShieldCheck,
+  Layers,
 } from "lucide-react";
 
 const innovationItems = [
@@ -167,12 +168,13 @@ function ItemRow({ item }) {
 
 function StatsRibbon() {
   const { formattedStars, loading: starsLoading } = useGitHubStars("dr5hn", "countries-states-cities-database");
-  const { totalRequests, cities, countries } = usePlatformStats();
+  const { totalRequests, cities, states, countries } = usePlatformStats();
 
   const stats = [
     { icon: Zap,        ...totalRequests,                              label: "Total API Requests"   },
     { icon: Users,      value: 40,    suffix: "K+",  decimals: 0,     label: "Developers Worldwide" },
     { icon: Database,   ...cities,                                     label: "Cities"               },
+    { icon: Layers,     ...states,                                     label: "States & Regions"     },
     { icon: Globe,      ...countries,                                  label: "Countries Covered"    },
     { icon: ShieldCheck, value: 99.9, suffix: "%",   decimals: 1,     label: "API Uptime"           },
     createGitHubStarsStat(formattedStars, starsLoading, { label: "Open Source Stars" }),
@@ -182,7 +184,7 @@ function StatsRibbon() {
     <div className="relative mt-10">
       <div className="rounded-2xl p-[1px] bg-gradient-to-r from-blue/30 to-green/30">
         <div className="bg-gradient-to-r from-blue to-blue/90 rounded-[calc(1rem-1px)] p-3 md:px-6 md:py-5">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-white">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6 text-white">
             {stats.map((s, i) => {
               const Icon = s.icon;
               return (
