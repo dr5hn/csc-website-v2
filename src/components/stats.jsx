@@ -35,10 +35,24 @@ function useInView(options) {
   return [ref, inView];
 }
 
-// Animated counter component
-function AnimatedCounter({ end, decimals = 0, suffix = "" }) {
+const LS_STATS_KEY = "csc_stats_cache";
+
+function readStatsCache() {
+  try { return JSON.parse(localStorage.getItem(LS_STATS_KEY) || "null"); } catch { return null; }
+}
+function writeStatsCache(data) {
+  try { localStorage.setItem(LS_STATS_KEY, JSON.stringify(data)); } catch {}
+}
+
+// Animated counter — starts from cached value so refresh never resets to 0
+function AnimatedCounter({ statKey, end, decimals = 0, suffix = "" }) {
+  const [startFrom] = useState(() => {
+    if (typeof window === "undefined") return end;
+    return readStatsCache()?.[statKey] ?? end;
+  });
+
   const { number } = useSpring({
-    from: { number: 0 },
+    from: { number: startFrom },
     to: { number: end },
     delay: 200,
     config: { mass: 1, tension: 20, friction: 10 },
@@ -55,15 +69,27 @@ function AnimatedCounter({ end, decimals = 0, suffix = "" }) {
 export default function Stats() {
   const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
   const { formattedStars, loading: starsLoading } = useGitHubStars("dr5hn", "countries-states-cities-database");
-  const { totalRequests, countries, states, cities } = usePlatformStats();
+  const { totalRequests, countries, states, cities, loading } = usePlatformStats();
+
+  // Persist live values to localStorage so next page load starts from here
+  useEffect(() => {
+    if (!loading) {
+      writeStatsCache({
+        totalRequests: totalRequests.value,
+        cities: cities.value,
+        states: states.value,
+        countries: countries.value,
+      });
+    }
+  }, [loading, totalRequests, cities, states, countries]);
 
   const stats = [
-    { icon: Zap,        ...totalRequests, label: "Total API Requests",  color: "blue"   },
-    { icon: Users,      value: 40, suffix: "K+", decimals: 0, label: "Developers Worldwide", color: "green"  },
-    { icon: Database,   ...cities,        label: "Cities",              color: "orange" },
-    { icon: Layers,     ...states,        label: "States & Regions",    color: "blue"   },
-    { icon: Globe,      ...countries,     label: "Countries",           color: "green"  },
-    { icon: ShieldCheck, value: 99.9, suffix: "%", decimals: 1, label: "API Uptime", color: "orange" },
+    { icon: Zap,        ...totalRequests, statKey: "totalRequests", label: "Total API Requests",  color: "blue"   },
+    { icon: Users,      value: 40, suffix: "K+", decimals: 0, statKey: "developers", label: "Developers Worldwide", color: "green"  },
+    { icon: Database,   ...cities,        statKey: "cities",        label: "Cities",              color: "orange" },
+    { icon: Layers,     ...states,        statKey: "states",        label: "States & Regions",    color: "blue"   },
+    { icon: Globe,      ...countries,     statKey: "countries",     label: "Countries",           color: "green"  },
+    { icon: ShieldCheck, value: 99.9, suffix: "%", decimals: 1, statKey: "uptime", label: "API Uptime", color: "orange" },
     createGitHubStarsStat(formattedStars, starsLoading, { label: "Open Source Stars", color: "green" }),
   ];
 
@@ -117,12 +143,13 @@ export default function Stats() {
                   >
                     {inView ? (
                       <AnimatedCounter
+                        statKey={stat.statKey}
                         end={stat.value}
                         decimals={stat.decimals}
                         suffix={stat.suffix}
                       />
                     ) : (
-                      `0${stat.suffix || ""}`
+                      `${readStatsCache()?.[stat.statKey]?.toFixed(stat.decimals) ?? stat.value.toFixed(stat.decimals)}${stat.suffix || ""}`
                     )}
                   </div>
                   <div className="mt-1 text-sm font-semibold text-darkgray">

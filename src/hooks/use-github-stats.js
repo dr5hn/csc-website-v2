@@ -1,170 +1,80 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-export function useGithubStats(repo = "dr5hn/countries-states-cities-database") {
-  const [stats, setStats] = useState({
-    stars: null,
-    forks: null,
-    contributors: null,
-    loading: true,
-    error: null
-  });
+const REPO = "dr5hn/countries-states-cities-database";
 
-  useEffect(() => {
-    let isMounted = true;
+const headers = () => ({
+  Accept: "application/vnd.github.v3+json",
+  "User-Agent": "CSC-Website",
+  ...(process.env.NEXT_PUBLIC_GITHUB_TOKEN && {
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
+  }),
+});
 
-    async function fetchStats() {
-      try {
-        const headers = {
-          'Accept': 'application/vnd.github.v3+json',
-          'User-Agent': 'CSC-Website'
-        };
+// Module-level cache — all components share one fetch per session
+let _statsCache = null;
+let _statsPromise = null;
 
-        // 1. Fetch main repo data (stars, forks)
-        const repoResponse = await fetch(`https://api.github.com/repos/${repo}`, {
-          headers
-        });
+async function fetchAllGitHubStats() {
+  if (_statsCache) return _statsCache;
+  if (_statsPromise) return _statsPromise;
 
-        if (!repoResponse.ok) {
-          throw new Error(`Failed to fetch repo stats: ${repoResponse.status}`);
-        }
+  _statsPromise = (async () => {
+    // 1. Repo stats (stars + forks) — 1 request
+    const repoRes = await fetch(`https://api.github.com/repos/${REPO}`, { headers: headers() });
+    const repo = repoRes.ok ? await repoRes.json() : {};
 
-        const repoData = await repoResponse.json();
-
-        if (!isMounted) return;
-
-        // 2. Fetch contributor count (paginated)
-        let contributorCount = 0;
-        let page = 1;
-        let hasMore = true;
-
-        while (hasMore) {
-          const contributorsResponse = await fetch(
-            `https://api.github.com/repos/${repo}/contributors?per_page=100&page=${page}&anon=1`,
-            { headers }
-          );
-
-          if (!contributorsResponse.ok) {
-            console.warn(`Failed to fetch contributors page ${page}: ${contributorsResponse.status}`);
-            break;
-          }
-
-          const contributors = await contributorsResponse.json();
-          contributorCount += contributors.length;
-
-          // Check if there's a next page
-          const linkHeader = contributorsResponse.headers.get('Link');
-          if (linkHeader && linkHeader.includes('rel="next"')) {
-            page++;
-          } else {
-            hasMore = false;
-          }
-
-          // Prevent infinite loops
-          if (page > 50) break;
-        }
-
-        if (!isMounted) return;
-
-        setStats({
-          stars: repoData.stargazers_count,
-          forks: repoData.forks_count,
-          contributors: contributorCount,
-          loading: false,
-          error: null
-        });
-
-      } catch (error) {
-        console.error('Error fetching GitHub stats:', error);
-        if (isMounted) {
-          setStats(prev => ({
-            ...prev,
-            loading: false,
-            error: error.message
-          }));
-        }
-      }
+    // 2. Contributors — paginated but cached once
+    let count = 0;
+    let page = 1;
+    while (true) {
+      const res = await fetch(
+        `https://api.github.com/repos/${REPO}/contributors?per_page=100&page=${page}&anon=1`,
+        { headers: headers() }
+      );
+      if (!res.ok) break;
+      const data = await res.json();
+      count += data.length;
+      const link = res.headers.get("Link") || "";
+      if (!link.includes('rel="next"') || data.length === 0) break;
+      page++;
+      if (page > 50) break;
     }
 
-    fetchStats();
-
-    return () => {
-      isMounted = false;
+    _statsCache = {
+      stars: repo.stargazers_count ?? null,
+      forks: repo.forks_count ?? null,
+      contributors: count || null,
     };
-  }, [repo]);
+    return _statsCache;
+  })().catch(() => {
+    _statsPromise = null; // allow retry on failure
+    return { stars: null, forks: null, contributors: null };
+  });
+
+  return _statsPromise;
+}
+
+export function useGithubStats() {
+  const [stats, setStats] = useState(_statsCache ?? { stars: null, forks: null, contributors: null, loading: true });
+
+  useEffect(() => {
+    if (_statsCache) { setStats({ ..._statsCache, loading: false }); return; }
+    fetchAllGitHubStats().then((s) => setStats({ ...s, loading: false }));
+  }, []);
 
   return stats;
 }
 
-// Hook specifically for contributor count
-export function useGithubContributors(repo = "dr5hn/countries-states-cities-database") {
-  const [contributorCount, setContributorCount] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export function useGithubContributors() {
+  const [contributorCount, setContributorCount] = useState(_statsCache?.contributors ?? null);
+  const [loading, setLoading] = useState(!_statsCache);
 
   useEffect(() => {
-    let isMounted = true;
+    if (_statsCache) { setContributorCount(_statsCache.contributors); setLoading(false); return; }
+    fetchAllGitHubStats().then((s) => { setContributorCount(s.contributors); setLoading(false); });
+  }, []);
 
-    async function fetchContributors() {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const headers = {
-          'Accept': 'application/vnd.github.v3+json',
-          'User-Agent': 'CSC-Website'
-        };
-
-        let count = 0;
-        let page = 1;
-        let hasMore = true;
-
-        while (hasMore) {
-          const response = await fetch(
-            `https://api.github.com/repos/${repo}/contributors?per_page=100&page=${page}&anon=1`,
-            { headers }
-          );
-
-          if (!response.ok) {
-            throw new Error(`Failed to fetch contributors: ${response.status}`);
-          }
-
-          const contributors = await response.json();
-          count += contributors.length;
-
-          // Check if there's a next page
-          const linkHeader = response.headers.get('Link');
-          if (linkHeader && linkHeader.includes('rel="next"')) {
-            page++;
-          } else {
-            hasMore = false;
-          }
-
-          // Prevent infinite loops
-          if (page > 50) break;
-        }
-
-        if (isMounted) {
-          setContributorCount(count);
-          setLoading(false);
-        }
-
-      } catch (error) {
-        console.error('Error fetching GitHub contributors:', error);
-        if (isMounted) {
-          setError(error.message);
-          setLoading(false);
-        }
-      }
-    }
-
-    fetchContributors();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [repo]);
-
-  return { contributorCount, loading, error };
+  return { contributorCount, loading };
 }

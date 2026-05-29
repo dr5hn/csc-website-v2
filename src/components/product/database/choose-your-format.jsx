@@ -173,7 +173,7 @@ export default function ChooseYourFormat() {
             <div className="text-center">
               <Globe className="mx-auto h-8 w-8" />
               <div className="mt-2 text-base font-semibold text-dark">
-                250+ Countries
+                {TEXT_STATS.countries} Countries
               </div>
               <div className="text-sm text-darkgray">
                 Complete with ISO codes, capitals, currencies

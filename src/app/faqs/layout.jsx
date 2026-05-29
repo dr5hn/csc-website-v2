@@ -1,3 +1,5 @@
+import { TEXT_STATS } from "@/lib/stats";
+
 export const metadata = {
   title: "Frequently Asked Questions - CSC Database Help Center",
   description: "Find answers to common questions about CSC Database API, pricing, data accuracy, usage limits, and technical implementation. Get help fast!",
@@ -61,7 +63,7 @@ const faqSchema = {
       "name": "How many countries, states, and cities do you cover?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We provide complete coverage with 250+ countries, 5,000+ states, and 151,000+ cities worldwide. This includes all UN-recognized countries, major administrative divisions, and populated places with coordinate data."
+        "text": `We provide complete coverage with ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states, and ${TEXT_STATS.cities} cities worldwide. This includes all UN-recognized countries, major administrative divisions, and populated places with coordinate data.`
       }
     },
     {

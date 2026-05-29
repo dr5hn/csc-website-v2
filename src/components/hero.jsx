@@ -2,7 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Clock, Rocket, Shield, Star } from "lucide-react";
 import { Globe } from "./globe";
 import GitHubStars from "./githubstars";
-import { TEXT_STATS, STAT_DESCRIPTIONS } from "@/lib/stats";
+import { TEXT_STATS } from "@/lib/stats";
+import LiveTotalRequests from "@/components/live-total-requests";
+import LiveGeoCoverage from "@/components/live-geo-coverage";
 
 export default function HeroSection() {
   return (
@@ -40,7 +42,7 @@ export default function HeroSection() {
 
             {/* Subtext */}
             <p className="text-xl text-darkgray mb-8 leading-relaxed max-w-2xl lg:max-w-none">
-              Build location-aware applications with accurate data from <strong>{STAT_DESCRIPTIONS.fullCoverage}</strong>. Trusted by {TEXT_STATS.developers} developers worldwide with <strong>{TEXT_STATS.apiRequests} API requests monthly</strong> and {TEXT_STATS.uptime} uptime guarantee.
+              Build location-aware applications with accurate data from <strong><LiveGeoCoverage /></strong>. Trusted by {TEXT_STATS.developers} developers worldwide with <strong><LiveTotalRequests /> total API requests</strong> and {TEXT_STATS.uptime} uptime guarantee.
             </p>
 
             {/* CTA Buttons */}

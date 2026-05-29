@@ -2,7 +2,8 @@
 
 import { cn } from "@/lib/utils";
 import { useGitHubStars } from "@/hooks/use-github-stars";
-import { getMainStatsWithGitHub, TEXT_STATS } from "@/lib/stats";
+import { TEXT_STATS, createGitHubStarsStat } from "@/lib/stats";
+import { usePlatformStats } from "@/hooks/use-platform-stats";
 import {
   Target,
   Users,
@@ -165,9 +166,17 @@ function ItemRow({ item }) {
 }
 
 function StatsRibbon() {
-  const { formattedStars, loading } = useGitHubStars("dr5hn", "countries-states-cities-database");
-  
-  const stats = getMainStatsWithGitHub(formattedStars, loading);
+  const { formattedStars, loading: starsLoading } = useGitHubStars("dr5hn", "countries-states-cities-database");
+  const { totalRequests, cities, countries } = usePlatformStats();
+
+  const stats = [
+    { icon: Zap,        ...totalRequests,                              label: "Total API Requests"   },
+    { icon: Users,      value: 40,    suffix: "K+",  decimals: 0,     label: "Developers Worldwide" },
+    { icon: Database,   ...cities,                                     label: "Cities"               },
+    { icon: Globe,      ...countries,                                  label: "Countries Covered"    },
+    { icon: ShieldCheck, value: 99.9, suffix: "%",   decimals: 1,     label: "API Uptime"           },
+    createGitHubStarsStat(formattedStars, starsLoading, { label: "Open Source Stars" }),
+  ];
 
   return (
     <div className="relative mt-10">

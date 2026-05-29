@@ -4,8 +4,9 @@ import { Zap, Users, Database, Globe, Star, ShieldCheck, GitBranch, Download, Ey
 const CORE_VALUES = {
   countries: "250+",
   states: "5,000+",
-  cities: "151,000+", // Single canonical value
+  cities: "151,000+",
   developers: "40,000+",
+  developersShort: "40K+",
   apiRequests: "50M+",
   uptime: "99.9%",
   responseTime: "<200ms",
@@ -106,9 +107,10 @@ export const UPDATE_TOOL_STATS = {
 // Text-based stats for descriptions and content (all reference CORE_VALUES)
 export const TEXT_STATS = {
   countries: CORE_VALUES.countries,
-  states: CORE_VALUES.states, 
+  states: CORE_VALUES.states,
   cities: CORE_VALUES.cities,
   developers: CORE_VALUES.developers,
+  developersShort: CORE_VALUES.developersShort,
   apiRequests: CORE_VALUES.apiRequests,
   uptime: CORE_VALUES.uptime,
   responseTime: CORE_VALUES.responseTime,

@@ -2,21 +2,9 @@
 
 import { Globe, Zap, Code, RefreshCw, Heart, CheckCircle } from "lucide-react";
 import { TEXT_STATS } from "@/lib/stats";
+import { usePlatformStats } from "@/hooks/use-platform-stats";
 
-const features = [
-  {
-    icon: Globe,
-    title: "Complete Global Coverage",
-    description:
-      "Access every country, state, and city worldwide with weekly updates. 250+ countries, 5,000+ states, 151,000+ cities at your fingertips.",
-    color: "from-blue to-blue/90",
-    details: [
-      `${TEXT_STATS.countries} Countries`,
-      `${TEXT_STATS.states} States`,
-      `${TEXT_STATS.cities} Cities`,
-      "Weekly Updates",
-    ],
-  },
+const staticFeatures = [
   {
     icon: Zap,
     title: "Lightning-Fast Geographic API",
@@ -57,6 +45,23 @@ const features = [
 ];
 
 export default function WhyChooseUs() {
+  const { countries, states, cities } = usePlatformStats();
+
+  const c = `${countries.value}+`;
+  const s = `${states.value}${states.suffix}`;
+  const ci = `${cities.value}${cities.suffix}`;
+
+  const features = [
+    {
+      icon: Globe,
+      title: "Complete Global Coverage",
+      description: `Access every country, state, and city worldwide with weekly updates. ${c} countries, ${s} states, ${ci} cities at your fingertips.`,
+      color: "from-blue to-blue/90",
+      details: [`${c} Countries`, `${s} States`, `${ci} Cities`, "Weekly Updates"],
+    },
+    ...staticFeatures,
+  ];
+
   return (
     <section className="container mx-auto px-4 py-6 lg:py-12">
       <div className="text-center mb-10">

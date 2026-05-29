@@ -1,3 +1,5 @@
+import { TEXT_STATS } from "@/lib/stats";
+
 export default function AboutIntro() {
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-br from-white via-blue/[0.02] to-green/[0.03] py-10 lg:py-20">
@@ -41,7 +43,7 @@ export default function AboutIntro() {
           <div className="w-1 h-1 bg-lightgray rounded-full"></div>
           <div className="flex items-center gap-2">
             <div className="text-sm font-medium text-lightgray uppercase">
-              40K+ Developers
+              {TEXT_STATS.developersShort} Developers
             </div>
             <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue rounded-full"></div>
           </div>

@@ -3,13 +3,27 @@
 import { useState, useEffect } from "react";
 
 const FALLBACK = {
-  totalRequests: 5000000000,
+  totalRequests: 5135800142,
   countries: 250,
-  states: 5000,
-  cities: 151000,
+  states: 5308,
+  cities: 153768,
 };
 
-function formatCount(n) {
+// Module-level cache — all components share one fetch per session
+let _promise = null;
+let _cached = null;
+
+function fetchPlatformStats() {
+  if (_cached) return Promise.resolve(_cached);
+  if (_promise) return _promise;
+  _promise = fetch("https://api.countrystatecity.in/stats")
+    .then((r) => (r.ok ? r.json() : Promise.reject()))
+    .then((data) => { _cached = data; return data; })
+    .catch(() => { _cached = FALLBACK; return FALLBACK; });
+  return _promise;
+}
+
+export function formatCount(n) {
   if (n >= 1_000_000_000)
     return { value: parseFloat((n / 1_000_000_000).toFixed(1)), suffix: "B+", decimals: 1 };
   if (n >= 1_000_000)
@@ -20,15 +34,15 @@ function formatCount(n) {
 }
 
 export function usePlatformStats() {
-  const [raw, setRaw] = useState(FALLBACK);
-  const [loading, setLoading] = useState(true);
+  const [raw, setRaw] = useState(_cached ?? FALLBACK);
+  const [loading, setLoading] = useState(!_cached);
 
   useEffect(() => {
-    fetch("https://api.countrystatecity.in/stats")
-      .then((r) => (r.ok ? r.json() : Promise.reject()))
-      .then((data) => setRaw(data))
-      .catch(() => {}) // keep FALLBACK on error
-      .finally(() => setLoading(false));
+    if (_cached) { setLoading(false); return; }
+    fetchPlatformStats().then((data) => {
+      setRaw(data);
+      setLoading(false);
+    });
   }, []);
 
   return {

@@ -1,14 +1,14 @@
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { STAT_DESCRIPTIONS } from "@/lib/stats";
+import { TEXT_STATS, STAT_DESCRIPTIONS } from "@/lib/stats";
 
 export const metadata = {
   title: {
     default: "Country State City API - World's Most Comprehensive Geographic Database for Developers",
     template: "%s | CSC Database"
   },
-  description: "Access 250+ countries, 5,000+ states & 151,000+ cities via fast REST API. Trusted by 40,000+ developers with 99.9% uptime. Free tier available - start building today!",
+  description: `Access ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states & ${TEXT_STATS.cities} cities via fast REST API. Trusted by ${TEXT_STATS.developers} developers with ${TEXT_STATS.uptime} uptime. Free tier available - start building today!`,
   keywords: ["countries", "states", "cities", "geographical database", "API", "location data", "world data", "country data", "REST API", "GraphQL", "CSV", "JSON", "SQL"],
   authors: [{ name: "CSC Team" }],
   creator: "CSC Database",
@@ -22,7 +22,7 @@ export const metadata = {
     locale: 'en_US',
     url: 'https://countrystatecity.in',
     title: 'Country State City API - World\'s Most Comprehensive Geographic Database for Developers',
-    description: 'Access 250+ countries, 5,000+ states & 151,000+ cities via fast REST API. Trusted by 40,000+ developers with 99.9% uptime.',
+    description: `Access ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states & ${TEXT_STATS.cities} cities via fast REST API. Trusted by ${TEXT_STATS.developers} developers with ${TEXT_STATS.uptime} uptime.`,
     siteName: 'CSC Database',
     images: [
       {
@@ -36,7 +36,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Country State City API - World\'s Most Comprehensive Geographic Database for Developers',
-    description: 'Access 250+ countries, 5,000+ states & 151,000+ cities via fast REST API. Trusted by 40,000+ developers with 99.9% uptime.',
+    description: `Access ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states & ${TEXT_STATS.cities} cities via fast REST API. Trusted by ${TEXT_STATS.developers} developers with ${TEXT_STATS.uptime} uptime.`,
     images: ['/twitter-image.jpg'],
   },
   robots: {

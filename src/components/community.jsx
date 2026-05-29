@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { BookOpen, MessageCircle, Heart } from "lucide-react";
-import { TEXT_STATS } from "@/lib/stats";
+import LiveTotalRequests from "@/components/live-total-requests";
 import { useGithubContributors } from "@/hooks/use-github-stats";
 
 import GitHubIcon from "@/icons/GitHub";
@@ -80,9 +80,9 @@ export default function CommunitySection() {
           <div className="text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <MessageCircle className="w-5 h-5 text-success" />
-              <span className="text-2xl font-bold text-dark">{TEXT_STATS.apiRequests}</span>
+              <LiveTotalRequests className="text-2xl font-bold text-dark" />
             </div>
-            <p className="text-sm text-darkgray">API Requests a month</p>
+            <p className="text-sm text-darkgray">Total API Requests</p>
           </div>
 
           <div className="text-center">

@@ -84,6 +84,7 @@ const plans = [
     target: "_blank",
     accent: "blue",
     popular: false,
+    badge: "Best Value",
   },
   {
     name: "Business",

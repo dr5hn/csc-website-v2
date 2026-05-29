@@ -37,7 +37,7 @@
             "company": "Theicthub",
             "testimonial": "Thanks for the API Key. We really appreciate your time and effort for building this API and making this available for the people around. We will love to use this API for our ecommerce site. Keep it up bro!!",
             "useCase": "Ecommerce platform with location-based features",
-            "avatar": "https://logo.clearbit.com/theicthub.com",
+            "avatar": "",
             "product": "API Service"
         },
         {
@@ -77,7 +77,7 @@
             "company": "Insidecenter",
             "testimonial": "I liked your database very much and it would be very helpful to use it for my application.",
             "useCase": "Application development with geographic data",
-            "avatar": "https://logo.clearbit.com/insidecenter.com.br",
+            "avatar": "",
             "product": "Database Repository"
         },
         {
@@ -127,7 +127,7 @@
             "company": "Zingersystems",
             "testimonial": "The geographic data integration has been smooth and the comprehensive coverage is impressive. This service has significantly streamlined our system integration process. Highly recommend for any project requiring reliable location data!",
             "useCase": "System integration with geographic data",
-            "avatar": "https://logo.clearbit.com/zingersystems.com",
+            "avatar": "",
             "product": "Database Repository"
         },
         {
@@ -197,7 +197,7 @@
             "company": "Cognisun",
             "testimonial": "Dear Darshan, Thank you for sharing the API key and for your amazing work in making this data accessible! 🚀 We truly appreciate the effort you've put into this resource.",
             "useCase": "Data accessibility for web applications",
-            "avatar": "https://logo.clearbit.com/cognisun.com",
+            "avatar": "",
             "product": "Database Repository"
         },
         {
@@ -327,7 +327,7 @@
             "company": "Techsophy",
             "testimonial": "The API has been excellent for our proof-of-concept demonstration. The comprehensive location data and reliable service have helped us showcase our ideas effectively. Great resource for development and testing phases!",
             "useCase": "For a demo on POC",
-            "avatar": "https://logo.clearbit.com/techsophy.com",
+            "avatar": "",
             "product": "API Service"
         },
         {
@@ -457,7 +457,7 @@
             "company": "Blabberize",
             "testimonial": "Thanks for putting together such a comprehensive location service! The tax calculation features based on user location have been essential for our payment processing. Reliable and well-implemented solution!",
             "useCase": "When users pay for our service we need to gather their location for tax purposes.",
-            "avatar": "https://logo.clearbit.com/blabberize.com",
+            "avatar": "",
             "product": "API Service"
         },
         {
@@ -567,7 +567,7 @@
             "company": "Payvms",
             "testimonial": "Excellent job with this API! The credit card processing integration with location data has been seamless and reliable. Perfect solution for payment systems requiring geographic validation.",
             "useCase": "I need the api for credit card add process.",
-            "avatar": "https://logo.clearbit.com/payvms.com",
+            "avatar": "",
             "product": "API Service"
         },
         {
@@ -627,7 +627,7 @@
             "company": "Gurjarimall",
             "testimonial": "This database has been an excellent educational resource! The comprehensive geographic data structure has been invaluable for testing and learning location-based development concepts.",
             "useCase": "Testing and learning",
-            "avatar": "https://logo.clearbit.com/gurjarimall.com",
+            "avatar": "",
             "product": "Database Repository"
         },
         {
@@ -697,7 +697,7 @@
             "company": "Me",
             "testimonial": "Great work that keeps delivering excellent results! This API has been essential for our ecommerce site's location functionality. The reliable service and comprehensive data make it indispensable. Keep going! ;)",
             "useCase": "Ecommerce site",
-            "avatar": "https://logo.clearbit.com/me.com",
+            "avatar": "",
             "product": "API Service"
         },
         {
@@ -747,7 +747,7 @@
             "company": "Yandex",
             "testimonial": "What I've seen so far looks awesome.",
             "useCase": "To use in in-house app form",
-            "avatar": "https://logo.clearbit.com/yandex.com",
+            "avatar": "",
             "product": "API Service"
         }
     ]
