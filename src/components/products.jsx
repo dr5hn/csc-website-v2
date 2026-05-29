@@ -56,7 +56,7 @@ function ProductCard({
         className="absolute inset-0 rounded-[calc(1rem-1px)] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/40"
       />
 
-      <div className="relative flex items-start gap-4">
+      <div className="relative z-10 flex items-start gap-4">
         <AccentIcon Icon={Icon} accent={accent} />
         <div className="flex-1">
           <h3 className="text-xl font-semibold text-dark">{title}</h3>
@@ -64,7 +64,7 @@ function ProductCard({
         </div>
       </div>
 
-      <div className="relative mt-6 flex items-center justify-between">
+      <div className="relative z-10 mt-6 flex items-center justify-between">
         <Link
           href={href}
           className={`group/lnk inline-flex items-center gap-1.5 text-sm font-semibold ${accent === "green"
@@ -78,7 +78,6 @@ function ProductCard({
         </Link>
 
         <div className="group">
-          {/* separate group for arrow nudge */}
           <CTA href={href} accent={accent} label="Get started" />
         </div>
       </div>

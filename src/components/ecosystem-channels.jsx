@@ -135,7 +135,7 @@ function ChannelCard({ title, tagline, description, href, external, accent, Icon
         {...linkProps}
       />
 
-      <div className="relative flex items-start gap-4">
+      <div className="relative pointer-events-none flex items-start gap-4">
         <div
           className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${iconCls}`}
         >
@@ -149,11 +149,11 @@ function ChannelCard({ title, tagline, description, href, external, accent, Icon
         </div>
       </div>
 
-      <p className="relative mt-4 text-darkgray leading-relaxed">
+      <p className="relative pointer-events-none mt-4 text-darkgray leading-relaxed">
         {description}
       </p>
 
-      <div className="relative mt-6 flex items-center justify-between border-t border-light/60 pt-4">
+      <div className="relative pointer-events-none mt-6 flex items-center justify-between border-t border-light/60 pt-4">
         <code className="text-xs font-mono text-darkgray truncate">{tag}</code>
         <span className={`inline-flex items-center gap-1 text-sm font-semibold ${linkCls}`}>
           Learn more

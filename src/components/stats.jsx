@@ -2,9 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
-import { Zap, Users, Database, Globe, Star, ShieldCheck } from "lucide-react";
+import { Zap, Users, Database, Globe, Star, ShieldCheck, Layers } from "lucide-react";
 import { useGitHubStars } from "@/hooks/use-github-stars";
-import { getMainStatsWithGitHub } from "@/lib/stats";
+import { usePlatformStats } from "@/hooks/use-platform-stats";
+import { createGitHubStarsStat } from "@/lib/stats";
 
 // Custom hook to detect when an element is in view
 function useInView(options) {
@@ -54,9 +55,17 @@ function AnimatedCounter({ end, decimals = 0, suffix = "" }) {
 export default function Stats() {
   const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
   const { formattedStars, loading: starsLoading } = useGitHubStars("dr5hn", "countries-states-cities-database");
+  const { totalRequests, countries, states, cities } = usePlatformStats();
 
-  // Get centralized stats with dynamic GitHub stars
-  const stats = getMainStatsWithGitHub(formattedStars, starsLoading);
+  const stats = [
+    { icon: Zap,        ...totalRequests, label: "Total API Requests",  color: "blue"   },
+    { icon: Users,      value: 40, suffix: "K+", decimals: 0, label: "Developers Worldwide", color: "green"  },
+    { icon: Database,   ...cities,        label: "Cities",              color: "orange" },
+    { icon: Layers,     ...states,        label: "States & Regions",    color: "blue"   },
+    { icon: Globe,      ...countries,     label: "Countries",           color: "green"  },
+    { icon: ShieldCheck, value: 99.9, suffix: "%", decimals: 1, label: "API Uptime", color: "orange" },
+    createGitHubStarsStat(formattedStars, starsLoading, { label: "Open Source Stars", color: "green" }),
+  ];
 
   return (
     <>
@@ -76,7 +85,7 @@ export default function Stats() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 lg:gap-4">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               const accentColor =

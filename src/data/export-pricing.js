@@ -55,7 +55,6 @@ export const exportPricingPlans = [
     target: "_blank",
     accent: "green",
     popular: true,
-    badge: "Most Popular",
   },
   {
     name: "Standard Pack",

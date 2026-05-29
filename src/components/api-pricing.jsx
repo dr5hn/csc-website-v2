@@ -62,7 +62,6 @@ const plans = [
     target: "_blank",
     accent: "orange",
     popular: true,
-    badge: "Most Popular",
   },
   {
     name: "Professional",
