@@ -13,18 +13,18 @@ import {
   Eye,
   PencilLine,
 } from "lucide-react";
+import { useGitHubStars } from "@/hooks/use-github-stars";
 
-const CHANNELS = [
+const STATIC_CHANNELS = [
   {
     title: "Open-Source Database",
     tagline: "The canonical source",
-    description:
-      "The original GitHub repository that started it all. 9,400+ stars, 2,900+ forks, 7+ years of compounding community trust. Free under ODbL.",
     href: "https://github.com/dr5hn/countries-states-cities-database",
     external: true,
     accent: "green",
     Icon: Github,
     tag: "GitHub",
+    dynamic: true,
   },
   {
     title: "REST API",
@@ -164,7 +164,27 @@ function ChannelCard({ title, tagline, description, href, external, accent, Icon
   );
 }
 
+function formatGitHubCount(n) {
+  if (!n) return null;
+  if (n >= 1000) return `${(n / 1000).toFixed(1).replace(/\.0$/, "")}K+`;
+  return `${n}+`;
+}
+
 export default function EcosystemChannels() {
+  const { stars, forks, loading } = useGitHubStars("dr5hn", "countries-states-cities-database");
+
+  const starsLabel = loading ? "9.4K+" : (formatGitHubCount(stars) ?? "9.4K+");
+  const forksLabel = loading ? "2.9K+" : (formatGitHubCount(forks) ?? "2.9K+");
+
+  const channels = STATIC_CHANNELS.map((ch) =>
+    ch.dynamic
+      ? {
+          ...ch,
+          description: `The original GitHub repository that started it all. ${starsLabel} stars, ${forksLabel} forks, 7+ years of compounding community trust. Free under ODbL.`,
+        }
+      : ch
+  );
+
   return (
     <section className="relative">
       <div className="container mx-auto px-4 py-10 lg:py-16">
@@ -185,7 +205,7 @@ export default function EcosystemChannels() {
         </div>
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {CHANNELS.map((ch) => (
+          {channels.map((ch) => (
             <ChannelCard key={ch.title} {...ch} />
           ))}
         </div>

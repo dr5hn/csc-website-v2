@@ -85,7 +85,7 @@ export default function Stats() {
 
   const stats = [
     { icon: Zap,        ...totalRequests, statKey: "totalRequests", label: "Total API Requests",  color: "blue"   },
-    { icon: Users,      value: 40, suffix: "K+", decimals: 0, statKey: "developers", label: "Developers Worldwide", color: "green"  },
+    { icon: Users,      value: 50, suffix: "K+", decimals: 0, statKey: "developers", label: "Developers Worldwide", color: "green"  },
     { icon: Database,   ...cities,        statKey: "cities",        label: "Cities",              color: "orange" },
     { icon: Layers,     ...states,        statKey: "states",        label: "States & Regions",    color: "blue"   },
     { icon: Globe,      ...countries,     statKey: "countries",     label: "Countries",           color: "green"  },

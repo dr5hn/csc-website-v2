@@ -172,7 +172,7 @@ function StatsRibbon() {
 
   const stats = [
     { icon: Zap,        ...totalRequests,                              label: "Total API Requests"   },
-    { icon: Users,      value: 40,    suffix: "K+",  decimals: 0,     label: "Developers Worldwide" },
+    { icon: Users,      value: 50,    suffix: "K+",  decimals: 0,     label: "Developers Worldwide" },
     { icon: Database,   ...cities,                                     label: "Cities"               },
     { icon: Layers,     ...states,                                     label: "States & Regions"     },
     { icon: Globe,      ...countries,                                  label: "Countries Covered"    },
