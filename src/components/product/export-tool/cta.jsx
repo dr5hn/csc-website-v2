@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Check, Zap, Target, Package } from "lucide-react";
+import { ArrowRight, Check, Zap, Target, Package } from "lucide-react";
 import Link from "next/link";
 
 export default function CtaExportTool() {
@@ -36,16 +36,6 @@ export default function CtaExportTool() {
             <Link href="https://export.countrystatecity.in" target="_blank" rel="noopener noreferrer">
               Get Started
               <Target className="w-5 h-5 ml-2 group-hover:translate-x-0.5 transition-transform duration-200" />
-            </Link>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="border-2 border-white text-white hover:bg-white hover:text-dark font-semibold transition-all duration-300 px-8 py-4 text-lg group bg-transparent"
-          >
-            <Link href="#">
-              See Live Demo
-              <Play className="w-5 h-5 ml-2 group-hover:translate-x-0.5 transition-transform duration-200" />
             </Link>
           </Button>
         </div>
