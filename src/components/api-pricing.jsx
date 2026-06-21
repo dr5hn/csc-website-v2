@@ -1,5 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import PricingCard from "./pricing-card";
 import PricingComparison from "./pricing-comparison";
+import { cn } from "@/lib/utils";
 import { Mail } from "lucide-react";
 import Link from "next/link";
 
@@ -7,6 +11,7 @@ const plans = [
   {
     name: "Community",
     price: "$0",
+    priceAnnual: "$0",
     period: "/ month",
     description: "Perfect for personal projects & exploration.",
     features: [
@@ -26,6 +31,7 @@ const plans = [
   {
     name: "Starter",
     price: "$5",
+    priceAnnual: "$50",
     period: "/ month",
     description: "More headroom for side projects and prototypes.",
     features: [
@@ -45,6 +51,7 @@ const plans = [
   {
     name: "Supporter",
     price: "$9",
+    priceAnnual: "$90",
     period: "/ month",
     description: "Ideal for growing applications with enhanced data.",
     features: [
@@ -66,6 +73,7 @@ const plans = [
   {
     name: "Professional",
     price: "$29",
+    priceAnnual: "$290",
     period: "/ month",
     description: "Full data access for production applications.",
     features: [
@@ -89,6 +97,7 @@ const plans = [
   {
     name: "Business",
     price: "$79",
+    priceAnnual: "$790",
     period: "/ month",
     description: "High-volume access with all premium features.",
     features: [
@@ -107,13 +116,66 @@ const plans = [
 ];
 
 export default function ApiPricing() {
+  const [annual, setAnnual] = useState(false);
+
   return (
     <>
       <div className="space-y-8">
+        {/* Billing interval toggle */}
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <span
+            className={cn(
+              "text-sm font-semibold transition-colors",
+              annual ? "text-lightgray" : "text-dark"
+            )}
+          >
+            Monthly
+          </span>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={annual}
+            aria-label="Toggle annual billing"
+            onClick={() => setAnnual((v) => !v)}
+            className={cn(
+              "relative inline-flex h-7 w-12 items-center rounded-full transition-colors",
+              annual ? "bg-orange" : "bg-light"
+            )}
+          >
+            <span
+              className={cn(
+                "inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform",
+                annual ? "translate-x-6" : "translate-x-1"
+              )}
+            />
+          </button>
+          <span
+            className={cn(
+              "text-sm font-semibold transition-colors",
+              annual ? "text-dark" : "text-lightgray"
+            )}
+          >
+            Annual
+          </span>
+          <span className="inline-flex items-center rounded-full bg-green/10 px-2.5 py-1 text-xs font-bold text-green">
+            2 months free
+          </span>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-start">
-          {plans.map((plan, index) => (
-            <PricingCard key={index} plan={plan} />
-          ))}
+          {plans.map((plan, index) => {
+            const isPaid = plan.priceAnnual !== "$0";
+            const displayPlan = annual
+              ? {
+                  ...plan,
+                  price: plan.priceAnnual,
+                  period: "/ year",
+                  pricePerCredit: isPaid ? "2 months free vs. monthly" : undefined,
+                  href: isPaid ? `${plan.href}&interval=annual` : plan.href,
+                }
+              : plan;
+            return <PricingCard key={index} plan={displayPlan} />;
+          })}
         </div>
 
         {/* Custom Plan CTA */}
