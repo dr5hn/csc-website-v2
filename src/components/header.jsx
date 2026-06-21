@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -32,6 +32,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const pathname = usePathname();
+  const mobileMenuRef = useRef(null);
 
   const isActive = (href) => {
     if (href === "/") return pathname === "/";
@@ -47,6 +48,27 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Mobile menu: lock body scroll, close on Escape, and manage focus
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const previouslyFocused = document.activeElement;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    mobileMenuRef.current?.focus();
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
+    };
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      document.removeEventListener("keydown", handleEscape);
+      if (previouslyFocused instanceof HTMLElement) previouslyFocused.focus();
+    };
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -71,9 +93,9 @@ export default function Header() {
       
       <header
         role="banner"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border border-transparent ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border border-transparent backdrop-blur-md bg-white/70 ${
           isScrolled
-            ? "backdrop-blur-xl border-light/50 shadow-2xl shadow-blue/5"
+            ? "border-light/50 bg-white/90 shadow-lg shadow-blue/5"
             : ""
         }`}
       >
@@ -116,8 +138,18 @@ export default function Header() {
                 className="relative group"
                 onMouseEnter={() => setIsProductsDropdownOpen(true)}
                 onMouseLeave={() => setIsProductsDropdownOpen(false)}
+                onFocus={() => setIsProductsDropdownOpen(true)}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget)) {
+                    setIsProductsDropdownOpen(false);
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") setIsProductsDropdownOpen(false);
+                }}
               >
                 <button
+                  id="products-button"
                   className={`cursor-pointer flex items-center space-x-1 px-4 py-2 transition-all duration-200 font-medium rounded-lg ${
                     isProductActive
                       ? "text-blue bg-blue/10"
@@ -126,8 +158,6 @@ export default function Header() {
                   aria-expanded={isProductsDropdownOpen}
                   aria-haspopup="true"
                   aria-label="Products menu"
-                  onFocus={() => setIsProductsDropdownOpen(true)}
-                  onBlur={() => setIsProductsDropdownOpen(false)}
                 >
                   <Code className="w-4 h-4" />
                   <span>Products</span>
@@ -246,13 +276,14 @@ export default function Header() {
               <div className="relative group">
                 <Button
                   variant="ghost"
+                  aria-haspopup="true"
                   className="text-darkgray hover:text-blue hover:bg-blue/5 font-medium flex items-center space-x-1"
                 >
                   <LogIn className="w-4 h-4" />
                   <span>Login</span>
                   <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
                 </Button>
-                <div className="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-xl border border-light/50 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                <div className="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-xl border border-light/50 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                   <div className="p-2">
                     <Link
                       href="https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=header_login"
@@ -320,9 +351,12 @@ export default function Header() {
           {isMenuOpen && (
             <div 
               id="mobile-menu" 
-              className="lg:hidden border-t border-light/50 bg-white/95 backdrop-blur-xl rounded-b-xl"
+              className="lg:hidden border-t border-light/50 bg-white/95 backdrop-blur-xl rounded-b-xl focus:outline-none focus-visible:outline-none"
               role="dialog"
+              aria-modal="true"
               aria-label="Mobile navigation menu"
+              ref={mobileMenuRef}
+              tabIndex={-1}
             >
               <nav className="py-6 space-y-2" role="navigation" aria-label="Mobile navigation">
                 <div className="px-4 py-2">
@@ -403,17 +437,31 @@ export default function Header() {
                 {/* Mobile CTA Buttons */}
                 <div className="px-4 pt-6 space-y-3 border-t border-light/50">
                   <Button
+                    asChild
                     variant="ghost"
                     className="w-full text-darkgray hover:text-blue hover:bg-blue/5 font-medium"
-                    onClick={() => setIsMenuOpen(false)}
                   >
-                    Dashboard
+                    <a
+                      href="https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=mobile_dashboard"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Dashboard
+                    </a>
                   </Button>
                   <Button
+                    asChild
                     className="w-full bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                    onClick={() => setIsMenuOpen(false)}
                   >
-                    Get Started
+                    <a
+                      href="https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=mobile_signup"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Get Started
+                    </a>
                   </Button>
                 </div>
               </nav>

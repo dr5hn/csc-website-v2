@@ -2,6 +2,14 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { TEXT_STATS, STAT_DESCRIPTIONS } from "@/lib/stats";
+import { Cal_Sans } from "next/font/google";
+
+const calSans = Cal_Sans({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-cal-loaded",
+  display: "swap",
+});
 
 export const metadata = {
   title: {
@@ -76,12 +84,6 @@ export default function RootLayout({ children }) {
     "logo": "https://countrystatecity.in/logo.png",
     "description": `World's most comprehensive geographical database providing data for ${STAT_DESCRIPTIONS.fullCoverage}`,
     "foundingDate": "2018",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-XXX-XXX-XXXX",
-      "contactType": "customer service",
-      "availableLanguage": "English"
-    },
     "sameAs": [
       "https://github.com/dr5hn/countries-states-cities-database"
     ],
@@ -106,7 +108,7 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={calSans.variable}>
       <head>
         {/* Google Analytics */}
         <script
