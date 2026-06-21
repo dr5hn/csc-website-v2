@@ -1,3 +1,4 @@
+import ApiShowcase from "@/components/api-showcase";
 import CommunitySection from "@/components/community";
 import CTA from "@/components/cta";
 import HeroSection from "@/components/hero";
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <ScrollTracker pageName="Home" />
       <HeroSection />
+      <ApiShowcase />
       <Stats />
       <WhyChooseUs />
       <Products />

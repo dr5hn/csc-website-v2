@@ -71,7 +71,7 @@ const faqSchema = {
       "name": "Can I use this data commercially?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! Our open-source data is available under the MIT license for unlimited commercial use. For API access, our paid plans are specifically designed for commercial applications with enterprise-grade reliability and support."
+        "text": "Yes! Our geographical data is licensed under ODbL-1.0 and our language packages under MIT — both free to use commercially, as long as you keep the required attribution for the database. For API access, our paid plans are specifically designed for commercial applications with enterprise-grade reliability and support."
       }
     },
     {

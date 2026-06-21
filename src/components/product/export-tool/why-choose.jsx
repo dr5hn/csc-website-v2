@@ -16,7 +16,7 @@ const beforeItems = [
 const afterItems = [
   "Select only the data you need",
   "Get clean, ready-to-use datasets",
-  "Choose from 5 export formats",
+  "Choose from 13 export formats",
   "Custom field selection available",
   "Download in seconds, not hours",
   "Consistent, well-structured data",

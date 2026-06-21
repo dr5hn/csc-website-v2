@@ -2,6 +2,19 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { TEXT_STATS, STAT_DESCRIPTIONS } from "@/lib/stats";
+import { Cal_Sans } from "next/font/google";
+
+const calSans = Cal_Sans({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-cal-loaded",
+  display: "swap",
+  // Cal Sans isn't in Next.js's font-metrics DB, so it can't synthesize a
+  // size-adjusted fallback (hence the "Failed to find font override values"
+  // warning). Opt out of that and supply an explicit fallback chain instead.
+  adjustFontFallback: false,
+  fallback: ["system-ui", "arial", "sans-serif"],
+});
 
 export const metadata = {
   title: {
@@ -76,12 +89,6 @@ export default function RootLayout({ children }) {
     "logo": "https://countrystatecity.in/logo.png",
     "description": `World's most comprehensive geographical database providing data for ${STAT_DESCRIPTIONS.fullCoverage}`,
     "foundingDate": "2018",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-XXX-XXX-XXXX",
-      "contactType": "customer service",
-      "availableLanguage": "English"
-    },
     "sameAs": [
       "https://github.com/dr5hn/countries-states-cities-database"
     ],
@@ -106,7 +113,7 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={calSans.variable}>
       <head>
         {/* Google Analytics */}
         <script

@@ -62,7 +62,7 @@ const faqs = [
     category: "Licensing",
     question: "Can I use this data commercially?",
     answer:
-      "Yes! Our open-source data is available under the MIT license for unlimited commercial use. For API access, our paid plans are specifically designed for commercial applications with enterprise-grade reliability and support.",
+      "Yes! Our geographical data is licensed under ODbL-1.0 and our language packages under MIT — both free to use commercially, as long as you keep the required attribution for the database. For API access, our paid plans are specifically designed for commercial applications with enterprise-grade reliability and support.",
   },
   {
     id: 8,
@@ -84,6 +84,13 @@ const faqs = [
     question: "Do you provide custom data solutions?",
     answer:
       "Our Custom plan includes tailored data exports, custom formats, one-time or recurring data deliveries, and custom integrations. We work with enterprises to meet specific data requirements and provide dedicated account management.",
+  },
+  {
+    id: 11,
+    category: "API Usage",
+    question: "What time does my daily request limit reset?",
+    answer:
+      "Your daily API request limit resets at 00:00 UTC (midnight UTC) every day — that's 5:30 AM IST. Once it resets, your full daily quota is available again. Monthly limits reset at the start of each calendar month (the 1st, at 00:00 UTC).",
   },
 ];
 

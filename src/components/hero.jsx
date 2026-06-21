@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Clock, Rocket, Shield, Star } from "lucide-react";
+import { BookOpen, Clock, Rocket, Shield, Star } from "lucide-react";
 import { Globe } from "./globe";
 import GitHubStars from "./githubstars";
 import { TEXT_STATS } from "@/lib/stats";
@@ -46,7 +46,7 @@ export default function HeroSection() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center lg:justify-start">
               <Button
                 asChild
                 className="bg-blue hover:bg-blue/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg cursor-pointer"
@@ -59,6 +59,20 @@ export default function HeroSection() {
                 >
                   <Rocket className="w-5 h-5 mr-2" aria-hidden="true" />
                   Get Started for Free
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="border-blue/30 text-blue hover:bg-blue/5 font-semibold px-8 py-4 text-lg"
+              >
+                <a
+                  href="https://docs.countrystatecity.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <BookOpen className="w-5 h-5 mr-2" aria-hidden="true" />
+                  Read the Docs
                 </a>
               </Button>
               <GitHubStars />

@@ -51,10 +51,15 @@ function AnimatedCounter({ statKey, end, decimals = 0, suffix = "" }) {
     return readStatsCache()?.[statKey] ?? end;
   });
 
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   const { number } = useSpring({
     from: { number: startFrom },
     to: { number: end },
     delay: 200,
+    immediate: prefersReducedMotion,
     config: { mass: 1, tension: 20, friction: 10 },
   });
 
@@ -106,7 +111,7 @@ export default function Stats() {
               Powering Applications Worldwide
             </h2>
             <p className="mt-3 text-lg md:text-xl text-darkgray">
-              Real-time statistics from our global platform serving developers
+              Up-to-date statistics from our global platform serving developers
               and businesses
             </p>
           </div>

@@ -41,7 +41,9 @@ $ csc explore`}</code>
             {/* CTA */}
             <div className="mt-6">
               <Link
-                href="#"
+                href="https://cli.countrystatecity.in"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-dark px-4 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-dark/90"
               >
                 <span>Learn more</span>

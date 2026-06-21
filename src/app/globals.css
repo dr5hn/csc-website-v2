@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./animation.css";
@@ -48,7 +47,7 @@
 
 @theme {
   --color-blue: #2296f3;
-  --color-green: #cddc39;
+  --color-green: #10b981;
   --color-orange: #f97316;
   --color-white: #f8fafc;
 
@@ -62,7 +61,7 @@
   --color-danger: #ef4444;
   --color-warning: #facc15;
 
-  --font-cal: "Cal Sans", sans-serif;
+  --font-cal: var(--font-cal-loaded, "Cal Sans"), sans-serif;
 
   --animate-canopy-horizontal: canopy-x 250s linear infinite;
   --animate-canopy-vertical: canopy-y 250s linear infinite;

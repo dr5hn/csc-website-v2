@@ -50,9 +50,9 @@ export default function DatabasePricing() {
             FREE FOREVER
           </p>
           <p className="text-lg text-darkgray mb-8 max-w-2xl">
-            Complete open-source geographical database with MIT license. No
-            restrictions, no limits, no hidden costs. Perfect for any project
-            size.
+            Complete open-source geographical database under the ODbL-1.0
+            license. Free to use — including commercially — with attribution.
+            Perfect for any project size.
           </p>
           <div className="space-y-4 mb-10">
             {dbFeatures.map((feature, index) => (

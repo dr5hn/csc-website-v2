@@ -15,7 +15,12 @@ import {
   Map,
   Building2,
   MapPin,
+  Sparkles,
+  Columns3,
 } from "lucide-react";
+
+const RELEASES_URL =
+  "https://github.com/dr5hn/countries-states-cities-database/releases";
 
 const formats = [
   {
@@ -76,6 +81,24 @@ const formats = [
     icon: Settings,
     size: "18MB",
   },
+  {
+    name: "GeoJSON",
+    description: "Mapping-ready geographic format",
+    icon: Map,
+    size: "24MB",
+  },
+  {
+    name: "TOON",
+    description: "LLM-optimized, ~40% fewer tokens",
+    icon: Sparkles,
+    size: "20MB",
+  },
+  {
+    name: "Parquet",
+    description: "Columnar format for analytics",
+    icon: Columns3,
+    size: "27MB",
+  },
 ];
 
 function AccentIcon({ icon: Icon, accent = "blue" }) {
@@ -121,10 +144,13 @@ function FormatCard({ item, index }) {
 
       <div className="relative mt-6">
         <Button
+          asChild
           className="w-full bg-dark text-white hover:bg-dark/90"
           aria-label={`Download ${item.name}`}
         >
-          Download {item.name} ↓
+          <a href={RELEASES_URL} target="_blank" rel="noopener noreferrer">
+            Download {item.name} ↓
+          </a>
         </Button>
       </div>
     </div>

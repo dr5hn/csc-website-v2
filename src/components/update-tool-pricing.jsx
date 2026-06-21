@@ -82,7 +82,11 @@ export default function UpdateToolPricing() {
               variant="outline"
               className="border-2 border-blue text-blue px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue/5 transition-colors inline-flex items-center h-14 bg-transparent"
             >
-              <Link href="#">
+              <Link
+                href="https://docs.countrystatecity.in/database/contributing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <BookOpen className="mr-3 h-6 w-6" />
                 Contribution Guide
               </Link>

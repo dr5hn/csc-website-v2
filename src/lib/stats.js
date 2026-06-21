@@ -4,13 +4,13 @@ import { Zap, Users, Database, Globe, Star, ShieldCheck, GitBranch, Download, Ey
 const CORE_VALUES = {
   countries: "250+",
   states: "5,000+",
-  cities: "150,000+",
+  cities: "153,000+",
   developers: "50,000+",
   developersShort: "50K+",
   apiRequests: "50M+",
   uptime: "99.9%",
   responseTime: "<200ms",
-  formats: "9+",
+  formats: "12",
   contributors: "127",
   downloads: "50M+",
   activeContributors: "1.2K+",
@@ -33,9 +33,9 @@ export const PLATFORM_STATS = {
     decimals: 0,
   },
   citiesAndStates: {
-    value: 151,
+    value: 159,
     suffix: "K+",
-    label: "Cities & States", 
+    label: "Cities & States",
     decimals: 0,
   },
   countriesCovered: {
