@@ -9,6 +9,11 @@ const calSans = Cal_Sans({
   weight: "400",
   variable: "--font-cal-loaded",
   display: "swap",
+  // Cal Sans isn't in Next.js's font-metrics DB, so it can't synthesize a
+  // size-adjusted fallback (hence the "Failed to find font override values"
+  // warning). Opt out of that and supply an explicit fallback chain instead.
+  adjustFontFallback: false,
+  fallback: ["system-ui", "arial", "sans-serif"],
 });
 
 export const metadata = {
