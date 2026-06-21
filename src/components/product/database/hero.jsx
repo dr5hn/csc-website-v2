@@ -13,6 +13,8 @@ import {
   Globe,
   DatabaseZap,
   Users,
+  Sparkles,
+  Columns3,
 } from "lucide-react";
 import { useGithubStats } from "@/hooks/use-github-stats";
 import { usePlatformStats } from "@/hooks/use-platform-stats";
@@ -34,6 +36,9 @@ const formats = [
   { label: "MySQL", Icon: DatabaseZap },
   { label: "Postgres SQL", Icon: PostgreSQLIcon },
   { label: "SQLite", Icon: SQLiteIcon },
+  { label: "GeoJSON", Icon: Globe },
+  { label: "TOON", Icon: Sparkles },
+  { label: "Parquet", Icon: Columns3 },
 ];
 
 function Pill({ children, className = "" }) {

@@ -10,7 +10,7 @@ const CORE_VALUES = {
   apiRequests: "50M+",
   uptime: "99.9%",
   responseTime: "<200ms",
-  formats: "9+",
+  formats: "12",
   contributors: "127",
   downloads: "50M+",
   activeContributors: "1.2K+",

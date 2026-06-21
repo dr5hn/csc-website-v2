@@ -19,7 +19,7 @@ const dbFeatures = [
   },
   {
     icon: Package,
-    title: "9+ Ready-to-Use Formats",
+    title: "12+ Ready-to-Use Formats",
     description:
       "Pick the shape you need, from relational databases to documents and flat files.",
     tags: [
@@ -32,6 +32,9 @@ const dbFeatures = [
       "XML",
       "YAML",
       "SQL Server",
+      "GeoJSON",
+      "TOON",
+      "Parquet",
       "DuckDB",
     ],
   },

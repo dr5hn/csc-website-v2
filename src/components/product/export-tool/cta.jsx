@@ -34,7 +34,7 @@ export default function CtaExportTool() {
             className="bg-orange text-white hover:bg-orange/90 font-semibold transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg group"
           >
             <Link href="https://export.countrystatecity.in" target="_blank" rel="noopener noreferrer">
-              Start Free Trial
+              Get Started
               <Target className="w-5 h-5 ml-2 group-hover:translate-x-0.5 transition-transform duration-200" />
             </Link>
           </Button>

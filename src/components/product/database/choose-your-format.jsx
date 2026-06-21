@@ -19,6 +19,9 @@ import {
   Columns3,
 } from "lucide-react";
 
+const RELEASES_URL =
+  "https://github.com/dr5hn/countries-states-cities-database/releases";
+
 const formats = [
   {
     name: "JSON",
@@ -141,10 +144,13 @@ function FormatCard({ item, index }) {
 
       <div className="relative mt-6">
         <Button
+          asChild
           className="w-full bg-dark text-white hover:bg-dark/90"
           aria-label={`Download ${item.name}`}
         >
-          Download {item.name} ↓
+          <a href={RELEASES_URL} target="_blank" rel="noopener noreferrer">
+            Download {item.name} ↓
+          </a>
         </Button>
       </div>
     </div>
