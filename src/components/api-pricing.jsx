@@ -157,7 +157,7 @@ export default function ApiPricing() {
           >
             Annual
           </span>
-          <span className="inline-flex items-center rounded-full bg-green/10 px-2.5 py-1 text-xs font-bold text-green">
+          <span className="inline-flex items-center rounded-full bg-green px-3 py-1 text-xs font-bold text-white shadow-sm">
             2 months free
           </span>
         </div>
