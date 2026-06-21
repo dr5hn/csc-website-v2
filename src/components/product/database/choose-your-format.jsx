@@ -15,6 +15,8 @@ import {
   Map,
   Building2,
   MapPin,
+  Sparkles,
+  Columns3,
 } from "lucide-react";
 
 const formats = [
@@ -75,6 +77,24 @@ const formats = [
     description: "Human-readable config format",
     icon: Settings,
     size: "18MB",
+  },
+  {
+    name: "GeoJSON",
+    description: "Mapping-ready geographic format",
+    icon: Map,
+    size: "24MB",
+  },
+  {
+    name: "TOON",
+    description: "LLM-optimized, ~40% fewer tokens",
+    icon: Sparkles,
+    size: "20MB",
+  },
+  {
+    name: "Parquet",
+    description: "Columnar format for analytics",
+    icon: Columns3,
+    size: "27MB",
   },
 ];
 

@@ -140,7 +140,7 @@ export default function Products() {
 
           <ProductCard
             title="Database Repository"
-            description="Open-source geographical database with global coverage. Available via NPM, PyPI, and CLI with 9+ export formats. ODbL licensed for data, MIT for packages."
+            description="Open-source geographical database with global coverage. Available via NPM, PyPI, and CLI with 12 export formats. ODbL licensed for data, MIT for packages."
             href="/product/database"
             accent="green"
             linkText="View on Github"
