@@ -2,6 +2,7 @@ import FAQs from "@/components/faq";
 import PricingSection from "@/components/pricing";
 import PricingCTA from "@/components/pricing-cta";
 import PricingHero from "@/components/pricing-hero";
+import MmslSlimBanner from "@/components/mmsl-slim-banner";
 
 export const metadata = {
   title: "Pricing Plans - Choose Your Perfect Geographical Data Solution",
@@ -18,6 +19,7 @@ export default function Pricing() {
   return (
     <>
       <PricingHero />
+      <MmslSlimBanner />
       <PricingSection />
       <FAQs />
       <PricingCTA />

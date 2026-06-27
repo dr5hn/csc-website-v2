@@ -4,6 +4,7 @@ import DatabaseCTA from "@/components/product/database/cta";
 import DatabaseSetup from "@/components/product/database/database-setup";
 import ProductDatabaseHero from "@/components/product/database/hero";
 import WhyChooseUs from "@/components/product/database/why-choose-us";
+import MmslSlimBanner from "@/components/mmsl-slim-banner";
 import { TEXT_STATS } from "@/lib/stats";
 
 export const metadata = {
@@ -47,6 +48,7 @@ export default function Page() {
   return (
     <>
       <ProductDatabaseHero />
+      <MmslSlimBanner />
       <WhyChooseUs />
       <ChooseYourFormat />
       <DatabaseSetup />

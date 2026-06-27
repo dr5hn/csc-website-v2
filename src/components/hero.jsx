@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { BookOpen, Clock, Rocket, Shield, Star } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { Globe } from "./globe";
 import GitHubStars from "./githubstars";
 import { TEXT_STATS } from "@/lib/stats";

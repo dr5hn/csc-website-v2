@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Menu,
@@ -22,6 +23,8 @@ import {
   LogIn,
   FileText,
   Sparkles,
+  ExternalLink,
+  Globe,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -90,10 +93,34 @@ export default function Header() {
       >
         Skip to main content
       </Link>
-      
+
+      {/* Announcement Bar */}
+      <div className="fixed top-0 left-0 right-0 z-[51] bg-white border-b border-light/50 h-12 flex items-center justify-center px-4 shadow-sm">
+        <Link
+          href="https://makemysitelive.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 group"
+        >
+          <Image
+            src="/mmsl-icon.png"
+            alt="MakeMySiteLive"
+            width={24}
+            height={24}
+            className="h-5 w-5 object-contain"
+          />
+          <span className="text-xs font-semibold text-dark">MakeMySiteLive</span>
+          <span className="hidden sm:inline text-xs text-darkgray">—</span>
+          <span className="hidden sm:inline text-xs font-medium text-darkgray group-hover:text-blue transition-colors">
+            Publish your website in under 2 minutes
+          </span>
+          <ExternalLink className="w-3 h-3 text-darkgray group-hover:text-blue transition-colors shrink-0" />
+        </Link>
+      </div>
+
       <header
         role="banner"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border border-transparent backdrop-blur-md bg-white/70 ${
+        className={`fixed top-12 left-0 right-0 z-50 transition-all duration-500 border border-transparent backdrop-blur-md bg-white/70 ${
           isScrolled
             ? "border-light/50 bg-white/90 shadow-lg shadow-blue/5"
             : ""
@@ -163,8 +190,8 @@ export default function Header() {
                   <span>Products</span>
                   <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
                 </button>
-                <div 
-                  className={`absolute top-full left-0 mt-1 w-64 bg-white/95 backdrop-blur-xl border border-light/50 rounded-xl shadow-2xl transition-all duration-300 transform ${
+                <div
+                  className={`absolute top-full left-0 mt-1 w-72 bg-white/95 backdrop-blur-xl border border-light/50 rounded-xl shadow-2xl transition-all duration-300 transform ${
                     isProductsDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'
                   }`}
                   role="menu"
@@ -226,6 +253,24 @@ export default function Header() {
                           Community contributions
                         </div>
                       </div>
+                    </Link>
+
+                    {/* Divider */}
+                    <div className="my-1 mx-3 h-px bg-light/70" />
+
+                    {/* MakeMySiteLive */}
+                    <Link
+                      href="https://makemysitelive.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-[#0d9488]/8 transition-colors duration-200 group"
+                    >
+                      <Image src="/mmsl-icon.png" alt="" width={16} height={16} className="w-4 h-4 object-contain shrink-0" />
+                      <span className="text-sm font-medium text-dark">MakeMySiteLive.com</span>
+                      <span className="inline-flex items-center rounded-full bg-green/15 px-1.5 py-0.5 text-[10px] font-semibold text-green">
+                        New
+                      </span>
+                      <span className="text-xs text-lightgray ml-auto hidden group-hover:inline">↗</span>
                     </Link>
                   </div>
                 </div>
@@ -394,6 +439,20 @@ export default function Header() {
                   >
                     <PencilLine className="w-5 h-5" />
                     <span>Update Tool</span>
+                  </Link>
+                  <div className="my-1 mx-1 h-px bg-light/70" />
+                  <Link
+                    href="https://makemysitelive.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 px-4 py-3 text-[#0d9488] hover:bg-[#0d9488]/8 transition-all duration-200 font-medium rounded-lg"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <Globe className="w-5 h-5" />
+                    <span>MakeMySiteLive.com</span>
+                    <span className="inline-flex items-center rounded-full bg-green/15 px-1.5 py-0.5 text-[10px] font-semibold text-green">
+                      New
+                    </span>
                   </Link>
                 </div>
 

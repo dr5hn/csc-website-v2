@@ -12,6 +12,7 @@ import {
   FlaskConical,
   Eye,
   PencilLine,
+  Globe,
 } from "lucide-react";
 import { useGitHubStars } from "@/hooks/use-github-stars";
 
@@ -111,6 +112,17 @@ const STATIC_CHANNELS = [
     accent: "blue",
     Icon: PencilLine,
     tag: "manager.countrystatecity.in",
+  },
+  {
+    title: "MakeMySiteLive",
+    tagline: "Publish your website in under 2 minutes",
+    description:
+      "The hosting platform powering this site. Deploy any website instantly — simple, fast, and reliable. No complex setup, no DevOps headaches.",
+    href: "https://makemysitelive.com/",
+    external: true,
+    accent: "green",
+    Icon: Globe,
+    tag: "makemysitelive.com",
   },
 ];
 

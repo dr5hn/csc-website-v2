@@ -137,7 +137,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="antialiased font-cal">
         <Header />
-        <main id="main-content" className="mt-16" role="main">
+        <main id="main-content" className="mt-[7rem]" role="main">
           {children}
         </main>
         <Footer />

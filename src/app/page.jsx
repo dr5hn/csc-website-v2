@@ -8,12 +8,14 @@ import Stats from "@/components/stats";
 import { Testimonials } from "@/components/ui/animated-testimonials";
 import WhyChooseUs from "@/components/why-choose-us";
 import ScrollTracker from "@/components/scroll-tracker";
+import MmslSlimBanner from "@/components/mmsl-slim-banner";
 
 export default function Home() {
   return (
     <>
       <ScrollTracker pageName="Home" />
       <HeroSection />
+      <MmslSlimBanner />
       <ApiShowcase />
       <Stats />
       <WhyChooseUs />
