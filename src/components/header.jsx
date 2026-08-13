@@ -29,6 +29,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import Logo from "./logo";
+import { useInboundAttribution, withAttribution } from "@/lib/attribution";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,6 +37,19 @@ export default function Header() {
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const pathname = usePathname();
   const mobileMenuRef = useRef(null);
+  const attribution = useInboundAttribution();
+  const loginHref = withAttribution(
+    "https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=header_login",
+    attribution
+  );
+  const mobileDashboardHref = withAttribution(
+    "https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=mobile_dashboard",
+    attribution
+  );
+  const mobileSignupHref = withAttribution(
+    "https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=mobile_signup",
+    attribution
+  );
 
   const isActive = (href) => {
     if (href === "/") return pathname === "/";
@@ -331,7 +345,7 @@ export default function Header() {
                 <div className="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-xl border border-light/50 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                   <div className="p-2">
                     <Link
-                      href="https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=header_login"
+                      href={loginHref}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center space-x-3 p-3 rounded-lg hover:bg-blue/10 transition-colors duration-200"
@@ -501,7 +515,7 @@ export default function Header() {
                     className="w-full text-darkgray hover:text-blue hover:bg-blue/5 font-medium"
                   >
                     <a
-                      href="https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=mobile_dashboard"
+                      href={mobileDashboardHref}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setIsMenuOpen(false)}
@@ -514,7 +528,7 @@ export default function Header() {
                     className="w-full bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <a
-                      href="https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=mobile_signup"
+                      href={mobileSignupHref}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setIsMenuOpen(false)}
