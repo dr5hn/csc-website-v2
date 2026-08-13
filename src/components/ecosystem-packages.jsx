@@ -39,6 +39,13 @@ const PACKAGES = [
     command: "npm install -g @countrystatecity/cli",
     href: "https://www.npmjs.com/package/@countrystatecity/cli",
   },
+  {
+    name: "@countrystatecity/sdk",
+    registry: "npm",
+    description: "Official live-API client — search, usage tracking, always-current data over HTTP.",
+    command: "npm install @countrystatecity/sdk",
+    href: "https://www.npmjs.com/package/@countrystatecity/sdk",
+  },
 ];
 
 function RegistryBadge({ registry }) {
