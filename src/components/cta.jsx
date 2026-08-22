@@ -4,13 +4,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Shield, Clock } from "lucide-react";
 import Link from "next/link";
 import { trackAPI } from "@/lib/analytics";
-import { useInboundAttribution, withAttribution } from "@/lib/attribution";
+import { isAppUrl, useInboundAttribution, withAttribution } from "@/lib/attribution";
 
 export default function CTA({ href = "/product/api", target = "_self" }) {
   const attribution = useInboundAttribution();
-  const finalHref = href.includes("app.countrystatecity.in")
-    ? withAttribution(href, attribution)
-    : href;
+  const finalHref = isAppUrl(href) ? withAttribution(href, attribution) : href;
 
   return (
     <section className="relative container mx-auto px-4 py-6 lg:py-10 xl:py-20">

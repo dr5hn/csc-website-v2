@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackAPI, trackTool, trackExternalLink } from "@/lib/analytics";
-import { useInboundAttribution, withAttribution } from "@/lib/attribution";
+import { isAppUrl, useInboundAttribution, withAttribution } from "@/lib/attribution";
 
 const actions = [
   {
@@ -141,7 +141,7 @@ function ActionRow({ action, i }) {
 export default function PricingCTA() {
   const attribution = useInboundAttribution();
   const attributedActions = actions.map((action) =>
-    action.href.includes("app.countrystatecity.in")
+    isAppUrl(action.href)
       ? { ...action, href: withAttribution(action.href, attribution) }
       : action
   );
