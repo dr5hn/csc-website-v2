@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
   GitBranch,
@@ -232,6 +233,13 @@ export default function DatabaseSetup() {
         {/* Helper note */}
         <p className="mt-4 text-center text-sm text-darkgray">
           All packages are MIT licensed. Database data is licensed under ODbL-1.0.
+        </p>
+        <p className="mt-2 text-center text-sm text-darkgray">
+          Need always-current data, typo-tolerant search, or managed API access with usage analytics?{" "}
+          <Link href="/product/api" className="font-semibold text-blue hover:underline">
+            See the live API
+          </Link>
+          .
         </p>
       </div>
     </section>
