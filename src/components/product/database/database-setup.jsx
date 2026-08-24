@@ -235,7 +235,7 @@ export default function DatabaseSetup() {
           All packages are MIT licensed. Database data is licensed under ODbL-1.0.
         </p>
         <p className="mt-2 text-center text-sm text-darkgray">
-          Need always-current data, typo-tolerant search, or higher request volumes?{" "}
+          Need always-current data, typo-tolerant search, or managed API access with usage analytics?{" "}
           <Link href="/product/api" className="font-semibold text-blue hover:underline">
             See the live API
           </Link>
