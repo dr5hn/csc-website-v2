@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackAPI, trackTool, trackExternalLink } from "@/lib/analytics";
+import { isAppUrl, useInboundAttribution, withAttribution } from "@/lib/attribution";
 
 const actions = [
   {
@@ -138,6 +139,13 @@ function ActionRow({ action, i }) {
 }
 
 export default function PricingCTA() {
+  const attribution = useInboundAttribution();
+  const attributedActions = actions.map((action) =>
+    isAppUrl(action.href)
+      ? { ...action, href: withAttribution(action.href, attribution) }
+      : action
+  );
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue/[0.02] to-green/[0.03] py-10 lg:py-20">
       {/* Background decor */}
@@ -174,7 +182,7 @@ export default function PricingCTA() {
             <div className="rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_16px_48px_rgba(2,6,23,0.08)]">
               {/* Actions */}
               <div className="divide-y divide-light/60">
-                {actions.map((action, i) => (
+                {attributedActions.map((action, i) => (
                   <ActionRow key={i} action={action} i={i} />
                 ))}
               </div>

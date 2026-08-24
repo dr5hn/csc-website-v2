@@ -4,8 +4,12 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Shield, Clock } from "lucide-react";
 import Link from "next/link";
 import { trackAPI } from "@/lib/analytics";
+import { isAppUrl, useInboundAttribution, withAttribution } from "@/lib/attribution";
 
 export default function CTA({ href = "/product/api", target = "_self" }) {
+  const attribution = useInboundAttribution();
+  const finalHref = isAppUrl(href) ? withAttribution(href, attribution) : href;
+
   return (
     <section className="relative container mx-auto px-4 py-6 lg:py-10 xl:py-20">
       <div className="bg-dark rounded-3xl px-4 py-10 lg:p-12 xl:p-16 text-center">
@@ -54,8 +58,8 @@ export default function CTA({ href = "/product/api", target = "_self" }) {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button asChild className="bg-orange text-white hover:bg-orange/90 font-semibold transition-all duration-300 transform hover:-translate-y-0.5 px-8 py-4 text-lg group">
-            <Link 
-              href={href} 
+            <Link
+              href={finalHref}
               target={target}
               onClick={() => trackAPI.requestKey('main_cta')}
             >

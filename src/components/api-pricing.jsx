@@ -6,6 +6,7 @@ import PricingComparison from "./pricing-comparison";
 import { cn } from "@/lib/utils";
 import { Mail } from "lucide-react";
 import Link from "next/link";
+import { useInboundAttribution, withAttribution } from "@/lib/attribution";
 
 const plans = [
   {
@@ -117,6 +118,7 @@ const plans = [
 
 export default function ApiPricing() {
   const [annual, setAnnual] = useState(false);
+  const attribution = useInboundAttribution();
 
   return (
     <>
@@ -165,15 +167,16 @@ export default function ApiPricing() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-start">
           {plans.map((plan, index) => {
             const isPaid = plan.priceAnnual !== "$0";
+            const baseHref = withAttribution(plan.href, attribution);
             const displayPlan = annual
               ? {
                   ...plan,
                   price: plan.priceAnnual,
                   period: "/ year",
                   pricePerCredit: isPaid ? "2 months free vs. monthly" : undefined,
-                  href: isPaid ? `${plan.href}&interval=annual` : plan.href,
+                  href: isPaid ? `${baseHref}&interval=annual` : baseHref,
                 }
-              : plan;
+              : { ...plan, href: baseHref };
             return <PricingCard key={index} plan={displayPlan} />;
           })}
         </div>

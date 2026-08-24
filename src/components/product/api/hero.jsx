@@ -12,9 +12,15 @@ import {
   TerminalSquare,
 } from "lucide-react";
 import APIStatusWidget from "../database/api-status-widget";
+import { useInboundAttribution, withAttribution } from "@/lib/attribution";
 
 export function HeroApi() {
   const { totalRequests } = usePlatformStats();
+  const attribution = useInboundAttribution();
+  const apiKeyHref = withAttribution(
+    "https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=api_hero",
+    attribution
+  );
   return (
     <>
       <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue/[0.02] to-green/[0.03]">
@@ -60,7 +66,7 @@ export function HeroApi() {
               {/* CTAs */}
               <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Button asChild className="bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12">
-                  <Link href="https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=api_hero" target="_blank">
+                  <Link href={apiKeyHref} target="_blank">
                     <Rocket className="h-5 w-5 mr-2" aria-hidden />
                     Get Free API Key
                   </Link>

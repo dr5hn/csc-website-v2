@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "NODE_ENV=production next build",
     "start": "next start",
-    "lint": "next lint"
+    "test": "node --test \"src/**/*.test.mjs\"",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@radix-ui/react-separator": "^1.1.8",

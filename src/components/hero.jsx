@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { BookOpen, Clock, Rocket, Shield, Star } from "lucide-react";
 import Image from "next/image";
@@ -7,8 +9,15 @@ import GitHubStars from "./githubstars";
 import { TEXT_STATS } from "@/lib/stats";
 import LiveTotalRequests from "@/components/live-total-requests";
 import LiveGeoCoverage from "@/components/live-geo-coverage";
+import { useInboundAttribution, withAttribution } from "@/lib/attribution";
 
 export default function HeroSection() {
+  const attribution = useInboundAttribution();
+  const signupHref = withAttribution(
+    "https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=hero_signup",
+    attribution
+  );
+
   return (
     <section
       className="relative overflow-hidden bg-gradient-to-br from-white via-light/30 to-blue/5"
@@ -55,7 +64,7 @@ export default function HeroSection() {
                 aria-label="Get started with CSC Database for free"
               >
                 <a
-                  href="https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=hero_signup"
+                  href={signupHref}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
