@@ -28,6 +28,28 @@ function deobfuscateEmail(obfuscatedEmail) {
   });
 }
 
+function ObfuscatedEmailButton({ email, label, className }) {
+  const [showReal, setShowReal] = React.useState(false);
+  const realEmail = deobfuscateEmail(email);
+
+  return (
+    <button
+      type="button"
+      className={className}
+      onMouseEnter={() => setShowReal(true)}
+      onMouseLeave={() => setShowReal(false)}
+      onClick={(event) => {
+        event.preventDefault();
+        trackContact.emailClick(label, realEmail);
+        window.location.href = `mailto:${realEmail}`;
+      }}
+      data-obfuscated={email}
+    >
+      {showReal ? realEmail : email}
+    </button>
+  );
+}
+
 const channels = [
   {
     key: "github",
@@ -164,34 +186,15 @@ function ChannelRow({ channel }) {
             )}
 
             {/* Individual clickable email links */}
-            {channel.emails && channel.emails.map((emailObj, index) => {
-              const EmailButton = () => {
-                const [showReal, setShowReal] = React.useState(false);
-                
-                return (
-                  <button
-                    type="button"
-                    className="font-medium text-dark hover:text-blue break-all underline-offset-4 hover:underline transition-colors duration-200 cursor-pointer bg-transparent border-none p-0 text-left"
-                    onMouseEnter={() => setShowReal(true)}
-                    onMouseLeave={() => setShowReal(false)}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      // The email is already obfuscated, so deobfuscate it
-                      const realEmail = deobfuscateEmail(emailObj.email);
-                      trackContact.emailClick(emailObj.label, realEmail);
-                      window.location.href = `mailto:${realEmail}`;
-                    }}
-                    data-obfuscated={emailObj.email}
-                  >
-                    {showReal ? emailObj.originalEmail : emailObj.email}
-                  </button>
-                );
-              };
-
+            {channel.emails && channel.emails.map((emailObj) => {
               return (
                 <div key={emailObj.email} className="mt-2 text-sm">
                   <span className="text-lightgray">{emailObj.label}: </span>
-                  <EmailButton />
+                  <ObfuscatedEmailButton
+                    email={emailObj.email}
+                    label={emailObj.label}
+                    className="font-medium text-dark hover:text-blue break-all underline-offset-4 hover:underline transition-colors duration-200 cursor-pointer bg-transparent border-none p-0 text-left"
+                  />
                 </div>
               );
             })}
@@ -355,28 +358,11 @@ export default function ContactPage() {
                 <div className="mt-4">
                   <p className="text-sm text-blue-100">
                     Prefer email?{" "}
-                    {(() => {
-                      const [showRealEmail, setShowRealEmail] = React.useState(false);
-                      const obfuscatedSupportEmail = obfuscateEmail("support@countrystatecity.in");
-                      
-                      return (
-                        <button
-                          type="button"
-                          className="underline-offset-4 hover:underline bg-transparent border-none p-0 cursor-pointer text-blue-100 font-inherit"
-                          onMouseEnter={() => setShowRealEmail(true)}
-                          onMouseLeave={() => setShowRealEmail(false)}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            const realEmail = deobfuscateEmail(obfuscatedSupportEmail);
-                            trackContact.emailClick('Support Email (CTA)', realEmail);
-                            window.location.href = `mailto:${realEmail}`;
-                          }}
-                          data-obfuscated={obfuscatedSupportEmail}
-                        >
-                          {showRealEmail ? "support@countrystatecity.in" : obfuscatedSupportEmail}
-                        </button>
-                      );
-                    })()}
+                    <ObfuscatedEmailButton
+                      email={obfuscateEmail("support@countrystatecity.in")}
+                      label="Support Email (CTA)"
+                      className="underline-offset-4 hover:underline bg-transparent border-none p-0 cursor-pointer text-blue-100 font-inherit"
+                    />
                   </p>
                   <p className="mt-1 text-xs text-blue-200/70 flex items-center gap-1">
                     <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">

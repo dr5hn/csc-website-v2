@@ -16,6 +16,7 @@ export const MAX_VALUE_LENGTH = 64;
 
 /** Campaign/package have no fixed allowlist, so constrain their shape instead. */
 const SAFE_VALUE = /^[A-Za-z0-9._-]+$/;
+const PACKAGE_VALUE = /^(?:@[a-z0-9._-]+\/)?[a-z0-9._-]+$/i;
 
 const APP_HOSTNAME = "app.countrystatecity.in";
 
@@ -35,9 +36,10 @@ function sanitizeValue(key, value) {
   if (key === "source") {
     return ALLOWED_SOURCES.includes(trimmed) ? trimmed : null;
   }
-  // Rejects emails, spaces and punctuation, so a crafted link cannot smuggle
-  // personal data through campaign/package into the app's event pipeline.
-  return SAFE_VALUE.test(trimmed) ? trimmed : null;
+  // Scoped npm package names need `@scope/name`; requiring the slash keeps an
+  // email address invalid while preserving legitimate package attribution.
+  const pattern = key === "package" ? PACKAGE_VALUE : SAFE_VALUE;
+  return pattern.test(trimmed) ? trimmed : null;
 }
 
 /**

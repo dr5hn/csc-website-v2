@@ -43,8 +43,16 @@ describe("parseAttribution", () => {
 
   it("rejects personal data smuggled through campaign or package", () => {
     assert.deepEqual(parseAttribution("?campaign=user%40example.com"), {});
+    assert.deepEqual(parseAttribution("?package=user%40example.com"), {});
     assert.deepEqual(parseAttribution("?package=Jane%20Doe"), {});
     assert.deepEqual(parseAttribution("?package=%2Betc"), {});
+  });
+
+  it("accepts scoped npm package names", () => {
+    assert.equal(
+      parseAttribution("?package=%40countrystatecity%2Fsdk").package,
+      "@countrystatecity/sdk"
+    );
   });
 
   it("ignores empty and missing params", () => {
