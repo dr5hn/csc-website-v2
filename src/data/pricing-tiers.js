@@ -25,19 +25,19 @@ export const COMPARISON_SECTIONS = [
     rows: [
       {
         label: "Price",
-        values: { community: "Free", starter: "$5/mo", supporter: "$9/mo", professional: "$29/mo", business: "$79/mo" },
+        values: { community: "Free", starter: "$5/mo", supporter: "$9/mo", professional: "$29/mo", business: "$49/mo" },
       },
       {
         label: "Annual price (2 months free)",
-        values: { community: "Free", starter: "$50/yr", supporter: "$90/yr", professional: "$290/yr", business: "$790/yr" },
+        values: { community: "Free", starter: "$50/yr", supporter: "$90/yr", professional: "$290/yr", business: "$490/yr" },
       },
       {
         label: "Monthly Requests",
-        values: { community: "3,000", starter: "9,000", supporter: "30,000", professional: "100,000", business: "750,000" },
+        values: { community: "3,000", starter: "9,000", supporter: "30,000", professional: "100,000", business: "450,000" },
       },
       {
         label: "Daily Requests",
-        values: { community: "100", starter: "300", supporter: "1,000", professional: "3,300", business: "25,000" },
+        values: { community: "100", starter: "300", supporter: "1,000", professional: "3,300", business: "10,000" },
       },
       {
         label: "Origin Whitelisting",

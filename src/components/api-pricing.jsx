@@ -97,12 +97,12 @@ const plans = [
   },
   {
     name: "Business",
-    price: "$79",
-    priceAnnual: "$790",
+    price: "$49",
+    priceAnnual: "$490",
     period: "/ month",
     description: "High-volume access with all premium features.",
     features: [
-      "750,000 API Requests/month (25,000/day)",
+      "450,000 API Requests/month (10,000/day)",
       "Full field access including translations & wiki data",
       "All current and upcoming premium features",
       "Domain + IP whitelisting (up to 25)",
