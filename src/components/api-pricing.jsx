@@ -102,7 +102,7 @@ const plans = [
     period: "/ month",
     description: "High-volume access with all premium features.",
     features: [
-      "450,000 API Requests/month (10,000/day)",
+      "300,000 API Requests/month (10,000/day)",
       "Full field access including translations & wiki data",
       "All current and upcoming premium features",
       "Domain + IP whitelisting (up to 25)",

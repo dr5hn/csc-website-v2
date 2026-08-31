@@ -33,7 +33,7 @@ export const COMPARISON_SECTIONS = [
       },
       {
         label: "Monthly Requests",
-        values: { community: "3,000", starter: "9,000", supporter: "30,000", professional: "100,000", business: "450,000" },
+        values: { community: "3,000", starter: "9,000", supporter: "30,000", professional: "100,000", business: "300,000" },
       },
       {
         label: "Daily Requests",
