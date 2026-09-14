@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Update API pricing cards, comparison table, and FAQ text/schema: Professional $19/month ($190/year), 2,100/day and 60,000/month; Business $29/month ($290/year), 3,300/day and 100,000/month.
+- Update API pricing cards, comparison table, and FAQ text/schema: Professional $19/month ($190/year), 2,100/day and 63,000/month; Business $29/month ($290/year), 3,300/day and 100,000/month.
 
 ## [1.3.0] - 2026-05-28
 

@@ -78,7 +78,7 @@ const plans = [
     period: "/ month",
     description: "Full data access for production applications.",
     features: [
-      "60,000 API Requests/month (2,100/day)",
+      "63,000 API Requests/month (2,100/day)",
       "Full field access including translations & wiki data",
       "All endpoints including cities by country",
       "Regions, subregions, ISO, phone dial code, and timezone APIs",
