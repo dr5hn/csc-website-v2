@@ -73,12 +73,12 @@ const plans = [
   },
   {
     name: "Professional",
-    price: "$29",
-    priceAnnual: "$290",
+    price: "$19",
+    priceAnnual: "$190",
     period: "/ month",
     description: "Full data access for production applications.",
     features: [
-      "100,000 API Requests/month (3,300/day)",
+      "60,000 API Requests/month (2,100/day)",
       "Full field access including translations & wiki data",
       "All endpoints including cities by country",
       "Regions, subregions, ISO, phone dial code, and timezone APIs",
@@ -97,12 +97,12 @@ const plans = [
   },
   {
     name: "Business",
-    price: "$49",
-    priceAnnual: "$490",
+    price: "$29",
+    priceAnnual: "$290",
     period: "/ month",
     description: "High-volume access with all premium features.",
     features: [
-      "300,000 API Requests/month (10,000/day)",
+      "100,000 API Requests/month (3,300/day)",
       "Full field access including translations & wiki data",
       "All current and upcoming premium features",
       "Domain + IP whitelisting (up to 25)",

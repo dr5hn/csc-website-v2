@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- Update API pricing cards, comparison table, and FAQ text/schema: Professional $19/month ($190/year), 2,100/day and 60,000/month; Business $29/month ($290/year), 3,300/day and 100,000/month.
+
 ## [1.3.0] - 2026-05-28
 
 ### Added
