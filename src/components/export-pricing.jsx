@@ -1,9 +1,12 @@
+"use client";
+
 import PricingCard from "./pricing-card";
 import CustomCredits from "./custom-credits";
 import { Check, Database, Equal, FileJson, FileText, Plus } from "lucide-react";
-import { exportPricingPlans } from "@/data/export-pricing";
+import { useExportPricing } from "@/hooks/use-export-pricing";
 
 export default function ExportPricing() {
+  const { plans: exportPricingPlans, customCredits } = useExportPricing();
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-start mb-12">
@@ -18,12 +21,12 @@ export default function ExportPricing() {
           Need a Different Amount?
         </h3>
         <p className="text-darkgray">
-          Purchase custom credits at $1 per credit - buy exactly what you need.
+          Purchase custom credits at {customCredits.price} per credit - buy exactly what you need.
         </p>
       </div>
       
       <div className="max-w-md mx-auto mb-12">
-        <CustomCredits />
+        <CustomCredits customCredits={customCredits} />
       </div>
       
       <HowCreditsWork />
