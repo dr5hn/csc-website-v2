@@ -267,6 +267,24 @@ export default function Header() {
                         </div>
                       </div>
                     </Link>
+
+                    {/* Divider */}
+                    <div className="my-1 mx-3 h-px bg-light/70" />
+
+                    {/* MakeMySiteLive */}
+                    <Link
+                      href="https://makemysitelive.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-[#0d9488]/8 transition-colors duration-200 group"
+                    >
+                      <Image src="/mmsl-icon.png" alt="" width={16} height={16} className="w-4 h-4 object-contain shrink-0" />
+                      <span className="text-sm font-medium text-dark">MakeMySiteLive.com</span>
+                      <span className="inline-flex items-center rounded-full bg-green/15 px-1.5 py-0.5 text-[10px] font-semibold text-green">
+                        New
+                      </span>
+                      <span className="text-xs text-lightgray ml-auto hidden group-hover:inline">↗</span>
+                    </Link>
                   </div>
                 </div>
               </div>
