@@ -30,7 +30,7 @@ export const COMPARISON_SECTIONS = [
         values: { community: "Free", starter: "$5/mo", supporter: "$9/mo", professional: "$29/mo", business: "$79/mo" },
       },
       {
-        label: "Annual price (2 months free)",
+        label: "Annual price",
         values: { community: "Free", starter: "$50/yr", supporter: "$90/yr", professional: "$290/yr", business: "$790/yr" },
       },
       {

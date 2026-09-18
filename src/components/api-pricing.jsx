@@ -54,23 +54,23 @@ export default function ApiPricing() {
             Annual
           </span>
           <span className="inline-flex items-center rounded-full bg-green px-3 py-1 text-xs font-bold text-white shadow-sm">
-            2 months free
+            Billed yearly
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-start">
           {plans.map((plan, index) => {
-            const isPaid = plan.priceAnnual !== "$0";
+            const isPaid = plan.priceAnnual != null && plan.priceAnnual !== "$0";
             const baseHref = withAttribution(plan.href, attribution);
-            const displayPlan = annual
+            const displayPlan = annual && plan.priceAnnual != null
               ? {
                   ...plan,
                   price: plan.priceAnnual,
                   period: "/ year",
-                  pricePerCredit: isPaid ? "2 months free vs. monthly" : undefined,
+                  pricePerCredit: isPaid ? "Billed annually" : undefined,
                   href: isPaid ? `${baseHref}&interval=annual` : baseHref,
                 }
-              : { ...plan, href: baseHref };
+              : { ...plan, href: baseHref, pricePerCredit: annual ? "Annual billing unavailable" : plan.pricePerCredit };
             return <PricingCard key={index} plan={displayPlan} />;
           })}
         </div>

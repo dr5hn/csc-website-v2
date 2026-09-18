@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import {
   exportPricingPlans as STATIC_PLANS,
   customCreditsOption as STATIC_CUSTOM,
-} from "@/data/export-pricing";
+} from "../data/export-pricing.js";
 
 const API_BASE =
   process.env.NEXT_PUBLIC_EXPORT_CREDITS_API_URL || "https://eapi.countrystatecity.in";
@@ -57,7 +57,18 @@ const PLAN_COPY = {
 
 const FALLBACK = { plans: STATIC_PLANS, customCredits: STATIC_CUSTOM };
 
-function buildFromApi(data) {
+/** Validate public package data before replacing the fallback prices. */
+export function buildFromApi(data) {
+  for (const key of ["CUSTOM", ...PLAN_ORDER]) {
+    const pkg = data?.[key];
+    if (!pkg || typeof pkg.name !== "string" || !pkg.name.trim() ||
+        !Number.isFinite(pkg.price) || pkg.price < 0 ||
+        !Number.isSafeInteger(pkg.credits) || pkg.credits <= 0 ||
+        (key === "CUSTOM" && pkg.price === 0) ||
+        (pkg.mostPopular !== undefined && typeof pkg.mostPopular !== "boolean")) {
+      throw new TypeError(`Invalid credit package: ${key}`);
+    }
+  }
   const custom = data.CUSTOM;
   const customPerCredit = custom.price / custom.credits;
 
@@ -98,7 +109,7 @@ function buildFromApi(data) {
     ...STATIC_CUSTOM,
     price: `$${customPerCredit.toFixed(2)}`,
     pricePerCredit: `$${customPerCredit.toFixed(2)} per credit`,
-    description: `Buy exactly what you need — $${custom.price} per credit`,
+    description: `Buy exactly what you need — $${customPerCredit.toFixed(2)} per credit`,
   };
 
   return { plans: [STATIC_PLANS[0], ...plans], customCredits };

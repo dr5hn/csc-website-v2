@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { TIERS as STATIC_TIERS, COMPARISON_SECTIONS as STATIC_SECTIONS, API_PLAN_CARDS as STATIC_CARDS } from "@/data/pricing-tiers";
+import { TIERS as STATIC_TIERS, COMPARISON_SECTIONS as STATIC_SECTIONS, API_PLAN_CARDS as STATIC_CARDS } from "../data/pricing-tiers.js";
 
 const API_BASE =
   process.env.NEXT_PUBLIC_APP_PLANS_API_URL || "https://api.countrystatecity.in";
@@ -94,14 +94,34 @@ const SUPPORT_LEVEL = {
   business: "Priority (~1 business day)",
 };
 
+/** Mark universally available fields for each returned tier. */
 function allTrue(keys) {
   return Object.fromEntries(keys.map((k) => [k, true]));
 }
 
 const FALLBACK = { tiers: STATIC_TIERS, sections: STATIC_SECTIONS, cards: STATIC_CARDS };
 
-function buildFromApi(plans) {
-  const byKey = Object.fromEntries(plans.map((p) => [p.key, p]));
+/** Validate the public catalog and map its nullable prices and limits to display values. */
+export function buildFromApi(plans) {
+  if (!Array.isArray(plans)) throw new TypeError("Invalid plan catalog");
+  const knownPlans = plans.filter((plan) => TIER_ORDER.includes(plan?.key));
+  if (!knownPlans.length) throw new TypeError("No supported pricing plans");
+  for (const plan of knownPlans) {
+    if (typeof plan.name !== "string" || !plan.name.trim() ||
+        !["basic", "coordinates", "full"].includes(plan.dataAccessLevel) ||
+        !Array.isArray(plan.features) || plan.features.some((value) => typeof value !== "string") ||
+        !Array.isArray(plan.badges) || plan.badges.some((value) => typeof value !== "string") ||
+        !plan.featureFlags || typeof plan.featureFlags !== "object" || Array.isArray(plan.featureFlags) ||
+        Object.values(plan.featureFlags).some((value) => typeof value !== "boolean")) {
+      throw new TypeError(`Invalid pricing plan: ${plan.key}`);
+    }
+    for (const field of ["priceMonthly", "priceAnnual", "dailyLimit", "monthlyLimit", "maxWhitelistEntries"]) {
+      if (plan[field] !== null && (!Number.isFinite(plan[field]) || plan[field] < 0)) {
+        throw new TypeError(`Invalid ${field} for ${plan.key}`);
+      }
+    }
+  }
+  const byKey = Object.fromEntries(knownPlans.map((p) => [p.key, p]));
   const orderedKeys = TIER_ORDER.filter((k) => byKey[k]);
 
   const tiers = orderedKeys.map((key) => ({
@@ -116,27 +136,27 @@ function buildFromApi(plans) {
       {
         label: "Price",
         values: Object.fromEntries(
-          orderedKeys.map((k) => [k, byKey[k].priceMonthly === 0 ? "Free" : `$${byKey[k].priceMonthly}/mo`])
+          orderedKeys.map((k) => [k, byKey[k].priceMonthly === null ? "Contact us" : byKey[k].priceMonthly === 0 ? "Free" : `$${byKey[k].priceMonthly}/mo`])
         ),
       },
       {
-        label: "Annual price (2 months free)",
+        label: "Annual price",
         values: Object.fromEntries(
-          orderedKeys.map((k) => [k, byKey[k].priceAnnual == null ? "Free" : `$${byKey[k].priceAnnual}/yr`])
+          orderedKeys.map((k) => [k, byKey[k].priceMonthly === 0 ? "Free" : byKey[k].priceAnnual === null ? "Not available" : `$${byKey[k].priceAnnual}/yr`])
         ),
       },
       {
         label: "Monthly Requests",
-        values: Object.fromEntries(orderedKeys.map((k) => [k, byKey[k].monthlyLimit.toLocaleString()])),
+        values: Object.fromEntries(orderedKeys.map((k) => [k, byKey[k].monthlyLimit === null ? "Unlimited" : byKey[k].monthlyLimit.toLocaleString("en-US")])),
       },
       {
         label: "Daily Requests",
-        values: Object.fromEntries(orderedKeys.map((k) => [k, byKey[k].dailyLimit.toLocaleString()])),
+        values: Object.fromEntries(orderedKeys.map((k) => [k, byKey[k].dailyLimit === null ? "Unlimited" : byKey[k].dailyLimit.toLocaleString("en-US")])),
       },
       {
         label: "Origin Whitelisting",
         values: Object.fromEntries(
-          orderedKeys.map((k) => [k, byKey[k].maxWhitelistEntries > 0 ? `Up to ${byKey[k].maxWhitelistEntries}` : false])
+          orderedKeys.map((k) => [k, byKey[k].maxWhitelistEntries === null ? "Unlimited" : byKey[k].maxWhitelistEntries > 0 ? `Up to ${byKey[k].maxWhitelistEntries}` : false])
         ),
       },
     ],
@@ -148,7 +168,7 @@ function buildFromApi(plans) {
       { label: core, values: allTrue(orderedKeys) },
       {
         label: extended,
-        values: Object.fromEntries(orderedKeys.map((k) => [k, byKey[k].dataAccessLevel === "full"])),
+        values: Object.fromEntries(orderedKeys.map((k) => [k, ["coordinates", "full"].includes(byKey[k].dataAccessLevel)])),
       },
       {
         label: "Translations & Wiki Data",
@@ -187,9 +207,9 @@ function buildFromApi(plans) {
 
     return {
       name: plan.name,
-      price: plan.priceMonthly === 0 ? "$0" : `$${plan.priceMonthly}`,
-      priceAnnual: plan.priceAnnual == null ? "$0" : `$${plan.priceAnnual}`,
-      period: "/ month",
+      price: plan.priceMonthly === null ? "Contact us" : `$${plan.priceMonthly}`,
+      priceAnnual: plan.priceMonthly === 0 ? "$0" : plan.priceAnnual === null ? null : `$${plan.priceAnnual}`,
+      period: plan.priceMonthly === null ? undefined : "/ month",
       description: copy.description,
       features:
         plan.features && plan.features.length
