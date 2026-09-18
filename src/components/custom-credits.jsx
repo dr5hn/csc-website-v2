@@ -28,7 +28,8 @@ export default function CustomCredits() {
     }
   };
 
-  const totalPrice = credits * 1.00;
+  const pricePerCredit = parseFloat(customCreditsOption.price.replace("$", ""));
+  const totalPrice = credits * pricePerCredit;
 
   return (
     <div className="relative rounded-2xl p-[1px] bg-gradient-to-br from-purple-500/30 to-purple-500/10">
@@ -43,7 +44,7 @@ export default function CustomCredits() {
           {/* Price per credit */}
           <div className="mb-4">
             <span className="text-2xl font-black text-dark font-mono">
-              $1.00
+              {customCreditsOption.price}
             </span>
             <span className="text-lightgray ml-2">per credit</span>
           </div>

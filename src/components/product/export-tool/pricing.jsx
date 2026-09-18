@@ -42,7 +42,7 @@ export default function ExportToolPricingSection() {
             Need a Different Amount?
           </h3>
           <p className="text-darkgray">
-            Purchase custom credits at $1 per credit - buy exactly what you need.
+            Purchase custom credits at $2 per credit - buy exactly what you need.
           </p>
         </div>
         
