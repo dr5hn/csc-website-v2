@@ -4,7 +4,6 @@ import EcosystemPackages from "@/components/ecosystem-packages";
 import Stats from "@/components/stats";
 import CTA from "@/components/cta";
 import ScrollTracker from "@/components/scroll-tracker";
-import MmslSlimBanner from "@/components/mmsl-slim-banner";
 
 export const metadata = {
   title: "Ecosystem — CountryStateCity",
@@ -27,7 +26,6 @@ export default function EcosystemPage() {
     <>
       <ScrollTracker pageName="Ecosystem" />
       <EcosystemHero />
-      <MmslSlimBanner />
       <EcosystemChannels />
       <Stats />
       <EcosystemPackages />
