@@ -3,7 +3,6 @@ import EasyIntegration from "@/components/product/api/api-integration";
 import HeroApi from "@/components/product/api/hero";
 import ApiPricingSection from "@/components/product/api/pricing";
 import WhyChooseOurApi from "@/components/product/api/why-choose-our-api";
-import MmslSlimBanner from "@/components/mmsl-slim-banner";
 
 import { STAT_DESCRIPTIONS, TEXT_STATS } from "@/lib/stats";
 
@@ -22,7 +21,6 @@ export default function Page() {
   return (
     <>
       <HeroApi />
-      <MmslSlimBanner />
       <WhyChooseOurApi />
       <EasyIntegration />
       <ApiPricingSection />
