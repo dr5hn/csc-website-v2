@@ -16,7 +16,7 @@ export default function PricingCard({ plan }) {
     >
       {isPopular && (
         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange text-white text-sm font-bold shadow-lg">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange text-white text-sm font-bold shadow-lg whitespace-nowrap">
             <Star className="w-4 h-4" />
             Most Popular
           </div>

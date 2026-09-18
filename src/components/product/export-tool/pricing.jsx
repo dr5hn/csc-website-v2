@@ -2,9 +2,11 @@
 
 import PricingCard from "@/components/pricing-card";
 import CustomCredits from "@/components/custom-credits";
-import { exportPricingPlans } from "@/data/export-pricing";
+import { useExportPricing } from "@/hooks/use-export-pricing";
 
 export default function ExportToolPricingSection() {
+  const { plans: exportPricingPlans, customCredits } = useExportPricing();
+
   return (
     <section className="relative bg-gradient-to-br from-white via-light/30 to-blue/5 py-10 lg:py-20">
       <div className="container mx-auto px-4">
@@ -42,12 +44,12 @@ export default function ExportToolPricingSection() {
             Need a Different Amount?
           </h3>
           <p className="text-darkgray">
-            Purchase custom credits at $2 per credit - buy exactly what you need.
+            Purchase custom credits at {customCredits.price} per credit - buy exactly what you need.
           </p>
         </div>
-        
+
         <div className="max-w-md mx-auto">
-          <CustomCredits />
+          <CustomCredits customCredits={customCredits} />
         </div>
       </div>
     </section>

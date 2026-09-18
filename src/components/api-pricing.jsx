@@ -7,118 +7,12 @@ import { cn } from "@/lib/utils";
 import { Mail } from "lucide-react";
 import Link from "next/link";
 import { useInboundAttribution, withAttribution } from "@/lib/attribution";
-
-const plans = [
-  {
-    name: "Community",
-    price: "$0",
-    priceAnnual: "$0",
-    period: "/ month",
-    description: "Perfect for personal projects & exploration.",
-    features: [
-      "3,000 API Requests/month (100/day)",
-      "States by country and cities by state endpoints",
-      "Basic fields: name, iso codes, capital, currency, region, emoji, lat/lng, timezones",
-      "Timezone lookup endpoints (country, state, city) with DST awareness",
-      "Open access (no domain whitelisting)",
-      "Community support & documentation",
-    ],
-    cta: "Start for Free",
-    href: "https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=api_pricing_community",
-    target: "_blank",
-    accent: "gray",
-    popular: false,
-  },
-  {
-    name: "Starter",
-    price: "$5",
-    priceAnnual: "$50",
-    period: "/ month",
-    description: "More headroom for side projects and prototypes.",
-    features: [
-      "9,000 API Requests/month (300/day)",
-      "Same features as Community with higher limits",
-      "Basic fields: name, iso codes, capital, currency, region, emoji, lat/lng, timezones",
-      "ISO 3166 lookup endpoints (alpha-2, alpha-3, numeric, subdivision conversion)",
-      "Open access (no domain whitelisting)",
-      "Community support & documentation",
-    ],
-    cta: "Get Started",
-    href: "https://app.countrystatecity.in/pricing?plan=starter&utm_source=website&utm_medium=cta&utm_content=api_pricing_starter",
-    target: "_blank",
-    accent: "sky",
-    popular: false,
-  },
-  {
-    name: "Supporter",
-    price: "$9",
-    priceAnnual: "$90",
-    period: "/ month",
-    description: "Ideal for growing applications with enhanced data.",
-    features: [
-      "30,000 API Requests/month (1,000/day)",
-      "Extended fields: population, GDP, area, TLD, nationality, postal codes, coordinates",
-      "Inline search filtering on all list endpoints",
-      "Regions, subregions, ISO, phone dial code, and timezone APIs",
-      "Field filtering (?fields=) and custom sort (?sort=) on every geographic endpoint",
-      "Cities by country endpoint",
-      "Domain whitelisting (up to 3 domains)",
-      "Founder-led email support (2-3 business days)",
-    ],
-    cta: "Get Started",
-    href: "https://app.countrystatecity.in/pricing?plan=supporter&utm_source=website&utm_medium=cta&utm_content=api_pricing_supporter",
-    target: "_blank",
-    accent: "orange",
-    popular: true,
-  },
-  {
-    name: "Professional",
-    price: "$29",
-    priceAnnual: "$290",
-    period: "/ month",
-    description: "Full data access for production applications.",
-    features: [
-      "100,000 API Requests/month (3,300/day)",
-      "Full field access including translations & wiki data",
-      "All endpoints including cities by country",
-      "Regions, subregions, ISO, phone dial code, and timezone APIs",
-      "Field filtering (?fields=) and custom sort (?sort=) on every geographic endpoint",
-      "Fuzzy / typo-tolerant search across cities, states & countries",
-      "Domain + IP whitelisting (up to 10)",
-      "Founder-led priority support (~1 business day)",
-      "Coming soon: GraphQL, geospatial search",
-    ],
-    cta: "Get Started",
-    href: "https://app.countrystatecity.in/pricing?plan=professional&utm_source=website&utm_medium=cta&utm_content=api_pricing_professional",
-    target: "_blank",
-    accent: "blue",
-    popular: false,
-    badge: "Best Value",
-  },
-  {
-    name: "Business",
-    price: "$79",
-    priceAnnual: "$790",
-    period: "/ month",
-    description: "High-volume access with all premium features.",
-    features: [
-      "750,000 API Requests/month (25,000/day)",
-      "Full field access including translations & wiki data",
-      "All current and upcoming premium features",
-      "Domain + IP whitelisting (up to 25)",
-      "Founder-led priority support (~1 business day)",
-    ],
-    cta: "Get Started",
-    href: "https://app.countrystatecity.in/pricing?plan=business&utm_source=website&utm_medium=cta&utm_content=api_pricing_business",
-    target: "_blank",
-    accent: "blue",
-    popular: false,
-  },
-];
+import { useApiPricing } from "@/hooks/use-api-pricing";
 
 export default function ApiPricing() {
   const [annual, setAnnual] = useState(false);
   const attribution = useInboundAttribution();
+  const { cards: plans, sections, tiers } = useApiPricing();
 
   return (
     <>
@@ -200,7 +94,7 @@ export default function ApiPricing() {
           </div>
         </div>
       </div>
-      <PricingComparison />
+      <PricingComparison tiers={tiers} sections={sections} />
     </>
   );
 }

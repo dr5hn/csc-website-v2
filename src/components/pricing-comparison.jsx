@@ -1,6 +1,6 @@
 // src/components/pricing-comparison.jsx
 import { Check, Minus } from "lucide-react";
-import { TIERS, COMPARISON_SECTIONS } from "@/data/pricing-tiers";
+import { TIERS as STATIC_TIERS, COMPARISON_SECTIONS as STATIC_SECTIONS } from "@/data/pricing-tiers";
 
 function Cell({ value }) {
   if (value === undefined || value === null) {
@@ -12,17 +12,13 @@ function Cell({ value }) {
   if (value === false) {
     return <Minus className="mx-auto h-4 w-4 text-darkgray/40" aria-label="Not included" />;
   }
-  if (value === "coming_soon") {
-    return (
-      <span className="inline-block rounded-full bg-orange/10 px-2 py-0.5 text-[11px] font-semibold text-orange">
-        Coming soon
-      </span>
-    );
-  }
   return <span className="text-sm text-dark">{value}</span>;
 }
 
-export default function PricingComparison() {
+export default function PricingComparison({ tiers, sections }) {
+  const tierList = tiers || STATIC_TIERS;
+  const sectionList = sections || STATIC_SECTIONS;
+
   return (
     <section className="container mx-auto px-4 py-10 lg:py-16">
       <div className="text-center max-w-3xl mx-auto mb-8">
@@ -39,7 +35,7 @@ export default function PricingComparison() {
               <th scope="col" className="sticky left-0 z-10 bg-white/90 px-4 py-4 text-sm font-semibold text-dark">
                 Feature
               </th>
-              {TIERS.map((tier) => (
+              {tierList.map((tier) => (
                 <th
                   key={tier.key}
                   scope="col"
@@ -58,8 +54,8 @@ export default function PricingComparison() {
             </tr>
           </thead>
           <tbody>
-            {COMPARISON_SECTIONS.map((section) => (
-              <FragmentSection key={section.section} section={section} />
+            {sectionList.map((section) => (
+              <FragmentSection key={section.section} section={section} tiers={tierList} />
             ))}
           </tbody>
         </table>
@@ -68,12 +64,12 @@ export default function PricingComparison() {
   );
 }
 
-function FragmentSection({ section }) {
+function FragmentSection({ section, tiers }) {
   return (
     <>
       <tr className="bg-light/30">
         <td
-          colSpan={TIERS.length + 1}
+          colSpan={tiers.length + 1}
           className="sticky left-0 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-darkgray"
         >
           {section.section}
@@ -84,7 +80,7 @@ function FragmentSection({ section }) {
           <th scope="row" className="sticky left-0 z-10 bg-white/90 px-4 py-3 text-sm text-darkgray font-normal">
             {row.label}
           </th>
-          {TIERS.map((tier) => (
+          {tiers.map((tier) => (
             <td key={tier.key} className="px-4 py-3 text-center align-middle">
               <Cell value={row.values[tier.key]} />
             </td>

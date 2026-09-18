@@ -1,13 +1,15 @@
 // src/data/pricing-tiers.js
 //
-// Structured tier x feature matrix for the pricing comparison table.
+// Structured tier x feature matrix for the pricing comparison table, plus
+// fallback card copy for the pricing cards.
 //
-// SOURCE OF TRUTH: csc-app/api/src/config/pricingTiers.ts (feature flags,
-// limits, data-access levels) and csc-app/web/src/pages/pricing.tsx
-// (FEATURE_FLAG_LABELS, COMING_SOON_FLAGS). Keep in sync when pricing or
-// features change — the csc-app "sync-pricing-and-docs" skill walks this.
+// This is now sourced live at runtime from csc-app's public `GET /plans`
+// endpoint (see src/hooks/use-api-pricing.js) whenever that fetch succeeds.
+// The data below is the fallback used when the fetch fails/is unavailable
+// (e.g. static export preview, offline), and should still be kept roughly
+// in sync with csc-app/api/src/config/pricingTiers.ts by hand.
 //
-// Cell values: true | false | "coming_soon" | string.
+// Cell values: true | false | string.
 
 export const TIERS = [
   { key: "community", name: "Community" },
@@ -58,7 +60,7 @@ export const COMPARISON_SECTIONS = [
       },
       {
         label: "Translations & Wiki Data",
-        values: { community: false, starter: false, supporter: false, professional: true, business: true },
+        values: { community: false, starter: false, supporter: true, professional: true, business: true },
       },
     ],
   },
@@ -75,7 +77,7 @@ export const COMPARISON_SECTIONS = [
       },
       {
         label: "Translations & Wiki Data",
-        values: { community: false, starter: false, supporter: false, professional: true, business: true },
+        values: { community: false, starter: false, supporter: true, professional: true, business: true },
       },
     ],
   },
@@ -92,7 +94,7 @@ export const COMPARISON_SECTIONS = [
       },
       {
         label: "Translations & Wiki Data",
-        values: { community: false, starter: false, supporter: false, professional: true, business: true },
+        values: { community: false, starter: false, supporter: true, professional: true, business: true },
       },
     ],
   },
@@ -102,20 +104,22 @@ export const COMPARISON_SECTIONS = [
       { label: "REST API", values: { community: true, starter: true, supporter: true, professional: true, business: true } },
       { label: "All Countries", values: { community: true, starter: true, supporter: true, professional: true, business: true } },
       { label: "States by Country", values: { community: true, starter: true, supporter: true, professional: true, business: true } },
-      { label: "All States (Global)", values: { community: false, starter: false, supporter: true, professional: true, business: true } },
+      { label: "All States (Global)", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
       { label: "Cities by State", values: { community: true, starter: true, supporter: true, professional: true, business: true } },
-      { label: "Cities by Country", values: { community: false, starter: false, supporter: true, professional: true, business: true } },
-      { label: "Inline Search Filtering", values: { community: false, starter: false, supporter: true, professional: true, business: true } },
-      { label: "Regions & Subregions API", values: { community: false, starter: false, supporter: true, professional: true, business: true } },
-      { label: "Phone Dial Code Lookup", values: { community: false, starter: false, supporter: true, professional: true, business: true } },
-      { label: "Currency Lookup by Country", values: { community: false, starter: false, supporter: true, professional: true, business: true } },
+      { label: "Cities by Country", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
+      { label: "Inline Search Filtering", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
+      { label: "Regions & Subregions API", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
+      { label: "Phone Dial Code Lookup", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
+      { label: "Currency Lookup by Country", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
       { label: "ISO Code Lookup", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
       { label: "Timezone Lookup (country/state/city)", values: { community: true, starter: true, supporter: true, professional: true, business: true } },
-      { label: "Fields Filtering (?fields=)", values: { community: false, starter: false, supporter: true, professional: true, business: true } },
-      { label: "Sorting (?sort=)", values: { community: false, starter: false, supporter: true, professional: true, business: true } },
-      { label: "Fuzzy / Typo-Tolerant Search", values: { community: false, starter: false, supporter: false, professional: true, business: true } },
-      { label: "GraphQL API", values: { community: false, starter: false, supporter: false, professional: "coming_soon", business: "coming_soon" } },
-      { label: "Nearby / Geospatial Search", values: { community: false, starter: false, supporter: false, professional: "coming_soon", business: "coming_soon" } },
+      { label: "Fields Filtering (?fields=)", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
+      { label: "Sorting (?sort=)", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
+      { label: "Fuzzy / Typo-Tolerant Search", values: { community: false, starter: false, supporter: true, professional: true, business: true } },
+      { label: "Location Autocomplete", values: { community: false, starter: false, supporter: true, professional: true, business: true } },
+      { label: "GraphQL API", values: { community: false, starter: false, supporter: false, professional: true, business: true } },
+      { label: "Nearby / Geospatial Search", values: { community: false, starter: false, supporter: true, professional: true, business: true } },
+      { label: "Data Change Feed", values: { community: false, starter: false, supporter: false, professional: true, business: true } },
     ],
   },
   {
@@ -132,5 +136,120 @@ export const COMPARISON_SECTIONS = [
         },
       },
     ],
+  },
+];
+
+// Pricing card copy, keyed by tier. `features` mirrors csc-app's live
+// per-plan `features` array (see use-api-pricing.js) so the cards and the
+// comparison table above stay describing the same shipped capabilities.
+export const API_PLAN_CARDS = [
+  {
+    key: "community",
+    name: "Community",
+    price: "$0",
+    priceAnnual: "$0",
+    period: "/ month",
+    description: "Perfect for personal projects & exploration.",
+    features: [
+      "3,000 API Requests/month (100/day)",
+      "States by country and cities by state endpoints",
+      "Exact postcode lookup, city classification, and data version metadata",
+      "Basic fields only (no translations or premium data)",
+      "Open access (no origin whitelisting)",
+      "Community support and docs",
+    ],
+    cta: "Start for Free",
+    href: "https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=api_pricing_community",
+    target: "_blank",
+    accent: "gray",
+    popular: false,
+  },
+  {
+    key: "starter",
+    name: "Starter",
+    price: "$5",
+    priceAnnual: "$50",
+    period: "/ month",
+    description: "More headroom for side projects and prototypes.",
+    features: [
+      "9,000 API Requests/month (300/day)",
+      "Same features as Community with higher limits",
+      "All bulk states and cities by country endpoints",
+      "Postcode listing and search with cursor pagination",
+      "Inline search filtering, regions, phone, and currency lookup APIs",
+      "Field filtering (?fields=) on every geographic endpoint; custom sort (?sort=) on list endpoints",
+      "Basic fields only (no translations or premium data)",
+      "Community support and docs",
+    ],
+    cta: "Get Started",
+    href: "https://app.countrystatecity.in/pricing?plan=starter&utm_source=website&utm_medium=cta&utm_content=api_pricing_starter",
+    target: "_blank",
+    accent: "sky",
+    popular: false,
+  },
+  {
+    key: "supporter",
+    name: "Supporter",
+    price: "$9",
+    priceAnnual: "$90",
+    period: "/ month",
+    description: "Ideal for growing applications with enhanced data.",
+    features: [
+      "30,000 API Requests/month (1,000/day)",
+      "All Starter features",
+      "Extended country and state fields + city coordinates, localized names, translations, and wiki data",
+      "Fuzzy / typo-tolerant search (GET /v1/search/fuzzy)",
+      "Location autocomplete with ranked, labeled suggestions (GET /v1/search/autocomplete)",
+      "Find places near a location, ranked by distance (GET /v1/search/nearby)",
+      "Origin whitelisting (up to 3 domains or IPs)",
+      "Founder-led email support (2-3 business days)",
+    ],
+    cta: "Get Started",
+    href: "https://app.countrystatecity.in/pricing?plan=supporter&utm_source=website&utm_medium=cta&utm_content=api_pricing_supporter",
+    target: "_blank",
+    accent: "orange",
+    popular: true,
+  },
+  {
+    key: "professional",
+    name: "Professional",
+    price: "$29",
+    priceAnnual: "$290",
+    period: "/ month",
+    description: "Full data access for production applications.",
+    features: [
+      "100,000 API Requests/month (3,300/day)",
+      "All Supporter features",
+      "Data change feed for syncing a local copy (GET /v1/changes)",
+      "Origin whitelisting (up to 10 domains or IPs)",
+      "Founder-led priority support (~1 business day)",
+      "GraphQL API (POST /v1/graphql)",
+    ],
+    cta: "Get Started",
+    href: "https://app.countrystatecity.in/pricing?plan=professional&utm_source=website&utm_medium=cta&utm_content=api_pricing_professional",
+    target: "_blank",
+    accent: "blue",
+    popular: false,
+    badge: "Best Value",
+  },
+  {
+    key: "business",
+    name: "Business",
+    price: "$79",
+    priceAnnual: "$790",
+    period: "/ month",
+    description: "High-volume access with all premium features.",
+    features: [
+      "750,000 API Requests/month (25,000/day)",
+      "All Professional features",
+      "Origin whitelisting (up to 25 domains or IPs)",
+      "Founder-led priority support (~1 business day)",
+      "All current and upcoming premium features",
+    ],
+    cta: "Get Started",
+    href: "https://app.countrystatecity.in/pricing?plan=business&utm_source=website&utm_medium=cta&utm_content=api_pricing_business",
+    target: "_blank",
+    accent: "blue",
+    popular: false,
   },
 ];
