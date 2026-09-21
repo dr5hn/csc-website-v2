@@ -3,6 +3,7 @@
 import { Minus, Plus } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import AskDocs from "@/components/ask-docs";
 
 const faqs = [
   {
@@ -50,11 +51,19 @@ export default function FAQs() {
         <p className="text-lg text-darkgray max-w-2xl mx-auto">
           Everything you need to know about our API and services. Can't find
           what you're looking for?
+          <AskDocs
+            source="pricing-faq"
+            question="What is the difference between the Supporter and Professional plans?"
+            className="text-blue hover:text-blue/80 font-medium ml-1"
+          >
+            Ask the docs assistant
+          </AskDocs>
+          <span className="ml-1">or</span>
           <Link
             href="mailto:support@countrystatecity.in"
             className="text-blue hover:text-blue/80 font-medium ml-1"
           >
-            Contact our support team
+            contact our support team
           </Link>
         </p>
       </div>

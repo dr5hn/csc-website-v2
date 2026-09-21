@@ -18,7 +18,7 @@ export default function Footer() {
       {/* Back to Top Button */}
       <button
         onClick={scrollToTop}
-        className="absolute -top-6 right-6 inline-flex items-center justify-center w-12 h-12 bg-blue text-white rounded-full shadow-lg hover:bg-blue/90 transition-all duration-200 hover:scale-105"
+        className="absolute -top-6 left-6 inline-flex items-center justify-center w-12 h-12 bg-blue text-white rounded-full shadow-lg hover:bg-blue/90 transition-all duration-200 hover:scale-105"
         aria-label="Back to top"
       >
         <ChevronUp className="w-5 h-5" />
