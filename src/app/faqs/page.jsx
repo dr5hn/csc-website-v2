@@ -11,6 +11,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import FAQHero from "@/components/faq-hero";
+import AskDocs from "@/components/ask-docs";
 import Link from "next/link";
 import { STAT_DESCRIPTIONS } from "@/lib/stats";
 
@@ -324,6 +325,15 @@ export default function FAQsPage() {
           <p className="mt-3 text-darkgray">
             Our support team and community are here to help you succeed with the
             CSC Platform
+          </p>
+          <p className="mt-3">
+            <AskDocs
+              source="faq-page"
+              className="inline-flex items-center gap-2 text-blue hover:text-blue/80 font-medium"
+            >
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
+              Ask the docs assistant for an instant answer
+            </AskDocs>
           </p>
         </div>
 

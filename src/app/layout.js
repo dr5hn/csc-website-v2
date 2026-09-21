@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import DocsAssistant from "@/components/docs-assistant";
 import { TEXT_STATS, STAT_DESCRIPTIONS } from "@/lib/stats";
 import { Cal_Sans } from "next/font/google";
 
@@ -141,6 +142,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
+        <DocsAssistant />
       </body>
     </html>
   );

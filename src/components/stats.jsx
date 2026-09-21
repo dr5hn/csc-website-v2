@@ -44,24 +44,29 @@ function writeStatsCache(data) {
   try { localStorage.setItem(LS_STATS_KEY, JSON.stringify(data)); } catch {}
 }
 
-// Animated counter — starts from cached value so refresh never resets to 0
+// Animated counter — starts from cached value so refresh never resets to 0.
+//
+// localStorage and matchMedia are read after mount, never during render: the
+// server cannot see either, so seeding the initial value from them made the
+// first client render differ from the server markup and broke hydration.
 function AnimatedCounter({ statKey, end, decimals = 0, suffix = "" }) {
-  const [startFrom] = useState(() => {
-    if (typeof window === "undefined") return end;
-    return readStatsCache()?.[statKey] ?? end;
-  });
+  const [{ number }, api] = useSpring(() => ({ number: end, immediate: true }));
 
-  const prefersReducedMotion =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Drop to the cached value once, so the counter animates up from the last
+  // known figure instead of sitting still.
+  useEffect(() => {
+    const cached = readStatsCache()?.[statKey];
+    if (cached != null) api.set({ number: cached });
+  }, [api, statKey]);
 
-  const { number } = useSpring({
-    from: { number: startFrom },
-    to: { number: end },
-    delay: 200,
-    immediate: prefersReducedMotion,
-    config: { mass: 1, tension: 20, friction: 10 },
-  });
+  useEffect(() => {
+    api.start({
+      to: { number: end },
+      delay: 200,
+      immediate: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      config: { mass: 1, tension: 20, friction: 10 },
+    });
+  }, [api, end]);
 
   return (
     <animated.span>
@@ -75,6 +80,14 @@ export default function Stats() {
   const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
   const { formattedStars, loading: starsLoading } = useGitHubStars("dr5hn", "countries-states-cities-database");
   const { totalRequests, countries, states, cities, loading } = usePlatformStats();
+
+  // Read the cache after mount, never during render: the server has no
+  // localStorage, so reading it inline made the first client render differ
+  // from the server markup and broke hydration for the whole section.
+  const [cachedStats, setCachedStats] = useState(null);
+  useEffect(() => {
+    setCachedStats(readStatsCache());
+  }, []);
 
   // Persist live values to localStorage so next page load starts from here
   useEffect(() => {
@@ -154,7 +167,7 @@ export default function Stats() {
                         suffix={stat.suffix}
                       />
                     ) : (
-                      `${readStatsCache()?.[stat.statKey]?.toFixed(stat.decimals) ?? stat.value.toFixed(stat.decimals)}${stat.suffix || ""}`
+                      `${(cachedStats?.[stat.statKey] ?? stat.value).toFixed(stat.decimals)}${stat.suffix || ""}`
                     )}
                   </div>
                   <div className="mt-1 text-sm font-semibold text-darkgray">

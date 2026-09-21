@@ -34,15 +34,21 @@ export function formatCount(n) {
 }
 
 export function usePlatformStats() {
-  const [raw, setRaw] = useState(_cached ?? FALLBACK);
-  const [loading, setLoading] = useState(!_cached);
+  // Always start from FALLBACK, never from the module cache. The server has no
+  // cache, so it always renders FALLBACK; a component that hydrates after an
+  // earlier one's fetch resolved would otherwise start from live data and no
+  // longer match the server markup, which React reports as a hydration error.
+  const [raw, setRaw] = useState(FALLBACK);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (_cached) { setLoading(false); return; }
+    let active = true;
     fetchPlatformStats().then((data) => {
+      if (!active) return;
       setRaw(data);
       setLoading(false);
     });
+    return () => { active = false; };
   }, []);
 
   return {

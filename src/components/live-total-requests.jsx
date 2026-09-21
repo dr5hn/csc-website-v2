@@ -42,18 +42,27 @@ export default function LiveTotalRequests({ className = "" }) {
   const { totalRequests, loading } = usePlatformStats();
   const [ref, inView] = useInView();
 
-  // Seed the start value from localStorage so refresh shows last known value instantly
-  const [startFrom] = useState(() => {
-    if (typeof window === "undefined") return totalRequests.value;
-    return readCache()?.value ?? totalRequests.value;
-  });
+  const [{ number }, api] = useSpring(() => ({
+    number: totalRequests.value,
+    immediate: true,
+  }));
 
-  const { number } = useSpring({
-    from: { number: startFrom },
-    to: { number: inView ? totalRequests.value : startFrom },
-    delay: 200,
-    config: { mass: 1, tension: 20, friction: 10 },
-  });
+  // Seed the start value from localStorage after mount, never during render:
+  // the server cannot read localStorage, so seeding initial state from it made
+  // the first client render differ from the server markup.
+  useEffect(() => {
+    const cached = readCache()?.value;
+    if (cached != null) api.set({ number: cached });
+  }, [api]);
+
+  useEffect(() => {
+    if (!inView) return;
+    api.start({
+      to: { number: totalRequests.value },
+      delay: 200,
+      config: { mass: 1, tension: 20, friction: 10 },
+    });
+  }, [api, inView, totalRequests.value]);
 
   // Persist the latest fetched value so next page load starts from here
   useEffect(() => {
