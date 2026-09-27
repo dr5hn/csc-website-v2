@@ -163,6 +163,8 @@ This is what exists today. The redesign may evolve it or replace it; see [open q
 
 ## 4. Creative direction and Awwwards inspiration
 
+> **Hard rules first.** Every direction must respect the [Design Reject List](reject-list.md). In short: light-first only, with no cream or paper-toned backgrounds, no orange accents, and neither Newsreader nor Hanken Grotesk.
+
 ### 4.1 Design principles (proposed, please confirm)
 
 1. **The data is the hero.** Make the dataset tangible: the world, then a country, then a state, then a city. Use real API responses, real hierarchy and real coordinates, not decorative icons.
