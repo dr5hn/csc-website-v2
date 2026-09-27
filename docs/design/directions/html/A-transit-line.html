@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Transit Line: home hero</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;600&amp;family=Overpass:wght@400;600;700;800;900&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF;font-family:'Overpass',system-ui,sans-serif;color:#121417}
+a{color:#121417;text-decoration:none}a:hover{color:#0B5FFF}
+</style>
+</head>
+<body>
+<div style="width: 1440px; height: 900px; position: relative; overflow: hidden; background: #FFFFFF; color: #121417; font-family: 'Overpass', system-ui, sans-serif;">
+
+  <header style="position: absolute; left: 0; top: 0; width: 1440px; height: 80px; box-sizing: border-box; padding: 0 80px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #E4E6EA;">
+    <a href="#" style="display: flex; align-items: center; gap: 12px;" aria-label="countrystatecity home">
+      <svg width="40" height="20" viewBox="0 0 40 20" aria-hidden="true">
+        <line x1="5" y1="10" x2="35" y2="10" style="stroke: #0B5FFF; stroke-width: 5; stroke-linecap: round;"></line>
+        <circle cx="5" cy="10" r="4.5" style="fill: #FFFFFF; stroke: #121417; stroke-width: 2.5;"></circle>
+        <circle cx="20" cy="10" r="4.5" style="fill: #FFFFFF; stroke: #121417; stroke-width: 2.5;"></circle>
+        <circle cx="35" cy="10" r="4.5" style="fill: #121417; stroke: #121417; stroke-width: 2.5;"></circle>
+      </svg>
+      <span style="font-weight: 800; font-size: 22px; letter-spacing: -0.02em;">countrystatecity</span>
+    </a>
+    <nav aria-label="Main" style="display: flex; gap: 34px; font-size: 15px; font-weight: 600;">
+      <a href="#">Products</a>
+      <a href="#">Ecosystem</a>
+      <a href="#">Pricing</a>
+      <a href="#">Docs</a>
+      <a href="#">Support</a>
+    </nav>
+    <div style="display: flex; align-items: center; gap: 20px; font-size: 15px; font-weight: 600;">
+      <a href="#">Sign in</a>
+      <a href="#" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; background: #0B5FFF; color: #FFFFFF; border-radius: 22px; font-weight: 700;">Get API key</a>
+    </div>
+  </header>
+
+  <div style="position: absolute; left: 80px; top: 128px; width: 540px; display: flex; flex-direction: column; gap: 22px;">
+    <div style="font-family: 'Overpass Mono', monospace; font-size: 12px; letter-spacing: 0.04em; color: #4A5160;">Region › Subregion › Country › State › City</div>
+    <h1 style="margin: 0; font-weight: 900; font-size: 80px; line-height: 0.98; letter-spacing: -0.035em;">Change here for every place on Earth.</h1>
+    <p style="margin: 0; font-size: 19px; line-height: 1.5; color: #4A5160;">Countries, states and cities connected like a transit network. Ride the live API, download the whole database, or export just the stops you need.</p>
+    <div style="display: flex; gap: 12px; margin-top: 6px;">
+      <a href="#" style="display: inline-flex; align-items: center; gap: 10px; height: 54px; padding: 0 24px; background: #0B5FFF; color: #FFFFFF; border-radius: 27px; font-weight: 700; font-size: 17px;">Get a free API key
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5L13.5 8 9 12.5" style="fill: none; stroke: #FFFFFF; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;"></path></svg>
+      </a>
+      <a href="#" style="display: inline-flex; align-items: center; height: 54px; padding: 0 24px; border: 2px solid #121417; border-radius: 27px; font-weight: 700; font-size: 17px;">Download the database</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+      <span style="font-family: 'Overpass Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A5160;">Interchange with</span>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; font-weight: 700;">
+        <span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 22px; height: 7px; border-radius: 4px; background: #0B5FFF;"></span>REST API</span>
+        <span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 22px; height: 7px; border-radius: 4px; background: #00A36C;"></span>Database</span>
+        <span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 22px; height: 7px; border-radius: 4px; background: #E0157A;"></span>Export Tool</span>
+        <span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 22px; height: 7px; border-radius: 4px; background: #FFC400; box-shadow: inset 0 0 0 1.5px #121417;"></span>npm and PyPI</span>
+        <span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 22px; height: 7px; border-radius: 4px; background: #6E3BFF;"></span>Update Tool</span>
+      </div>
+    </div>
+  </div>
+
+  <svg width="740" height="620" viewBox="0 0 740 620" role="img" aria-label="Transit-style diagram: four lines leave a World interchange and run through region, subregion, country and state to a city: Mumbai, San Francisco, Munich and Sydney" style="position: absolute; left: 640px; top: 150px; overflow: visible; font-family: 'Overpass', sans-serif;">
+    <path d="M360,300 V180 L300,120 H60" style="fill: none; stroke: #00A36C; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round;"></path>
+    <path d="M360,300 V420 L300,480 H60" style="fill: none; stroke: #E0157A; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round;"></path>
+    <path d="M360,300 H520 L600,380 V560" style="fill: none; stroke: #0B5FFF; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round;"></path>
+    <path d="M360,300 L440,220 V80 H660" style="fill: none; stroke: #6E3BFF; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round;"></path>
+
+    <circle cx="360" cy="240" r="7" style="fill: #FFFFFF; stroke: #00A36C; stroke-width: 4;"></circle>
+    <circle cx="330" cy="150" r="7" style="fill: #FFFFFF; stroke: #00A36C; stroke-width: 4;"></circle>
+    <circle cx="220" cy="120" r="7" style="fill: #FFFFFF; stroke: #00A36C; stroke-width: 4;"></circle>
+    <circle cx="140" cy="120" r="7" style="fill: #FFFFFF; stroke: #00A36C; stroke-width: 4;"></circle>
+    <circle cx="60" cy="120" r="11" style="fill: #00A36C;"></circle>
+    <circle cx="60" cy="120" r="4" style="fill: #FFFFFF;"></circle>
+
+    <circle cx="360" cy="360" r="7" style="fill: #FFFFFF; stroke: #E0157A; stroke-width: 4;"></circle>
+    <circle cx="330" cy="450" r="7" style="fill: #FFFFFF; stroke: #E0157A; stroke-width: 4;"></circle>
+    <circle cx="220" cy="480" r="7" style="fill: #FFFFFF; stroke: #E0157A; stroke-width: 4;"></circle>
+    <circle cx="140" cy="480" r="7" style="fill: #FFFFFF; stroke: #E0157A; stroke-width: 4;"></circle>
+    <circle cx="60" cy="480" r="11" style="fill: #E0157A;"></circle>
+    <circle cx="60" cy="480" r="4" style="fill: #FFFFFF;"></circle>
+
+    <circle cx="430" cy="300" r="7" style="fill: #FFFFFF; stroke: #0B5FFF; stroke-width: 4;"></circle>
+    <circle cx="490" cy="300" r="7" style="fill: #FFFFFF; stroke: #0B5FFF; stroke-width: 4;"></circle>
+    <circle cx="560" cy="340" r="7" style="fill: #FFFFFF; stroke: #0B5FFF; stroke-width: 4;"></circle>
+    <circle cx="600" cy="450" r="7" style="fill: #FFFFFF; stroke: #0B5FFF; stroke-width: 4;"></circle>
+    <circle cx="600" cy="560" r="11" style="fill: #0B5FFF;"></circle>
+    <circle cx="600" cy="560" r="4" style="fill: #FFFFFF;"></circle>
+
+    <circle cx="410" cy="250" r="7" style="fill: #FFFFFF; stroke: #6E3BFF; stroke-width: 4;"></circle>
+    <circle cx="440" cy="160" r="7" style="fill: #FFFFFF; stroke: #6E3BFF; stroke-width: 4;"></circle>
+    <circle cx="520" cy="80" r="7" style="fill: #FFFFFF; stroke: #6E3BFF; stroke-width: 4;"></circle>
+    <circle cx="590" cy="80" r="7" style="fill: #FFFFFF; stroke: #6E3BFF; stroke-width: 4;"></circle>
+    <circle cx="660" cy="80" r="11" style="fill: #6E3BFF;"></circle>
+    <circle cx="660" cy="80" r="4" style="fill: #FFFFFF;"></circle>
+
+    <circle cx="360" cy="300" r="20" style="fill: #FFFFFF; stroke: #121417; stroke-width: 6;"></circle>
+    <text x="330" y="306" style="font-size: 17px; font-weight: 900; fill: #121417; text-anchor: end;">World</text>
+
+    <text x="344" y="245" style="font-size: 14px; font-weight: 700; fill: #121417; text-anchor: end;">Americas</text>
+    <text x="314" y="155" style="font-size: 14px; font-weight: 700; fill: #121417; text-anchor: end;">Northern America</text>
+    <text x="220" y="102" style="font-size: 14px; font-weight: 700; fill: #121417; text-anchor: middle;">United States</text>
+    <text x="140" y="146" style="font-size: 14px; font-weight: 700; fill: #121417; text-anchor: middle;">California</text>
+    <text x="44" y="98" style="font-size: 16px; font-weight: 900; fill: #121417;">San Francisco</text>
+    <text x="44" y="80" style="font-family: 'Overpass Mono', monospace; font-size: 10.5px; fill: #4A5160;">America/Los_Angeles</text>
+
+    <text x="376" y="365" style="font-size: 14px; font-weight: 700; fill: #121417;">Europe</text>
+    <text x="314" y="455" style="font-size: 14px; font-weight: 700; fill: #121417; text-anchor: end;">Western Europe</text>
+    <text x="220" y="506" style="font-size: 14px; font-weight: 700; fill: #121417; text-anchor: middle;">Germany</text>
+    <text x="140" y="462" style="font-size: 14px; font-weight: 700; fill: #121417; text-anchor: middle;">Bavaria</text>
+    <text x="44" y="510" style="font-size: 16px; font-weight: 900; fill: #121417;">Munich</text>
+    <text x="44" y="526" style="font-family: 'Overpass Mono', monospace; font-size: 10.5px; fill: #4A5160;">Europe/Berlin</text>
+
+    <text x="430" y="328" style="font-size: 14px; font-weight: 700; fill: #121417; text-anchor: middle;">Asia</text>
+    <text x="490" y="284" style="font-size: 14px; font-weight: 700; fill: #121417; text-anchor: middle;">Southern Asia</text>
+    <text x="574" y="334" style="font-size: 14px; font-weight: 700; fill: #121417;">India</text>
+    <text x="616" y="455" style="font-size: 14px; font-weight: 700; fill: #121417;">Maharashtra</text>
+    <text x="618" y="566" style="font-size: 16px; font-weight: 900; fill: #121417;">Mumbai</text>
+    <text x="618" y="582" style="font-family: 'Overpass Mono', monospace; font-size: 10.5px; fill: #4A5160;">Asia/Kolkata</text>
+
+    <text x="426" y="256" style="font-size: 14px; font-weight: 700; fill: #121417;">Oceania</text>
+    <text x="456" y="165" style="font-size: 14px; font-weight: 700; fill: #121417;">Australia and New Zealand</text>
+    <text x="520" y="62" style="font-size: 14px; font-weight: 700; fill: #121417; text-anchor: middle;">Australia</text>
+    <text x="590" y="106" style="font-size: 14px; font-weight: 700; fill: #121417; text-anchor: middle;">New South Wales</text>
+    <text x="660" y="58" style="font-size: 16px; font-weight: 900; fill: #121417; text-anchor: middle;">Sydney</text>
+    <text x="660" y="40" style="font-family: 'Overpass Mono', monospace; font-size: 10.5px; fill: #4A5160; text-anchor: middle;">Australia/Sydney</text>
+  </svg>
+
+  <div style="position: absolute; left: 80px; top: 800px; width: 1280px; height: 60px; box-sizing: border-box; padding: 0 24px; display: flex; align-items: center; gap: 22px; background: #FFC400; border-radius: 10px; color: #121417;">
+    <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M4 14h18M15 6l8 8-8 8" style="fill: none; stroke: #121417; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round;"></path></svg>
+    <span style="font-family: 'Overpass Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;">Next stop</span>
+    <span style="font-family: 'Overpass Mono', monospace; font-weight: 600; font-size: 18px;">GET /v1/countries/IN/states/MH/cities</span>
+    <span style="margin-left: auto; font-weight: 800; font-size: 17px;">Mumbai, Maharashtra, India</span>
+  </div>
+
+</div>
+</body>
+</html>
