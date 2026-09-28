@@ -31,7 +31,7 @@ const faqSchema = {
       "name": "What's the difference between the free and paid plans?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The free Community plan gives you 3,000 API requests/month (100/day) with basic fields. Paid plans unlock extended data fields, higher limits, and premium features. Starter ($5/mo) gives you 9,000 requests/month (300/day) with the same features as Community but higher limits. Supporter ($9/mo) adds 30,000 requests, extended fields, search endpoint, and bulk cities by state. Professional ($29/mo) provides 100,000 requests with full data access including cities by country. Business ($79/mo) offers 750,000 requests with all current and upcoming features."
+        "text": "The free Community plan gives you 3,000 API requests/month (100/day) with basic fields. Paid plans unlock extended data fields, higher limits, and premium features. Starter ($5/mo) gives you 9,000 requests/month (300/day) with the same features as Community but higher limits. Supporter ($9/mo) adds 30,000 requests, extended fields, search endpoint, and bulk cities by state. Professional ($19/mo) provides 63,000 requests with full data access including cities by country. Business ($29/mo) offers 100,000 requests with all current and upcoming features."
       }
     },
     {
@@ -47,7 +47,7 @@ const faqSchema = {
       "name": "What are the API rate limits?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Community (free): 3,000 requests/month (100/day). Starter ($5/mo): 9,000 requests/month (300/day). Supporter ($9/mo): 30,000 requests/month (1,000/day). Professional ($29/mo): 100,000 requests/month (3,300/day). Business ($79/mo): 750,000 requests/month (25,000/day). Custom plans available for higher volumes."
+        "text": "Community (free): 3,000 requests/month (100/day). Starter ($5/mo): 9,000 requests/month (300/day). Supporter ($9/mo): 30,000 requests/month (1,000/day). Professional ($19/mo): 63,000 requests/month (2,100/day). Business ($29/mo): 100,000 requests/month (3,300/day). Custom plans available for higher volumes."
       }
     },
     {
