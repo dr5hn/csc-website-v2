@@ -33,13 +33,13 @@ const TIER_COPY = {
     cta: "Get Started",
     accent: "blue",
     href: "https://app.countrystatecity.in/pricing?plan=professional&utm_source=website&utm_medium=cta&utm_content=api_pricing_professional",
-    extraBadge: "Best Value",
   },
   business: {
-    description: "High-volume access with all premium features.",
+    description: "The most headroom and every premium feature.",
     cta: "Get Started",
     accent: "blue",
     href: "https://app.countrystatecity.in/pricing?plan=business&utm_source=website&utm_medium=cta&utm_content=api_pricing_business",
+    extraBadge: "Best Value",
   },
 };
 
