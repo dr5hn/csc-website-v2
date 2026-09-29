@@ -108,6 +108,7 @@ export const COMPARISON_SECTIONS = [
       { label: "Cities by State", values: { community: true, starter: true, supporter: true, professional: true, business: true } },
       { label: "Cities by Country", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
       { label: "Inline Search Filtering", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
+      { label: "Postcode Listing & Search", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
       { label: "Regions & Subregions API", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
       { label: "Phone Dial Code Lookup", values: { community: false, starter: true, supporter: true, professional: true, business: true } },
       { label: "Currency Lookup by Country", values: { community: false, starter: true, supporter: true, professional: true, business: true } },

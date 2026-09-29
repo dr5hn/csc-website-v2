@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Add a "Postcode Listing & Search" row to the pricing comparison table (Starter and above) — the only gap left after #13's feature-tier realignment; the plan cards already mentioned postcode listing, but the comparison table had no dedicated row for it.
+
 ## [1.3.0] - 2026-05-28
 
 ### Added
