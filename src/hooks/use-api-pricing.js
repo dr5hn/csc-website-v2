@@ -29,7 +29,7 @@ const TIER_COPY = {
     href: "https://app.countrystatecity.in/pricing?plan=supporter&utm_source=website&utm_medium=cta&utm_content=api_pricing_supporter",
   },
   professional: {
-    description: "Full data access for production applications.",
+    description: "GraphQL, the data change feed and higher limits for production apps.",
     cta: "Get Started",
     accent: "blue",
     href: "https://app.countrystatecity.in/pricing?plan=professional&utm_source=website&utm_medium=cta&utm_content=api_pricing_professional",

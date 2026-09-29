@@ -216,7 +216,7 @@ export const API_PLAN_CARDS = [
     price: "$19",
     priceAnnual: "$190",
     period: "/ month",
-    description: "Full data access for production applications.",
+    description: "GraphQL, the data change feed and higher limits for production apps.",
     features: [
       "63,000 API Requests/month (2,100/day)",
       "All Supporter features",
