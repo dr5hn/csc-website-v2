@@ -151,7 +151,7 @@ export function HeroApi() {
   "iso2": "IN",
   "capital": "New Delhi",
   "currency": "INR",
-  "phone_code": "91",
+  "phonecode": "91",
   "emoji": "🇮🇳"
 }`}
                       </pre>
