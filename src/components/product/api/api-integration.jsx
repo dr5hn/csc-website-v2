@@ -79,49 +79,9 @@ print_r($countries);
   },
 };
 
-function sanitizeCommands(raw) {
-  if (!raw) return "";
-  const text = raw.replace(/\/\*[\s\S]*?\*\//g, "");
-  const lines = text.split("\n").map((l) => l.replace(/\r/g, ""));
-  const cleanLine = (l) => {
-    let s = l;
-    s = s.replace(/^\s*(?:PS\s*>\s*|$$venv$$\s*\$\s*|\$\s*|>\s*)/, "");
-    if (/^\s*#/.test(s) || /^\s*\/\//.test(s)) return "";
-    if (!/^https?:\/\//.test(s) && s.includes(" # ")) {
-      s = s.split(" # ")[0];
-    }
-    return s.trim();
-  };
-  const isCommand = (s) => /^(fetch|requests|curl)\b/.test(s);
-  const output = [];
-  let cont = "";
-  for (const rawLine of lines) {
-    const s = cleanLine(rawLine);
-    if (!s) continue;
-    const endsWithBackslash = /\\\s*$/.test(s);
-    const withoutBackslash = s.replace(/\\\s*$/, "").trim();
-    if (cont) {
-      cont += " " + withoutBackslash;
-      if (!endsWithBackslash) {
-        if (isCommand(cont)) output.push(cont);
-        cont = "";
-      }
-      continue;
-    }
-    if (endsWithBackslash) {
-      cont = withoutBackslash;
-      continue;
-    }
-    if (isCommand(s)) output.push(s);
-  }
-  if (cont && isCommand(cont)) output.push(cont);
-  return output.join("\n").trim();
-}
-
 export default function EasyIntegration() {
   const [active, setActive] = useState("javascript");
   const code = useMemo(() => EXAMPLES[active].code, [active]);
-  const copyText = useMemo(() => sanitizeCommands(code), [code]);
 
   return (
     <section className="relative container mx-auto px-4">
@@ -204,7 +164,7 @@ export default function EasyIntegration() {
           aria-labelledby={`tab-${active}`}
           className="relative"
         >
-          <CopyButton text={copyText} />
+          <CopyButton text={code} />
           <pre className="m-0 overflow-x-auto p-4 md:p-6 text-sm leading-6 text-white bg-dark">
             <code>{code}</code>
           </pre>

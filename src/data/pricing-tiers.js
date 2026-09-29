@@ -27,19 +27,19 @@ export const COMPARISON_SECTIONS = [
     rows: [
       {
         label: "Price",
-        values: { community: "Free", starter: "$5/mo", supporter: "$9/mo", professional: "$29/mo", business: "$79/mo" },
+        values: { community: "Free", starter: "$5/mo", supporter: "$9/mo", professional: "$19/mo", business: "$29/mo" },
       },
       {
         label: "Annual price",
-        values: { community: "Free", starter: "$50/yr", supporter: "$90/yr", professional: "$290/yr", business: "$790/yr" },
+        values: { community: "Free", starter: "$50/yr", supporter: "$90/yr", professional: "$190/yr", business: "$290/yr" },
       },
       {
         label: "Monthly Requests",
-        values: { community: "3,000", starter: "9,000", supporter: "30,000", professional: "100,000", business: "750,000" },
+        values: { community: "3,000", starter: "9,000", supporter: "30,000", professional: "63,000", business: "100,000" },
       },
       {
         label: "Daily Requests",
-        values: { community: "100", starter: "300", supporter: "1,000", professional: "3,300", business: "25,000" },
+        values: { community: "100", starter: "300", supporter: "1,000", professional: "2,100", business: "3,300" },
       },
       {
         label: "Origin Whitelisting",
@@ -214,12 +214,12 @@ export const API_PLAN_CARDS = [
   {
     key: "professional",
     name: "Professional",
-    price: "$29",
-    priceAnnual: "$290",
+    price: "$19",
+    priceAnnual: "$190",
     period: "/ month",
-    description: "Full data access for production applications.",
+    description: "GraphQL, the data change feed and higher limits for production apps.",
     features: [
-      "100,000 API Requests/month (3,300/day)",
+      "63,000 API Requests/month (2,100/day)",
       "All Supporter features",
       "Data change feed for syncing a local copy (GET /v1/changes)",
       "Origin whitelisting (up to 10 domains or IPs)",
@@ -231,17 +231,16 @@ export const API_PLAN_CARDS = [
     target: "_blank",
     accent: "blue",
     popular: false,
-    badge: "Best Value",
   },
   {
     key: "business",
     name: "Business",
-    price: "$79",
-    priceAnnual: "$790",
+    price: "$29",
+    priceAnnual: "$290",
     period: "/ month",
-    description: "High-volume access with all premium features.",
+    description: "The most headroom and every premium feature.",
     features: [
-      "750,000 API Requests/month (25,000/day)",
+      "100,000 API Requests/month (3,300/day)",
       "All Professional features",
       "Origin whitelisting (up to 25 domains or IPs)",
       "Founder-led priority support (~1 business day)",
@@ -252,5 +251,6 @@ export const API_PLAN_CARDS = [
     target: "_blank",
     accent: "blue",
     popular: false,
+    badge: "Best Value",
   },
 ];

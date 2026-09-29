@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { buildFromApi as buildApiPricing } from "./use-api-pricing.js";
 import { buildFromApi as buildExportPricing } from "./use-export-pricing.js";
+import { API_PLAN_CARDS } from "../data/pricing-tiers.js";
 
 /** Model the public API's nullable prices and limits. */
 function plan(overrides = {}) {
@@ -99,5 +100,16 @@ describe("live API pricing", () => {
     assert.ok(row, "Postcode Listing & Search row present");
     assert.equal(row.values.community, false);
     assert.equal(row.values.supporter, true);
+  });
+
+  it("puts the Best Value badge on Business, matching the fallback cards", () => {
+    const keys = ["community", "starter", "supporter", "professional", "business"];
+    const result = buildApiPricing(keys.map((key) => plan({ key, name: key, badges: key === "supporter" ? ["Most Popular"] : [] })));
+    assert.deepEqual(result.cards.filter((card) => card.badge).map((card) => card.name), ["business"]);
+    for (const [index, key] of keys.entries()) {
+      const fallback = API_PLAN_CARDS.find((card) => card.key === key);
+      assert.equal(result.cards[index].badge, fallback.badge, `${key} badge`);
+      assert.equal(result.cards[index].description, fallback.description, `${key} description`);
+    }
   });
 });
