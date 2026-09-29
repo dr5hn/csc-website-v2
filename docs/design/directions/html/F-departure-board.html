@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Departure Board: home hero</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=B612+Mono:wght@400;700&amp;family=B612:wght@400;700&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF;font-family:'B612',system-ui,sans-serif;color:#0B0D12}
+a{color:#0B0D12;text-decoration:none}a:hover{color:#00794A}
+</style>
+</head>
+<body>
+<div style="width: 1440px; height: 900px; position: relative; overflow: hidden; background: #FFFFFF; color: #0B0D12; font-family: 'B612', system-ui, sans-serif;">
+
+  <header style="position: absolute; left: 0; top: 0; width: 1440px; height: 80px; box-sizing: border-box; padding: 0 80px; display: flex; align-items: center; justify-content: space-between;">
+    <a href="#" style="display: flex; align-items: center; gap: 12px;" aria-label="countrystatecity home">
+      <span style="display: flex; gap: 2px;">
+        <span style="width: 17px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 3px; background: linear-gradient(#FFFFFF 0, #FFFFFF 11.5px, #9AA3B0 11.5px, #9AA3B0 12.5px, #E6EAF0 12.5px); box-shadow: inset 0 0 0 1px #C8CFD9; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 14px;">C</span>
+        <span style="width: 17px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 3px; background: linear-gradient(#FFFFFF 0, #FFFFFF 11.5px, #9AA3B0 11.5px, #9AA3B0 12.5px, #E6EAF0 12.5px); box-shadow: inset 0 0 0 1px #C8CFD9; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 14px;">S</span>
+        <span style="width: 17px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 3px; background: #FFD60A; box-shadow: inset 0 0 0 1px #0B0D12; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 14px;">C</span>
+      </span>
+      <span style="font-weight: 700; font-size: 20px; letter-spacing: -0.01em;">countrystatecity</span>
+    </a>
+    <nav aria-label="Main" style="display: flex; gap: 34px; font-size: 15px;">
+      <a href="#">Products</a>
+      <a href="#">Ecosystem</a>
+      <a href="#">Pricing</a>
+      <a href="#">Docs</a>
+      <a href="#">Support</a>
+    </nav>
+    <div style="display: flex; align-items: center; gap: 20px; font-size: 15px;">
+      <a href="#">Sign in</a>
+      <a href="#" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; background: #FFD60A; border: 1.5px solid #0B0D12; border-radius: 6px; font-weight: 700;">Get API key</a>
+    </div>
+  </header>
+
+  <div style="position: absolute; left: 80px; top: 118px; width: 820px;">
+    <div style="font-family: 'B612 Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #525866;">GATE /v1 · ALL DESTINATIONS</div>
+    <h1 style="margin: 14px 0 0; font-weight: 700; font-size: 72px; line-height: 1.02; letter-spacing: -0.025em;">
+      <span style="display: block;">Now boarding:</span>
+      <span style="display: block;">every city on Earth.</span>
+    </h1>
+  </div>
+
+  <div style="position: absolute; left: 960px; top: 132px; width: 400px; display: flex; flex-direction: column; gap: 22px;">
+    <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #525866;">250 countries, 5,299 states and 153,765 cities, departing from one API, one open database and 13 export formats.</p>
+    <div style="display: flex; gap: 10px;">
+      <a href="#" style="display: inline-flex; align-items: center; height: 50px; padding: 0 20px; background: #FFD60A; border: 1.5px solid #0B0D12; border-radius: 6px; font-weight: 700; font-size: 16px;">Get a free API key</a>
+      <a href="#" style="display: inline-flex; align-items: center; height: 50px; padding: 0 20px; border: 1.5px solid #0B0D12; border-radius: 6px; font-weight: 700; font-size: 16px;">View all routes</a>
+    </div>
+  </div>
+
+  <section aria-label="Departures board" style="position: absolute; left: 80px; top: 348px; width: 1280px; box-sizing: border-box; padding: 22px 28px 26px; background: #F3F5F8; border: 1px solid #DCE1E8; border-radius: 16px; display: flex; flex-direction: column; gap: 14px;">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 15.5l20-6.5-2.2-2.4-7 1.6L8.2 3.5 6 4.3l3.6 5.4-4.4 1.3L3.4 9.4 2 10z M3 20.5h20" style="fill: none; stroke: #0B0D12; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round;"></path></svg>
+        <span style="font-weight: 700; font-size: 20px; letter-spacing: 0.06em;">DEPARTURES</span>
+      </div>
+      <span style="font-family: 'B612 Mono', monospace; font-size: 12px; color: #525866;">Every row is a real record · api.countrystatecity.in</span>
+    </div>
+
+    <div style="display: flex; gap: 32px; font-family: 'B612 Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #525866;">
+      <span style="width: 426px;">CITY</span>
+      <span style="width: 96px;">STATE</span>
+      <span style="width: 63px;">CTRY</span>
+      <span style="width: 230px;">TIMEZONE</span>
+      <span>STATUS</span>
+    </div>
+
+    
+      <div style="display: flex; align-items: center; gap: 32px;">
+        <div style="width: 426px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">M</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">U</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">M</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">B</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">A</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">I</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+        </div>
+        <div style="width: 96px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">M</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">H</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+        </div>
+        <div style="width: 63px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">I</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">N</span>
+          
+        </div>
+        <span style="width: 230px; font-family: 'B612 Mono', monospace; font-size: 14px; color: #525866;">Asia/Kolkata</span>
+        <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 4px; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 13px; background: #FFD60A; color: #0B0D12;">BOARDING</span>
+      </div>
+    
+      <div style="display: flex; align-items: center; gap: 32px;">
+        <div style="width: 426px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">S</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">A</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">N</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">F</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">R</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">A</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">N</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">C</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">I</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">S</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">C</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">O</span>
+          
+        </div>
+        <div style="width: 96px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">C</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">A</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+        </div>
+        <div style="width: 63px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">U</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">S</span>
+          
+        </div>
+        <span style="width: 230px; font-family: 'B612 Mono', monospace; font-size: 14px; color: #525866;">America/Los_Angeles</span>
+        <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 4px; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 13px; background: #E1F7EC; color: #00673F;">200 OK</span>
+      </div>
+    
+      <div style="display: flex; align-items: center; gap: 32px;">
+        <div style="width: 426px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">M</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">U</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">N</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">I</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">C</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">H</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+        </div>
+        <div style="width: 96px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">B</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">Y</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+        </div>
+        <div style="width: 63px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">D</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">E</span>
+          
+        </div>
+        <span style="width: 230px; font-family: 'B612 Mono', monospace; font-size: 14px; color: #525866;">Europe/Berlin</span>
+        <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 4px; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 13px; background: #E1F7EC; color: #00673F;">200 OK</span>
+      </div>
+    
+      <div style="display: flex; align-items: center; gap: 32px;">
+        <div style="width: 426px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">S</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">Y</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">D</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">N</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">E</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">Y</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+        </div>
+        <div style="width: 96px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">N</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">S</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">W</span>
+          
+        </div>
+        <div style="width: 63px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">A</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">U</span>
+          
+        </div>
+        <span style="width: 230px; font-family: 'B612 Mono', monospace; font-size: 14px; color: #525866;">Australia/Sydney</span>
+        <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 4px; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 13px; background: #E1F7EC; color: #00673F;">200 OK</span>
+      </div>
+    
+      <div style="display: flex; align-items: center; gap: 32px;">
+        <div style="width: 426px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">B</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">E</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">N</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">G</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">A</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">L</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">U</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">R</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">U</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+        </div>
+        <div style="width: 96px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">K</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">A</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+        </div>
+        <div style="width: 63px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">I</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">N</span>
+          
+        </div>
+        <span style="width: 230px; font-family: 'B612 Mono', monospace; font-size: 14px; color: #525866;">Asia/Kolkata</span>
+        <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 4px; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 13px; background: #E1F7EC; color: #00673F;">200 OK</span>
+      </div>
+    
+      <div style="display: flex; align-items: center; gap: 32px;">
+        <div style="width: 426px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">S</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">A</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">O</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">P</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">A</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">U</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">L</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">O</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+        </div>
+        <div style="width: 96px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">S</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">P</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;"> </span>
+          
+        </div>
+        <div style="width: 63px; display: flex; gap: 3px;">
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">B</span>
+          
+            <span style="width: 30px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: linear-gradient(#FFFFFF 0, #FFFFFF 20.5px, #B7BFCB 20.5px, #B7BFCB 21.5px, #EDF0F4 21.5px); box-shadow: inset 0 0 0 1px #D3D9E1; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 22px;">R</span>
+          
+        </div>
+        <span style="width: 230px; font-family: 'B612 Mono', monospace; font-size: 14px; color: #525866;">America/Sao_Paulo</span>
+        <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 4px; font-family: 'B612 Mono', monospace; font-weight: 700; font-size: 13px; background: #E1F7EC; color: #00673F;">200 OK</span>
+      </div>
+    
+  </section>
+
+</div>
+</body>
+</html>

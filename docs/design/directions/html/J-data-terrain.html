@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Data Terrain: home hero</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Karla:wght@400;500;700&amp;family=Syne:wght@500;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF;font-family:'Karla',system-ui,sans-serif;color:#121019}
+a{color:#121019;text-decoration:none}a:hover{color:#5B47F5}
+</style>
+</head>
+<body>
+<div style="width: 1440px; height: 900px; position: relative; overflow: hidden; background: #FFFFFF; color: #121019; font-family: 'Karla', system-ui, sans-serif;">
+
+  <img src="../assets/contour-terrain.png" alt="Contour map of city density: lines trace how closely cities cluster, peaking over Western Europe" style="position: absolute; left: 0; top: 330px; width: 1440px; height: 562px;">
+
+  <header style="position: absolute; left: 0; top: 0; width: 1440px; height: 80px; box-sizing: border-box; padding: 0 80px; display: flex; align-items: center; justify-content: space-between;">
+    <a href="#" style="display: flex; align-items: center; gap: 12px;" aria-label="countrystatecity home">
+      <svg width="32" height="28" viewBox="0 0 32 28" aria-hidden="true">
+        <path d="M3 16 C3 6 13 2 20 4 C28 6 31 13 28 19 C25 25 14 27 8 24 C4 22 3 19 3 16 Z" style="fill: none; stroke: #6D5BFF; stroke-width: 1.6;"></path>
+        <path d="M9 15 C9 9 15 7 19 8 C24 9 25 14 23 17 C21 20 15 21 12 20 C10 19 9 17 9 15 Z" style="fill: none; stroke: #4A7FD9; stroke-width: 1.6;"></path>
+        <path d="M14 14 C14 12 16 11 18 12 C20 13 20 15 18 16 C16 17 14 16 14 14 Z" style="fill: #00B3A4;"></path>
+      </svg>
+      <span style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -0.02em;">countrystatecity</span>
+    </a>
+    <nav aria-label="Main" style="display: flex; gap: 32px; font-size: 16px; font-weight: 500;">
+      <a href="#">Products</a>
+      <a href="#">Ecosystem</a>
+      <a href="#">Pricing</a>
+      <a href="#">Docs</a>
+      <a href="#">Support</a>
+    </nav>
+    <div style="display: flex; align-items: center; gap: 20px; font-size: 16px; font-weight: 500;">
+      <a href="#">Sign in</a>
+      <a href="#" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; background: #5B47F5; color: #FFFFFF; border-radius: 22px; font-weight: 700;">Get API key</a>
+    </div>
+  </header>
+
+  <div style="position: absolute; left: 80px; top: 120px; width: 830px;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #5A5870;">ELEVATION = CITIES PER SQUARE · 9 CONTOURS</div>
+    <h1 style="margin: 14px 0 0; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 72px; line-height: 0.98; letter-spacing: -0.035em;">
+      <span style="display: block;">Read the world</span>
+      <span style="display: block; color: #5B47F5;">like terrain.</span>
+    </h1>
+  </div>
+
+  <div style="position: absolute; left: 930px; top: 136px; width: 430px; display: flex; flex-direction: column; gap: 22px;">
+    <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #5A5870;">Contours trace how densely cities cluster, drawn from 152,970 real coordinates. Explore the peaks through the API, or download the whole landscape.</p>
+    <div style="display: flex; gap: 10px;">
+      <a href="#" style="display: inline-flex; align-items: center; height: 52px; padding: 0 24px; background: #5B47F5; color: #FFFFFF; border-radius: 26px; font-weight: 700; font-size: 16px;">Get a free API key</a>
+      <a href="#" style="display: inline-flex; align-items: center; height: 52px; padding: 0 22px; border: 2px solid #121019; border-radius: 26px; font-weight: 700; font-size: 16px;">Download the data</a>
+    </div>
+  </div>
+
+  
+    <div style="position: absolute; left: 752px; top: 432px; display: flex; align-items: flex-start; gap: 8px;">
+      <svg width="14" height="12" viewBox="0 0 14 12" aria-hidden="true" style="margin-top: 2px;"><path d="M7 0 L14 12 L0 12 Z" style="fill: #121019;"></path></svg>
+      <div style="padding: 4px 8px; background: rgba(255,255,255,0.92); border: 1px solid #121019; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.5;">
+        <div style="font-weight: 500;">PEAK · WESTERN EUROPE</div>
+        <div style="color: #5A5870;">densest cluster</div>
+      </div>
+    </div>
+  
+    <div style="position: absolute; left: 314px; top: 547px; display: flex; align-items: flex-start; gap: 8px;">
+      <svg width="14" height="12" viewBox="0 0 14 12" aria-hidden="true" style="margin-top: 2px;"><path d="M7 0 L14 12 L0 12 Z" style="fill: #121019;"></path></svg>
+      <div style="padding: 4px 8px; background: rgba(255,255,255,0.92); border: 1px solid #121019; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.5;">
+        <div style="font-weight: 500;">PEAK · CENTRAL MEXICO</div>
+        <div style="color: #5A5870;">Americas high point</div>
+      </div>
+    </div>
+  
+    <div style="position: absolute; left: 1207px; top: 581px; display: flex; align-items: flex-start; gap: 8px;">
+      <svg width="14" height="12" viewBox="0 0 14 12" aria-hidden="true" style="margin-top: 2px;"><path d="M7 0 L14 12 L0 12 Z" style="fill: #121019;"></path></svg>
+      <div style="padding: 4px 8px; background: rgba(255,255,255,0.92); border: 1px solid #121019; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.5;">
+        <div style="font-weight: 500;">PEAK · PHILIPPINES</div>
+        <div style="color: #5A5870;">Asia high point</div>
+      </div>
+    </div>
+  
+    <div style="position: absolute; left: 487px; top: 758px; display: flex; align-items: flex-start; gap: 8px;">
+      <svg width="14" height="12" viewBox="0 0 14 12" aria-hidden="true" style="margin-top: 2px;"><path d="M7 0 L14 12 L0 12 Z" style="fill: #121019;"></path></svg>
+      <div style="padding: 4px 8px; background: rgba(255,255,255,0.92); border: 1px solid #121019; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.5;">
+        <div style="font-weight: 500;">RIDGE · SOUTH-EAST BRAZIL</div>
+        <div style="color: #5A5870;">southern high point</div>
+      </div>
+    </div>
+  
+
+  <div style="position: absolute; left: 80px; top: 826px; display: flex; align-items: center; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #5A5870;">
+    <span>Sparse</span>
+    <span style="display: inline-flex; gap: 3px;">
+      <span style="width: 18px; height: 3px; background: #6D5BFF;"></span>
+      <span style="width: 18px; height: 3px; background: #4A7FD9;"></span>
+      <span style="width: 18px; height: 3px; background: #2B99BE;"></span>
+      <span style="width: 18px; height: 3px; background: #00B3A4;"></span>
+    </span>
+    <span>Dense · contour interval on a log scale</span>
+  </div>
+
+</div>
+</body>
+</html>
