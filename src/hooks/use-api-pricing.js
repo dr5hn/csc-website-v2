@@ -54,6 +54,8 @@ const ENDPOINT_ROWS = [
   { flag: "citiesByState", label: "Cities by State" },
   { flag: "citiesByCountry", label: "Cities by Country" },
   { flag: "searchEndpoint", label: "Inline Search Filtering" },
+  // Postcode listing and search share the searchEndpoint gate (postcode.controller.ts).
+  { flag: "searchEndpoint", label: "Postcode Listing & Search" },
   { flag: "regionsApi", label: "Regions & Subregions API" },
   { flag: "phoneDialCode", label: "Phone Dial Code Lookup" },
   { flag: "currencyApi", label: "Currency Lookup by Country" },
