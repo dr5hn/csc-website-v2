@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- Update API pricing cards, comparison table, and FAQ text/schema: Professional $19/month ($190/year), 2,100/day and 63,000/month; Business $29/month ($290/year), 3,300/day and 100,000/month.
+- Move the "Best Value" badge from the Professional card to the Business card, and revise the Business plan description to reflect its reduced request volume, in both the fallback data and the live `GET /plans` mapping.
+
+### Fixed
+
+- Correct FAQ and pricing-page copy (visible text and FAQ schema) to match the API: per-tier feature boundaries, per-plan support channels and business-day targets, daily/monthly limits enforced on free and paid plans (no request top-ups), downgrades scheduled for the next billing date, and JSON-only API responses (CSV via the Export Tool or database downloads).
+- The `/product/api` "Copy" button now copies the full displayed JavaScript, Python, or PHP example instead of a filtered fragment.
+
 ## [1.3.0] - 2026-05-28
 
 ### Added

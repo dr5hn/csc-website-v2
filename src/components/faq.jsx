@@ -9,13 +9,13 @@ const faqs = [
   {
     question: "Can I change plans anytime?",
     answer:
-      "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate the billing accordingly.",
+      "Yes, you can upgrade or downgrade your plan at any time. Upgrades take effect immediately, and we'll prorate the billing accordingly. Downgrades take effect at your next billing date, and you keep your current plan until then.",
     category: "Plans & Billing",
   },
   {
     question: "What happens if I exceed my request limit?",
     answer:
-      "For paid plans, we'll notify you when you approach your limit. You can upgrade or purchase additional requests. Free plan requests are hard-limited.",
+      "Daily and monthly request limits are enforced on both free and paid plans. We'll email you as you approach your daily limit, and once you reach a limit, further requests are rejected until it resets. You can wait for the reset, upgrade your plan, or contact us about a custom plan for higher volumes.",
     category: "Usage & Limits",
   },
   {
