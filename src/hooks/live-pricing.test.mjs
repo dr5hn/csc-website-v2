@@ -91,6 +91,17 @@ describe("live API pricing", () => {
     assert.equal(result.sections[4].rows.find((row) => row.label === "Fuzzy / Typo-Tolerant Search").values.supporter, true);
   });
 
+  it("keeps the postcode row once live pricing loads, following each plan's searchEndpoint flag", () => {
+    const result = buildApiPricing([
+      plan({ key: "community", name: "Community", priceMonthly: 0, priceAnnual: null, featureFlags: { searchEndpoint: false } }),
+      plan({ featureFlags: { searchEndpoint: true } }),
+    ]);
+    const row = result.sections.flatMap((section) => section.rows).find((r) => r.label === "Postcode Listing & Search");
+    assert.ok(row, "Postcode Listing & Search row present");
+    assert.equal(row.values.community, false);
+    assert.equal(row.values.supporter, true);
+  });
+
   it("puts the Best Value badge on Business, matching the fallback cards", () => {
     const keys = ["community", "starter", "supporter", "professional", "business"];
     const result = buildApiPricing(keys.map((key) => plan({ key, name: key, badges: key === "supporter" ? ["Most Popular"] : [] })));
