@@ -116,7 +116,7 @@ export default function Header() {
 
   const headerRef = useRef(null);
   const menuButtonRef = useRef(null);
-  const sheetRef = useRef(null);
+  const restoreMenuFocus = useRef(true);
   const fadeTimer = useRef(null);
 
   // Close every menu on navigation.
@@ -175,7 +175,7 @@ export default function Header() {
   // Mobile sheet: lock body scroll and hand focus back to the menu button on close.
   useEffect(() => {
     if (!sheetOpen) return;
-    sheetRef.current?.show();
+    restoreMenuFocus.current = true;
     const desktop = window.matchMedia("(min-width: 960px)");
     const closeOnDesktop = () => { if (desktop.matches) setSheetOpen(false); };
     desktop.addEventListener("change", closeOnDesktop);
@@ -186,7 +186,7 @@ export default function Header() {
     return () => {
       desktop.removeEventListener("change", closeOnDesktop);
       document.body.style.overflow = original;
-      button?.focus();
+      if (restoreMenuFocus.current) button?.focus();
     };
   }, [sheetOpen]);
 
@@ -205,6 +205,12 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
+      onBlur={(event) => {
+        if (sheetOpen && event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) {
+          restoreMenuFocus.current = false;
+          setSheetOpen(false);
+        }
+      }}
       className={cn(
         "sticky top-0 z-50 border-b border-hair text-ink transition-shadow",
         sheetOpen ? "bg-white" : "bg-white/90 backdrop-blur-[14px]",
@@ -404,13 +410,10 @@ export default function Header() {
       )}
 
       {sheetOpen && (
-        <dialog
-          ref={sheetRef}
+        <nav
           id="mobile-sheet"
-          onClose={() => setSheetOpen(false)}
           onClick={(event) => { if (event.target.closest("a")) setSheetOpen(false); }}
-          aria-modal="true"
-          aria-label="Menu"
+          aria-label="Mobile"
           style={{ top: headerHeight, height: `calc(100dvh - ${headerHeight}px)` }}
           className="fixed inset-x-0 m-0 flex max-h-none w-full max-w-none flex-col gap-[18px] overflow-y-auto border-0 bg-white px-5 pb-24 pt-3 text-ink"
         >
@@ -483,7 +486,7 @@ export default function Header() {
               Dashboard
             </CtaLink>
           </div>
-        </dialog>
+        </nav>
       )}
     </header>
   );
