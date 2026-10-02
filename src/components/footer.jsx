@@ -45,7 +45,7 @@ const COLUMNS = [
     t: "More from the founder",
     links: [
       { t: "MakeMySiteLive ↗", href: "https://makemysitelive.com/?utm_source=countrystatecity&utm_medium=footer" },
-      { t: "RemoteGigs ↗", href: "https://remotegigs.in/?utm_source=countrystatecity&utm_medium=footer" },
+      { t: "RemoteGigs ↗", href: "https://remotegig.in/?utm_source=countrystatecity&utm_medium=footer" },
     ],
   },
 ];

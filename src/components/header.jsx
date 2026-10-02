@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 // in a new tab and carry utm_source=countrystatecity (interaction spec 6).
 const PROMOS = [
   { name: "MakeMySiteLive", line: "Publish your website in under 2 minutes", href: "https://makemysitelive.com/", badge: "New", icon: "/icons/makemysitelive.svg" },
-  { name: "RemoteGigs", line: "Find remote jobs and gigs", href: "https://remotegigs.in/", badge: "", icon: "/icons/remotegigs.svg" },
+  { name: "RemoteGigs", line: "Find remote jobs and gigs", href: "https://remotegig.in/", badge: "", icon: "/icons/remotegigs.png" },
 ];
 
 const promoHref = (href, medium) => `${href}?utm_source=countrystatecity&utm_medium=${medium}`;
