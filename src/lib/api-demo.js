@@ -81,8 +81,10 @@ export function runDemo(demo, query) {
   }
 
   if (demo === 2) {
-    const [lat, lng] = q.split(",").map(Number);
-    if (Number.isNaN(lat) || Number.isNaN(lng)) return [];
+    const parts = q.split(",");
+    if (parts.length !== 2 || parts.some((part) => !part.trim())) return [];
+    const [lat, lng] = parts.map(Number);
+    if (!Number.isFinite(lat) || !Number.isFinite(lng) || Math.abs(lat) > 90 || Math.abs(lng) > 180) return [];
     return DEMO_CITIES.map((c) => ({ c, km: haversineKm(lat, lng, c[2], c[3]) }))
       .sort((a, b) => a.km - b.km)
       .slice(0, 3)

@@ -5,7 +5,7 @@ import Tag from "@/components/ui/tag";
 const CODE = {
   npm: {
     off: "import { getStatesOfCountry, getCitiesOfState }\n  from '@countrystatecity/countries';\n\nconst states = await getStatesOfCountry('IN');\nconst cities = await getCitiesOfState('IN', 'MH');",
-    live: "import { createCSCClient } from '@countrystatecity/sdk';\n\nconst csc = createCSCClient({ apiKey: process.env.CSC_API_KEY });\nconst { data: states } = await csc.states.list({ country: 'IN' });\nconst hits = await csc.search.fuzzy('bangalor');",
+    live: "import { createCSCClient } from '@countrystatecity/sdk';\n\nconst csc = createCSCClient({ apiKey: process.env.CSC_API_KEY });\nconst { data: states } = await csc.states.list({ country: 'IN' });\nconst hits = await csc.search.fuzzy({ query: 'bangalor', type: 'city' });",
   },
   py: {
     off: 'from countrystatecity_countries import (\n    get_states_of_country, get_cities_of_state)\n\nstates = get_states_of_country("IN")\ncities = get_cities_of_state("IN", "MH")',

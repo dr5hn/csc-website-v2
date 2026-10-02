@@ -4,23 +4,17 @@
 export const TYPE_COST = { countries: 1, states: 3, cities: 4 };
 
 export const FORMAT_GROUPS = [
-  ["Tabular", [["CSV", 1], ["Excel", 2], ["Markdown", 1]]],
-  ["Structured", [["JSON", 2], ["NDJSON", 2], ["XML", 3], ["YAML", 2]]],
-  ["Database", [["SQL", 4], ["PostgreSQL", 5], ["SQL Server", 5], ["SQLite3", 4], ["MongoDB", 4]]],
-  ["Geospatial", [["GeoJSON", 3]]],
-];
-
-export const OPTIONS = [
-  ["trans", "200+ translation locales"],
-  ["region", "Filter by region or ≤10 countries"],
-  ["flags", "Bundle flag images"],
+  ["Tabular", [["CSV", 3], ["Excel", 4], ["Markdown", 3]]],
+  ["Structured", [["JSON", 2], ["NDJSON", 2], ["XML", 2], ["YAML", 2]]],
+  ["Database", [["SQL", 4], ["PostgreSQL", 5], ["SQL Server", 5], ["SQLite3", 5], ["MongoDB", 3]]],
+  ["Geospatial", [["GeoJSON", 4]]],
 ];
 
 export const PERSONAS = [
   { label: "Frontend", problem: "You need a country → state dropdown without shipping 44MB.", solution: "Countries + States as JSON, name and iso2 only.", types: { countries: true, states: true, cities: false }, format: "JSON" },
   { label: "Mobile", problem: "You want an offline list that fits in the app bundle.", solution: "Cities for one country as NDJSON.", types: { countries: false, states: false, cities: true }, format: "NDJSON" },
   { label: "DBA", problem: "You need a clean seed for a new PostgreSQL database.", solution: "Countries, States and Cities as a PostgreSQL dump.", types: { countries: true, states: true, cities: true }, format: "PostgreSQL" },
-  { label: "Data", problem: "You want coordinates in a notebook, not a parsing script.", solution: "Cities as CSV with lat/lng.", types: { countries: false, states: false, cities: true }, format: "CSV" },
+  { label: "Data", problem: "You want city names in a notebook, without a parsing script.", solution: "Cities as CSV.", types: { countries: false, states: false, cities: true }, format: "CSV" },
 ];
 
 const ROWS = {
@@ -43,6 +37,7 @@ export function totalCredits(types, format) {
   return keys.reduce((sum, k) => sum + TYPE_COST[k], 0) + formatCost(format);
 }
 
+/** Describe the files produced by the selected formats and data types. */
 export function fileName(types, format) {
   const keys = selectedKeys(types);
   const ext = FILE_EXT[format];

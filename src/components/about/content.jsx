@@ -31,12 +31,11 @@ export function AboutIntro() {
   );
 }
 
-// The portrait is a field-blue slot until there is a photo (the design ships it empty too).
+/** Founder details without an unpublished portrait placeholder. */
 export function AboutFounder() {
   return (
     <section className="border-y border-hair bg-mist">
-      <div className="wrap grid grid-cols-[repeat(auto-fit,minmax(min(100%,360px),1fr))] items-center gap-[clamp(28px,5vw,64px)] py-[clamp(56px,7vw,104px)]">
-        <div aria-hidden="true" className="aspect-[4/5] w-full max-w-[420px] overflow-hidden rounded-[28px] bg-field" />
+      <div className="wrap max-w-[900px] gap-[clamp(28px,5vw,64px)] py-[clamp(56px,7vw,104px)]">
         <div className="flex flex-col gap-[18px]">
           <div className="eyebrow">The founder</div>
           <h2 className="display-2 m-0">Darshan Gada</h2>

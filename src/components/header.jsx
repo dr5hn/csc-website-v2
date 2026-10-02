@@ -116,6 +116,7 @@ export default function Header() {
 
   const headerRef = useRef(null);
   const menuButtonRef = useRef(null);
+  const sheetRef = useRef(null);
   const fadeTimer = useRef(null);
 
   // Close every menu on navigation.
@@ -174,11 +175,16 @@ export default function Header() {
   // Mobile sheet: lock body scroll and hand focus back to the menu button on close.
   useEffect(() => {
     if (!sheetOpen) return;
+    sheetRef.current?.showModal();
+    const desktop = window.matchMedia("(min-width: 960px)");
+    const closeOnDesktop = () => { if (desktop.matches) setSheetOpen(false); };
+    desktop.addEventListener("change", closeOnDesktop);
     const original = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     setHeaderHeight(headerRef.current?.getBoundingClientRect().height ?? 112);
     const button = menuButtonRef.current;
     return () => {
+      desktop.removeEventListener("change", closeOnDesktop);
       document.body.style.overflow = original;
       button?.focus();
     };
@@ -397,14 +403,17 @@ export default function Header() {
       )}
 
       {sheetOpen && (
-        <div
+        <dialog
+          ref={sheetRef}
           id="mobile-sheet"
-          role="dialog"
+          onClose={() => setSheetOpen(false)}
+          onClick={(event) => { if (event.target.closest("a")) setSheetOpen(false); }}
           aria-modal="true"
           aria-label="Menu"
-          style={{ height: `calc(100dvh - ${headerHeight}px)` }}
-          className="absolute inset-x-0 top-full flex flex-col gap-[18px] overflow-y-auto bg-white px-5 pb-7 pt-3 min-[960px]:hidden"
+          style={{ top: headerHeight, height: `calc(100dvh - ${headerHeight}px)` }}
+          className="fixed inset-x-0 m-0 flex max-h-none w-full max-w-none flex-col gap-[18px] overflow-y-auto border-0 bg-white px-5 pb-7 pt-3 text-ink backdrop:bg-ink/20"
         >
+          <button type="button" onClick={() => setSheetOpen(false)} className="min-h-11 self-end rounded-full border border-line px-4 text-sm">Close menu</button>
           {MEGA.map((group) => (
             <div key={group.label} className="flex flex-col">
               <span className="py-1.5 font-mono text-xs uppercase tracking-[.08em] text-blue">{group.label}</span>
@@ -471,7 +480,7 @@ export default function Header() {
               Dashboard
             </CtaLink>
           </div>
-        </div>
+        </dialog>
       )}
     </header>
   );

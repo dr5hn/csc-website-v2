@@ -4,7 +4,7 @@
 const CORE_VALUES = {
   countries: "250+",
   states: "5,300+",
-  cities: "153,800+",
+  cities: "152,900+",
   developers: "50,000+",
   developersShort: "50K+",
   apiRequests: "50M+",

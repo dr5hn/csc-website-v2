@@ -56,6 +56,15 @@ export default function PricingTabs() {
               role="tab"
               id={`tab-${t.id}`}
               aria-selected={tab === t.id}
+              tabIndex={tab === t.id ? 0 : -1}
+              onKeyDown={(event) => {
+                const index = TABS.findIndex((item) => item.id === tab);
+                const next = { ArrowRight: (index + 1) % TABS.length, ArrowLeft: (index + TABS.length - 1) % TABS.length, Home: 0, End: TABS.length - 1 }[event.key];
+                if (next === undefined) return;
+                event.preventDefault();
+                choose(TABS[next].id);
+                document.getElementById(`tab-${TABS[next].id}`)?.focus();
+              }}
               aria-controls={`panel-${t.id}`}
               onClick={() => choose(t.id)}
               className={cn(

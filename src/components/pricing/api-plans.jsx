@@ -14,11 +14,11 @@ const BILLING_KEY = "csc-billing";
 // Short card copy from the design, keyed by tier. Prices, limits, badges and links stay live
 // (or fall back to the build-time data); the full per-plan feature list is in the comparison table.
 const BLURBS = {
-  community: { description: "For personal projects and exploration.", features: ["States by country, cities by state", "Exact postcode lookup", "Basic fields, community support"], cta: "Start for free" },
-  starter: { description: "More headroom for side projects and prototypes.", features: ["Bulk states and cities by country", "Postcode search, regions, phone, currency", "?fields= filtering and ?sort="] },
-  supporter: { description: "For growing apps that need richer data.", features: ["Extended fields, coordinates, translations", "Fuzzy search, autocomplete, nearby", "Founder-led email support"] },
-  professional: { description: "GraphQL and the change feed for production.", features: ["GraphQL API", "Data change feed (/v1/changes)", "Priority support, ~1 business day"] },
-  business: { description: "The most headroom and every premium feature.", features: ["All Professional features", "Whitelist up to 25 origins", "All upcoming premium features"] },
+  community: { description: "For personal projects and exploration.", cta: "Start for free" },
+  starter: { description: "More headroom for side projects and prototypes." },
+  supporter: { description: "For growing apps that need richer data." },
+  professional: { description: "GraphQL and the change feed for production." },
+  business: { description: "The most headroom and every premium feature." },
 };
 
 const sentenceCase = (text) => text.charAt(0) + text.slice(1).toLowerCase();
@@ -88,7 +88,7 @@ export default function ApiPlans() {
                 </div>
               )}
               <ul className="m-0 flex list-none flex-col gap-2 p-0">
-                {(blurb?.features ?? plan.features.slice(1, 4)).map((f) => (
+                {plan.features.slice(0, 4).map((f) => (
                   <li key={f} className="flex gap-2 text-sm leading-[1.4]">
                     <span aria-hidden="true" className={cn("shrink-0", hi ? "text-lime" : "text-ok")}>✓</span>
                     <span>{f}</span>

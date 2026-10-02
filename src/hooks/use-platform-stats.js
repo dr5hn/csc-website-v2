@@ -6,7 +6,7 @@ const FALLBACK = {
   totalRequests: 5135800142,
   countries: 250,
   states: 5308,
-  cities: 153768,
+  cities: 152967,
 };
 
 // Module-level cache — all components share one fetch per session. `live` records
@@ -20,7 +20,13 @@ function fetchPlatformStats() {
   if (_promise) return _promise;
   _promise = fetch("https://api.countrystatecity.in/stats")
     .then((r) => (r.ok ? r.json() : Promise.reject()))
-    .then((data) => { _cached = { data, live: true }; return _cached; })
+    .then((data) => {
+      if (!Object.keys(FALLBACK).every((key) => Number.isSafeInteger(data?.[key]) && data[key] > 0)) {
+        throw new TypeError("Invalid platform stats");
+      }
+      _cached = { data, live: true };
+      return _cached;
+    })
     .catch(() => { _cached = { data: FALLBACK, live: false }; return _cached; });
   return _promise;
 }

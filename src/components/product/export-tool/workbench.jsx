@@ -8,7 +8,6 @@ import Segmented from "@/components/ui/segmented";
 import { useExportPricing } from "@/hooks/use-export-pricing";
 import {
   FORMAT_GROUPS,
-  OPTIONS,
   PERSONAS,
   TYPE_COST,
   buildPreview,
@@ -49,7 +48,6 @@ function Step({ n, label, children }) {
 export default function ExportWorkbench() {
   const [types, setTypes] = useState({ countries: true, states: true, cities: false });
   const [format, setFormat] = useState("JSON");
-  const [opts, setOpts] = useState({ trans: false, region: false, flags: false });
   const [persona, setPersona] = useState(0);
   const { plans, customCredits } = useExportPricing();
 
@@ -88,11 +86,11 @@ export default function ExportWorkbench() {
             </span>
             <h1 className="display-1 m-0">Export only the data you need.</h1>
             <p className="lead m-0">
-              Skip the 44MB+ full download. Pick the data, fields and format, see exactly what you&apos;ll get, and pay a few credits.
+              Skip the 44MB+ full download. Pick the data and format, estimate the base credits, then configure your export.
             </p>
           </div>
           <CtaLink
-            href="https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=export_hero"
+            href={EXPORT_URL}
             location="export_hero"
             track="export"
             className={buttonVariants({ size: "lg" })}
@@ -152,38 +150,16 @@ export default function ExportWorkbench() {
                 </div>
               ))}
             </Step>
-            <Step n="3" label="Options · free">
-              <div className="flex flex-wrap gap-2">
-                {OPTIONS.map(([k, label]) => {
-                  const on = opts[k];
-                  return (
-                    <button
-                      key={k}
-                      type="button"
-                      aria-pressed={on}
-                      onClick={() => setOpts((o) => ({ ...o, [k]: !o[k] }))}
-                      className={cn(
-                        "min-h-10 cursor-pointer whitespace-nowrap rounded-full border px-3.5 py-[9px] text-sm",
-                        on ? "border-blue bg-field text-blue" : "border-line-2 bg-white text-ink-code"
-                      )}
-                    >
-                      {on ? "✓ " : ""}
-                      {label}
-                    </button>
-                  );
-                })}
-              </div>
-            </Step>
             <div className="mt-auto flex flex-wrap items-center justify-between gap-3.5 border-t border-hair pt-[18px]">
               <div className="flex flex-col gap-0.5">
-                <span className="text-[13px] text-ink-3">{formula}</span>
+                <span className="text-[13px] text-ink-3">Base estimate · {formula}</span>
                 <span className="flex items-baseline gap-2" aria-live="polite">
                   <span className="font-cal text-[44px] leading-none tabular-nums">{total}</span>
                   <span className="text-[15px] text-ink-2">credits · {total ? priceNote : "no data selected"}</span>
                 </span>
               </div>
               <CtaLink href={EXPORT_URL} location="export_calculator" track="export" className={buttonVariants({ className: "px-[22px] py-3.5" })}>
-                {total > 0 && total <= FREE_CREDITS ? "Export free →" : "Get credits →"}
+                {total > 0 && total <= FREE_CREDITS ? "Configure free export →" : "Configure export →"}
               </CtaLink>
             </div>
           </div>
@@ -194,9 +170,9 @@ export default function ExportWorkbench() {
               <span className="font-mono text-xs text-ink-3">{fileName(types, format)}</span>
             </div>
             <pre className="m-0 max-h-[460px] min-h-[320px] flex-1 overflow-auto whitespace-pre px-[18px] py-4 font-mono text-[12.5px] leading-[1.6] text-ink-code">
-              {buildPreview(types, format, opts.trans)}
+              {buildPreview(types, format, false)}
             </pre>
-            <div className="border-t border-hair px-[18px] py-2.5 text-[13px] text-ink-3">First rows only. Your file has every matching record.</div>
+            <div className="border-t border-hair px-[18px] py-2.5 text-[13px] text-ink-3">Illustrative rows only. Extra fields, translations, filters and flag bundles can add credits; confirm the final price in the Export Tool.</div>
           </div>
         </div>
       </section>
@@ -215,7 +191,7 @@ export default function ExportWorkbench() {
               <span className="text-base leading-normal">{P.solution}</span>
             </div>
             <div className="flex flex-col gap-2 rounded-[22px] bg-blue p-[22px]">
-              <span className="font-mono text-xs uppercase tracking-[.08em] text-[#dcebfb]">Cost</span>
+              <span className="font-mono text-xs uppercase tracking-[.08em] text-[#dcebfb]">Base estimate</span>
               <span className="font-cal text-4xl leading-none text-white">{personaCost} credits</span>
               <button type="button" onClick={loadPersona} className="mt-auto cursor-pointer self-start rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-ink">
                 Load in calculator ↑

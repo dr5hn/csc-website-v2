@@ -9,7 +9,7 @@ const TABS = [
   { label: "JavaScript", code: `const res = await fetch(\n  "${BASE}/v1/countries/IN/states",\n  { headers: { "X-CSCAPI-KEY": API_KEY } }\n);\nconst states = await res.json();` },
   { label: "Python", code: `import requests\n\nstates = requests.get(\n  "${BASE}/v1/countries/IN/states",\n  headers={"X-CSCAPI-KEY": API_KEY},\n).json()` },
   { label: "PHP", code: `$ch = curl_init("${BASE}/v1/countries/IN/states");\ncurl_setopt($ch, CURLOPT_HTTPHEADER, ["X-CSCAPI-KEY: $apiKey"]);\ncurl_setopt($ch, CURLOPT_RETURNTRANSFER, true);\n$states = json_decode(curl_exec($ch), true);` },
-  { label: "GraphQL", code: `curl -X POST "${BASE}/v1/graphql" \\\n  -H "X-CSCAPI-KEY: $API_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d '{"query":"{ country(iso2:\\"IN\\") { name states { name iso2 } } }"}'` },
+  { label: "GraphQL", code: `curl -X POST "${BASE}/v1/graphql" \\\n  -H "X-CSCAPI-KEY: $API_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d '{"query":"{ country(ciso:\\"IN\\") { name states { name iso2 } } }"}'` },
 ];
 
 export default function ApiIntegration() {

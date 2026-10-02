@@ -47,7 +47,7 @@ export default function HomeHero() {
   const L = LEVELS[level];
   const url = `https://api.countrystatecity.in${L.path}`;
   const snippet = snippetFor(lang, url);
-  const json = `[\n  ${L.rows.join(",\n  ")}${L.rows.length > 1 && level < 3 ? ",\n  …" : ""}\n]`;
+  const json = `[\n  ${L.rows.join(level === 3 ? "\n  " : ",\n  ")}${L.rows.length > 1 && level < 3 ? ",\n  …" : ""}\n]`;
 
   const pick = (i) => {
     setUserTookOver(true);
@@ -103,7 +103,7 @@ export default function HomeHero() {
         </div>
       </div>
 
-      <div className="flex min-w-0 flex-col overflow-hidden rounded-[clamp(24px,2.5vw,32px)] bg-field">
+      <div onFocus={() => setUserTookOver(true)} onPointerDown={() => setUserTookOver(true)} className="flex min-w-0 flex-col overflow-hidden rounded-[clamp(24px,2.5vw,32px)] bg-field">
         <div className="flex flex-wrap items-center justify-between gap-2.5 px-4 pt-4">
           <div
             role="group"
