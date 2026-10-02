@@ -1,27 +1,19 @@
-import ApiShowcase from "@/components/api-showcase";
-import CommunitySection from "@/components/community";
-import CTA from "@/components/cta";
-import HeroSection from "@/components/hero";
-import Products from "@/components/products";
-import SkipTheHassle from "@/components/skip-the-hassle";
-import Stats from "@/components/stats";
-import { Testimonials } from "@/components/ui/animated-testimonials";
-import WhyChooseUs from "@/components/why-choose-us";
+import DataSection from "@/components/home/data-section";
+import EcosystemTeaser from "@/components/home/ecosystem-teaser";
+import HomeHero from "@/components/home/hero";
+import PricingPanel from "@/components/home/pricing-panel";
+import Testimonials from "@/components/home/testimonials";
 import ScrollTracker from "@/components/scroll-tracker";
 
 export default function Home() {
   return (
     <>
       <ScrollTracker pageName="Home" />
-      <HeroSection />
-      <ApiShowcase />
-      <Stats />
-      <WhyChooseUs />
-      <Products />
-      <SkipTheHassle />
+      <HomeHero />
+      <EcosystemTeaser />
+      <DataSection />
       <Testimonials />
-      <CTA href="/product/api"/>
-      <CommunitySection />
+      <PricingPanel />
     </>
   );
 }

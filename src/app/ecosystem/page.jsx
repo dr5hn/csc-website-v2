@@ -1,9 +1,10 @@
-import EcosystemHero from "@/components/ecosystem-hero";
-import EcosystemChannels from "@/components/ecosystem-channels";
-import EcosystemPackages from "@/components/ecosystem-packages";
-import Stats from "@/components/stats";
-import CTA from "@/components/cta";
+import CtaLink from "@/components/cta-link";
+import EcosystemChannels from "@/components/ecosystem/channels";
+import EcosystemHero from "@/components/ecosystem/hero";
+import EcosystemPackages from "@/components/ecosystem/packages";
 import ScrollTracker from "@/components/scroll-tracker";
+import { buttonVariants } from "@/components/ui/button";
+import CtaPanel from "@/components/ui/cta-panel";
 
 export const metadata = {
   title: "Ecosystem — CountryStateCity",
@@ -12,7 +13,12 @@ export const metadata = {
   alternates: {
     canonical: "/ecosystem",
   },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og/ecosystem.jpg"],
+  },
   openGraph: {
+    images: [{ url: "/og/ecosystem.jpg", width: 1200, height: 630 }],
     title: "CountryStateCity Ecosystem",
     description:
       "One platform. Every channel. GitHub, API, NPM, PyPI, CLI, and export tool — all from the same source of truth.",
@@ -27,9 +33,27 @@ export default function EcosystemPage() {
       <ScrollTracker pageName="Ecosystem" />
       <EcosystemHero />
       <EcosystemChannels />
-      <Stats />
       <EcosystemPackages />
-      <CTA href="/product/api" />
+      <CtaPanel
+        title="Not sure where to start?"
+        actions={
+          <>
+            <CtaLink
+              href="https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=ecosystem_bottom"
+              location="ecosystem_bottom"
+              track="api"
+              className={buttonVariants()}
+            >
+              Get free API key →
+            </CtaLink>
+            <CtaLink href="/pricing" location="ecosystem_bottom_plans" className={buttonVariants({ variant: "white" })}>
+              Compare plans
+            </CtaLink>
+          </>
+        }
+      >
+        Most teams start with the API: 3,000 free requests a month, no card needed.
+      </CtaPanel>
     </>
   );
 }

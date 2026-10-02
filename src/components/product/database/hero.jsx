@@ -1,245 +1,102 @@
 "use client";
 
-import Link from "next/link";
+import { useState } from "react";
+
+import CtaLink from "@/components/cta-link";
+import StarButton from "@/components/star-button";
+import { buttonVariants } from "@/components/ui/button";
 import { TEXT_STATS } from "@/lib/stats";
-import {
-  Download,
-  Star,
-  Database,
-  FileCode2,
-  FileJson,
-  FileStack,
-  Boxes,
-  Globe,
-  DatabaseZap,
-  Users,
-  Sparkles,
-  Columns3,
-} from "lucide-react";
-import { useGithubStats } from "@/hooks/use-github-stats";
-import { usePlatformStats } from "@/hooks/use-platform-stats";
-import GitHubIcon from "@/icons/GitHub";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import PostgreSQLIcon from "@/icons/PostgreSQLIcon";
-import SQLiteIcon from "@/icons/SQLite";
 
-const repoUrl = "https://github.com/dr5hn/countries-states-cities-database";
-
-const formats = [
-  { label: "JSON", Icon: FileJson },
-  { label: "SQL Server", Icon: FileCode2 },
-  { label: "CSV", Icon: FileStack },
-  { label: "XML", Icon: FileCode2 },
-  { label: "YAML", Icon: FileCode2 },
-  { label: "MongoDB", Icon: Database },
-  { label: "MySQL", Icon: DatabaseZap },
-  { label: "Postgres SQL", Icon: PostgreSQLIcon },
-  { label: "SQLite", Icon: SQLiteIcon },
-  { label: "GeoJSON", Icon: Globe },
-  { label: "TOON", Icon: Sparkles },
-  { label: "Parquet", Icon: Columns3 },
+const DATA = [
+  { name: "India", cc: "IN", id: 101, st: [{ name: "Maharashtra", sc: "MH", id: 4008, ci: [["Mumbai", 133024, 19.076, 72.8777], ["Pune", 133351, 18.5204, 73.8567], ["Nagpur", 133209, 21.1458, 79.0882]] }, { name: "Karnataka", sc: "KA", id: 4026, ci: [["Bengaluru", 132597, 12.9716, 77.5946], ["Mysuru", 132905, 12.2958, 76.6394]] }] },
+  { name: "Japan", cc: "JP", id: 109, st: [{ name: "Tokyo", sc: "13", id: 827, ci: [["Shinjuku", 0, 35.6938, 139.7034], ["Hachiōji", 0, 35.6664, 139.316]] }, { name: "Osaka", sc: "27", id: 821, ci: [["Osaka", 0, 34.6937, 135.5023], ["Sakai", 0, 34.5733, 135.483]] }] },
+  { name: "Brazil", cc: "BR", id: 31, st: [{ name: "São Paulo", sc: "SP", id: 2021, ci: [["São Paulo", 0, -23.5505, -46.6333], ["Campinas", 0, -22.9099, -47.0626]] }, { name: "Rio de Janeiro", sc: "RJ", id: 2014, ci: [["Rio de Janeiro", 0, -22.9068, -43.1729], ["Niterói", 0, -22.8832, -43.1034]] }] },
+  { name: "Germany", cc: "DE", id: 82, st: [{ name: "Bavaria", sc: "BY", id: 3009, ci: [["Munich", 0, 48.1351, 11.582], ["Nuremberg", 0, 49.4521, 11.0767]] }, { name: "Berlin", sc: "BE", id: 3010, ci: [["Berlin", 0, 52.52, 13.405]] }] },
 ];
 
-function Pill({ children, className = "" }) {
+function Row({ name, code, on, onClick }) {
   return (
-    <span
-      className={cn(
-        "inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark",
-        className
-      )}
+    <button
+      type="button"
+      aria-pressed={on}
+      onClick={onClick}
+      className={cn("flex min-w-0 cursor-pointer items-center justify-between gap-1.5 rounded-[10px] px-2 py-[9px] text-left", on ? "bg-blue" : "bg-transparent hover:bg-mist")}
     >
-      {children}
-    </span>
+      <span className={cn("truncate text-sm", on ? "text-white" : "text-ink")}>{name}</span>
+      <span className={cn("shrink-0 font-mono text-[11px]", on ? "text-[#dcebfb]" : "text-ink-3")}>{code}</span>
+    </button>
   );
 }
 
-function FormatPill({ label, Icon }) {
-  return (
-    <div className="inline-flex items-center gap-2 rounded-full bg-dark/5 px-3 py-1.5 text-sm text-darkgray border border-light/60">
-      <Icon className="h-4 w-4 text-blue" />
-      <span className="font-medium">{label}</span>
-    </div>
-  );
-}
+export default function DatabaseHero() {
+  const [c, setC] = useState(0);
+  const [s, setS] = useState(0);
+  const [ci, setCi] = useState(0);
 
-export default function ProductDatabaseHero() {
-  const { stars, loading: githubLoading } = useGithubStats();
-  const { countries, states, cities } = usePlatformStats();
+  const C = DATA[c];
+  const S = C.st[s];
+  const CI = S.ci[Math.min(ci, S.ci.length - 1)];
+  // Only the Indian records carry verified IDs in this sample; others are marked illustrative.
+  const known = C.cc === "IN" && CI[1];
+  const record = known
+    ? { id: CI[1], name: CI[0], state_id: S.id, state_code: S.sc, country_id: C.id, country_code: C.cc, latitude: CI[2].toFixed(4), longitude: CI[3].toFixed(4) }
+    : { name: CI[0], state_code: S.sc, country_code: C.cc, latitude: CI[2].toFixed(4), longitude: CI[3].toFixed(4) };
 
-  const baseStats = [
-    { label: "Countries", value: `${countries.value}+` },
-    { label: "States",    value: `${states.value}${states.suffix}` },
-    { label: "Cities",    value: `${cities.value}${cities.suffix}` },
-    { label: "Formats",   value: TEXT_STATS.formats },
+  const columns = [
+    { title: "Countries", count: `${TEXT_STATS.countries}`, items: DATA.map((x, i) => ({ name: x.name, code: x.cc, on: i === c, pick: () => { setC(i); setS(0); setCi(0); } })) },
+    { title: "States", count: TEXT_STATS.states, items: C.st.map((x, i) => ({ name: x.name, code: x.sc, on: i === s, pick: () => { setS(i); setCi(0); } })) },
+    { title: "Cities", count: TEXT_STATS.cities, items: S.ci.map((x, i) => ({ name: x[0], code: "", on: i === ci, pick: () => setCi(i) })) },
   ];
 
-  // Build stats array dynamically
-  const stats = [...baseStats];
-  if (stars && !githubLoading) {
-    stats.push({
-      label: "GitHub Stars",
-      value: Intl.NumberFormat("en", { notation: "compact" }).format(stars)
-    });
-  }
   return (
-    <>
-      <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue/[0.02] to-green/[0.03]">
-        {/* Decorative background */}
-        <div className="pointer-events-none absolute -top-32 -right-32 h-72 w-72 rounded-full bg-blue/10 blur-3xl"></div>
-        <div className="pointer-events-none absolute -bottom-32 -left-32 h-72 w-72 rounded-full bg-green/10 blur-3xl"></div>
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(closest-side,rgba(34,150,243,0.05),transparent)]"></div>
-
-        <div className="relative container mx-auto px-4 py-10 lg:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Left: copy + CTAs */}
-            <div>
-              {/* Badge */}
-              <div className="inline-flex items-center px-5 py-2.5 rounded-full bg-gradient-to-r from-blue/10 to-green/10 border border-blue/20 text-blue text-sm font-bold uppercase tracking-[0.1em] mb-6 shadow-md backdrop-blur-sm">
-                <span className="w-2 h-2 bg-blue rounded-full mr-3 animate-pulse"></span>
-                Open Source • Free Forever
-              </div>
-
-              {/* Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] text-dark">
-                The world's most
-                <br />
-                <span className="bg-gradient-to-r from-blue via-blue to-green bg-clip-text text-transparent">
-                  complete open-source
-                </span>{" "}
-                geographical database
-              </h1>
-
-              {/* Description */}
-              <p className="mt-5 text-lg md:text-xl text-darkgray/90 leading-relaxed max-w-2xl">
-                Comprehensive geographical data covering {countries.value}+ countries, {states.value}{states.suffix} states, and {cities.value}{cities.suffix} cities. Available in {TEXT_STATS.formats} formats, trusted by thousands of developers worldwide.
-              </p>
-
-              {/* CTAs */}
-              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <Button
-                  asChild
-                  className="bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12"
-                >
-                  <Link
-                    href="https://github.com/dr5hn/countries-states-cities-database/releases/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Download database"
-                  >
-                    <Download className="h-5 w-5 mr-2" />
-                    Download Now
-                  </Link>
-                </Button>
-
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-2 border-dark text-dark hover:bg-dark hover:text-white font-semibold transition-all duration-300 px-6 h-12 bg-transparent"
-                >
-                  <Link
-                    href={repoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Star on GitHub"
-                  >
-                    <GitHubIcon className="h-5 w-5 mr-2" />
-                    Star on GitHub
-                  </Link>
-                </Button>
-              </div>
-
-              {/* Guarantees / qualities */}
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <Pill>
-                  <Globe className="h-4 w-4 text-blue" />
-                  Community Driven
-                </Pill>
-                <Pill>
-                  <Boxes className="h-4 w-4 text-green" />
-                  Monthly updates
-                </Pill>
-                <Pill>
-                  <Star className="h-4 w-4 text-orange" />
-                  ODbL-1.0 License
-                </Pill>
-              </div>
-            </div>
-
-            {/* Right: formats + stats in a modern glass panel */}
-            <div className="relative">
-              {/* Shell */}
-              <div className="rounded-2xl p-[1px] bg-gradient-to-br from-light to-transparent">
-                <div className="rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_24px_64px_rgba(2,6,23,0.1)] overflow-hidden">
-                  {/* Header ribbon */}
-                  <div className="px-6 py-4 flex items-center justify-between">
-                    <div className="inline-flex items-center gap-2">
-                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue/10">
-                        <Database className="h-5 w-5 text-blue" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-bold text-dark leading-tight">
-                          Formats & Stats
-                        </div>
-                        <div className="text-xs text-lightgray">
-                          All the essentials at a glance
-                        </div>
-                      </div>
-                    </div>
-                    <div className="inline-flex items-center gap-2 text-sm text-darkgray">
-                      <GitHubIcon className="h-4 w-4" />
-                      <span className="font-mono">Open-source</span>
-                    </div>
-                  </div>
-
-                  {/* Divider */}
-                  <div className="h-px bg-light/60"></div>
-
-                  {/* Formats grid */}
-                  <div className="px-6 py-5">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      {formats.map((f) => (
-                        <FormatPill
-                          key={f.label}
-                          label={f.label}
-                          Icon={f.Icon}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Divider */}
-                  <div className="h-px bg-light/60"></div>
-
-                  {/* Stats rail */}
-                  <div className="px-6 py-5">
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
-                      {stats.map((s) => (
-                        <div key={s.label} className="group">
-                          <div className="text-2xl font-black font-mono text-dark leading-none">
-                            {s.value}
-                          </div>
-                          <div className="text-xs font-semibold uppercase tracking-wide text-lightgray mt-1">
-                            {s.label}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* floating accents */}
-              <div className="pointer-events-none absolute -top-3 -right-3 h-8 w-8 rounded-full bg-blue/20 animate-pulse"></div>
-              <div className="pointer-events-none absolute -bottom-3 -left-3 h-6 w-6 rounded-full bg-green/20 animate-pulse delay-1000"></div>
-            </div>
-          </div>
+    <section className="wrap-flush grid grid-cols-[repeat(auto-fit,minmax(min(100%,460px),1fr))] items-center gap-[clamp(28px,4vw,56px)] pb-[clamp(48px,6vw,88px)] pt-[clamp(40px,6vw,80px)]">
+      <div className="flex flex-col gap-[22px] px-2">
+        <span className="self-start rounded-full border border-live-line bg-live-bg px-3.5 py-[7px] text-sm font-medium text-live-ink">Open source · free forever</span>
+        <h1 className="display-1 m-0">Every country, state and city. Yours to download.</h1>
+        <p className="lead m-0">
+          {TEXT_STATS.countries} countries, {TEXT_STATS.states} states and {TEXT_STATS.cities} cities in 12 formats. Linked by ID, updated
+          frequently, maintained in the open.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <CtaLink href="#formats" location="database_hero" track="github" className={buttonVariants({ size: "lg" })}>
+            Download now →
+          </CtaLink>
+          <StarButton location="database_hero" label="★ Star on GitHub" />
         </div>
-      </section>
-      <div>
-        <div className="h-px bg-gradient-to-r from-transparent via-light to-transparent"></div>
-        <div className="h-px bg-gradient-to-r from-transparent via-blue/20 to-transparent transform translate-y-[-1px]"></div>
+        <div className="flex flex-wrap gap-x-7 gap-y-3 border-t border-hair pt-2.5 text-[15px] text-ink-3">
+          <div><b className="font-semibold text-ink">127</b> contributors</div>
+          <div><b className="font-semibold text-ink">Monthly</b> releases</div>
+          <div><b className="font-semibold text-ink">ODbL-1.0</b> licence</div>
+        </div>
       </div>
-    </>
+
+      <div className="flex min-w-0 flex-col gap-2.5 rounded-[clamp(24px,3vw,32px)] bg-field p-2.5">
+        <div className="flex items-center justify-between gap-2.5 px-2.5 pt-2">
+          <span className="font-mono text-xs uppercase tracking-[.08em] text-ink-3">Sample records · click to drill in</span>
+          <span className="font-mono text-xs text-ink-2">{C.cc} › {S.sc} › {CI[0]}</span>
+        </div>
+        <div className="grid grid-cols-3 gap-2">
+          {columns.map((col) => (
+            <div key={col.title} className="flex min-w-0 flex-col gap-0.5 rounded-[18px] bg-white p-2">
+              <div className="flex items-baseline justify-between px-2 pb-2 pt-1.5">
+                <span className="text-sm font-semibold">{col.title}</span>
+                <span className="font-mono text-[11px] text-ink-3">{col.count}</span>
+              </div>
+              {col.items.map((it) => (
+                <Row key={it.name} name={it.name} code={it.code} on={it.on} onClick={it.pick} />
+              ))}
+            </div>
+          ))}
+        </div>
+        <div className="overflow-hidden rounded-[18px] bg-white">
+          <div className="flex items-center justify-between border-b border-hair px-3.5 py-2.5 font-mono text-xs text-ink-3">
+            <span>{known ? CI[0] : `${CI[0]} · illustrative, IDs omitted`}</span>
+            <span>cities.json</span>
+          </div>
+          <pre className="m-0 overflow-x-auto whitespace-pre px-3.5 py-3 font-mono text-[12.5px] leading-[1.6] text-ink-code">{JSON.stringify(record, null, 2)}</pre>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -1,142 +1,151 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Rocket, FileText, Globe, Check, Trophy, MapPin, Users, Target } from "lucide-react";
-import { usePlatformStats } from "@/hooks/use-platform-stats";
+import { useEffect, useRef, useState } from "react";
 
-function DatabaseOverview() {
-  const { countries, states, cities } = usePlatformStats();
-  const stats = [
-    {
-      value: `${countries.value}+`,
-      label: "Countries Covered",
-      icon: Globe,
-      color: "from-blue to-blue/80"
-    },
-    {
-      value: `${states.value}${states.suffix}`,
-      label: "States/Regions",
-      icon: MapPin,
-      color: "from-green to-green/80"
-    },
-    {
-      value: `${cities.value}${cities.suffix}`,
-      label: "Cities & Towns",
-      icon: Target,
-      color: "from-orange to-orange/80"
-    }
-  ];
+import CtaLink from "@/components/cta-link";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+const RECORDS = [
+  { label: "Fix a city", path: "cities / 133024", fields: [["name", "Mumbai"], ["state_code", "MH"], ["latitude", "19.0760"], ["longitude", "72.8777"]] },
+  { label: "Fix a state", path: "states / 4008", fields: [["name", "Maharashtra"], ["iso2", "MH"], ["type", "state"], ["timezone", "Asia/Kolkata"]] },
+  { label: "Add a city", path: "cities / new", fields: [["name", ""], ["state_code", "MH"], ["latitude", ""], ["longitude", ""]] },
+];
+
+const STAGES = ["Submitted", "In review", "Approved", "In release"];
+
+// A walk-through of the contribution flow, not a real submission: nothing is sent anywhere.
+// The real form lives in the Update Tool (manager.countrystatecity.in).
+export default function HeroUpdateTool() {
+  const [kind, setKind] = useState(0);
+  const [vals, setVals] = useState({});
+  const [note, setNote] = useState("");
+  const [stage, setStage] = useState(0);
+  const timer = useRef(null);
+
+  useEffect(() => () => clearInterval(timer.current), []);
+
+  const R = RECORDS[kind];
+  const isNew = kind === 2;
+  const valueOf = (k) => vals[`${kind}:${k}`];
+  const changed = R.fields.filter(([k, original]) => valueOf(k) !== undefined && valueOf(k) !== original && valueOf(k) !== "");
+  const ready = changed.length > 0;
+
+  const submit = () => {
+    if (!ready) return;
+    clearInterval(timer.current);
+    setStage(1);
+    timer.current = setInterval(() => {
+      setStage((s) => {
+        if (s >= 4) {
+          clearInterval(timer.current);
+          return s;
+        }
+        return s + 1;
+      });
+    }, 900);
+  };
 
   return (
-    <div className="relative">
-      <div className="rounded-2xl p-[1px] bg-gradient-to-br from-light to-transparent">
-        <div className="rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_24px_64px_rgba(2,6,23,0.1)] overflow-hidden">
-          <div className="px-6 py-4 flex items-center justify-between">
-            <div className="inline-flex items-center gap-2">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue/10">
-                <Globe className="h-5 w-5 text-blue" />
-              </div>
-              <div>
-                <div className="text-sm font-bold text-dark leading-tight">
-                  Global Database Scope
-                </div>
-                <div className="text-xs text-lightgray">
-                  Comprehensive worldwide coverage
-                </div>
-              </div>
-            </div>
+    <section className="wrap-flush grid grid-cols-[repeat(auto-fit,minmax(min(100%,460px),1fr))] items-center gap-[clamp(28px,4vw,56px)] pb-[clamp(48px,6vw,88px)] pt-[clamp(40px,6vw,80px)]">
+      <div className="flex flex-col gap-[22px] px-2">
+        <span className="self-start rounded-full border border-live-line bg-live-bg px-3.5 py-[7px] text-sm font-medium text-live-ink">Community contributions</span>
+        <h1 className="display-1 m-0">Spot a wrong city? Fix it for everyone.</h1>
+        <p className="lead m-0">
+          Suggest a correction or add a missing place. It&apos;s reviewed in the open and ships in the next frequent release: to the
+          database, the API and every package.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <CtaLink href="https://manager.countrystatecity.in/" location="update_hero" track="update" className={buttonVariants({ size: "lg" })}>
+            Submit your first change →
+          </CtaLink>
+          <CtaLink href="#flow" location="update_hero_flow" className={buttonVariants({ variant: "outline", size: "lg" })}>
+            How review works
+          </CtaLink>
+        </div>
+      </div>
+
+      <div className="flex min-w-0 flex-col gap-2.5 rounded-[clamp(24px,3vw,32px)] bg-field p-2.5">
+        <div className="flex flex-col gap-3.5 rounded-[22px] bg-white p-4">
+          <div className="flex items-center justify-between gap-2.5">
+            <span className="text-[15px] font-semibold">Suggest a change</span>
+            <span className="font-mono text-xs text-ink-3">{R.path}</span>
           </div>
-          <div className="h-px bg-light/60"></div>
-          <div className="p-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-            {stats.map((stat, index) => (
-              <div key={index}>
-                <div className="flex items-center justify-center mb-2">
-                  <stat.icon className="h-5 w-5 text-lightgray" />
-                </div>
-                <div className={`text-3xl font-black font-mono bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1`}>
-                  {stat.value}
-                </div>
-                <div className="text-xs font-semibold uppercase tracking-wide text-lightgray">
-                  {stat.label}
-                </div>
-              </div>
+          <div role="group" aria-label="Kind of change" className="flex flex-wrap gap-1 rounded-full bg-mist p-1">
+            {RECORDS.map((r, i) => (
+              <button
+                key={r.label}
+                type="button"
+                aria-pressed={i === kind}
+                onClick={() => {
+                  setKind(i);
+                  setStage(0);
+                }}
+                className={cn("min-h-10 flex-1 cursor-pointer whitespace-nowrap rounded-full px-3 py-[9px] text-sm font-medium", i === kind ? "bg-blue text-white" : "text-ink-code")}
+              >
+                {r.label}
+              </button>
             ))}
           </div>
-          <div className="px-6 pb-4">
-            <div className="flex items-center justify-center gap-2 text-xs text-lightgray">
-              <Users className="h-3 w-3" />
-              <span>Your contributions help millions of developers worldwide</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default function HeroUpdateTool() {
-  return (
-    <>
-      <section className="relative overflow-hidden bg-gradient-to-br from-white via-green/[0.02] to-blue/[0.03]">
-        <div className="pointer-events-none absolute -top-32 -right-32 h-72 w-72 rounded-full bg-green/10 blur-3xl"></div>
-        <div className="pointer-events-none absolute -bottom-32 -left-32 h-72 w-72 rounded-full bg-blue/10 blur-3xl"></div>
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(closest-side,rgba(16,185,129,0.05),transparent)]"></div>
-
-        <div className="relative container mx-auto px-4 py-10 lg:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div>
-              <div className="inline-flex items-center px-5 py-2.5 rounded-full bg-gradient-to-r from-blue/10 to-green/10 border border-blue/20 text-blue text-sm font-bold uppercase tracking-[0.1em] mb-6 shadow-md backdrop-blur-sm">
-                <span
-                  className="w-2 h-2 bg-blue rounded-full mr-3"
-                  aria-hidden
-                ></span>
-                Community Contribution Platform
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] text-dark">
-                Help Improve
-                <br />
-                <span className="bg-gradient-to-r from-orange to-yellow-400 bg-clip-text text-transparent">
-                  Global Data
-                </span>{" "}
-                For Millions
-              </h1>
-              <p className="mt-5 text-lg md:text-xl text-darkgray/90 leading-relaxed max-w-2xl">
-                Join a global community of contributors helping maintain the
-                world's most accurate geographical database. Your corrections
-                directly impact millions of applications and billions of users
-                worldwide.
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <Button asChild className="bg-gradient-to-r from-orange to-orange/90 hover:from-orange/90 hover:to-orange text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12 cursor-pointer">
-                  <Link href="https://manager.countrystatecity.in" target="_blank" className="cursor-pointer">
-                    <Rocket className="h-5 w-5 mr-2" aria-hidden />
-                    Submit First Change
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-2 border-dark text-dark hover:bg-dark hover:text-white font-semibold transition-all duration-300 px-6 h-12 bg-transparent cursor-pointer"
+          <div className="flex flex-col overflow-hidden rounded-[14px] border border-line">
+            {R.fields.map(([k, original], i) => {
+              const v = valueOf(k) ?? original;
+              const edited = v !== original && v !== "";
+              return (
+                <div
+                  key={k}
+                  className={cn(
+                    "grid grid-cols-[110px_minmax(0,1fr)_minmax(0,1fr)] items-center gap-2.5 px-3 py-[9px] font-mono text-[13px]",
+                    i > 0 && "border-t border-hair",
+                    edited ? "bg-live-bg" : "bg-white"
+                  )}
                 >
-                  <Link href="#how-it-works" className="cursor-pointer">
-                    <FileText className="h-5 w-5 mr-2" aria-hidden />
-                    View Process
-                  </Link>
-                </Button>
-              </div>
-            </div>
-
-            {/* Right: Database Overview */}
-            <DatabaseOverview />
+                  <span className="text-ink-3">{k}</span>
+                  <span className={cn("truncate", edited && !isNew ? "text-danger line-through" : "text-ink-3")}>{isNew ? "—" : original || "—"}</span>
+                  <input
+                    value={v}
+                    aria-label={k}
+                    onChange={(e) => {
+                      setVals((s) => ({ ...s, [`${kind}:${k}`]: e.target.value }));
+                      setStage(0);
+                    }}
+                    className={cn("min-w-0 rounded-lg border bg-white px-[9px] py-[7px] text-[13px] text-ink outline-none", edited ? "border-blue" : "border-line")}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          <input
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            placeholder="Source (e.g. a government gazetteer link)"
+            aria-label="Source"
+            className="rounded-xl border border-line px-3 py-[11px] text-sm text-ink outline-none"
+          />
+          <div className="flex flex-wrap items-center justify-between gap-2.5">
+            <span className="text-[13px] text-ink-3">
+              {ready ? `${changed.length} field${changed.length > 1 ? "s" : ""} changed${note ? " · source added" : " · add a source"}` : "Edit a field to start"}
+            </span>
+            <button
+              type="button"
+              onClick={submit}
+              disabled={!ready}
+              className={cn("cursor-pointer rounded-full px-[18px] py-[11px] text-sm font-semibold text-white", ready ? "bg-blue" : "bg-[#a8b4c4]")}
+            >
+              {stage === 0 ? "Submit for review" : stage >= 4 ? "Shipped ✓" : "Submitted"}
+            </button>
           </div>
         </div>
-      </section>
-      <div>
-        <div className="h-px bg-gradient-to-r from-transparent via-light to-transparent"></div>
-        <div className="h-px bg-gradient-to-r from-transparent via-green/20 to-transparent transform translate-y-[-1px]"></div>
+        <div className="flex gap-1.5 px-1.5 pb-1.5" aria-live="polite">
+          {STAGES.map((label, i) => (
+            <div key={label} className="flex flex-1 flex-col gap-1.5">
+              <div className={cn("h-1.5 rounded-[3px] transition-colors duration-[400ms]", stage > i ? "bg-blue" : "bg-[#d6e4f3]")} />
+              <span className={cn("text-xs", stage > i ? "text-ink" : "text-ink-3")}>{label}</span>
+            </div>
+          ))}
+        </div>
+        <p className="m-0 px-2 pb-1 text-xs text-ink-3">A preview of the flow. Real submissions are made in the Update Tool.</p>
       </div>
-    </>
+    </section>
   );
 }

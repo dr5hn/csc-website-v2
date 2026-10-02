@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Redesign the whole site to the "Stacked Atlas" direction from the CSC creative directions: light-first, Cal Sans / Geist / Geist Mono, deep-blue pill buttons, field-blue panels, lime for live signals only (see `docs/design/reject-list.md`). New header (announcement bar, Products menu, mobile sheet) and footer; all ten pages rebuilt from the design (Home, Ecosystem, API, Database, Export Tool, Update Tool, Pricing, About, FAQs, Support).
+- Home hero zooms World → India → Maharashtra → Mumbai over the voxel map, with the matching API request and response; live numbers show a skeleton while loading, then `● live` or `cached`.
+- Pricing: product chooser synced to the URL hash (`/pricing/#export`), billing toggle remembered in `localStorage`, live plan and credit prices kept, with a collapsible feature comparison.
+- Export Tool: interactive credit calculator with a live format preview and persona presets; credit packs read live prices.
+- Canonical stats are now 5,300+ states and 153,800+ cities everywhere; the Support page shows `support@countrystatecity.in` instead of a personal address.
+- New favicon set, web manifest icons and per-page 1200 × 630 share images (`public/og/`); the docs assistant accent follows the deep blue.
+- FAQ answers live in `src/data/faqs.js` and the FAQPage JSON-LD is generated from the same list, so structured data matches the visible text.
+
+### Removed
+
+- The previous page sections, the `cobe` globe, particle star button, testimonial marquee, orange accents, dark CTA banners and the contributor-count GitHub hook; the GitHub star count now comes from one lightweight request (`src/hooks/use-repo-stars.js`).
+
 ### Added
 
 - Add a "Postcode Listing & Search" row to the pricing comparison table (Starter and above) — the only gap left after #13's feature-tier realignment; the plan cards already mentioned postcode listing, but the comparison table had no dedicated row for it.
