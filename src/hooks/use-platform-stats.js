@@ -6,10 +6,12 @@ const FALLBACK = {
   totalRequests: 5135800142,
   countries: 250,
   states: 5308,
-  cities: 153768,
+  cities: 152967,
 };
 
-// Module-level cache — all components share one fetch per session
+// Module-level cache — all components share one fetch per session. `live` records
+// whether the numbers came from the API or are the build-time fallback, so the UI can
+// tag them "live" or "cached" (interaction spec 5).
 let _promise = null;
 let _cached = null;
 
@@ -18,8 +20,14 @@ function fetchPlatformStats() {
   if (_promise) return _promise;
   _promise = fetch("https://api.countrystatecity.in/stats")
     .then((r) => (r.ok ? r.json() : Promise.reject()))
-    .then((data) => { _cached = data; return data; })
-    .catch(() => { _cached = FALLBACK; return FALLBACK; });
+    .then((data) => {
+      if (!Object.keys(FALLBACK).every((key) => Number.isSafeInteger(data?.[key]) && data[key] > 0)) {
+        throw new TypeError("Invalid platform stats");
+      }
+      _cached = { data, live: true };
+      return _cached;
+    })
+    .catch(() => { _cached = { data: FALLBACK, live: false }; return _cached; });
   return _promise;
 }
 
@@ -40,12 +48,14 @@ export function usePlatformStats() {
   // longer match the server markup, which React reports as a hydration error.
   const [raw, setRaw] = useState(FALLBACK);
   const [loading, setLoading] = useState(true);
+  const [live, setLive] = useState(false);
 
   useEffect(() => {
     let active = true;
-    fetchPlatformStats().then((data) => {
+    fetchPlatformStats().then((result) => {
       if (!active) return;
-      setRaw(data);
+      setRaw(result.data);
+      setLive(result.live);
       setLoading(false);
     });
     return () => { active = false; };
@@ -53,9 +63,11 @@ export function usePlatformStats() {
 
   return {
     loading,
+    live,
     totalRequests: formatCount(raw.totalRequests),
     countries: { value: raw.countries, suffix: "", decimals: 0 },
     states: formatCount(raw.states),
     cities: formatCount(raw.cities),
+    raw,
   };
 }

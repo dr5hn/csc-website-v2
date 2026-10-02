@@ -1,178 +1,126 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
+
+import CtaLink from "@/components/cta-link";
+import { buttonVariants } from "@/components/ui/button";
+import LiveBadge from "@/components/ui/live-badge";
+import Tag from "@/components/ui/tag";
+import { DEMOS, runDemo } from "@/lib/api-demo";
+import { TEXT_STATS } from "@/lib/stats";
 import { usePlatformStats } from "@/hooks/use-platform-stats";
-import {
-  Rocket,
-  BookOpen,
-  Check,
-  Zap,
-  ShieldCheck,
-  TerminalSquare,
-} from "lucide-react";
-import APIStatusWidget from "../database/api-status-widget";
-import { useInboundAttribution, withAttribution } from "@/lib/attribution";
+import { cn } from "@/lib/utils";
 
-export function HeroApi() {
+export default function HeroApi() {
+  const [demo, setDemo] = useState(0);
+  const [query, setQuery] = useState(DEMOS[0].q);
   const { totalRequests } = usePlatformStats();
-  const attribution = useInboundAttribution();
-  const apiKeyHref = withAttribution(
-    "https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=api_hero",
-    attribution
-  );
+  const D = DEMOS[demo];
+  const results = runDemo(demo, query);
+
+  const choose = (i) => {
+    setDemo(i);
+    setQuery(DEMOS[i].q);
+  };
+
   return (
-    <>
-      <section className="relative overflow-hidden bg-gradient-to-br from-white via-blue/[0.02] to-green/[0.03]">
-        {/* Decorative background */}
-        <div className="pointer-events-none absolute -top-32 -right-32 h-72 w-72 rounded-full bg-blue/10 blur-3xl"></div>
-        <div className="pointer-events-none absolute -bottom-32 -left-32 h-72 w-72 rounded-full bg-green/10 blur-3xl"></div>
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(closest-side,rgba(34,150,243,0.05),transparent)]"></div>
+    <section className="wrap-flush grid grid-cols-[repeat(auto-fit,minmax(min(100%,460px),1fr))] items-center gap-[clamp(28px,4vw,56px)] pb-[clamp(48px,6vw,88px)] pt-[clamp(40px,6vw,80px)]">
+      <div className="flex flex-col gap-[22px] px-2">
+        <LiveBadge as="a" href="https://status.countrystatecity.in/" target="_blank" rel="noopener noreferrer">
+          All systems operational · status →
+        </LiveBadge>
+        <h1 className="display-1 m-0">The geography API that forgives typos.</h1>
+        <p className="lead m-0">
+          Countries, states and cities with fuzzy search, autocomplete, nearby search and timezone helpers. REST or GraphQL.{" "}
+          {totalRequests.value}
+          {totalRequests.suffix} requests served.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <CtaLink
+            href="https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=api_page_hero"
+            location="api_hero"
+            track="api"
+            className={buttonVariants({ size: "lg" })}
+          >
+            Get free API key →
+          </CtaLink>
+          <CtaLink href="https://docs.countrystatecity.in/" location="api_hero_docs" className={buttonVariants({ variant: "outline", size: "lg" })}>
+            View documentation
+          </CtaLink>
+        </div>
+        <div className="flex flex-wrap gap-x-7 gap-y-3 border-t border-hair pt-2.5 text-[15px] text-ink-3">
+          <div><b className="font-semibold text-ink">3,000</b> free requests / mo</div>
+          <div><b className="font-semibold text-ink">{TEXT_STATS.responseTime}</b> p95</div>
+          <div><b className="font-semibold text-ink">{TEXT_STATS.uptime}</b> uptime SLA</div>
+        </div>
+      </div>
 
-        <div className="relative container mx-auto px-4 py-10 lg:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Left: Content */}
-            <div>
-              {/* Pill */}
-              <div className="inline-flex items-center px-5 py-2.5 rounded-full bg-gradient-to-r from-blue/10 to-green/10 border border-blue/20 text-blue text-sm font-bold uppercase tracking-[0.1em] mb-6 shadow-md backdrop-blur-sm">
-                <span
-                  className="w-2 h-2 bg-blue rounded-full mr-3 animate-pulse"
-                  aria-hidden
-                ></span>
-                Production-Ready API Service
-              </div>
-
-              {/* Heading */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] text-dark">
-                Enterprise-Grade
-                <br />
-                <span className="bg-gradient-to-r from-blue via-blue to-green bg-clip-text text-transparent">
-                  Geographical API
-                </span>
-              </h1>
-
-              {/* Subtext */}
-              <p className="mt-5 text-lg md:text-xl text-darkgray/90 leading-relaxed max-w-2xl">
-                Power your applications with the world&apos;s most comprehensive
-                geographical data API. Trusted by thousands of developers,
-                handling {totalRequests.value}{totalRequests.suffix} total requests with 99.9% uptime.
-              </p>
-
-              {/* Status */}
-              <div className="mt-6">
-                <APIStatusWidget />
-              </div>
-
-              {/* CTAs */}
-              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <Button asChild className="bg-gradient-to-r from-blue to-blue/90 hover:from-blue/90 hover:to-blue text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 px-6 h-12">
-                  <Link href={apiKeyHref} target="_blank">
-                    <Rocket className="h-5 w-5 mr-2" aria-hidden />
-                    Get Free API Key
-                  </Link>
-                </Button>
-
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-2 border-dark text-dark hover:bg-dark hover:text-white font-semibold transition-all duration-300 px-6 h-12 bg-transparent"
-                >
-                  <Link href="https://docs.countrystatecity.in/">
-                    <BookOpen className="h-5 w-5 mr-2" aria-hidden />
-                    View Documentation
-                  </Link>
-                </Button>
-              </div>
-
-              {/* Feature points */}
-              {/* <div className="mt-6 flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark">
-                  <Check className="h-4 w-4 text-green" aria-hidden />
-                  1,000 Free Requests
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark">
-                  <Zap className="h-4 w-4 text-blue" aria-hidden />
-                  5-Minute Setup
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm border border-light/60 px-3 py-1 text-sm font-semibold text-dark">
-                  <ShieldCheck className="h-4 w-4 text-green" aria-hidden />
-                  Enterprise Security
-                </span>
-              </div> */}
-            </div>
-
-            {/* Right: Live API Response */}
-            <div className="relative">
-              <div className="rounded-2xl p-[1px] bg-gradient-to-br from-light to-transparent">
-                <div className="rounded-[calc(1rem-1px)] bg-white/80 backdrop-blur-sm border border-light/60 shadow-[0_1px_0_rgba(15,23,42,0.04),0_24px_64px_rgba(2,6,23,0.1)] overflow-hidden">
-                  {/* Header */}
-                  <div className="px-6 py-4 flex items-center justify-between">
-                    <div className="inline-flex items-center gap-2">
-                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue/10">
-                        <TerminalSquare
-                          className="h-5 w-5 text-blue"
-                          aria-hidden
-                        />
-                      </div>
-                      <div>
-                        <div className="text-sm font-bold text-dark leading-tight">
-                          Live API Response
-                        </div>
-                        <div className="text-xs text-lightgray">
-                          Updated moments ago
-                        </div>
-                      </div>
-                    </div>
-                    <div className="inline-flex items-center gap-2 text-sm text-darkgray">
-                      <span
-                        className="inline-flex h-2 w-2 rounded-full bg-green"
-                        aria-hidden
-                      ></span>
-                      <span className="font-medium">200 OK</span>
-                    </div>
-                  </div>
-
-                  {/* Divider */}
-                  <div className="h-px bg-light/60"></div>
-
-                  {/* Code block */}
-                  <div className="px-6 py-5">
-                    <div className="rounded-md bg-dark p-4 md:p-5 text-xs md:text-sm text-white overflow-auto">
-                      <div className="text-green">HTTP/1.1 200 OK</div>
-                      <div className="text-darkgray">Response-Time: 89ms</div>
-                      <div className="text-darkgray">
-                        Content-Type: application/json
-                      </div>
-                      <br />
-                      <pre className="whitespace-pre-wrap">
-                        {`{
-  "id": 101,
-  "name": "India",
-  "iso2": "IN",
-  "capital": "New Delhi",
-  "currency": "INR",
-  "phonecode": "91",
-  "emoji": "🇮🇳"
-}`}
-                      </pre>
-                    </div>
-                  </div>
+      <div className="flex min-w-0 flex-col gap-2.5 rounded-[clamp(24px,3vw,32px)] bg-field p-2.5">
+        <div role="group" aria-label="API demo" className="flex flex-wrap gap-1 rounded-full bg-white p-1">
+          {DEMOS.map((d, i) => (
+            <button
+              key={d.label}
+              type="button"
+              aria-pressed={i === demo}
+              onClick={() => choose(i)}
+              className={cn(
+                "min-h-10 flex-1 cursor-pointer whitespace-nowrap rounded-full px-3 py-2.5 text-sm font-medium transition-colors",
+                i === demo ? "bg-blue text-white" : "text-ink-code"
+              )}
+            >
+              {d.label}
+            </button>
+          ))}
+        </div>
+        <div className="flex flex-col gap-3 rounded-[22px] bg-white p-3.5">
+          <label className="flex items-center gap-2.5 rounded-[14px] border-[1.5px] border-blue py-1 pl-3.5 pr-1">
+            <span className="whitespace-nowrap font-mono text-xs text-ink-3">{D.title}</span>
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              aria-label={D.title}
+              className="min-w-0 flex-1 border-0 bg-transparent py-2.5 font-mono text-base text-ink outline-none placeholder:text-[#8a99ae]"
+            />
+          </label>
+          <div className="truncate font-mono text-[12.5px] text-ink-3">
+            <span className="font-medium text-blue">GET</span> {D.path(query.trim())}
+          </div>
+          <div className="flex flex-col border-t border-hair" aria-live="polite">
+            {results.map((r) => (
+              <div key={r.name} className="flex items-center justify-between gap-3 border-b border-hair px-0.5 py-[11px]">
+                <div className="flex min-w-0 flex-col gap-0.5">
+                  <span className="truncate font-cal text-[19px]">{r.name}</span>
+                  <span className="truncate text-[13px] text-ink-3">{r.sub}</span>
                 </div>
+                <Tag tone={r.tone}>{r.tag}</Tag>
               </div>
-
-              {/* floating accents */}
-              <div className="pointer-events-none absolute -top-3 -right-3 h-8 w-8 rounded-full bg-blue/20 animate-pulse"></div>
-              <div className="pointer-events-none absolute -bottom-3 -left-3 h-6 w-6 rounded-full bg-green/20 animate-pulse delay-1000"></div>
-            </div>
+            ))}
+            {query.trim() && results.length === 0 && (
+              <div className="px-0.5 py-3.5 text-sm text-ink-2">No match in this demo. Try one of the examples below.</div>
+            )}
+          </div>
+          <div className="flex flex-wrap items-center gap-1.5">
+            <span className="text-[13px] text-ink-3">Try</span>
+            {D.tries.map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => setQuery(t)}
+                className="cursor-pointer rounded-full border border-line-2 bg-white px-2.5 py-1.5 font-mono text-[12.5px] text-ink-code hover:border-blue"
+              >
+                {t}
+              </button>
+            ))}
           </div>
         </div>
-      </section>
-      <div>
-        <div className="h-px bg-gradient-to-r from-transparent via-light to-transparent"></div>
-        <div className="h-px bg-gradient-to-r from-transparent via-blue/20 to-transparent transform translate-y-[-1px]"></div>
+        <div className="flex items-center justify-between gap-2.5 px-2 pb-1 pt-0.5 font-mono text-xs text-ink-2">
+          <span className="flex items-center gap-2">
+            <span className="rounded-full bg-ok-bg px-[9px] py-[3px] text-ok">200 OK</span>
+            {D.plan}
+          </span>
+          <span>illustrative data</span>
+        </div>
       </div>
-    </>
+    </section>
   );
 }
-
-export default HeroApi;

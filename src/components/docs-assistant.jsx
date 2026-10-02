@@ -18,7 +18,7 @@ import Script from "next/script";
 // and dev builds do not, so it only appeared once deployed. A string cannot be
 // property-eliminated, so every setting below survives the build.
 //
-// accent matches --color-blue in globals.css.
+// accent matches --color-blue in globals.css (the deep blue used for buttons and links).
 const ASSISTANT_CONFIG_JSON = `{
   "id": "mint_widget_d355fc9e-9252-4aab-b257-86c438f867cf",
   "supportEmail": "api@countrystatecity.in",
@@ -35,7 +35,7 @@ const ASSISTANT_CONFIG_JSON = `{
   "appearance": {
     "variant": "widget",
     "theme": "system",
-    "accent": "#2296f3",
+    "accent": "#1566c0",
     "radius": "16px",
     "side": "bottom",
     "align": "end",

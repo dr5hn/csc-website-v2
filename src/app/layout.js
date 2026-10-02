@@ -3,7 +3,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import DocsAssistant from "@/components/docs-assistant";
 import { TEXT_STATS, STAT_DESCRIPTIONS } from "@/lib/stats";
-import { Cal_Sans } from "next/font/google";
+import { Cal_Sans, Geist, Geist_Mono } from "next/font/google";
 
 const calSans = Cal_Sans({
   subsets: ["latin"],
@@ -15,6 +15,24 @@ const calSans = Cal_Sans({
   // warning). Opt out of that and supply an explicit fallback chain instead.
   adjustFontFallback: false,
   fallback: ["system-ui", "arial", "sans-serif"],
+});
+
+// Geist's latin subset has no arrows, so those glyphs fall through to the fallback list. The
+// design is built against system-ui there (a short arrow), not next/font's Arial-metric fallback.
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+  display: "swap",
+  adjustFontFallback: false,
+  fallback: ["system-ui", "-apple-system", "sans-serif"],
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+  adjustFontFallback: false,
+  fallback: ["ui-monospace", "Menlo", "monospace"],
 });
 
 export const metadata = {
@@ -66,9 +84,11 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-48.png', sizes: '48x48', type: 'image/png' },
       { url: '/web-app-manifest-192x192.png', sizes: '192x192', type: 'image/png' },
       { url: '/web-app-manifest-512x512.png', sizes: '512x512', type: 'image/png' },
     ],
@@ -114,8 +134,14 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en" className={calSans.variable}>
+    <html lang="en" className={`${calSans.variable} ${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <head>
+        {/* Hide the announcement bar before first paint if it was dismissed (interaction spec 6). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('csc-promo-hidden')==='1')document.documentElement.dataset.promoHidden='1'}catch(e){}`,
+          }}
+        />
         {/* Google Analytics */}
         <script
           async
@@ -136,9 +162,9 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased font-cal">
+      <body className="bg-white font-sans text-ink antialiased">
         <Header />
-        <main id="main-content" className="mt-[7rem]" role="main">
+        <main id="main-content" role="main">
           {children}
         </main>
         <Footer />
