@@ -26,7 +26,7 @@ export default function SupportRouter() {
       <div className="flex max-w-[760px] flex-col gap-3.5 px-2">
         <div className="eyebrow">Support</div>
         <h1 className="display-1 m-0">What do you need?</h1>
-        <p className="lead m-0">Pick one and we&apos;ll point you to the fastest route. We reply within 24–48 hours on business days.</p>
+        <p className="lead m-0">Pick one and we&apos;ll point you to the fastest route. Reply times depend on your plan: about one business day on Professional and Business, two to three on Supporter, and community support on free plans.</p>
       </div>
       <div className="flex flex-wrap items-stretch gap-2.5">
         <div role="group" aria-label="What do you need?" className="grid min-w-0 flex-[1_1_340px] grid-cols-[repeat(auto-fill,minmax(min(100%,220px),1fr))] content-start gap-2">

@@ -47,7 +47,7 @@ export default function Page() {
           </>
         }
       >
-        Paid plans from $5 add higher limits, fuzzy search, GraphQL and the change feed.
+        Paid plans from $5 add higher limits. Supporter adds fuzzy search; Professional adds GraphQL and the change feed.
       </CtaPanel>
     </>
   );

@@ -25,7 +25,7 @@ export default function DatabaseSetup() {
             </li>
           ))}
         </ul>
-        <span className="font-mono text-[13px] text-ink-2">Data and packages: ODbL-1.0</span>
+        <span className="font-mono text-[13px] text-ink-2">Data and data packages: ODbL-1.0</span>
         <a href="https://docs.countrystatecity.in/" target="_blank" rel="noopener noreferrer" className="mt-auto text-[15px] font-semibold">
           Read the licence →
         </a>

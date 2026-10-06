@@ -8,7 +8,7 @@ export const FAQS = [
     category: "Getting Started",
     question: "How do I get started with the CountryStateCity API?",
     answer:
-      "Getting started is simple! You can begin by exploring our open-source dataset on GitHub for free, or sign up for API access to get your API key. Our comprehensive documentation provides step-by-step integration guides for all major programming languages including JavaScript, Python, PHP, and more.",
+      "Getting started is simple! You can begin by exploring our open-source dataset on GitHub for free, or sign up for API access to get your API key. Our documentation has integration guides and code examples for cURL, JavaScript, Python, PHP and GraphQL.",
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ export const FAQS = [
     category: "Data Quality",
     question: "How accurate and up-to-date is your location data?",
     answer:
-      "Our data is continuously updated and maintained by our global community of contributors. We verify all changes through multiple authoritative sources and have a rigorous review process. The database is updated monthly with new cities, administrative changes, and corrections.",
+      "Our data is continuously updated and maintained by our global community of contributors. We verify all changes through multiple authoritative sources and have a rigorous review process. The database ships frequent releases with new cities, administrative changes, and corrections.",
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ export const FAQS = [
     category: "Integration",
     question: "Which programming languages do you support?",
     answer:
-      "Our REST API works with any programming language that can make HTTP requests. We provide official SDKs and code examples for JavaScript/Node.js, Python, PHP, Ruby, Java, C#, Go, and more. Check our documentation for specific implementation guides.",
+      "Our REST API works with any programming language that can make HTTP requests. We provide official SDKs for JavaScript/TypeScript (npm) and Python (PyPI), and the documentation has code examples for cURL, PHP and GraphQL.",
   },
   {
     id: 6,
@@ -50,7 +50,7 @@ export const FAQS = [
     category: "Licensing",
     question: "Can I use this data commercially?",
     answer:
-      "Yes! Our geographical data is licensed under ODbL-1.0 and our language packages under MIT — both free to use commercially, as long as you keep the required attribution for the database. For API access, our paid plans are specifically designed for commercial applications with enterprise-grade reliability and support.",
+      "Yes! Our geographical data and offline data packages are licensed under ODbL-1.0, and our SDK and CLI under MIT — both free to use commercially, as long as you keep the required attribution for the database. For API access, our paid plans are specifically designed for commercial applications with enterprise-grade reliability and support.",
   },
   {
     id: 8,

@@ -9,7 +9,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { FAQS } from "@/data/faqs";
 import { cn } from "@/lib/utils";
 
-const sentence = (text) => text.charAt(0) + text.slice(1).toLowerCase();
+const sentence = (text) => (text.charAt(0) + text.slice(1).toLowerCase()).replace(/\bapi\b/gi, "API");
 
 const CATEGORIES = ["All", ...Array.from(new Set(FAQS.map((f) => f.category)))];
 

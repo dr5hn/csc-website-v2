@@ -16,7 +16,7 @@ export default function DatabasePanel() {
           <span className="self-start rounded-full border border-live-line bg-live-bg px-3 py-[5px] text-[13px] font-semibold text-live-ink">Free forever</span>
           <h2 className="display-3 m-0">The full database, on GitHub.</h2>
           <p className="m-0 text-[17px] leading-[1.55] text-ink-2">
-            Data and packages under ODbL-1.0. Use it commercially with attribution; share adaptations under the same licence.
+            Data and data packages under ODbL-1.0. Use it commercially with attribution; share adaptations under the same licence.
           </p>
           <div className="flex flex-wrap gap-2.5">
             <CtaLink href="/product/database#formats" location="pricing_database_download" track="github" className={buttonVariants({ className: "px-[22px] py-3.5" })}>

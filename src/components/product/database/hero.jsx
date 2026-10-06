@@ -65,8 +65,8 @@ export default function DatabaseHero() {
           <StarButton location="database_hero" label="★ Star on GitHub" />
         </div>
         <div className="flex flex-wrap gap-x-7 gap-y-3 border-t border-hair pt-2.5 text-[15px] text-ink-3">
-          <div><b className="font-semibold text-ink">127</b> contributors</div>
-          <div><b className="font-semibold text-ink">Monthly</b> releases</div>
+          <div><b className="font-semibold text-ink">95+</b> contributors</div>
+          <div><b className="font-semibold text-ink">Frequent</b> releases</div>
           <div><b className="font-semibold text-ink">ODbL-1.0</b> licence</div>
         </div>
       </div>

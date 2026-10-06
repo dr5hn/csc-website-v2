@@ -52,7 +52,7 @@ export default function HeroUpdateTool() {
         <span className="self-start rounded-full border border-live-line bg-live-bg px-3.5 py-[7px] text-sm font-medium text-live-ink">Community contributions</span>
         <h1 className="display-1 m-0">Spot a wrong city? Fix it for everyone.</h1>
         <p className="lead m-0">
-          Suggest a correction or add a missing place. It&apos;s reviewed in the open and ships in the next frequent release: to the
+          Suggest a correction or add a missing place. It&apos;s reviewed in the open and ships in the next release, to the
           database, the API and every package.
         </p>
         <div className="flex flex-wrap gap-3">

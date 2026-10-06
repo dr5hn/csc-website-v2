@@ -41,7 +41,7 @@ export default function DatabaseFormats() {
         ))}
       </div>
       <div className="px-2 text-sm text-ink-3">
-        Sizes are compressed. Need only some fields or countries?{" "}
+        Sizes are the compressed download in the latest release. Need only some fields or countries?{" "}
         <CtaLink href="https://export.countrystatecity.in/" location="database_formats_export" track="export" className="text-blue hover:text-blue-deep hover:underline">
           Use the Export Tool
         </CtaLink>

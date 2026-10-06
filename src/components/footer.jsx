@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/components/logo";
 
@@ -44,26 +45,34 @@ const COLUMNS = [
   {
     t: "More from the founder",
     links: [
-      { t: "MakeMySiteLive ↗", href: "https://makemysitelive.com/?utm_source=countrystatecity&utm_medium=footer" },
-      { t: "RemoteGigs ↗", href: "https://remotegig.in/?utm_source=countrystatecity&utm_medium=footer" },
+      { t: "MakeMySiteLive ↗", href: "https://makemysitelive.com/?utm_source=countrystatecity&utm_medium=footer", icon: "/icons/makemysitelive.svg" },
+      { t: "RemoteGigs ↗", href: "https://remotegig.in/?utm_source=countrystatecity&utm_medium=footer", icon: "/icons/remotegigs.png" },
     ],
   },
 ];
 
 const isExternal = (href) => /^https?:\/\//.test(href);
 
-function FooterLink({ href, children }) {
+function FooterLink({ href, icon, children }) {
   const className = "text-ink-2 no-underline hover:text-blue hover:no-underline";
+  const label = icon ? (
+    <span className="inline-flex items-center gap-2">
+      <Image src={icon} alt="" width={20} height={20} className="size-5 shrink-0 rounded-[5px]" />
+      {children}
+    </span>
+  ) : (
+    children
+  );
   if (!isExternal(href)) {
     return (
       <Link href={href} className={className}>
-        {children}
+        {label}
       </Link>
     );
   }
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
-      {children}
+      {label}
     </a>
   );
 }
@@ -103,7 +112,7 @@ export default function Footer() {
           <nav key={column.t} aria-label={column.t} className="flex flex-col gap-2.5 text-[15px]">
             <span className="font-semibold">{column.t}</span>
             {column.links.map((link) => (
-              <FooterLink key={link.t} href={link.href}>
+              <FooterLink key={link.t} href={link.href} icon={link.icon}>
                 {link.t}
               </FooterLink>
             ))}

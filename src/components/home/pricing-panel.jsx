@@ -46,7 +46,7 @@ export default function PricingPanel() {
           </div>
           <div className="flex items-center gap-2 rounded-xl bg-mist px-3.5 py-3 font-mono text-[13px] text-ink-code">
             <span aria-hidden="true" className="size-2 shrink-0 rounded-full border-[1.5px] border-ink bg-lime" />
-            <span className="truncate">Reviewed in the open · ships monthly</span>
+            <span className="truncate">Reviewed in the open · ships with each release</span>
           </div>
         </div>
       </div>

@@ -31,8 +31,8 @@ export default function EcosystemPackages() {
         <div className="eyebrow">Packages</div>
         <h2 className="display-2 m-0">Install it the way you work.</h2>
         <p className="m-0 text-[17px] leading-[1.55] text-ink-2">
-          Typed, versioned and synced from the database every week. Offline snapshots need no key and no network. All packages are
-          ODbL-1.0.
+          Typed, versioned and synced from the database every week. Offline snapshots need no key and no network. The data packages are
+          ODbL-1.0; the SDK and CLI are MIT.
         </p>
         <Segmented label="Registry" items={REGISTRIES} value={registry} onChange={setRegistry} className="self-start" />
         <div className="text-sm text-ink-3">
