@@ -4,7 +4,7 @@ import Footer from "@/components/footer";
 import DocsAssistant from "@/components/docs-assistant";
 import JsonLd from "@/components/json-ld";
 import { websiteSchema } from "@/lib/seo";
-import { TEXT_STATS, STAT_DESCRIPTIONS } from "@/lib/stats";
+import { STAT_DESCRIPTIONS } from "@/lib/stats";
 import { Cal_Sans, Geist, Geist_Mono } from "next/font/google";
 
 const calSans = Cal_Sans({
@@ -42,7 +42,7 @@ export const metadata = {
     default: "Countries, States & Cities API and Database | CSC Database",
     template: "%s | CSC Database"
   },
-  description: `${STAT_DESCRIPTIONS.fullCoverage} via REST API, downloads and packages. Trusted by ${TEXT_STATS.developers} developers. Free tier available.`,
+  description: `${STAT_DESCRIPTIONS.fullCoverage} via REST API, free database downloads and offline packages. Free API tier available.`,
   keywords: ["countries", "states", "cities", "geographical database", "API", "location data", "world data", "country data", "REST API", "GraphQL", "CSV", "JSON", "SQL"],
   authors: [{ name: "CSC Team" }],
   creator: "CSC Database",
@@ -56,11 +56,11 @@ export const metadata = {
     locale: 'en_US',
     url: 'https://countrystatecity.in',
     title: 'Countries, States & Cities API and Database',
-    description: `Access ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states & ${TEXT_STATS.cities} cities via fast REST API. Trusted by ${TEXT_STATS.developers} developers with ${TEXT_STATS.uptime} uptime.`,
+    description: `${STAT_DESCRIPTIONS.fullCoverage} via REST API, free database downloads and offline packages. Free API tier available.`,
     siteName: 'CSC Database',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og/home.png',
         width: 1200,
         height: 630,
         alt: 'CSC - Countries States Cities Database',
@@ -70,8 +70,8 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Countries, States & Cities API and Database',
-    description: `Access ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states & ${TEXT_STATS.cities} cities via fast REST API. Trusted by ${TEXT_STATS.developers} developers with ${TEXT_STATS.uptime} uptime.`,
-    images: ['/twitter-image.jpg'],
+    description: `${STAT_DESCRIPTIONS.fullCoverage} via REST API, free database downloads and offline packages. Free API tier available.`,
+    images: ['/og/home.png'],
   },
   robots: {
     index: true,
@@ -110,7 +110,7 @@ export default function RootLayout({ children }) {
     "alternateName": "Countries States Cities Database",
     "url": "https://countrystatecity.in",
     "logo": "https://countrystatecity.in/web-app-manifest-512x512.png",
-    "description": `World's most comprehensive geographical database providing data for ${STAT_DESCRIPTIONS.fullCoverage}`,
+    "description": `Open geographic database and API covering ${STAT_DESCRIPTIONS.fullCoverage}`,
     "foundingDate": "2018",
     "sameAs": [
       "https://github.com/dr5hn/countries-states-cities-database"

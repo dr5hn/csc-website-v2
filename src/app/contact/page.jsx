@@ -12,10 +12,10 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og/support.jpg"],
+    images: ["/og/support.png"],
   },
   openGraph: {
-    images: [{ url: "/og/support.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og/support.png", width: 1200, height: 630 }],
     title: "Contact CSC Database - Support & Assistance",
     description: "Get expert help with geographical data APIs, technical support, and partnership opportunities.",
     type: "website",

@@ -1,8 +1,5 @@
-// Shared JSON-LD builders. Plan and price data come from src/data so the markup
-// cannot drift from what the pricing pages show.
-import { API_PLAN_CARDS } from "@/data/pricing-tiers";
-import { exportPricingPlans } from "@/data/export-pricing";
-import { STAT_DESCRIPTIONS } from "@/lib/stats";
+// JSON-LD builders receive the same plans rendered by the pricing components.
+import { STAT_DESCRIPTIONS } from "./stats.js";
 
 export const SITE_URL = "https://countrystatecity.in";
 const REPO_URL = "https://github.com/dr5hn/countries-states-cities-database";
@@ -10,8 +7,9 @@ const ODBL_URL = "https://opendatacommons.org/licenses/odbl/1-0/";
 
 const publisher = { "@type": "Organization", name: "CSC Database", url: SITE_URL };
 
-const toPrice = (text) => text.replace(/[^0-9.]/g, "");
+const toPrice = (text) => typeof text === "string" ? /^\$(\d+(?:\.\d+)?)$/.exec(text)?.[1] : undefined;
 
+/** Describe the page hierarchy using canonical URLs. */
 export function breadcrumbSchema(crumbs) {
   return {
     "@context": "https://schema.org",
@@ -25,7 +23,8 @@ export function breadcrumbSchema(crumbs) {
   };
 }
 
-export function apiApplicationSchema() {
+/** Describe the API, with offers matching the visible billing interval and catalog. */
+export function apiApplicationSchema(plans = [], annual = false) {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -35,24 +34,30 @@ export function apiApplicationSchema() {
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Web",
     publisher,
-    offers: API_PLAN_CARDS.map((plan) => ({
-      "@type": "Offer",
-      name: plan.name,
-      description: plan.description,
-      price: toPrice(plan.price),
-      priceCurrency: "USD",
-      url: `${SITE_URL}/pricing/`,
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: toPrice(plan.price),
+    ...(plans.length ? { offers: plans.flatMap((plan) => {
+      const yearly = annual && plan.price !== "$0" && plan.priceAnnual != null;
+      const price = toPrice(yearly ? plan.priceAnnual : plan.price);
+      if (price === undefined) return [];
+      return [{
+        "@type": "Offer",
+        name: plan.name,
+        description: plan.description,
+        price,
         priceCurrency: "USD",
-        billingDuration: "P1M",
-      },
-    })),
+        url: `${SITE_URL}/pricing/`,
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price,
+          priceCurrency: "USD",
+          billingDuration: yearly ? "P1Y" : "P1M",
+        },
+      }];
+    }) } : {}),
   };
 }
 
-export function exportApplicationSchema() {
+/** Describe the export tool with the credit packs currently displayed. */
+export function exportApplicationSchema(plans) {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -63,17 +68,22 @@ export function exportApplicationSchema() {
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Web",
     publisher,
-    offers: exportPricingPlans.map((plan) => ({
-      "@type": "Offer",
-      name: plan.name,
-      description: `${plan.credits}. ${plan.description}`,
-      price: toPrice(plan.price),
-      priceCurrency: "USD",
-      url: `${SITE_URL}/pricing/`,
-    })),
+    offers: plans.flatMap((plan) => {
+      const price = toPrice(plan.price);
+      if (price === undefined) return [];
+      return [{
+        "@type": "Offer",
+        name: plan.name,
+        description: `${plan.credits}. ${plan.description}`,
+        price,
+        priceCurrency: "USD",
+        url: `${SITE_URL}/pricing/#export`,
+      }];
+    }),
   };
 }
 
+/** Describe the free database and its data license. */
 export function datasetSchema() {
   return {
     "@context": "https://schema.org",
@@ -89,6 +99,7 @@ export function datasetSchema() {
   };
 }
 
+/** Identify the website and its publisher. */
 export function websiteSchema() {
   return {
     "@context": "https://schema.org",

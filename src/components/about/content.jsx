@@ -7,7 +7,7 @@ const VALUES = [
   ["Community-owned", "The data is open under ODbL-1.0 and improved by the people who use it."],
   ["Developer empathy", "Real examples, stable IDs and docs that respect your time."],
   ["Global by default", "Every country, in every format, with translations."],
-  ["Trust and reliability", "Frequent releases, a public status page and a 99.9% SLA on paid plans."],
+  ["Trust and reliability", "Public releases, source-linked corrections and a public API status page."],
 ];
 
 const LINKS = [
@@ -21,7 +21,7 @@ export function AboutIntro() {
     <section className="wrap flex flex-col gap-[22px] pb-[clamp(40px,5vw,72px)] pt-[clamp(40px,6vw,88px)]">
       <div className="eyebrow">About · since 2018</div>
       <h1 className="m-0 max-w-[1000px] font-cal text-[length:clamp(44px,6.4vw,92px)] font-normal leading-[.95] tracking-[-.025em] [text-wrap:balance]">
-        Started as one spreadsheet. Now 50,000+ developers use it.
+        Open geographic data, maintained with the community.
       </h1>
       <p className="lead m-0 max-w-[720px]">
         CountryStateCity is open geographic data, built and maintained by one founder and a community of contributors. The goal

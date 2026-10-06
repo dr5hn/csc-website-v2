@@ -1,6 +1,8 @@
 // Export Tool credit maths and sample previews. Costs mirror the Export Tool's own pricing
 // (see src/data/export-pricing.js); the preview rows are real records, shown for illustration.
 
+import { LOCATION_SAMPLES } from "../data/location-samples.js";
+
 export const TYPE_COST = { countries: 1, states: 3, cities: 4 };
 
 export const FORMAT_GROUPS = [
@@ -11,20 +13,20 @@ export const FORMAT_GROUPS = [
 ];
 
 export const PERSONAS = [
-  { label: "Frontend", problem: "You need a country → state dropdown without shipping 44MB.", solution: "Countries + States as JSON, name and iso2 only.", types: { countries: true, states: true, cities: false }, format: "JSON" },
+  { label: "Frontend", problem: "You need a country → state dropdown without shipping the full database.", solution: "Countries + States as JSON, name and iso2 only.", types: { countries: true, states: true, cities: false }, format: "JSON" },
   { label: "Mobile", problem: "You want an offline list that fits in the app bundle.", solution: "Cities for one country as NDJSON.", types: { countries: false, states: false, cities: true }, format: "NDJSON" },
   { label: "DBA", problem: "You need a clean seed for a new PostgreSQL database.", solution: "Countries, States and Cities as a PostgreSQL dump.", types: { countries: true, states: true, cities: true }, format: "PostgreSQL" },
   { label: "Data", problem: "You want city names in a notebook, without a parsing script.", solution: "Cities as CSV.", types: { countries: false, states: false, cities: true }, format: "CSV" },
 ];
 
 const ROWS = {
-  countries: [{ id: 101, name: "India", iso2: "IN", capital: "New Delhi", currency: "INR", lat: "20.0000", lng: "77.0000" }, { id: 102, name: "Indonesia", iso2: "ID", capital: "Jakarta", currency: "IDR", lat: "-5.0000", lng: "120.0000" }],
-  states: [{ id: 4008, name: "Maharashtra", iso2: "MH", country_code: "IN", lat: "19.7515", lng: "75.7139" }, { id: 4026, name: "Karnataka", iso2: "KA", country_code: "IN", lat: "15.3173", lng: "75.7139" }],
-  cities: [{ id: 133024, name: "Mumbai", state_code: "MH", country_code: "IN", lat: "19.0760", lng: "72.8777" }, { id: 133351, name: "Pune", state_code: "MH", country_code: "IN", lat: "18.5204", lng: "73.8567" }],
+  countries: [{"id": 101, "name": "India", "iso2": "IN", "capital": "New Delhi", "currency": "INR", "latitude": "20.00000000", "longitude": "77.00000000"}, {"id": 102, "name": "Indonesia", "iso2": "ID", "capital": "Jakarta", "currency": "IDR", "latitude": "-5.00000000", "longitude": "120.00000000"}],
+  states: [{"id": 4008, "name": "Maharashtra", "iso2": "MH", "country_code": "IN", "latitude": "18.90683560", "longitude": "75.67415790"}, {"id": 4026, "name": "Karnataka", "iso2": "KA", "country_code": "IN", "latitude": "14.52038960", "longitude": "75.72235210"}],
+  cities: LOCATION_SAMPLES[0].st[0].ci.slice(0, 2).map(([name, id, latitude, longitude]) => ({ id, name, state_code: "MH", country_code: "IN", latitude: latitude.toFixed(8), longitude: longitude.toFixed(8) })),
 };
 
-const FILE_EXT = { CSV: "csv", Excel: "xlsx", Markdown: "md", JSON: "json", NDJSON: "ndjson", XML: "xml", YAML: "yaml", SQL: "sql", PostgreSQL: "sql", "SQL Server": "sql", SQLite3: "sqlite", MongoDB: "js", GeoJSON: "geojson" };
-const SINGLE_FILE = ["JSON", "NDJSON", "XML", "YAML", "MongoDB", "GeoJSON"];
+const FILE_EXT = { CSV: "csv", Excel: "xlsx", Markdown: "md", JSON: "json", NDJSON: "ndjson", XML: "xml", YAML: "yaml", SQL: "sql", PostgreSQL: "sql", "SQL Server": "sql", SQLite3: "sqlite", MongoDB: "json", GeoJSON: "geojson" };
+const SINGLE_FILE = ["JSON", "NDJSON", "XML", "YAML", "GeoJSON"];
 
 export const formatCost = (format) => FORMAT_GROUPS.flatMap(([, list]) => list).find(([name]) => name === format)?.[1] ?? 0;
 
@@ -53,7 +55,7 @@ export function buildPreview(types, format, translations) {
     ROWS[k].map((r) => ({
       _t: k,
       ...r,
-      ...(translations && k !== "cities" ? { translations: { fr: r.name === "India" ? "Inde" : r.name, de: r.name === "India" ? "Indien" : r.name } } : {}),
+      ...(translations && k !== "cities" ? { translations: { fr: r.name === "India" ? "Inde" : r.name === "Indonesia" ? "Indonésie" : r.name, de: r.name === "India" ? "Indien" : r.name === "Indonesia" ? "Indonesien" : r.name } } : {}),
     }))
   );
   const strip = ({ _t, ...rest }) => rest;
@@ -84,9 +86,9 @@ export function buildPreview(types, format, translations) {
       return `INSERT INTO ${q[0]}${k}${q[1]} (${c.join(", ")}) VALUES\n${ROWS[k].map((r) => `  (${c.map((x) => (Number.isNaN(Number(r[x])) ? `'${r[x]}'` : r[x])).join(", ")})`).join(",\n")};`;
     }).join("\n\n");
   }
-  if (format === "MongoDB") return recs.map((r) => `db.${r._t}.insertOne(${JSON.stringify(strip(r))})`).join("\n");
+  if (format === "MongoDB") return first.map((r) => JSON.stringify(r, (_, value) => Number.isInteger(value) ? { $numberInt: String(value) } : value)).join("\n");
   if (format === "GeoJSON") {
-    return JSON.stringify({ type: "FeatureCollection", features: recs.slice(0, 2).map((r) => ({ type: "Feature", geometry: { type: "Point", coordinates: [Number(r.lng), Number(r.lat)] }, properties: { id: r.id, name: r.name } })) }, null, 2);
+    return JSON.stringify({ type: "FeatureCollection", features: recs.slice(0, 2).map((r) => ({ type: "Feature", geometry: { type: "Point", coordinates: [Number(r.longitude), Number(r.latitude)] }, properties: { id: r.id, name: r.name } })) }, null, 2);
   }
   const out = {};
   keys.forEach((k) => {

@@ -17,10 +17,10 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og/ecosystem.jpg"],
+    images: ["/og/ecosystem.png"],
   },
   openGraph: {
-    images: [{ url: "/og/ecosystem.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og/ecosystem.png", width: 1200, height: 630 }],
     title: "CountryStateCity Ecosystem",
     description:
       "One platform. Every channel. GitHub, API, NPM, PyPI, CLI, and export tool — all from the same source of truth.",

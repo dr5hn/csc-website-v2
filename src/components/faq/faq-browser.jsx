@@ -1,5 +1,6 @@
 "use client";
 
+import DataSources from "@/components/data-sources";
 import { useState } from "react";
 
 import Link from "next/link";
@@ -47,7 +48,7 @@ export default function FaqBrowser() {
         <CtaLink
           href="https://docs.countrystatecity.in/"
           location="faq_docs_assistant"
-          className={buttonVariants({ size: "sm", className: "hidden shrink-0 sm:inline-flex" })}
+          className={cn(buttonVariants({ size: "sm" }), "hidden sm:inline-flex")}
         >
           Ask the docs assistant
         </CtaLink>
@@ -79,6 +80,7 @@ export default function FaqBrowser() {
               <button
                 type="button"
                 aria-expanded={on}
+                aria-controls={`faq-answer-${f.id}`}
                 onClick={() => setOpen(on ? -1 : f.id)}
                 className="flex min-h-14 w-full cursor-pointer items-center justify-between gap-4 px-5 py-[18px] text-left"
               >
@@ -88,7 +90,7 @@ export default function FaqBrowser() {
                 </span>
                 <span aria-hidden="true" className="shrink-0 font-mono text-lg text-blue">{on ? "−" : "+"}</span>
               </button>
-              {on && <div className="px-5 pb-5 text-base leading-[1.6] text-ink-2">{f.answer}</div>}
+              <div id={`faq-answer-${f.id}`} hidden={!on} className="px-5 pb-5 text-base leading-[1.6] text-ink-2">{f.answer}</div>
             </div>
           );
         })}
@@ -98,6 +100,7 @@ export default function FaqBrowser() {
           </div>
         )}
       </div>
+      <DataSources />
       <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-2.5 pt-4">
         {HELP.map((h) => (
           <CtaLink key={h.t} href={h.href} location={`faq_help_${h.t.toLowerCase().replace(/\s+/g, "_")}`} className="flex flex-col gap-1.5 rounded-[20px] bg-field p-5 text-ink no-underline hover:text-ink hover:no-underline">

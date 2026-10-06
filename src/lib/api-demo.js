@@ -2,23 +2,23 @@
 // and mimics the shape of the hosted endpoints; the page labels the data "illustrative".
 
 export const DEMO_CITIES = [
-  ["Bengaluru", "Karnataka, India", 12.9716, 77.5946, "Asia/Kolkata", "+05:30"],
-  ["Mumbai", "Maharashtra, India", 19.076, 72.8777, "Asia/Kolkata", "+05:30"],
-  ["Pune", "Maharashtra, India", 18.5204, 73.8567, "Asia/Kolkata", "+05:30"],
-  ["Mysuru", "Karnataka, India", 12.2958, 76.6394, "Asia/Kolkata", "+05:30"],
-  ["Munich", "Bavaria, Germany", 48.1351, 11.582, "Europe/Berlin", "+02:00"],
-  ["Nuremberg", "Bavaria, Germany", 49.4521, 11.0767, "Europe/Berlin", "+02:00"],
-  ["San Francisco", "California, United States", 37.7749, -122.4194, "America/Los_Angeles", "−07:00"],
-  ["Los Angeles", "California, United States", 34.0522, -118.2437, "America/Los_Angeles", "−07:00"],
-  ["Sydney", "New South Wales, Australia", -33.8688, 151.2093, "Australia/Sydney", "+10:00"],
-  ["São Paulo", "São Paulo, Brazil", -23.5505, -46.6333, "America/Sao_Paulo", "−03:00"],
+  ["Bengaluru", "Karnataka, India", 12.97194, 77.59369, "Asia/Kolkata", "IN", "KA", 57933],
+  ["Mumbai", "Maharashtra, India", 19.07283, 72.88261, "Asia/Kolkata", "IN", "MH", 133024],
+  ["Pune", "Maharashtra, India", 18.51957, 73.85535, "Asia/Kolkata", "IN", "MH", 133504],
+  ["Mysuru", "Karnataka, India", 12.23, 76.42, "Asia/Kolkata", "IN", "KA", 133053],
+  ["Munich", "Bavaria, Germany", 48.13743, 11.57549, "Europe/Berlin", "DE", "BY", 27540],
+  ["Nürnberg", "Bavaria, Germany", 49.45421, 11.07752, "Europe/Berlin", "DE", "BY", 27954],
+  ["San Francisco", "California, United States", 37.77493, -122.41942, "America/Los_Angeles", "US", "CA", 125809],
+  ["Los Angeles", "California, United States", 34.05223, -118.24368, "America/Los_Angeles", "US", "CA", 120784],
+  ["Sydney", "New South Wales, Australia", -33.86785, 151.20732, "Australia/Sydney", "AU", "NSW", 7408],
+  ["São Paulo", "São Paulo, Brazil", -23.5475, -46.63611, "America/Sao_Paulo", "BR", "SP", 15101],
 ];
 
 export const DEMOS = [
   { label: "Fuzzy", title: "Typo-tolerant", q: "banglore", tries: ["banglore", "mumbay", "munchen"], plan: "Supporter and up", path: (q) => `/v1/search/fuzzy?q=${encodeURIComponent(q)}` },
   { label: "Autocomplete", title: "Autocomplete", q: "mu", tries: ["mu", "san", "syd"], plan: "Supporter and up", path: (q) => `/v1/search/autocomplete?q=${encodeURIComponent(q)}` },
   { label: "Nearby", title: "Nearby", q: "19.0760, 72.8777", tries: ["19.0760, 72.8777", "48.1351, 11.5820", "37.7749, -122.4194"], plan: "Supporter and up", path: (q) => `/v1/search/nearby?lat=${(q.split(",")[0] || "").trim()}&lng=${(q.split(",")[1] || "").trim()}` },
-  { label: "Timezone", title: "Timezone", q: "Munich", tries: ["Munich", "Sydney", "São Paulo"], plan: "All plans", path: (q) => `/v1/cities?name=${encodeURIComponent(q)}&fields=timezone` },
+  { label: "Timezone", title: "Timezone", q: "Munich", tries: ["Munich", "Sydney", "São Paulo"], plan: "All plans", path: (q) => { const city = DEMO_CITIES.find((c) => normalise(c[0]) === normalise(q)); return city ? `/v1/timezone/${city[5]}/${city[6]}/${city[7]}` : "/v1/timezone/{country}/{state}/{city_id}"; } },
 ];
 
 const ALIASES = { bangalore: "bengaluru", bombay: "mumbai", munchen: "munich", mumbay: "mumbai" };
@@ -50,9 +50,10 @@ const haversineKm = (lat1, lng1, lat2, lng2) => {
 /**
  * @param {number} demo - Index into DEMOS.
  * @param {string} query
+ * @param {Date} now - Date used for the displayed timezone offset.
  * @returns {{ name: string, sub: string, tag: string, tone: "blue"|"live"|"mist" }[]}
  */
-export function runDemo(demo, query) {
+export function runDemo(demo, query, now = new Date()) {
   const q = normalise(query.trim());
   if (!q) return [];
 
@@ -93,8 +94,9 @@ export function runDemo(demo, query) {
 
   const city = DEMO_CITIES.find((x) => normalise(x[0]) === q);
   if (!city) return [];
+  const offset = new Intl.DateTimeFormat("en", { timeZone: city[4], timeZoneName: "shortOffset" }).formatToParts(now).find((part) => part.type === "timeZoneName").value.replace("GMT", "UTC");
   return [
-    { name: city[0], sub: city[4], tag: `UTC ${city[5]}`, tone: "blue" },
+    { name: city[0], sub: city[4], tag: offset, tone: "blue" },
     { name: "DST-aware", sub: "Offsets follow daylight saving automatically", tag: "IANA", tone: "mist" },
   ];
 }

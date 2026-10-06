@@ -14,10 +14,10 @@ import { cn } from "@/lib/utils";
 
 // The four zoom levels of the voxel map. `s` is the scale about the Mumbai pin.
 const LEVELS = [
-  { label: "World", place: "World", coord: "250+ countries", crumb: "World", path: "/v1/countries", ms: "84ms", count: "250 results", s: 1, rows: ['{ "id": 101, "name": "India", "iso2": "IN" }', '{ "id": 102, "name": "Indonesia", "iso2": "ID" }'] },
-  { label: "India", place: "India", coord: "20.00° N · 77.00° E", crumb: "World / IN", path: "/v1/countries/IN/states", ms: "91ms", count: "36 results", s: 2.2, rows: ['{ "id": 4008, "name": "Maharashtra", "iso2": "MH" }', '{ "id": 4026, "name": "Karnataka", "iso2": "KA" }'] },
-  { label: "Maharashtra", place: "Maharashtra", coord: "19.75° N · 75.71° E", crumb: "World / IN / MH", path: "/v1/countries/IN/states/MH/cities", ms: "77ms", count: "400+ results", s: 3.6, rows: ['{ "id": 133024, "name": "Mumbai" }', '{ "id": 133351, "name": "Pune" }'] },
-  { label: "Mumbai", place: "Mumbai", coord: "19.0760° N · 72.8777° E", crumb: "World / IN / MH / Mumbai", path: "/v1/countries/IN/states/MH/cities?search=mumbai", ms: "69ms", count: "1 result", s: 5.4, rows: ['{ "id": 133024, "name": "Mumbai",', '  "latitude": "19.0760", "longitude": "72.8777" }'] },
+  { label: "World", place: "World", coord: "250+ countries", crumb: "World", path: "/v1/countries", count: "250 results", s: 1, rows: ['{ "id": 101, "name": "India", "iso2": "IN" }', '{ "id": 102, "name": "Indonesia", "iso2": "ID" }'] },
+  { label: "India", place: "India", coord: "20.00° N · 77.00° E", crumb: "World / IN", path: "/v1/countries/IN/states", count: "36 results", s: 2.2, rows: ['{ "id": 4008, "name": "Maharashtra", "iso2": "MH" }', '{ "id": 4026, "name": "Karnataka", "iso2": "KA" }'] },
+  { label: "Maharashtra", place: "Maharashtra", coord: "19.75° N · 75.71° E", crumb: "World / IN / MH", path: "/v1/countries/IN/states/MH/cities", count: "sample results", s: 3.6, rows: ['{ "id": 133024, "name": "Mumbai" }', '{ "id": 133504, "name": "Pune" }'] },
+  { label: "Mumbai", place: "Mumbai", coord: "19.0760° N · 72.8777° E", crumb: "World / IN / MH / Mumbai", path: "/v1/countries/IN/states/MH/cities?search=mumbai", count: "1 result", s: 5.4, rows: ['{ "id": 133024, "name": "Mumbai",', '  "latitude": "19.07283000", "longitude": "72.88261000" }'] },
 ];
 
 const LANGS = ["cURL", "JavaScript", "Python"];
@@ -76,7 +76,7 @@ export default function HomeHero() {
         <h1 className="display-1 m-0 leading-[.98]">Every city, stacked. One request away.</h1>
         <p className="lead m-0">
           The country, state and city API and open database: {TEXT_STATS.countries} countries, {TEXT_STATS.states} states and{" "}
-          {TEXT_STATS.cities} cities, used by {TEXT_STATS.developers} developers.
+          {TEXT_STATS.cities} cities. Use the hosted API or download an offline snapshot.
         </p>
         <div className="flex flex-wrap gap-3">
           <CtaLink
@@ -97,8 +97,8 @@ export default function HomeHero() {
           <StarButton location="home_hero" />
         </div>
         <div className="flex flex-wrap gap-x-7 gap-y-3 border-t border-hair pt-2.5 text-[15px] text-ink-3">
-          <div><b className="font-semibold text-ink">{TEXT_STATS.uptime}</b> uptime SLA</div>
-          <div><b className="font-semibold text-ink">{TEXT_STATS.responseTime}</b> p95</div>
+          <div><b className="font-semibold text-ink">REST</b> JSON responses</div>
+          <div><b className="font-semibold text-ink">GraphQL</b> Professional and up</div>
           <div><b className="font-semibold text-ink">ODbL-1.0</b> open data</div>
         </div>
       </div>
@@ -185,7 +185,7 @@ export default function HomeHero() {
           <pre className="m-0 overflow-x-auto whitespace-pre border-b border-hair px-4 py-3 font-mono text-[13px] leading-[1.6] text-ink-code">{snippet}</pre>
           <div className="flex items-center gap-2.5 px-4 pt-2.5 font-mono text-xs">
             <span className="rounded-full bg-ok-bg px-[9px] py-[3px] text-ok">200 OK</span>
-            <span className="text-ink-3">{L.ms} · {L.count}</span>
+            <span className="text-ink-3">illustrative sample · {L.count}</span>
           </div>
           <pre className="m-0 overflow-x-auto whitespace-pre px-4 pb-4 pt-2 font-mono text-[13px] leading-[1.6] text-ink-code">{json}</pre>
         </div>

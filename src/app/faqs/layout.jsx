@@ -8,10 +8,10 @@ export const metadata = {
   keywords: ["FAQ", "help", "questions", "API help", "database questions", "technical help", "support", "troubleshooting"],
   twitter: {
     card: "summary_large_image",
-    images: ["/og/faqs.jpg"],
+    images: ["/og/faqs.png"],
   },
   openGraph: {
-    images: [{ url: "/og/faqs.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og/faqs.png", width: 1200, height: 630 }],
     title: "CSC Database FAQ - Get Your Questions Answered",
     description: "Quick answers to common questions about geographical data API, implementation, and pricing.",
     type: "website",

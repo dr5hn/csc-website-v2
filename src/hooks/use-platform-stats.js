@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 const FALLBACK = {
-  totalRequests: 5135800142,
+  totalRequests: 5142871509,
   countries: 250,
   states: 5308,
   cities: 152967,
@@ -33,11 +33,11 @@ function fetchPlatformStats() {
 
 export function formatCount(n) {
   if (n >= 1_000_000_000)
-    return { value: parseFloat((n / 1_000_000_000).toFixed(1)), suffix: "B+", decimals: 1 };
+    return { value: Math.floor(n / 1_000_000_000 * 10) / 10, suffix: "B+", decimals: 1 };
   if (n >= 1_000_000)
-    return { value: parseFloat((n / 1_000_000).toFixed(1)), suffix: "M+", decimals: 1 };
+    return { value: Math.floor(n / 1_000_000 * 10) / 10, suffix: "M+", decimals: 1 };
   if (n >= 1_000)
-    return { value: parseFloat((n / 1_000).toFixed(1)), suffix: "K+", decimals: 1 };
+    return { value: Math.floor(n / 1_000 * 10) / 10, suffix: "K+", decimals: 1 };
   return { value: n, suffix: "+", decimals: 0 };
 }
 

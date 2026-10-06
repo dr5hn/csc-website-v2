@@ -7,7 +7,6 @@ import { buttonVariants } from "@/components/ui/button";
 import LiveBadge from "@/components/ui/live-badge";
 import Tag from "@/components/ui/tag";
 import { DEMOS, runDemo } from "@/lib/api-demo";
-import { TEXT_STATS } from "@/lib/stats";
 import { usePlatformStats } from "@/hooks/use-platform-stats";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +26,7 @@ export default function HeroApi() {
     <section className="wrap-flush grid grid-cols-[repeat(auto-fit,minmax(min(100%,460px),1fr))] items-center gap-[clamp(28px,4vw,56px)] pb-[clamp(48px,6vw,88px)] pt-[clamp(40px,6vw,80px)]">
       <div className="flex flex-col gap-[22px] px-2">
         <LiveBadge as="a" href="https://status.countrystatecity.in/" target="_blank" rel="noopener noreferrer">
-          All systems operational · status →
+          View service status →
         </LiveBadge>
         <h1 className="display-1 m-0">The geography API that forgives typos.</h1>
         <p className="lead m-0">
@@ -50,8 +49,8 @@ export default function HeroApi() {
         </div>
         <div className="flex flex-wrap gap-x-7 gap-y-3 border-t border-hair pt-2.5 text-[15px] text-ink-3">
           <div><b className="font-semibold text-ink">3,000</b> free requests / mo</div>
-          <div><b className="font-semibold text-ink">{TEXT_STATS.responseTime}</b> p95</div>
-          <div><b className="font-semibold text-ink">{TEXT_STATS.uptime}</b> uptime SLA</div>
+          <div><b className="font-semibold text-ink">GraphQL</b> Professional and up</div>
+          <div><b className="font-semibold text-ink">REST</b> JSON responses</div>
         </div>
       </div>
 

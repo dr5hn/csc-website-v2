@@ -1,4 +1,4 @@
-// Renders one JSON-LD block. "<" is escaped so page data can never close the script tag.
+/** Render JSON-LD while escaping characters that can close the script tag. */
 export default function JsonLd({ data }) {
   return (
     <script

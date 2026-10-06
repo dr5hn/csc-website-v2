@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 
+import JsonLd from "@/components/json-ld";
+import { exportApplicationSchema } from "@/lib/seo";
+
 import CtaLink from "@/components/cta-link";
 import { buttonVariants } from "@/components/ui/button";
 import Segmented from "@/components/ui/segmented";
@@ -78,6 +81,7 @@ export default function ExportWorkbench() {
 
   return (
     <>
+      <JsonLd data={exportApplicationSchema(plans)} />
       <section className="wrap-flush flex flex-col gap-[clamp(24px,3vw,36px)] pb-[clamp(48px,6vw,88px)] pt-[clamp(40px,6vw,72px)]">
         <div className="flex flex-wrap items-end justify-between gap-5 px-2">
           <div className="flex max-w-[760px] flex-col gap-4">
@@ -86,7 +90,7 @@ export default function ExportWorkbench() {
             </span>
             <h1 className="display-1 m-0">Export only the data you need.</h1>
             <p className="lead m-0">
-              Skip the 44MB+ full download. Pick the data and format, estimate the base credits, then configure your export.
+              Skip the full database download. Pick the data and format, estimate the base credits, then configure your export.
             </p>
           </div>
           <CtaLink

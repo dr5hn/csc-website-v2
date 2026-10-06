@@ -44,7 +44,7 @@ export default function UpdateToolFlow() {
       <section className="wrap-flush grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] items-start gap-3 py-[clamp(56px,7vw,104px)]">
         <div className="overflow-hidden rounded-3xl border border-line">
           <div className="flex items-center justify-between border-b border-hair px-5 py-4">
-            <span className="font-cal text-[22px]">Recently merged</span>
+            <span className="font-cal text-[22px]">Example corrections</span>
             <span className="font-mono text-xs text-ink-3">example feed</span>
           </div>
           {FEED.map(([t, m, k], i) => (
