@@ -11,7 +11,7 @@ export const metadata = {
   description:
     "The CountryStateCity platform spans GitHub, REST API, NPM, PyPI, CLI, and bulk exports — one source of truth for country, state, and city data.",
   alternates: {
-    canonical: "/ecosystem",
+    canonical: "/ecosystem/",
   },
   twitter: {
     card: "summary_large_image",

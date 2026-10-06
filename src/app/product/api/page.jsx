@@ -11,6 +11,9 @@ export const metadata = {
   title: "REST & GraphQL API - Lightning Fast Geographical Data Access",
   description: `Access accurate geographical data from ${STAT_DESCRIPTIONS.fullCoverageAlt} via REST and GraphQL APIs. ${STAT_DESCRIPTIONS.slaPromise}.`,
   keywords: ["REST API", "GraphQL API", "geographical data API", "countries API", "states API", "cities API", "location data", "developer API"],
+  alternates: {
+    canonical: "/product/api/",
+  },
   twitter: {
     card: "summary_large_image",
     images: ["/og/api.jpg"],

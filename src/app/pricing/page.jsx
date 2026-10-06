@@ -6,6 +6,9 @@ export const metadata = {
   title: "Pricing Plans - Choose Your Perfect Geographical Data Solution",
   description: "Flexible pricing plans for CSC Database services. Free Community tier, Supporter, Professional, and Business plans. API access, database exports, and premium support options available.",
   keywords: ["pricing", "plans", "API pricing", "database pricing", "geographical data pricing", "developer pricing", "enterprise solutions"],
+  alternates: {
+    canonical: "/pricing/",
+  },
   twitter: {
     card: "summary_large_image",
     images: ["/og/pricing.jpg"],
