@@ -5,20 +5,22 @@ import EcosystemPackages from "@/components/ecosystem/packages";
 import ScrollTracker from "@/components/scroll-tracker";
 import { buttonVariants } from "@/components/ui/button";
 import CtaPanel from "@/components/ui/cta-panel";
+import JsonLd from "@/components/json-ld";
+import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: "Ecosystem — CountryStateCity",
+  title: "Ecosystem - GitHub, API, NPM, PyPI & CLI",
   description:
     "The CountryStateCity platform spans GitHub, REST API, NPM, PyPI, CLI, and bulk exports — one source of truth for country, state, and city data.",
   alternates: {
-    canonical: "/ecosystem",
+    canonical: "/ecosystem/",
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og/ecosystem.jpg"],
+    images: ["/og/ecosystem.png"],
   },
   openGraph: {
-    images: [{ url: "/og/ecosystem.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og/ecosystem.png", width: 1200, height: 630 }],
     title: "CountryStateCity Ecosystem",
     description:
       "One platform. Every channel. GitHub, API, NPM, PyPI, CLI, and export tool — all from the same source of truth.",
@@ -30,6 +32,7 @@ export const metadata = {
 export default function EcosystemPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Ecosystem", path: "/ecosystem/" }])} />
       <ScrollTracker pageName="Ecosystem" />
       <EcosystemHero />
       <EcosystemChannels />

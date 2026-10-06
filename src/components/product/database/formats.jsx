@@ -7,7 +7,7 @@ import Segmented from "@/components/ui/segmented";
 import { DATABASE_FORMATS, FORMAT_FILTERS } from "@/data/database-formats";
 import { cn } from "@/lib/utils";
 
-const RELEASES_URL = "https://github.com/dr5hn/countries-states-cities-database/releases";
+const RELEASES_URL = "https://github.com/dr5hn/countries-states-cities-database/releases/latest/download/";
 
 export default function DatabaseFormats() {
   const [filter, setFilter] = useState("All");
@@ -27,9 +27,8 @@ export default function DatabaseFormats() {
               <span className="text-sm text-ink-3">{f.use}</span>
               {f.popular && <span className="rounded-full bg-live-bg px-[9px] py-[3px] text-xs font-semibold text-live-ink">Popular</span>}
             </div>
-            <span className="w-16 text-right font-mono text-[13px] text-ink-code">{f.size}</span>
             <CtaLink
-              href={RELEASES_URL}
+              href={`${RELEASES_URL}${f.asset}`}
               location={`database_download_${f.name.toLowerCase().replace(/\s+/g, "_")}`}
               track="github"
               aria-label={`Download ${f.name}`}
@@ -41,7 +40,7 @@ export default function DatabaseFormats() {
         ))}
       </div>
       <div className="px-2 text-sm text-ink-3">
-        Sizes are the compressed download in the latest release. Need only some fields or countries?{" "}
+        JSON and SQL world files include countries, states and cities. Other formats link to city files; additional files are on GitHub releases. Need only some fields or countries?{" "}
         <CtaLink href="https://export.countrystatecity.in/" location="database_formats_export" track="export" className="text-blue hover:text-blue-deep hover:underline">
           Use the Export Tool
         </CtaLink>

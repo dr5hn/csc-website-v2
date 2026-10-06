@@ -7,7 +7,8 @@
     "build": "NODE_ENV=production next build",
     "start": "next start",
     "test": "node --test \"src/**/*.test.mjs\"",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "social-images": "node scripts/generate-social-images.mjs"
   },
   "dependencies": {
     "@radix-ui/react-separator": "^1.1.8",

@@ -27,7 +27,7 @@ export default function OfflineLive({ py }) {
           </div>
           <p className="m-0 max-w-[420px] text-[17px] leading-[1.55] text-ink-2">
             Packages are frozen snapshots, perfect for dev, tests and dropdowns. Switch to the API for fresh data, fuzzy search and
-            support. Same records, same IDs.
+            support. IDs link the records; snapshot contents vary by release.
           </p>
         </div>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-3">

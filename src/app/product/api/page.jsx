@@ -5,18 +5,23 @@ import ApiIntegration from "@/components/product/api/integration";
 import { buttonVariants } from "@/components/ui/button";
 import CtaPanel from "@/components/ui/cta-panel";
 
-import { STAT_DESCRIPTIONS, TEXT_STATS } from "@/lib/stats";
+import { STAT_DESCRIPTIONS } from "@/lib/stats";
+import JsonLd from "@/components/json-ld";
+import { apiApplicationSchema, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: "REST & GraphQL API - Lightning Fast Geographical Data Access",
-  description: `Access accurate geographical data from ${STAT_DESCRIPTIONS.fullCoverageAlt} via REST and GraphQL APIs. ${STAT_DESCRIPTIONS.slaPromise}.`,
+  title: "Country State City REST & GraphQL API",
+  description: `Query ${STAT_DESCRIPTIONS.fullCoverage} over REST or GraphQL. Free API tier, fuzzy search and location autocomplete.`,
   keywords: ["REST API", "GraphQL API", "geographical data API", "countries API", "states API", "cities API", "location data", "developer API"],
+  alternates: {
+    canonical: "/product/api/",
+  },
   twitter: {
     card: "summary_large_image",
-    images: ["/og/api.jpg"],
+    images: ["/og/api.png"],
   },
   openGraph: {
-    images: [{ url: "/og/api.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og/api.png", width: 1200, height: 630 }],
     title: "CSC Database API - Fast & Reliable Geographical Data Access",
     description: "Power your applications with lightning-fast access to comprehensive geographical data via REST and GraphQL APIs.",
     type: "website",
@@ -26,6 +31,8 @@ export const metadata = {
 export default function Page() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "API", path: "/product/api/" }])} />
+      <JsonLd data={apiApplicationSchema()} />
       <HeroApi />
       <ApiFeatures />
       <ApiIntegration />

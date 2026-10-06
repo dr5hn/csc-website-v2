@@ -53,6 +53,7 @@ const COLUMNS = [
 
 const isExternal = (href) => /^https?:\/\//.test(href);
 
+/** Render a labelled footer link with an optional decorative brand icon. */
 function FooterLink({ href, icon, children }) {
   const className = "text-ink-2 no-underline hover:text-blue hover:no-underline";
   const label = icon ? (
@@ -87,7 +88,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-hair bg-mist text-ink">
       <div className="wrap grid grid-cols-[repeat(auto-fit,minmax(min(100%,170px),1fr))] gap-8 pb-6 pt-[clamp(40px,5vw,64px)]">
-        <div className="col-span-2 flex min-w-0 max-w-[360px] flex-col gap-3.5">
+        <div className="col-span-full flex min-w-0 max-w-[360px] sm:col-span-2 flex-col gap-3.5">
           <Link href="/" aria-label="CountryStateCity home" className="flex no-underline hover:no-underline">
             <Logo iconSize={30} wordmarkClass="text-xl" />
           </Link>

@@ -33,3 +33,13 @@ test("format estimates match export-tool base pricing", () => {
     assert.equal(totalCredits(only("countries"), format), 1 + cost, format);
   }
 });
+
+/** MongoDB previews must be importable EJSON documents, as the export service emits. */
+test("MongoDB preview uses EJSON lines and JSON files per dataset", () => {
+  const lines = buildPreview(only("cities"), "MongoDB", false).split("\n").map(JSON.parse);
+  assert.deepEqual(lines[0].id, { $numberInt: "133024" });
+  assert.equal(lines[1].name, "Pune");
+  assert.deepEqual(lines[1].id, { $numberInt: "133504" });
+  assert.equal(lines[0].latitude, "19.07283000");
+  assert.equal(fileName(only("countries", "cities"), "MongoDB"), "2 files · .json");
+});

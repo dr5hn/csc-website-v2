@@ -13,8 +13,8 @@ const ROUTES = [
   { t: "Export or billing", d: "Credits, receipts, downloads", eyebrow: "Export Tool and billing", title: "Credits, invoices and failed downloads.", body: "For missing credits, receipts or an export that didn't finish, email the export team with your order details.", steps: ["Include your account email and order date", "Credits never expire, so nothing is lost"], cta: "Open Export Tool", href: "https://export.countrystatecity.in/", email: "export@countrystatecity.in", kind: "export" },
   { t: "Data correction", d: "Wrong or missing place", eyebrow: "Data correction", title: "Fix it directly in the Update Tool.", body: "Corrections are faster through the Update Tool than by email: they're reviewed in the open and ship in the next release.", steps: ["Add a source link with your change", "Track review status in the tool"], cta: "Submit a change", href: "/product/update-tool", email: "", kind: "update" },
   { t: "Bug", d: "Something is broken", eyebrow: "Bug report", title: "Open an issue on GitHub.", body: "Bugs in the API, packages or data files are tracked publicly, so others can see the fix too.", steps: ["Say what you expected and what happened", "Include steps to reproduce"], cta: "Report an issue", href: "https://github.com/dr5hn/countries-states-cities-database/issues", email: "", kind: "issue" },
-  { t: "Enterprise or custom", d: "Higher limits, SLAs", eyebrow: "Enterprise and custom plans", title: "Need more than the Business plan?", body: "We offer negotiated limits, custom data access and dedicated support.", steps: ["Tell us your expected monthly requests", "Mention any compliance or invoicing needs"], cta: "Compare plans", href: "/pricing", email: "support@countrystatecity.in", kind: "general" },
-  { t: "Something else", d: "Partnerships, press, hello", eyebrow: "General", title: "Say hello.", body: "For anything that doesn't fit above, email support and it will reach the right person.", steps: ["We reply within 24–48 hours on business days"], cta: "Ask the docs assistant", href: "https://docs.countrystatecity.in/", email: "support@countrystatecity.in", kind: "general" },
+  { t: "Enterprise or custom", d: "Higher limits, custom needs", eyebrow: "Enterprise and custom plans", title: "Need more than the Business plan?", body: "Contact us to discuss higher limits and custom data requirements.", steps: ["Tell us your expected monthly requests", "Mention any compliance or invoicing needs"], cta: "Compare plans", href: "/pricing", email: "support@countrystatecity.in", kind: "general" },
+  { t: "Something else", d: "Partnerships, press, hello", eyebrow: "General", title: "Say hello.", body: "For anything that doesn't fit above, email support and it will reach the right person.", steps: ["Response times depend on your API plan"], cta: "Ask the docs assistant", href: "https://docs.countrystatecity.in/", email: "support@countrystatecity.in", kind: "general" },
 ];
 
 export default function SupportRouter() {
@@ -26,7 +26,7 @@ export default function SupportRouter() {
       <div className="flex max-w-[760px] flex-col gap-3.5 px-2">
         <div className="eyebrow">Support</div>
         <h1 className="display-1 m-0">What do you need?</h1>
-        <p className="lead m-0">Pick one and we&apos;ll point you to the fastest route. Reply times depend on your plan: about one business day on Professional and Business, two to three on Supporter, and community support on free plans.</p>
+        <p className="lead m-0">Pick one and we&apos;ll point you to the fastest route. Reply times depend on your plan: about one business day on Professional and Business, two to three on Supporter, and community support on Community and Starter.</p>
       </div>
       <div className="flex flex-wrap items-stretch gap-2.5">
         <div role="group" aria-label="What do you need?" className="grid min-w-0 flex-[1_1_340px] grid-cols-[repeat(auto-fill,minmax(min(100%,220px),1fr))] content-start gap-2">

@@ -17,44 +17,52 @@ const FALLBACK = [
 
 const KINDS = { fix: "fix", feat: "add" };
 const SKIP_LABELS = ["exports", "automated"];
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const DATE_FORMAT = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 
-// "fix(cities): 440 records (#1643 deep research)" → { text, kind: "fix", scope: "cities" }
+/** Format a verified merge for display with a fixed GitHub link and UTC date. */
 function tidy(pr) {
   const match = /^(\w+)(?:\(([^)]+)\))?!?:\s*(.*)$/.exec(pr.title.trim());
   const rest = (match ? match[3] : pr.title).replace(/\s*\(#\d+[^)]*\)\s*$/, "").trim();
   const labelScope = pr.labels.find((l) => l.startsWith("data:"))?.slice(5);
-  const [, month, day] = pr.merged_at.slice(0, 10).split("-");
   return {
     number: pr.number,
-    text: rest.charAt(0).toUpperCase() + rest.slice(1),
+    text: rest.charAt(0).toUpperCase() + rest.slice(1) || pr.title.trim(),
     kind: (match && KINDS[match[1]]) || "update",
     scope: (match && match[2]) || labelScope || "data",
-    date: `${MONTHS[Number(month) - 1]} ${Number(day)}`,
+    date: DATE_FORMAT.format(new Date(pr.merged_at)),
     url: `https://github.com/${REPO}/pull/${pr.number}`,
   };
 }
 
-const isHumanMerge = (pr) =>
-  pr.merged_at && pr.user?.type !== "Bot" && !pr.title.startsWith("Database Export") && !pr.labels.some((l) => SKIP_LABELS.includes(l.name ?? l));
+/** Validate public GitHub data and select recent human-authored merges. */
+export function buildRecentMerges(prs) {
+  if (!Array.isArray(prs)) throw new TypeError("Invalid pull request response");
+  return prs.filter((pr) =>
+    Number.isSafeInteger(pr?.number) && pr.number > 0 &&
+    typeof pr.title === "string" && pr.title.trim() &&
+    typeof pr.merged_at === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/.test(pr.merged_at) &&
+    Number.isFinite(Date.parse(pr.merged_at)) && new Date(pr.merged_at).toISOString().replace(".000Z", "Z") === pr.merged_at &&
+    pr.user?.type === "User" && !pr.title.startsWith("Database Export") &&
+    Array.isArray(pr.labels) && pr.labels.every((label) => typeof label?.name === "string") &&
+    !pr.labels.some((label) => SKIP_LABELS.includes(label.name))
+  )
+    .sort((a, b) => b.merged_at.localeCompare(a.merged_at))
+    .slice(0, COUNT)
+    .map((pr) => tidy({ ...pr, labels: pr.labels.map((label) => label.name) }));
+}
 
 // Module-level cache: every feed on a page shares one request.
 let _promise = null;
 
+/** Fetch one shared feed; failures keep the verified fallback snapshot. */
 function fetchMerges() {
   if (_promise) return _promise;
   _promise = fetch(`https://api.github.com/repos/${REPO}/pulls?state=closed&sort=updated&direction=desc&per_page=40`, {
     headers: { Accept: "application/vnd.github.v3+json" },
   })
     .then((r) => (r.ok ? r.json() : Promise.reject()))
-    .then((prs) => {
-      const merges = prs
-        .filter(isHumanMerge)
-        .sort((a, b) => b.merged_at.localeCompare(a.merged_at))
-        .slice(0, COUNT)
-        .map((pr) => tidy({ number: pr.number, title: pr.title, merged_at: pr.merged_at, labels: pr.labels.map((l) => l.name) }));
-      return merges.length ? merges : null;
-    })
+    .then(buildRecentMerges)
+    .then((merges) => merges.length ? merges : null)
     .catch(() => {
       _promise = null;
       return null;

@@ -24,10 +24,10 @@ export const NPM_PACKAGES = [
   ["Tool", "cli", "Search, explore, generate code", "npm install -g @countrystatecity/cli"],
   ["Offline", "countries", "Countries, states, cities · Node", "npm install @countrystatecity/countries"],
   ["Offline", "countries-browser", "Same API, loads via CDN", "npm install @countrystatecity/countries-browser"],
-  ["Offline", "timezones", "432 IANA timezones", "npm install @countrystatecity/timezones"],
-  ["Offline", "currencies", "155 ISO 4217 currencies", "npm install @countrystatecity/currencies"],
+  ["Offline", "timezones", "IANA timezone data", "npm install @countrystatecity/timezones"],
+  ["Offline", "currencies", "ISO 4217 currency data", "npm install @countrystatecity/currencies"],
   ["Offline", "translations", "Names in 19 languages", "npm install @countrystatecity/translations"],
-  ["Offline", "phonecodes", "250 dial codes", "npm install @countrystatecity/phonecodes"],
+  ["Offline", "phonecodes", "Country dial codes", "npm install @countrystatecity/phonecodes"],
   ["Offline", "postalcodes", "844,000+ codes, 125 countries", "npm install @countrystatecity/postalcodes"],
   ["Offline", "geojson", "Point FeatureCollections", "npm install @countrystatecity/geojson"],
 ].map(([kind, name, desc, cmd]) => ({ kind, name: `@countrystatecity/${name}`, desc, cmd }));
@@ -35,7 +35,7 @@ export const NPM_PACKAGES = [
 export const PYPI_PACKAGES = [
   ["Live", "countrystatecity-api", "Official API client · sync + async", "pip install countrystatecity-api"],
   ["Offline", "countrystatecity-countries", "Countries, states, cities", "pip install countrystatecity-countries"],
-  ["Offline", "countrystatecity-timezones", "432 IANA timezones", "pip install countrystatecity-timezones"],
+  ["Offline", "countrystatecity-timezones", "IANA timezone data", "pip install countrystatecity-timezones"],
   ["Offline", "countrystatecity-currencies", "Country ↔ currency", "pip install countrystatecity-currencies"],
   ["Offline", "countrystatecity-translations", "Names in 19 languages", "pip install countrystatecity-translations"],
   ["Offline", "countrystatecity-phonecodes", "Dial codes, 250 countries", "pip install countrystatecity-phonecodes"],

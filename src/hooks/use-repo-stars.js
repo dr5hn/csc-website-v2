@@ -17,7 +17,7 @@ function fetchStars() {
     headers: { Accept: "application/vnd.github.v3+json" },
   })
     .then((r) => (r.ok ? r.json() : Promise.reject()))
-    .then((repo) => (Number.isFinite(repo?.stargazers_count) ? repo.stargazers_count : null))
+    .then((repo) => (Number.isSafeInteger(repo?.stargazers_count) && repo.stargazers_count >= 0 ? repo.stargazers_count : null))
     .catch(() => {
       _promise = null;
       return null;
