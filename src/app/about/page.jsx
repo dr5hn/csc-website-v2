@@ -1,9 +1,11 @@
 import { AboutCta, AboutFounder, AboutIntro, AboutValues } from "@/components/about/content";
 import AboutTimeline from "@/components/about/timeline";
+import JsonLd from "@/components/json-ld";
+import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: "About Us - Our Mission to Democratize Geographical Data",
-  description: "Learn about CSC Database's mission to provide accurate, comprehensive geographical data to developers worldwide. Discover our values, timeline, and commitment to open-source development.",
+  title: "About CSC Database - Open Geographic Data",
+  description: "CSC Database is an open-source project that gives developers accurate country, state and city data. Read our mission, values and timeline.",
   keywords: ["about CSC", "geographical data mission", "open source database", "developer tools", "data democratization"],
   alternates: {
     canonical: "/about/",
@@ -23,6 +25,7 @@ export const metadata = {
 export default function About() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "About", path: "/about/" }])} />
       <AboutIntro />
       <AboutTimeline />
       <AboutFounder />

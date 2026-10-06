@@ -6,10 +6,12 @@ import { buttonVariants } from "@/components/ui/button";
 import CtaPanel from "@/components/ui/cta-panel";
 
 import { STAT_DESCRIPTIONS, TEXT_STATS } from "@/lib/stats";
+import JsonLd from "@/components/json-ld";
+import { apiApplicationSchema, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: "REST & GraphQL API - Lightning Fast Geographical Data Access",
-  description: `Access accurate geographical data from ${STAT_DESCRIPTIONS.fullCoverageAlt} via REST and GraphQL APIs. ${STAT_DESCRIPTIONS.slaPromise}.`,
+  title: "Country State City REST & GraphQL API",
+  description: `Query ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states and ${TEXT_STATS.cities} cities over REST or GraphQL. ${STAT_DESCRIPTIONS.slaPromise}. Free tier.`,
   keywords: ["REST API", "GraphQL API", "geographical data API", "countries API", "states API", "cities API", "location data", "developer API"],
   alternates: {
     canonical: "/product/api/",
@@ -29,6 +31,8 @@ export const metadata = {
 export default function Page() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "API", path: "/product/api/" }])} />
+      <JsonLd data={apiApplicationSchema()} />
       <HeroApi />
       <ApiFeatures />
       <ApiIntegration />

@@ -7,11 +7,13 @@ import { REPO_URL } from "@/components/star-button";
 import { buttonVariants } from "@/components/ui/button";
 import CtaPanel from "@/components/ui/cta-panel";
 import { TEXT_STATS } from "@/lib/stats";
+import JsonLd from "@/components/json-ld";
+import { breadcrumbSchema, datasetSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: `Geographic Database - ${TEXT_STATS.countries} Countries, ${TEXT_STATS.states} States, ${TEXT_STATS.cities} Cities`,
+  title: "Country State City Database - JSON, CSV, SQL",
   description:
-    "Access the world's most comprehensive open-source geographic database. Available via NPM, PyPI, and CLI. Download complete datasets in JSON, CSV, SQL, XML, and YAML formats. ODbL licensed for data, MIT for packages.",
+    "Open-source database of countries, states and cities. Install via NPM, PyPI or CLI, or download JSON, CSV, SQL, XML and YAML. ODbL data, MIT packages.",
   keywords: [
     "geographic database",
     "countries database",
@@ -51,6 +53,8 @@ export const metadata = {
 export default function Page() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Database", path: "/product/database/" }])} />
+      <JsonLd data={datasetSchema()} />
       <DatabaseHero />
       <DatabaseSchema />
       <DatabaseFormats />

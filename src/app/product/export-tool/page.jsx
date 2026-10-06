@@ -1,8 +1,10 @@
 import ExportWorkbench from "@/components/product/export-tool/workbench";
+import JsonLd from "@/components/json-ld";
+import { breadcrumbSchema, exportApplicationSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: "Export Tool - Custom Geographic Data Downloads",
-  description: "Export custom geographic datasets in 13 formats — JSON, CSV, Excel, Markdown, XML, YAML, NDJSON, SQL, PostgreSQL, SQL Server, SQLite3, MongoDB, GeoJSON. Filter by region, subregion, or up to 10 countries; translate names to 200+ locales; bundle flag images. Pay once, use forever.",
+  title: "Export Country, State & City Data",
+  description: "Export country, state and city data in 13 formats, including JSON, CSV, Excel, SQL and GeoJSON. Filter by region, translate to 200+ locales. Pay once.",
   keywords: ["export tool", "data export", "geographic data download", "custom dataset", "CSV export", "JSON export", "Excel export", "PostgreSQL export", "GeoJSON", "SQL export", "translation locale", "multi-country filter"],
   openGraph: {
     images: [{ url: "/og/export-tool.jpg", width: 1200, height: 630 }],
@@ -22,5 +24,11 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <ExportWorkbench />;
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema([{ name: "Export Tool", path: "/product/export-tool/" }])} />
+      <JsonLd data={exportApplicationSchema()} />
+      <ExportWorkbench />
+    </>
+  );
 }

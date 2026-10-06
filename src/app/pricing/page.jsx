@@ -1,10 +1,12 @@
 import PricingHero from "@/components/pricing/hero";
 import PricingFaq from "@/components/pricing/faq";
 import PricingTabs from "@/components/pricing/pricing-tabs";
+import JsonLd from "@/components/json-ld";
+import { apiApplicationSchema, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: "Pricing Plans - Choose Your Perfect Geographical Data Solution",
-  description: "Flexible pricing plans for CSC Database services. Free Community tier, Supporter, Professional, and Business plans. API access, database exports, and premium support options available.",
+  title: "Pricing - Country State City API Plans",
+  description: "Free Community plan, then Starter ($5/mo), Supporter ($9/mo), Professional ($19/mo) and Business ($29/mo) API plans. Export credits are pay once.",
   keywords: ["pricing", "plans", "API pricing", "database pricing", "geographical data pricing", "developer pricing", "enterprise solutions"],
   alternates: {
     canonical: "/pricing/",
@@ -24,6 +26,8 @@ export const metadata = {
 export default function Pricing() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Pricing", path: "/pricing/" }])} />
+      <JsonLd data={apiApplicationSchema()} />
       <PricingHero />
       <PricingTabs />
       <PricingFaq />

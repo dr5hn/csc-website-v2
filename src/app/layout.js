@@ -2,6 +2,8 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import DocsAssistant from "@/components/docs-assistant";
+import JsonLd from "@/components/json-ld";
+import { websiteSchema } from "@/lib/seo";
 import { TEXT_STATS, STAT_DESCRIPTIONS } from "@/lib/stats";
 import { Cal_Sans, Geist, Geist_Mono } from "next/font/google";
 
@@ -37,10 +39,10 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: {
-    default: "Country State City API - World's Most Comprehensive Geographic Database for Developers",
+    default: "Countries, States & Cities API and Database | CSC Database",
     template: "%s | CSC Database"
   },
-  description: `Access ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states & ${TEXT_STATS.cities} cities via fast REST API. Trusted by ${TEXT_STATS.developers} developers with ${TEXT_STATS.uptime} uptime. Free tier available - start building today!`,
+  description: `${STAT_DESCRIPTIONS.fullCoverage} via REST API, downloads and packages. Trusted by ${TEXT_STATS.developers} developers. Free tier available.`,
   keywords: ["countries", "states", "cities", "geographical database", "API", "location data", "world data", "country data", "REST API", "GraphQL", "CSV", "JSON", "SQL"],
   authors: [{ name: "CSC Team" }],
   creator: "CSC Database",
@@ -53,7 +55,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://countrystatecity.in',
-    title: 'Country State City API - World\'s Most Comprehensive Geographic Database for Developers',
+    title: 'Countries, States & Cities API and Database',
     description: `Access ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states & ${TEXT_STATS.cities} cities via fast REST API. Trusted by ${TEXT_STATS.developers} developers with ${TEXT_STATS.uptime} uptime.`,
     siteName: 'CSC Database',
     images: [
@@ -67,7 +69,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Country State City API - World\'s Most Comprehensive Geographic Database for Developers',
+    title: 'Countries, States & Cities API and Database',
     description: `Access ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states & ${TEXT_STATS.cities} cities via fast REST API. Trusted by ${TEXT_STATS.developers} developers with ${TEXT_STATS.uptime} uptime.`,
     images: ['/twitter-image.jpg'],
   },
@@ -107,30 +109,12 @@ export default function RootLayout({ children }) {
     "name": "CSC Database",
     "alternateName": "Countries States Cities Database",
     "url": "https://countrystatecity.in",
-    "logo": "https://countrystatecity.in/logo.png",
+    "logo": "https://countrystatecity.in/web-app-manifest-512x512.png",
     "description": `World's most comprehensive geographical database providing data for ${STAT_DESCRIPTIONS.fullCoverage}`,
     "foundingDate": "2018",
     "sameAs": [
       "https://github.com/dr5hn/countries-states-cities-database"
-    ],
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "API Access",
-        "description": "REST and GraphQL API access to geographical data",
-        "category": "API Service"
-      },
-      {
-        "@type": "Offer", 
-        "name": "Database Export",
-        "description": "Download geographical data in multiple formats",
-        "category": "Data Service"
-      }
-    ],
-    "audience": {
-      "@type": "Audience",
-      "audienceType": "Developers, Businesses, Data Analysts"
-    }
+    ]
   };
 
   return (
@@ -157,10 +141,8 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={jsonLd} />
+        <JsonLd data={websiteSchema()} />
       </head>
       <body className="bg-white font-sans text-ink antialiased">
         <Header />

@@ -1,8 +1,10 @@
+import JsonLd from "@/components/json-ld";
 import { FAQS } from "@/data/faqs";
+import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: "Frequently Asked Questions - CSC Database Help Center",
-  description: "Find answers to common questions about CSC Database API, pricing, data accuracy, usage limits, and technical implementation. Get help fast!",
+  title: "FAQs - API, Pricing & Data Questions",
+  description: "Answers about the CSC Database API, pricing, data accuracy, usage limits and implementation, from rate limits to licensing.",
   keywords: ["FAQ", "help", "questions", "API help", "database questions", "technical help", "support", "troubleshooting"],
   twitter: {
     card: "summary_large_image",
@@ -32,10 +34,8 @@ const faqSchema = {
 export default function FAQsLayout({ children }) {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <JsonLd data={faqSchema} />
+      <JsonLd data={breadcrumbSchema([{ name: "FAQs", path: "/faqs/" }])} />
       {children}
     </>
   );
