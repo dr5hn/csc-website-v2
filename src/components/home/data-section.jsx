@@ -1,5 +1,6 @@
 "use client";
 
+import DataSources from "@/components/data-sources";
 import { usePlatformStats } from "@/hooks/use-platform-stats";
 import { formatApprox } from "@/lib/format";
 import { TEXT_STATS } from "@/lib/stats";
@@ -14,7 +15,7 @@ const TILES = [
   { key: "countries", label: "countries", tone: "solid", skeleton: "58%", live: true },
   { key: "states", label: "states and regions", tone: "field", skeleton: "70%", live: true },
   { key: "cities", label: "cities", tone: "field", skeleton: "82%", live: true },
-  { key: "developers", label: "developers", tone: "lime", skeleton: "70%", live: false },
+  { key: "formats", label: "download formats", tone: "lime", skeleton: "70%", live: false },
 ];
 
 const TONES = {
@@ -27,10 +28,10 @@ export default function DataSection() {
   const { loading, live, raw } = usePlatformStats();
 
   const values = {
-    countries: `${raw.countries.toLocaleString("en-US")}+`,
+    countries: raw.countries.toLocaleString("en-US"),
     states: formatApprox(raw.states),
     cities: formatApprox(raw.cities),
-    developers: TEXT_STATS.developers,
+    formats: TEXT_STATS.formats,
   };
 
   return (
@@ -42,6 +43,7 @@ export default function DataSection() {
           Every city knows its state and country. Every country carries ISO codes, currency, phone code, timezones and
           translations. Updated frequently by the community.
         </p>
+      <DataSources />
         <div className="flex flex-wrap gap-2">
           {FORMATS.map((format) => (
             <span key={format} className="rounded-full border border-line-2 px-3 py-[7px] font-mono text-[13px] text-ink-code">

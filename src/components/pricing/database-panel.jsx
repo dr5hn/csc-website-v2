@@ -7,7 +7,7 @@ import { useRepoStars } from "@/hooks/use-repo-stars";
 
 export default function DatabasePanel() {
   const { label } = useRepoStars();
-  const stats = [["12", "formats"], [label, "stars"], ["127", "contributors"]];
+  const stats = [["12", "formats"], [label, "stars"], ["ODbL", "data licence"]];
 
   return (
     <section id="database" className="wrap-flush pb-[clamp(56px,7vw,96px)]">

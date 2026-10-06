@@ -7,7 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const RECORDS = [
-  { label: "Fix a city", path: "cities / 133024", fields: [["name", "Mumbai"], ["state_code", "MH"], ["latitude", "19.0760"], ["longitude", "72.8777"]] },
+  { label: "Fix a city", path: "cities / 133024", fields: [["name", "Mumbai"], ["state_code", "MH"], ["latitude", "19.07283000"], ["longitude", "72.88261000"]] },
   { label: "Fix a state", path: "states / 4008", fields: [["name", "Maharashtra"], ["iso2", "MH"], ["type", "state"], ["timezone", "Asia/Kolkata"]] },
   { label: "Add a city", path: "cities / new", fields: [["name", ""], ["state_code", "MH"], ["latitude", ""], ["longitude", ""]] },
 ];

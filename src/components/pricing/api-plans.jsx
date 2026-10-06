@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 
+import JsonLd from "@/components/json-ld";
+import { apiApplicationSchema } from "@/lib/seo";
+
 import CompareTable from "@/components/pricing/compare-table";
 import CtaLink from "@/components/cta-link";
 import Segmented from "@/components/ui/segmented";
@@ -49,6 +52,7 @@ export default function ApiPlans() {
 
   return (
     <section id="api" className="wrap-flush flex flex-col gap-5 pb-[clamp(56px,7vw,96px)]">
+      <JsonLd data={apiApplicationSchema(cards, annual)} />
       <div className="flex flex-wrap items-center justify-between gap-3.5 px-2">
         <h2 className="m-0 font-cal text-[length:clamp(28px,3vw,40px)] font-normal">API plans</h2>
         <div className="flex flex-wrap items-center gap-2">

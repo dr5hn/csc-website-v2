@@ -31,12 +31,12 @@ export default function EcosystemPackages() {
         <div className="eyebrow">Packages</div>
         <h2 className="display-2 m-0">Install it the way you work.</h2>
         <p className="m-0 text-[17px] leading-[1.55] text-ink-2">
-          Typed, versioned and synced from the database every week. Offline snapshots need no key and no network. All packages are
-          ODbL-1.0.
+          Versioned packages with types included. Offline data packages use ODbL-1.0; API clients and the CLI have their own licences.
+          Check each package before use. Node snapshots need no network; countries-browser loads data from a CDN.
         </p>
         <Segmented label="Registry" items={REGISTRIES} value={registry} onChange={setRegistry} className="self-start" />
         <div className="text-sm text-ink-3">
-          {py ? "Python 3.8–3.12 · typed, mypy --strict" : "Node.js and browser · TypeScript types included"}
+          {py ? "Python · typed clients and data packages" : "Node.js and browser · TypeScript types included"}
         </div>
       </div>
       <div className="overflow-hidden rounded-3xl border border-line">

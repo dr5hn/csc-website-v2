@@ -7,11 +7,13 @@ import { REPO_URL } from "@/components/star-button";
 import { buttonVariants } from "@/components/ui/button";
 import CtaPanel from "@/components/ui/cta-panel";
 import { TEXT_STATS } from "@/lib/stats";
+import JsonLd from "@/components/json-ld";
+import { breadcrumbSchema, datasetSchema } from "@/lib/seo";
 
 export const metadata = {
-  title: `Geographic Database - ${TEXT_STATS.countries} Countries, ${TEXT_STATS.states} States, ${TEXT_STATS.cities} Cities`,
+  title: "Country State City Database - JSON, CSV, SQL",
   description:
-    "Access the world's most comprehensive open-source geographic database. Available via NPM, PyPI, and CLI. Download complete datasets in JSON, CSV, SQL, XML, and YAML formats. ODbL licensed for data, MIT for packages.",
+    "Free country, state and city database in 12 formats, including JSON, CSV and SQL. Install offline npm or PyPI packages. Data licensed under ODbL-1.0.",
   keywords: [
     "geographic database",
     "countries database",
@@ -30,18 +32,18 @@ export const metadata = {
     "countrystatecity",
   ],
   openGraph: {
-    images: [{ url: "/og/database.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og/database.png", width: 1200, height: 630 }],
     title: "Geographic Database - Complete World Location Data",
     description:
-      `Download the world's most comprehensive geographic database with ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states, and ${TEXT_STATS.cities} cities. Available via NPM, PyPI, and CLI.`,
+      `Download the open geographic database with ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states, and ${TEXT_STATS.cities} cities. Available via NPM, PyPI, and CLI.`,
     url: "https://countrystatecity.in/product/database/",
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og/database.jpg"],
+    images: ["/og/database.png"],
     title: "Geographic Database - Complete World Location Data",
     description:
-      `Download the world's most comprehensive geographic database with ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states, and ${TEXT_STATS.cities} cities. Available via NPM, PyPI, and CLI.`,
+      `Download the open geographic database with ${TEXT_STATS.countries} countries, ${TEXT_STATS.states} states, and ${TEXT_STATS.cities} cities. Available via NPM, PyPI, and CLI.`,
   },
   alternates: {
     canonical: "/product/database/",
@@ -51,6 +53,8 @@ export const metadata = {
 export default function Page() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: "Database", path: "/product/database/" }])} />
+      <JsonLd data={datasetSchema()} />
       <DatabaseHero />
       <DatabaseSchema />
       <DatabaseFormats />
