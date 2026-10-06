@@ -6,7 +6,7 @@ const REPO = "dr5hn/countries-states-cities-database";
 
 // Shown until the GitHub call returns, and kept if it fails (the unauthenticated limit
 // is 60 requests an hour). Update it when the real count moves by a few hundred.
-export const STARS_FALLBACK = 9000;
+export const STARS_FALLBACK = 9800;
 
 // Module-level cache: every star button on a page shares one request.
 let _promise = null;
@@ -17,7 +17,7 @@ function fetchStars() {
     headers: { Accept: "application/vnd.github.v3+json" },
   })
     .then((r) => (r.ok ? r.json() : Promise.reject()))
-    .then((repo) => (Number.isFinite(repo?.stargazers_count) ? repo.stargazers_count : null))
+    .then((repo) => (Number.isSafeInteger(repo?.stargazers_count) && repo.stargazers_count >= 0 ? repo.stargazers_count : null))
     .catch(() => {
       _promise = null;
       return null;

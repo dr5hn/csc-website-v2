@@ -14,8 +14,8 @@ import { cn } from "@/lib/utils";
 
 const BILLING_KEY = "csc-billing";
 
-// Short card copy from the design, keyed by tier. Prices, limits, badges and links stay live
-// (or fall back to the build-time data); the full per-plan feature list is in the comparison table.
+// Short card copy from the design, keyed by tier. Prices, limits, badges, links and the full feature
+// list stay live (or fall back to the build-time data), so the cards match the app's pricing page.
 const BLURBS = {
   community: { description: "For personal projects and exploration.", cta: "Start for free" },
   starter: { description: "More headroom for side projects and prototypes." },
@@ -23,6 +23,9 @@ const BLURBS = {
   professional: { description: "GraphQL and the change feed for production." },
   business: { description: "The most headroom and every premium feature." },
 };
+
+// The request limit has its own block above the list; drop it if a feature list repeats it.
+const LIMIT_LINE = /api requests\s*\/\s*month/i;
 
 const sentenceCase = (text) => text.charAt(0) + text.slice(1).toLowerCase();
 
@@ -92,7 +95,7 @@ export default function ApiPlans() {
                 </div>
               )}
               <ul className="m-0 flex list-none flex-col gap-2 p-0">
-                {plan.features.slice(0, 4).map((f) => (
+                {plan.features.filter((f) => !LIMIT_LINE.test(f)).map((f) => (
                   <li key={f} className="flex gap-2 text-sm leading-[1.4]">
                     <span aria-hidden="true" className={cn("shrink-0", hi ? "text-lime" : "text-ok")}>✓</span>
                     <span>{f}</span>

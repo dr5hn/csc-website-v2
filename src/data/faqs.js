@@ -8,7 +8,7 @@ export const FAQS = [
     category: "Getting Started",
     question: "How do I get started with the CountryStateCity API?",
     answer:
-      "Getting started is simple! You can begin by exploring our open-source dataset on GitHub for free, or sign up for API access to get your API key. Our comprehensive documentation provides step-by-step integration guides for all major programming languages including JavaScript, Python, PHP, and more.",
+      "Getting started is simple! You can begin by exploring our open-source dataset on GitHub for free, or sign up for API access to get your API key. Our documentation has integration guides and code examples for cURL, JavaScript, Python, PHP and GraphQL.",
   },
   {
     id: 2,
@@ -50,7 +50,7 @@ export const FAQS = [
     category: "Licensing",
     question: "Can I use this data commercially?",
     answer:
-      "Yes. The geographic database and offline data packages use ODbL-1.0, which permits commercial use with its attribution and applicable share-alike requirements. API clients and the CLI have their own package licences. Review the database licence and the licence of each package you use; API access is also subject to its service terms.",
+      "Yes. The geographic database and offline data packages use ODbL-1.0, which permits commercial use with its attribution and applicable share-alike requirements. The npm API SDK and CLI use MIT; the Python client publishes an ODbL licence. Review the database licence and the licence of each package you use; API access is also subject to its service terms.",
   },
   {
     id: 8,

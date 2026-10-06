@@ -31,7 +31,7 @@ export default function EcosystemPackages() {
         <div className="eyebrow">Packages</div>
         <h2 className="display-2 m-0">Install it the way you work.</h2>
         <p className="m-0 text-[17px] leading-[1.55] text-ink-2">
-          Versioned packages with types included. Offline data packages use ODbL-1.0; API clients and the CLI have their own licences.
+          Versioned packages with types included. Offline data packages use ODbL-1.0; the npm API SDK and CLI use MIT.
           Check each package before use. Node snapshots need no network; countries-browser loads data from a CDN.
         </p>
         <Segmented label="Registry" items={REGISTRIES} value={registry} onChange={setRegistry} className="self-start" />

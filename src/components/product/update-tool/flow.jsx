@@ -1,4 +1,5 @@
 import CtaLink from "@/components/cta-link";
+import RecentMerges from "@/components/product/update-tool/recent-merges";
 import { REPO_URL } from "@/components/star-button";
 
 const STEPS = [
@@ -6,14 +7,6 @@ const STEPS = [
   ["02", "Community review", "Maintainers and reviewers check it against the source and nearby records."],
   ["03", "Approve and merge", "Approved changes are merged into the canonical database on GitHub."],
   ["04", "Ships everywhere", "Frequent releases update the API, the downloads and every package."],
-];
-
-const FEED = [
-  ["Added coordinates for Navi Mumbai", "cities · IN / MH", "fix"],
-  ["Renamed Gurgaon to Gurugram", "cities · IN / HR", "rename"],
-  ["Added missing timezone for Nuuk", "cities · GL", "fix"],
-  ["Added 12 municipalities in Paraná", "cities · BR / PR", "add"],
-  ["Corrected state type for Tokyo", "states · JP / 13", "fix"],
 ];
 
 const WAYS = [
@@ -42,22 +35,7 @@ export default function UpdateToolFlow() {
       </section>
 
       <section className="wrap-flush grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] items-start gap-3 py-[clamp(56px,7vw,104px)]">
-        <div className="overflow-hidden rounded-3xl border border-line">
-          <div className="flex items-center justify-between border-b border-hair px-5 py-4">
-            <span className="font-cal text-[22px]">Example corrections</span>
-            <span className="font-mono text-xs text-ink-3">example feed</span>
-          </div>
-          {FEED.map(([t, m, k], i) => (
-            <div key={t} className={`flex items-center gap-3 px-5 py-[13px] ${i > 0 ? "border-t border-hair" : ""}`}>
-              <span aria-hidden="true" className="size-2.5 shrink-0 rounded-full border-2 border-ink bg-lime" />
-              <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                <span className="truncate text-[15px]">{t}</span>
-                <span className="font-mono text-xs text-ink-3">{m}</span>
-              </div>
-              <span className="whitespace-nowrap rounded-full bg-field px-[9px] py-[3px] font-mono text-xs text-blue">{k}</span>
-            </div>
-          ))}
-        </div>
+        <RecentMerges />
         <div className="flex flex-col gap-3">
           {WAYS.map((w) => {
             const inner = (
@@ -80,7 +58,7 @@ export default function UpdateToolFlow() {
           })}
           <div className="flex flex-col gap-1 rounded-[20px] border-[1.5px] border-dashed border-edge px-5 py-[18px]">
             <span className="text-base font-semibold">Contributor leaderboard</span>
-            <span className="text-sm text-ink-3">Reserved slot: top contributors by merged changes, when the manager exposes it.</span>
+            <span className="text-sm text-ink-3">Coming soon: a ranking of top contributors by merged changes.</span>
           </div>
         </div>
       </section>

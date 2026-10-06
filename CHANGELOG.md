@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Home hero zooms World → India → Maharashtra → Mumbai over the voxel map, with the matching API request and response; live numbers show a skeleton while loading, then `● live` or `cached`.
 - Pricing: product chooser synced to the URL hash (`/pricing/#export`), billing toggle remembered in `localStorage`, live plan and credit prices kept, with a collapsible feature comparison.
 - Export Tool: interactive credit calculator with a live format preview and persona presets; credit packs read live prices.
-- Canonical stats are now 5,300+ states and 153,800+ cities everywhere; the Support page shows `support@countrystatecity.in` instead of a personal address.
+- Shared coverage copy uses verified lower bounds of 5,300+ states and 150,000+ cities; live API counts can differ by release; the Support page shows `support@countrystatecity.in` instead of a personal address.
 - New favicon set, web manifest icons and per-page 1200 × 630 share images (`public/og/`); the docs assistant accent follows the deep blue.
 - FAQ answers live in `src/data/faqs.js` and the FAQPage JSON-LD is generated from the same list, so structured data matches the visible text.
 
@@ -32,6 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Copy fixes across the site: the Update Tool no longer shows an internal "reserved slot" note and its hero reads cleanly; the Support page reply time now matches the per-plan support levels; the Ecosystem Export Tool tag says 13 formats (was "9+"); the API page no longer implies Starter includes fuzzy search or GraphQL; FAQ answers no longer claim official SDKs beyond JavaScript and Python; the FAQ category filter shows "API usage" instead of "Api usage"; the changelog describes shared coverage bounds; the pricing page API plan cards list every feature from the app (they were cut to four, which hid GraphQL on Professional, nearby search, origin whitelisting and email support on Supporter, and field filtering on Starter).
+- Site copy checked against the live products (API plans, export pricing, GitHub repo, npm and PyPI): the CLI cards go to the npm package page instead of a dead `cli.countrystatecity.in`, the PyPI cards go to the PyPI organisation page, and the footer shows the MakeMySiteLive and RemoteGigs logos; the Update Tool "Recently merged" feed now shows real merged pull requests from the database repo (live from GitHub, with a snapshot of real ones as the fallback) instead of invented examples; licences distinguish ODbL-1.0 data and Python packages from the MIT npm SDK and CLI; verified download links and shared coverage bounds are preserved; the GitHub star fallback is refreshed.
 - Correct FAQ and pricing-page copy (visible text and FAQ schema) to match the API: per-tier feature boundaries, per-plan support channels and business-day targets, daily/monthly limits enforced on free and paid plans (no request top-ups), downgrades scheduled for the next billing date, and JSON-only API responses (CSV via the Export Tool or database downloads).
 - The `/product/api` "Copy" button now copies the full displayed JavaScript, Python, or PHP example instead of a filtered fragment.
 
