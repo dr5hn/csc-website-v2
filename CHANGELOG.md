@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Privacy policy page at `/privacy/`, listing what the site stores in the browser and the third-party services it contacts. It is linked from the footer, the cookie notice and the sitemap.
 - Cookie notice: Google Analytics now loads only after a visitor accepts (nothing is requested or stored before that), the choice is remembered in `localStorage`, declining or withdrawing removes the `_ga` cookies, and a "Cookie settings" button in the footer reopens the notice.
 
 ### Changed

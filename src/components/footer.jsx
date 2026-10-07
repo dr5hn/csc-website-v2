@@ -41,6 +41,7 @@ const COLUMNS = [
       { t: "Pricing", href: "/pricing" },
       { t: "Support", href: "/contact" },
       { t: "FAQs", href: "/faqs" },
+      { t: "Privacy", href: "/privacy" },
     ],
   },
   {
