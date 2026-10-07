@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Cookie notice: Google Analytics now loads only after a visitor accepts (nothing is requested or stored before that), the choice is remembered in `localStorage`, declining or withdrawing removes the `_ga` cookies, and a "Cookie settings" button in the footer reopens the notice.
+
 ### Changed
 
 - Redesign the whole site to the "Stacked Atlas" direction from the CSC creative directions: light-first, Cal Sans / Geist / Geist Mono, deep-blue pill buttons, field-blue panels, lime for live signals only (see `docs/design/reject-list.md`). New header (announcement bar, Products menu, mobile sheet) and footer; all ten pages rebuilt from the design (Home, Ecosystem, API, Database, Export Tool, Update Tool, Pricing, About, FAQs, Support).

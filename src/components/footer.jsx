@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/components/logo";
+import { OPEN_EVENT } from "@/lib/consent";
 
 const SOCIAL = [
   { t: "GitHub", href: "https://github.com/dr5hn" },
@@ -124,6 +125,13 @@ export default function Footer() {
         <span>© {new Date().getFullYear()} Country State City. Data under ODbL-1.0.</span>
         <div className="flex items-center gap-4">
           <span>Made with care in India</span>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event(OPEN_EVENT))}
+            className="min-h-9 cursor-pointer whitespace-nowrap bg-transparent px-1 py-2 text-[13px] font-medium text-ink-code underline-offset-4 hover:text-blue hover:underline"
+          >
+            Cookie settings
+          </button>
           <button
             type="button"
             onClick={scrollToTop}
