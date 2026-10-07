@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { buttonVariants } from "@/components/ui/button";
@@ -39,7 +40,8 @@ export default function CookieConsent() {
         <span className="font-cal text-xl">Cookies</span>
         <p className="m-0 text-[15px] leading-[1.5] text-ink-2">
           We use Google Analytics cookies to see which pages help developers. They stay off unless you accept, and you can change your
-          choice from Cookie settings in the footer.
+          choice from Cookie settings in the footer.{" "}
+          <Link href="/privacy/">Privacy policy</Link>
         </p>
       </div>
       <div className="flex flex-wrap gap-2.5">
