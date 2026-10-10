@@ -24,6 +24,15 @@ const COLUMNS = [
     ],
   },
   {
+    t: "APIs",
+    links: [
+      { t: "Country API", href: "/country-api" },
+      { t: "State API", href: "/state-api" },
+      { t: "City API", href: "/city-api" },
+      { t: "npm Packages", href: "/npm-packages" },
+    ],
+  },
+  {
     t: "Resources",
     links: [
       { t: "Docs", href: "https://docs.countrystatecity.in/" },
