@@ -23,6 +23,19 @@ export function breadcrumbSchema(crumbs) {
   };
 }
 
+/** Describe a page's question-and-answer block so answer engines can quote it. */
+export function faqSchema(faqs) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  };
+}
+
 /** Describe the API, with offers matching the visible billing interval and catalog. */
 export function apiApplicationSchema(plans = [], annual = false) {
   return {
