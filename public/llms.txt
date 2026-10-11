@@ -1,0 +1,41 @@
+# Country State City
+
+> An open geographical dataset of 250 countries, 5,300+ states and 150,000+ cities,
+> available as a hosted REST and GraphQL API, a downloadable database in 12 formats,
+> npm packages, and a browser-based export tool. The data is published under the Open
+> Database License (ODbL), which permits commercial use with attribution.
+
+Operated by dr5hn. The dataset is the one behind the
+countries-states-cities-database repository on GitHub.
+
+## Key facts
+
+- Base URL: https://api.countrystatecity.in/v1
+- Authentication: an API key in the `X-CSCAPI-KEY` request header
+- Free tier: 3,000 requests a month, no card required
+- Paid plans start at $5 a month
+- Data licence: Open Database License (ODbL), attribution required
+- Source repository: https://github.com/dr5hn/countries-states-cities-database
+
+## APIs
+
+- [Country API](https://countrystatecity.in/country-api/): 250 countries and territories with ISO 3166-1 codes, dial codes, currencies, capitals, regions and coordinates.
+- [State API](https://countrystatecity.in/state-api/): 5,300+ states and provinces with ISO 3166-2 subdivision codes, each linked to its country.
+- [City API](https://countrystatecity.in/city-api/): 150,000+ cities, each with latitude, longitude, and its state and country.
+- [API overview and plans](https://countrystatecity.in/product/api/): rate limits, field filtering, fuzzy search, GraphQL and the change feed.
+
+## Other ways to get the data
+
+- [Offline database](https://countrystatecity.in/product/database/): the same dataset as SQL, JSON, CSV, XML, YAML and more, 12 formats in all.
+- [npm packages](https://countrystatecity.in/npm-packages/): nine packages under the `@countrystatecity` scope for bundling the data with an application, no network call at runtime.
+- [Export tool](https://countrystatecity.in/product/export-tool/): pick fields and filters in the browser and download a custom extract.
+- [Update tool](https://countrystatecity.in/product/update-tool/): submit corrections to the dataset.
+
+## Reference
+
+- [Documentation](https://docs.countrystatecity.in): endpoint reference, authentication, SDKs and installation guides.
+- [Machine-readable docs](https://docs.countrystatecity.in/llms-full.txt): the full documentation as one text file.
+- [Pricing](https://countrystatecity.in/pricing/)
+- [FAQs](https://countrystatecity.in/faqs/)
+- [About](https://countrystatecity.in/about/)
+- [Contact](https://countrystatecity.in/contact/)
