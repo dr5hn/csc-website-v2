@@ -124,7 +124,7 @@ export default function Footer() {
       </div>
       <div className="wrap flex flex-wrap items-center justify-between gap-3 border-t border-line pb-[88px] pt-[18px] text-sm text-ink-3">
         <span>© {new Date().getFullYear()} Country State City. Data under ODbL-1.0.</span>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <span>Made with care in India</span>
           <button
             type="button"
