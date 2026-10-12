@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Privacy policy page at `/privacy/`, listing what the site stores in the browser and the third-party services it contacts. It is linked from the footer, the cookie notice and the sitemap.
+
 - Cookie notice: Google Analytics and the Mintlify docs assistant (which includes usage analytics) load only after a visitor accepts, with Google advertising consent denied. Equally styled accept and decline buttons remember the choice in `localStorage`; declining clears legacy GA cookies, withdrawal unloads analytics across open tabs, and "Cookie settings" in the footer reopens the notice. Other site preferences and campaign attribution are stored separately.
 
 ### Changed
