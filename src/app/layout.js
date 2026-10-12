@@ -2,7 +2,6 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import CookieConsent from "@/components/cookie-consent";
-import DocsAssistant from "@/components/docs-assistant";
 import JsonLd from "@/components/json-ld";
 import { websiteSchema } from "@/lib/seo";
 import { STAT_DESCRIPTIONS } from "@/lib/stats";
@@ -136,7 +135,6 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
-        <DocsAssistant />
         <CookieConsent />
       </body>
     </html>
