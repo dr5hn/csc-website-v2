@@ -156,7 +156,7 @@ export default function Privacy() {
         <Section
           t="The separate API and dashboard"
           body={[
-            "The API account system stores your name and email address, GitHub username and avatar when you sign in with GitHub, API keys and allowed hosts or IP addresses, communication preferences, and plan and payment references. When supplied during registration, source, campaign and package attribution is saved on the account.",
+            "The API account system stores your name and email address, GitHub username and avatar when you sign in with GitHub, API keys and allowed hosts or IP addresses, communication preferences, and plan and payment references. It also keeps account and conversion milestones, billing events, email delivery attempts and internal support notes. When supplied during registration, source, campaign and package attribution is saved on the account.",
             "The API records operational usage totals and statistics about routes, response status, response time, source country and referring host. These records support usage limits, billing and service monitoring, independently of this website’s analytics choice. Deactivating an account disables access; it does not delete the account record or its usage history.",
             "The API uses Dodo Payments for paid plans, GitHub for GitHub sign-in, and a configured SMTP email service for authentication and notifications. Sentry can receive diagnostic and performance data when configured; Slack can receive operational alerts and summaries when configured. Our server and Cloudflare receive network request information. The dashboard stores sign-in state in your browser.",
           ]}
