@@ -9,23 +9,23 @@ export const metadata = {
   },
 };
 
-const UPDATED = "October 7, 2026";
+const UPDATED = "October 13, 2026";
 const EMAIL = "support@countrystatecity.in";
 
-// Everything the site stores in the browser. Keep in sync with src/lib/consent.js and the components that write these keys.
+// First-party storage. Mintlify also uses in-memory analytics after opt-in.
 const STORAGE = [
-  ["csc-cookie-consent", "Browser storage", "Remembers whether you accepted or declined analytics cookies.", "Until you clear it"],
+  ["csc-cookie-consent", "Browser storage", "Remembers whether you accepted or declined optional analytics.", "Until you clear it"],
   ["csc-promo-hidden", "Browser storage", "Remembers that you closed the announcement bar.", "Until you clear it"],
   ["csc-billing", "Browser storage", "Remembers the monthly or annual choice on the pricing page.", "Until you clear it"],
-  ["csc_attribution", "Session storage", "Keeps the source, campaign and package from a link you arrived with (for example from npm), so buttons that open the app can pass it along.", "Until you close the tab"],
-  ["_ga, _ga_…", "Cookies (Google Analytics)", "Tell Google Analytics which visits belong together. Set only after you accept.", "Up to two years"],
+  ["csc_attribution", "Session storage", "Keeps the source, campaign and package from a link you arrived with (for example from npm), so buttons that open the app can pass it along. This campaign attribution is stored even if you decline optional analytics.", "For the tab session; browsers may restore sessions"],
+  ["_ga, _ga_…", "Cookies (Google Analytics)", "Tell Google Analytics which visits belong together. Set only after you accept and removed if you decline.", "Default expiry: two years, refreshed on analytics visits"],
 ];
 
 const THIRD_PARTIES = [
-  ["Google Analytics", "Loaded only after you accept cookies. Receives your IP address, the pages you view, the buttons and links you click and how far you scroll."],
-  ["Mintlify", "Provides the “Ask the docs” assistant. Its script loads on every page. If you open it, the questions you type are sent to Mintlify to be answered."],
-  ["GitHub", "Your browser asks api.github.com for the live star count and the recently merged database changes, so GitHub sees your IP address."],
-  ["Our own APIs", "Your browser calls api.countrystatecity.in and eapi.countrystatecity.in for live statistics and current plan and credit prices."],
+  ["Google Analytics", "Loaded only after you accept optional analytics. Receives your IP address, page URLs and referrers, device and browser information, and tracked interactions. Google advertising consent stays denied."],
+  ["Mintlify and PostHog", "The “Ask the docs” assistant loads only after you accept optional analytics. Mintlify’s widget uses PostHog for usage events and temporary identifiers held in memory. Questions and any contact details you submit through the assistant are sent to Mintlify."],
+  ["GitHub", "Pages showing live star counts or recent database changes request them from api.github.com, which receives your IP address."],
+  ["Our own APIs", "Pages showing live statistics or pricing call api.countrystatecity.in or eapi.countrystatecity.in. These requests disclose your IP address even if you decline optional analytics."],
 ];
 
 const SECTIONS = [
@@ -38,10 +38,10 @@ const SECTIONS = [
   {
     t: "What we collect",
     body: [
-      "The website has no sign-up forms, comments or newsletter. We do not ask you to type any personal information into it.",
+      "The marketing pages have no account sign-up form, comments or newsletter. The optional docs assistant accepts questions and can offer a contact form; include only information you want to send to that service.",
       "Like any website, our hosting and Cloudflare, which sits in front of it, see your IP address, browser type and the pages you request. They use this to deliver the site and keep it secure.",
       "If you email us, we receive your email address and whatever you write. If you contribute to the database on GitHub, your username and contribution are public in the repository history.",
-      "If you accept cookies, Google Analytics also records which pages you view, which buttons and links you click, how far you scroll, your approximate location and your device and browser type.",
+      "If you accept optional analytics, Google Analytics receives page and interaction data and can derive approximate location from your connection. Mintlify also records usage of its docs assistant.",
     ],
   },
 ];
@@ -56,7 +56,7 @@ const SECTIONS_AFTER = [
   {
     t: "Who we share it with",
     body: [
-      "Only the providers above, which process data to deliver the site or answer your request, and authorities where the law requires it. Several of them, including Google, GitHub and Cloudflare, operate in other countries, so your data can be processed outside the one you live in. Links to other sites, such as GitHub, npm, PyPI and Kaggle, are governed by those sites’ own policies.",
+      "The browser services above and our hosting and email providers process data to deliver the site or answer your request. The API also integrates the services described below. Several providers operate in other countries, so your data can be processed outside the one you live in. Links to other sites, such as GitHub, npm, PyPI and Kaggle, are governed by those sites’ own policies.",
     ],
   },
   {
@@ -68,7 +68,7 @@ const SECTIONS_AFTER = [
   {
     t: "Your choices and rights",
     body: [
-      "Analytics cookies are off until you accept. You can change your choice at any time with Cookie settings in the footer; declining removes the Google Analytics cookies. You can also clear this site’s storage in your browser settings.",
+      "Google Analytics and the docs assistant are off until you accept optional analytics. You can change your choice at any time with Cookie settings in the footer; declining removes the Google Analytics cookies and reloads a page that had analytics running to stop it. You can also clear this site’s storage in your browser settings. The choice on this website does not control account storage or operational usage records in the separate API and dashboard.",
       `Depending on where you live, you may have the right to ask what we hold about you, and to have it corrected or deleted, or to object to how it is used. Email ${EMAIL} and we will respond. You can also complain to your local data protection authority.`,
     ],
   },
@@ -82,6 +82,7 @@ const SECTIONS_AFTER = [
   },
 ];
 
+/** Render a titled group of policy paragraphs. */
 function Section({ t, body }) {
   return (
     <section className="flex flex-col gap-3">
@@ -95,6 +96,7 @@ function Section({ t, body }) {
   );
 }
 
+/** Describe verified marketing-site behaviour and distinguish separate account services. */
 export default function Privacy() {
   return (
     <>
@@ -106,7 +108,7 @@ export default function Privacy() {
             Privacy policy
           </h1>
           <p className="lead m-0">
-            The short version: this website asks you for nothing, and Google Analytics cookies stay off unless you accept them.
+            Google Analytics and the docs assistant stay off unless you accept optional analytics. Site preferences and campaign attribution use separate browser storage.
           </p>
         </header>
 
@@ -117,8 +119,8 @@ export default function Privacy() {
         <section className="flex flex-col gap-3">
           <h2 className="m-0 font-cal text-[26px] font-normal">Cookies and browser storage</h2>
           <p className="m-0 text-base leading-[1.65] text-ink-2">
-            Everything the site keeps in your browser, and why. Only the Google Analytics cookies depend on your consent; the rest are
-            small settings that make the site work the way you left it.
+            The site’s cookies and browser storage are listed below. Preference settings and campaign attribution have different purposes;
+            campaign attribution is used to understand how visitors reach the app. After opt-in, the docs assistant also uses temporary analytics identifiers in memory.
           </p>
           <ul className="m-0 flex list-none flex-col overflow-hidden rounded-[20px] border border-line p-0">
             {STORAGE.map(([name, type, purpose, duration], i) => (
@@ -138,8 +140,8 @@ export default function Privacy() {
         <section className="flex flex-col gap-3">
           <h2 className="m-0 font-cal text-[26px] font-normal">Services your browser contacts</h2>
           <p className="m-0 text-base leading-[1.65] text-ink-2">
-            Loading a page makes your browser contact the services below, which means each one receives your IP address. Fonts are served
-            from our own domain.
+            The services below receive your IP address when contacted. Some depend on the page you view or your analytics choice.
+            The marketing site’s fonts are served from our own domain.
           </p>
           <ul className="m-0 flex list-none flex-col overflow-hidden rounded-[20px] border border-line p-0">
             {THIRD_PARTIES.map(([name, what], i) => (
@@ -150,6 +152,15 @@ export default function Privacy() {
             ))}
           </ul>
         </section>
+
+        <Section
+          t="The separate API and dashboard"
+          body={[
+            "The API account system stores your name and email address, GitHub username and avatar when you sign in with GitHub, API keys and allowed hosts or IP addresses, communication preferences, and plan and payment references. When supplied during registration, source, campaign and package attribution is saved on the account.",
+            "The API records operational usage totals and statistics about routes, response status, response time, source country and referring host. These records support usage limits, billing and service monitoring, independently of this website’s analytics choice. Deactivating an account disables access; it does not delete the account record or its usage history.",
+            "The API uses Dodo Payments for paid plans, GitHub for GitHub sign-in, and a configured SMTP email service for authentication and notifications. Sentry can receive diagnostic and performance data when configured; Slack can receive operational alerts and summaries when configured. Our server and Cloudflare receive network request information. The dashboard stores sign-in state in your browser.",
+          ]}
+        />
 
         {SECTIONS_AFTER.map((s) => (
           <Section key={s.t} {...s} />
