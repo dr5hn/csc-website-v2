@@ -1,7 +1,7 @@
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import DocsAssistant from "@/components/docs-assistant";
+import CookieConsent from "@/components/cookie-consent";
 import JsonLd from "@/components/json-ld";
 import { websiteSchema } from "@/lib/seo";
 import { STAT_DESCRIPTIONS } from "@/lib/stats";
@@ -126,21 +126,6 @@ export default function RootLayout({ children }) {
             __html: `try{if(localStorage.getItem('csc-promo-hidden')==='1')document.documentElement.dataset.promoHidden='1'}catch(e){}`,
           }}
         />
-        {/* Google Analytics */}
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-XPF0QLDXVS`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-XPF0QLDXVS');
-            `,
-          }}
-        />
         <JsonLd data={jsonLd} />
         <JsonLd data={websiteSchema()} />
       </head>
@@ -150,7 +135,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
-        <DocsAssistant />
+        <CookieConsent />
       </body>
     </html>
   );

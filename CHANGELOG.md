@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Cookie notice: Google Analytics and the Mintlify docs assistant (which includes usage analytics) load only after a visitor accepts, with Google advertising consent denied. Equally styled accept and decline buttons remember the choice in `localStorage`; declining clears legacy GA cookies, withdrawal unloads analytics across open tabs, and "Cookie settings" in the footer reopens the notice. Other site preferences and campaign attribution are stored separately.
+
 ### Changed
 
 - Redesign the whole site to the "Stacked Atlas" direction from the CSC creative directions: light-first, Cal Sans / Geist / Geist Mono, deep-blue pill buttons, field-blue panels, lime for live signals only (see `docs/design/reject-list.md`). New header (announcement bar, Products menu, mobile sheet) and footer; all ten pages rebuilt from the design (Home, Ecosystem, API, Database, Export Tool, Update Tool, Pricing, About, FAQs, Support).
