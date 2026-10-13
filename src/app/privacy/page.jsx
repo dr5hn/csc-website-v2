@@ -68,7 +68,7 @@ const SECTIONS_AFTER = [
   {
     t: "Your choices and rights",
     body: [
-      "Google Analytics and the docs assistant are off until you accept optional analytics. You can change your choice at any time with Cookie settings in the footer; declining removes the Google Analytics cookies and reloads a page that had analytics running to stop it. You can also clear this site’s storage in your browser settings. The choice on this website does not control account storage or operational usage records in the separate API and dashboard.",
+      "Google Analytics and the docs assistant are off until you accept optional analytics. You can change your choice at any time with Cookie settings in the footer; declining removes the Google Analytics cookies and reloads a page that had analytics running to stop it. You can also clear this site’s storage in your browser settings. The choice on this website does not control account storage or operational usage records in the separate API and dashboard, and the dashboard asks for its own analytics choice.",
       `Depending on where you live, you may have the right to ask what we hold about you, and to have it corrected or deleted, or to object to how it is used. Email ${EMAIL} and we will respond. You can also complain to your local data protection authority.`,
     ],
   },
@@ -159,6 +159,7 @@ export default function Privacy() {
             "The API account system stores your name and email address, GitHub username and avatar when you sign in with GitHub, API keys and allowed hosts or IP addresses, communication preferences, and plan and payment references. It also keeps account and conversion milestones, billing events, email delivery attempts and internal support notes. When supplied during registration, source, campaign and package attribution is saved on the account.",
             "The API records operational usage totals and statistics about routes, response status, response time, source country and referring host. These records support usage limits, billing and service monitoring, independently of this website’s analytics choice. Deactivating an account disables access; it does not delete the account record or its usage history.",
             "The API uses Dodo Payments for paid plans, GitHub for GitHub sign-in, and a configured SMTP email service for authentication and notifications. Sentry can receive diagnostic and performance data when configured; Slack can receive operational alerts and summaries when configured. Our server and Cloudflare receive network request information. The dashboard stores sign-in state in your browser.",
+            "The dashboard has its own cookie notice and its own Google Analytics cookies, so your choice on this website does not apply there. If you accept there, the dashboard sends Google Analytics the pages you open, the page you came from, engagement time, a random identifier stored in a cookie, and device and browser details. Google estimates an approximate location from your IP address. Every query parameter except campaign tags (utm and gclid) is removed from page addresses first, so sign-in links and codes are not sent. Google advertising consent stays denied, and declining removes the dashboard's Google Analytics cookies.",
           ]}
         />
 
