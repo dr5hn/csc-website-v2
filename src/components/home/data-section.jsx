@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import DataSources from "@/components/data-sources";
 import { usePlatformStats } from "@/hooks/use-platform-stats";
 import { formatApprox } from "@/lib/format";
@@ -17,6 +19,9 @@ const TILES = [
   { key: "cities", label: "cities", tone: "field", skeleton: "82%", live: true },
   { key: "formats", label: "download formats", tone: "lime", skeleton: "70%", live: false },
 ];
+
+// In-copy links to the per-level API pages, styled like the section's other text links.
+const LINK = "font-semibold text-blue hover:text-blue-deep hover:underline";
 
 const TONES = {
   solid: { box: "bg-blue", fg: "text-white", sub: "text-[#dcebfb]", skeleton: "bg-white/25" },
@@ -42,6 +47,11 @@ export default function DataSection() {
         <p className="m-0 text-[17px] leading-[1.55] text-ink-2">
           Every city knows its state and country. Every country carries ISO codes, currency, phone code, timezones and
           translations. Updated frequently by the community.
+        </p>
+        <p className="m-0 text-[15px] leading-[1.55] text-ink-2">
+          See what each level returns in the <Link href="/country-api" className={LINK}>Country API</Link>,{" "}
+          <Link href="/state-api" className={LINK}>State API</Link> and <Link href="/city-api" className={LINK}>City API</Link>{" "}
+          guides, or use the data offline with the <Link href="/npm-packages" className={LINK}>npm packages</Link>.
         </p>
       <DataSources />
         <div className="flex flex-wrap gap-2">
