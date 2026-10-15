@@ -1,6 +1,6 @@
 import CtaLink from "@/components/cta-link";
 import RecentMerges from "@/components/product/update-tool/recent-merges";
-import { REPO_URL } from "@/components/star-button";
+import { REPO_URL } from "@/lib/seo";
 
 const STEPS = [
   ["01", "Submit a change", "Edit a record or add a missing place, with a source. Takes about a minute."],

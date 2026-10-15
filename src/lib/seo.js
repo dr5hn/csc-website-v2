@@ -2,7 +2,7 @@
 import { STAT_DESCRIPTIONS } from "./stats.js";
 
 export const SITE_URL = "https://countrystatecity.in";
-const REPO_URL = "https://github.com/dr5hn/countries-states-cities-database";
+export const REPO_URL = "https://github.com/dr5hn/countries-states-cities-database";
 const ODBL_URL = "https://opendatacommons.org/licenses/odbl/1-0/";
 
 const publisher = { "@type": "Organization", name: "CSC Database", url: SITE_URL };
