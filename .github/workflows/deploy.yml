@@ -19,7 +19,8 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v5
       with:
-        node-version: '22'
+        # Only out/ is deployed; Nginx serves it without a Node.js runtime.
+        node-version: '26'
 
     # Build Next.js application as static export
     - name: Install dependencies and build static export

@@ -41,20 +41,19 @@ CSC Database is a comprehensive geographical database that provides:
 
 ## 🛠 Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org) with App Router
+- **Framework**: [Next.js 16](https://nextjs.org) with App Router and static export
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com)
 - **UI Components**: Custom components with [Radix UI](https://radix-ui.com) primitives
-- **Animations**: [Motion](https://motion.dev) and custom CSS animations
-- **3D Visualizations**: [Three.js](https://threejs.org) with React Three Fiber
-- **Icons**: [Lucide React](https://lucide.dev)
+- **Animations**: CSS animations with reduced-motion support
+- **Icons**: Local SVGs in `src/icons/`; Lucide for the configured shadcn registry and documented examples
 - **Development**: ESLint, Turbopack for fast development
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ 
-- Yarn, npm, or pnpm
+- Node.js 26 recommended (also supports 20.19+, 22.13+, and 24+; CI checks Node 22 and 26)
+- npm (use `npm ci` to install the committed lockfile)
 
 ### Installation
 
@@ -66,11 +65,7 @@ cd csc-website
 
 2. Install dependencies:
 ```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
+npm ci
 ```
 
 3. Run the development server:

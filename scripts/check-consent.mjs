@@ -1,7 +1,7 @@
 /**
- * Check a served production export in an isolated Chromium profile.
+ * Check a served production export in an isolated Brave profile.
  * Run after `npm run build` and serving `out/`: node scripts/check-consent.mjs http://127.0.0.1:4325
- * Install the browser once with `npx playwright install chromium`.
+ * Requires Brave Browser at /Applications/Brave Browser.app.
  * Collection requests are observed and aborted so tests do not pollute analytics.
  */
 import assert from "node:assert/strict";
@@ -10,7 +10,7 @@ import { chromium } from "playwright";
 const url = process.argv[2] || "http://127.0.0.1:4325";
 const optionalHost = /(?:googletagmanager\.com|google-analytics\.com|analytics\.google\.com|widget\.mintlify\.com|ph\.mintlify\.com|posthog\.com)/;
 const gaCookie = /^(_ga|_gid$|_gat)/;
-const browser = await chromium.launch();
+const browser = await chromium.launch({ executablePath: "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser" });
 const context = await browser.newContext();
 const requests = [];
 const errors = [];

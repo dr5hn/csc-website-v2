@@ -1,5 +1,5 @@
 import CtaLink from "@/components/cta-link";
-import { REPO_URL } from "@/components/star-button";
+import { REPO_URL } from "@/lib/seo";
 import { buttonVariants } from "@/components/ui/button";
 import CtaPanel from "@/components/ui/cta-panel";
 

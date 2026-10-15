@@ -3,12 +3,11 @@ import DatabaseFormats from "@/components/product/database/formats";
 import DatabaseHero from "@/components/product/database/hero";
 import DatabaseSchema from "@/components/product/database/schema";
 import DatabaseSetup from "@/components/product/database/setup";
-import { REPO_URL } from "@/components/star-button";
 import { buttonVariants } from "@/components/ui/button";
 import CtaPanel from "@/components/ui/cta-panel";
 import { TEXT_STATS } from "@/lib/stats";
 import JsonLd from "@/components/json-ld";
-import { breadcrumbSchema, datasetSchema } from "@/lib/seo";
+import { breadcrumbSchema, datasetSchema, REPO_URL } from "@/lib/seo";
 
 export const metadata = {
   title: "Country State City Database - JSON, CSV, SQL",

@@ -40,7 +40,7 @@ for (const name of await readdir(chunks)) {
 if (!fonts.includes("Cal Sans")) throw new Error("Build the site first to load its fonts.");
 const logo = await asset("public/favicon.svg", "image/svg+xml");
 const world = await asset("public/images/voxel-world.png", "image/png");
-const browser = await chromium.launch({ channel: "chrome", headless: true });
+const browser = await chromium.launch({ executablePath: "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser", headless: true });
 try {
   const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
   for (const [name, label, title, description, path] of cards) {
