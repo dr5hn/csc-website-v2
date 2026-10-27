@@ -9,7 +9,7 @@ export const metadata = {
   },
 };
 
-const UPDATED = "October 13, 2026";
+const UPDATED = "October 27, 2026";
 const EMAIL = "support@countrystatecity.in";
 
 // First-party storage. Mintlify also uses in-memory analytics after opt-in.
@@ -19,10 +19,12 @@ const STORAGE = [
   ["csc-billing", "Browser storage", "Remembers the monthly or annual choice on the pricing page.", "Until you clear it"],
   ["csc_attribution", "Session storage", "Keeps the source, campaign and package from a link you arrived with (for example from npm), so buttons that open the app can pass it along. This campaign attribution is stored even if you decline optional analytics.", "For the tab session; browsers may restore sessions"],
   ["_ga, _ga_…", "Cookies (Google Analytics)", "Tell Google Analytics which visits belong together. Set only after you accept and removed if you decline.", "Default expiry: two years, refreshed on analytics visits"],
+  ["_clck, _clsk", "Cookies (Microsoft Clarity)", "Tell Microsoft Clarity which visits and sessions belong together. Set only after you accept and removed if you decline.", "Clarity’s defaults: up to one year (_clck) and one day (_clsk)"],
 ];
 
 const THIRD_PARTIES = [
   ["Google Analytics", "Loaded only after you accept optional analytics. Receives your IP address, page URLs and referrers, device and browser information, and tracked interactions. Google advertising consent stays denied."],
+  ["Microsoft Clarity", "Loaded only after you accept optional analytics. Records how you use pages (clicks, scrolling, mouse movement and page views) as session replays and heatmaps, and receives your IP address, page URLs and referrers, and device and browser information."],
   ["Mintlify and PostHog", "The “Ask the docs” assistant loads only after you accept optional analytics. Mintlify’s widget uses PostHog for usage events and temporary identifiers held in memory. Questions and any contact details you submit through the assistant are sent to Mintlify."],
   ["GitHub", "Pages showing live star counts or recent database changes request them from api.github.com, which receives your IP address."],
   ["Our own APIs", "Pages showing live statistics or pricing call api.countrystatecity.in or eapi.countrystatecity.in. These requests disclose your IP address even if you decline optional analytics."],
@@ -41,7 +43,7 @@ const SECTIONS = [
       "The marketing pages have no account sign-up form, comments or newsletter. The optional docs assistant accepts questions and can offer a contact form; include only information you want to send to that service.",
       "Like any website, our hosting and Cloudflare, which sits in front of it, see your IP address, browser type and the pages you request. They use this to deliver the site and keep it secure.",
       "If you email us, we receive your email address and whatever you write. If you contribute to the database on GitHub, your username and contribution are public in the repository history.",
-      "If you accept optional analytics, Google Analytics receives page and interaction data and can derive approximate location from your connection. Mintlify also records usage of its docs assistant.",
+      "If you accept optional analytics, Google Analytics and Microsoft Clarity receive page and interaction data and can derive approximate location from your connection. Mintlify also records usage of its docs assistant.",
     ],
   },
 ];
@@ -68,7 +70,7 @@ const SECTIONS_AFTER = [
   {
     t: "Your choices and rights",
     body: [
-      "Google Analytics and the docs assistant are off until you accept optional analytics. You can change your choice at any time with Cookie settings in the footer; declining removes the Google Analytics cookies and reloads a page that had analytics running to stop it. You can also clear this site’s storage in your browser settings. The choice on this website does not control account storage or operational usage records in the separate API and dashboard, and the dashboard asks for its own analytics choice.",
+      "Google Analytics, Microsoft Clarity and the docs assistant are off until you accept optional analytics. You can change your choice at any time with Cookie settings in the footer; declining removes the Google Analytics and Clarity cookies and reloads a page that had analytics running to stop it. You can also clear this site’s storage in your browser settings. The choice on this website does not control account storage or operational usage records in the separate API and dashboard, and the dashboard asks for its own analytics choice.",
       `Depending on where you live, you may have the right to ask what we hold about you, and to have it corrected or deleted, or to object to how it is used. Email ${EMAIL} and we will respond. You can also complain to your local data protection authority.`,
     ],
   },
@@ -108,7 +110,7 @@ export default function Privacy() {
             Privacy policy
           </h1>
           <p className="lead m-0">
-            Google Analytics and the docs assistant stay off unless you accept optional analytics. Site preferences and campaign attribution use separate browser storage.
+            Google Analytics, Microsoft Clarity and the docs assistant stay off unless you accept optional analytics. Site preferences and campaign attribution use separate browser storage.
           </p>
         </header>
 

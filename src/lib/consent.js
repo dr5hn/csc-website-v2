@@ -2,8 +2,9 @@
 export const CONSENT_KEY = "csc-cookie-consent";
 export const OPEN_EVENT = "csc:open-cookie-settings";
 export const GA_ID = "G-XPF0QLDXVS";
+export const CLARITY_ID = "z48sy92o9p";
 
-const GA_COOKIE = /^(_ga|_gid$|_gat)/;
+const GA_COOKIE = /^(_ga|_gid$|_gat|_clck$|_clsk$)/;
 const DENIED = {
   analytics_storage: "denied",
   ad_storage: "denied",
@@ -31,6 +32,19 @@ export function writeConsent(win, value) {
   }
 }
 
+/** Microsoft Clarity's standard tag, requested only after consent. Safe to call again. */
+export function loadClarity(win, doc) {
+  if (win.__cscClarityLoaded) return;
+  win.__cscClarityLoaded = true;
+  win.clarity = win.clarity || function clarity() {
+    (win.clarity.q = win.clarity.q || []).push(arguments);
+  };
+  const script = doc.createElement("script");
+  script.async = true;
+  script.src = `https://www.clarity.ms/tag/${CLARITY_ID}`;
+  doc.head.appendChild(script);
+}
+
 /** Load Google Analytics once, after consent. Safe to call again: later calls only re-enable it. */
 export function loadAnalytics(win, doc) {
   win[`ga-disable-${GA_ID}`] = false;
@@ -47,6 +61,7 @@ export function loadAnalytics(win, doc) {
   win.gtag("consent", "update", { ...DENIED, analytics_storage: "granted" });
   if (win.__cscAnalyticsLoaded) return;
   win.__cscAnalyticsLoaded = true;
+  loadClarity(win, doc);
   win.gtag("js", new Date());
   win.gtag("config", GA_ID, { allow_google_signals: false, allow_ad_personalization_signals: false });
   const script = doc.createElement("script");
@@ -55,7 +70,7 @@ export function loadAnalytics(win, doc) {
   doc.head.appendChild(script);
 }
 
-/** Cookie names Google Analytics sets, read from a document.cookie string. */
+/** Cookie names Google Analytics and Clarity set, read from a document.cookie string. */
 export function analyticsCookieNames(cookieString) {
   return cookieString
     .split(";")

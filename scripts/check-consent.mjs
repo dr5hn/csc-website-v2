@@ -8,8 +8,8 @@ import assert from "node:assert/strict";
 import { chromium } from "playwright";
 
 const url = process.argv[2] || "http://127.0.0.1:4325";
-const optionalHost = /(?:googletagmanager\.com|google-analytics\.com|analytics\.google\.com|widget\.mintlify\.com|ph\.mintlify\.com|posthog\.com)/;
-const gaCookie = /^(_ga|_gid$|_gat)/;
+const optionalHost = /(?:googletagmanager\.com|clarity\.ms|google-analytics\.com|analytics\.google\.com|widget\.mintlify\.com|ph\.mintlify\.com|posthog\.com)/;
+const gaCookie = /^(_ga|_gid$|_gat|_clck$|_clsk$)/;
 const browser = await chromium.launch({ executablePath: "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser" });
 const context = await browser.newContext();
 const requests = [];
