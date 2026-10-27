@@ -76,7 +76,7 @@ export default function CookieConsent() {
           <div className="flex flex-col gap-1.5">
             <span className="font-cal text-xl">Optional analytics</span>
             <p className="m-0 text-[15px] leading-[1.5] text-ink-2">
-              Google Analytics cookies and the docs assistant’s usage analytics help us improve the site. They stay off unless you accept, and you can change your
+              Google Analytics and Microsoft Clarity cookies and the docs assistant’s usage analytics help us improve the site. They stay off unless you accept, and you can change your
               choice from Cookie settings in the footer.{" "}
               <Link href="/privacy/">Privacy policy</Link>
             </p>

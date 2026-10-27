@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { analyticsCookieNames, cookieDomains, GA_ID, loadAnalytics, readConsent, stopAnalytics, writeConsent } from "./consent.js";
+import { analyticsCookieNames, CLARITY_ID, cookieDomains, GA_ID, loadAnalytics, readConsent, stopAnalytics, writeConsent } from "./consent.js";
 
 const memory = (initial = {}) => {
   const data = { ...initial };
@@ -35,8 +35,9 @@ test("loadAnalytics injects one script, queues config, and is safe to repeat", (
   const win = {};
   loadAnalytics(win, doc);
   loadAnalytics(win, doc);
-  assert.equal(appended.length, 1);
-  assert.equal(appended[0].src, `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`);
+  assert.equal(appended.length, 2);
+  assert.equal(appended[0].src, `https://www.clarity.ms/tag/${CLARITY_ID}`);
+  assert.equal(appended[1].src, `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`);
   assert.deepEqual([...win.dataLayer[0]], ["consent", "default", {
     analytics_storage: "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied",
   }]);
@@ -51,7 +52,7 @@ test("loadAnalytics injects one script, queues config, and is safe to repeat", (
 
 /** Cleanup must cover both measurement cookies and the parent domain. */
 test("analytics cookie names and parent domains are found for cleanup", () => {
-  assert.deepEqual(analyticsCookieNames("a=1; _ga=GA1.1; _ga_ABC=x; _gid=2; csc-billing=annual"), ["_ga", "_ga_ABC", "_gid"]);
+  assert.deepEqual(analyticsCookieNames("a=1; _ga=GA1.1; _ga_ABC=x; _gid=2; _clck=3; _clsk=4; csc-billing=annual"), ["_ga", "_ga_ABC", "_gid", "_clck", "_clsk"]);
   assert.deepEqual(analyticsCookieNames(""), []);
   assert.deepEqual(cookieDomains("www.countrystatecity.in"), ["www.countrystatecity.in", "countrystatecity.in"]);
   assert.deepEqual(cookieDomains("localhost"), ["localhost"]);
