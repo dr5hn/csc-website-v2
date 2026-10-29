@@ -146,7 +146,7 @@ export default function HomeHero() {
               style={{ transform: `scale(${L.s})` }}
             >
               <Image
-                src="/images/voxel-world.png"
+                src="/images/voxel-world.webp"
                 alt="Isometric world map in columns; column height is the number of cities per grid cell"
                 width={3001}
                 height={627}
