@@ -107,17 +107,39 @@ export default function ApiPlans() {
                 location={`pricing_api_${key}`}
                 track="api"
                 className={cn(
-                  buttonVariants({ variant: hi ? "white" : free ? "default" : "outline", size: "sm" }),
+                  buttonVariants({ variant: hi ? "white" : free ? "default" : "outline", size: free ? "lg" : "sm" }),
                   "mt-auto w-full py-[13px]",
                   hi && "ring-0"
                 )}
               >
-                {blurb?.cta ?? "Get started"}
+                {blurb?.cta ?? "Get started"}{free && " →"}
               </CtaLink>
             </div>
           );
         })}
       </div>
+
+      <details className="group rounded-[20px] border border-line bg-white px-[22px] py-[18px]">
+        <summary className="cursor-pointer list-none text-base font-semibold text-ink">
+          What do requests / month, the daily limit and origin whitelisting mean?
+          <span aria-hidden="true" className="ml-2 font-mono text-blue group-open:hidden">+</span>
+          <span aria-hidden="true" className="ml-2 hidden font-mono text-blue group-open:inline">−</span>
+        </summary>
+        <dl className="m-0 mt-3 flex flex-col gap-3 text-[15px] leading-[1.55] text-ink-2">
+          <div>
+            <dt className="font-semibold text-ink">Requests / month</dt>
+            <dd className="m-0">The number of API calls your key can make in a billing month. Each call counts once, whatever it returns.</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-ink">Daily limit</dt>
+            <dd className="m-0">A cap on calls per day, so a single busy day cannot use up the whole month. Once you reach a limit, further requests are rejected until it resets.</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-ink">Origin whitelisting</dt>
+            <dd className="m-0">[confirm wording with the app team: restricts which domains or IP addresses can use your key, up to the number shown on each plan.]</dd>
+          </div>
+        </dl>
+      </details>
 
       <div className="flex flex-wrap items-center justify-between gap-3.5 rounded-[20px] border border-line bg-mist px-[22px] py-[18px]">
         <span className="text-base">

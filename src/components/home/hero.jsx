@@ -54,6 +54,10 @@ export default function HomeHero() {
     setLevel(i);
   };
 
+  // Clicking the map itself zooms one level in (wrapping back to World), because visitors click it
+  // expecting something to happen. The level buttons stay the keyboard path, so the map is not a tab stop.
+  const zoomIn = () => pick((level + 1) % LEVELS.length);
+
   const onLevelKey = (event) => {
     if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
     event.preventDefault();
@@ -133,8 +137,8 @@ export default function HomeHero() {
         </div>
 
         <div
-          className="relative h-[clamp(170px,22vw,300px)] touch-pan-y overflow-hidden"
-          onPointerDown={() => setUserTookOver(true)}
+          className="relative h-[clamp(170px,22vw,300px)] cursor-pointer touch-pan-y overflow-hidden"
+          onClick={zoomIn}
         >
           <div className="absolute inset-x-3 top-1/2 aspect-[3001/627] -translate-y-1/2">
             <div
@@ -142,7 +146,7 @@ export default function HomeHero() {
               style={{ transform: `scale(${L.s})` }}
             >
               <Image
-                src="/images/voxel-world.png"
+                src="/images/voxel-world.webp"
                 alt="Isometric world map in columns; column height is the number of cities per grid cell"
                 width={3001}
                 height={627}
@@ -187,7 +191,18 @@ export default function HomeHero() {
             <span className="rounded-full bg-ok-bg px-[9px] py-[3px] text-ok">200 OK</span>
             <span className="text-ink-3">illustrative sample · {L.count}</span>
           </div>
-          <pre className="m-0 overflow-x-auto whitespace-pre px-4 pb-4 pt-2 font-mono text-[13px] leading-[1.6] text-ink-code">{json}</pre>
+          <pre className="m-0 overflow-x-auto whitespace-pre px-4 pb-3 pt-2 font-mono text-[13px] leading-[1.6] text-ink-code">{json}</pre>
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-hair px-4 py-3 text-[13px] text-ink-3">
+            <span>Example only. Click the map or pick a level to zoom.</span>
+            <CtaLink
+              href="https://app.countrystatecity.in?utm_source=website&utm_medium=cta&utm_content=home_hero_demo"
+              location="home_hero_demo"
+              track="api"
+              className={buttonVariants({ size: "sm" })}
+            >
+              Get free API key →
+            </CtaLink>
+          </div>
         </div>
       </div>
     </section>
