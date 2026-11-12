@@ -7,7 +7,7 @@ const CHOICES = [
   {
     t: "Reach for a package when",
     points: [
-      "the data ships with your build and has to work offline",
+      "a bundled data package can satisfy offline requirements",
       "a dropdown should open with no round trip",
       "you can redeploy to pick up a data correction",
     ],
@@ -15,7 +15,7 @@ const CHOICES = [
   {
     t: "Reach for the API when",
     points: [
-      "corrections should reach users the day they land",
+      "you want the data currently served by the API",
       "you want fuzzy search, autocomplete or nearby lookups",
       "bundle size matters more than one request",
     ],
@@ -25,8 +25,7 @@ const CHOICES = [
 /**
  * Renders the official npm packages page.
  *
- * Covers the scoped @countrystatecity packages, which are the offline route
- * into the same dataset the API serves.
+ * Covers bundled data, CDN snapshots and live API clients under one scope.
  */
 export default function NpmPackagesLanding() {
   return (
@@ -35,11 +34,11 @@ export default function NpmPackagesLanding() {
         <span className="eyebrow">Official npm packages</span>
         <h1 className="display-1 m-0 max-w-[900px]">Geographic data, straight from npm.</h1>
         <p className="lead m-0 max-w-[720px]">
-          Nine packages under the <code className="font-mono text-blue">@countrystatecity</code>{" "}
-          scope, published from the same dataset the API serves. Install the slice you need, ship it
-          with your bundle, and make no network call at runtime.
+          {NPM_PACKAGES.length} official packages under the <code className="font-mono text-blue">@countrystatecity</code>{" "}
+          scope. Choose bundled data for offline use, CDN-loaded snapshots for lazy loading,
+          or the SDK and CLI for authenticated API access.
         </p>
-        <pre className="m-0 w-fit overflow-x-auto rounded-[20px] bg-field px-[22px] py-4 font-mono text-[13.5px] text-ink-code">
+        <pre className="m-0 w-fit max-w-full overflow-x-auto rounded-[20px] bg-field px-[22px] py-4 font-mono text-[13.5px] text-ink-code">
           npm install @countrystatecity/countries
         </pre>
       </section>
@@ -49,7 +48,7 @@ export default function NpmPackagesLanding() {
           <div className="flex flex-wrap items-end justify-between gap-5">
             <h2 className="display-2 m-0 max-w-[640px]">The packages.</h2>
             <p className="m-0 max-w-[440px] text-[17px] leading-[1.55] text-ink-2">
-              Each one stands alone, so a phone input does not have to ship 153,765 cities.
+              Install the slice you need: a phone input can use dial codes without bundling the full city dataset.
             </p>
           </div>
 
@@ -129,7 +128,7 @@ export default function NpmPackagesLanding() {
               </div>
             ))}
           </div>
-          <Tag className="w-fit text-[11.5px]">Data under ODbL, free to use with attribution</Tag>
+          <Tag className="w-fit max-w-full whitespace-normal text-[11.5px]">Data under ODbL, free to use with attribution</Tag>
         </div>
       </section>
     </>

@@ -3,13 +3,13 @@ import CtaLink from "@/components/cta-link";
 import JsonLd from "@/components/json-ld";
 import { buttonVariants } from "@/components/ui/button";
 import CtaPanel from "@/components/ui/cta-panel";
-import { NPM_FAQS } from "@/lib/npm-packages";
+import { NPM_FAQS, NPM_PACKAGES } from "@/lib/npm-packages";
 import { breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 export const metadata = {
   title: "npm Packages for Country, State & City Data",
   description:
-    "Nine official @countrystatecity npm packages: countries, states and cities, timezones, currencies, dial codes, postcodes, GeoJSON and translations. Offline, no API key.",
+    `${NPM_PACKAGES.length} official @countrystatecity npm packages: offline geographic data, CDN snapshots, a TypeScript API SDK and CLI. Choose the right package for your app.`,
   keywords: [
     "country state city npm",
     "country-state-city npm",
@@ -28,7 +28,7 @@ export const metadata = {
     images: [{ url: "/og/api.png", width: 1200, height: 630 }],
     title: "Official npm packages for country, state and city data",
     description:
-      "Nine packages under the @countrystatecity scope, published from the same dataset the API serves.",
+      `${NPM_PACKAGES.length} official packages covering offline geographic data, CDN snapshots and authenticated API access.`,
     type: "website",
   },
 };

@@ -3,13 +3,9 @@ import Link from "next/link";
 import CtaLink from "@/components/cta-link";
 import Tag from "@/components/ui/tag";
 import { buttonVariants } from "@/components/ui/button";
-import { API_BASE_URL, API_KEY_HEADER } from "@/lib/api-landing-pages";
+import DataSources from "@/components/data-sources";
+import { API_BASE_URL, API_KEY_HEADER, API_LANDING_PAGES } from "@/lib/api-landing-pages";
 
-const SIBLINGS = [
-  { slug: "country-api", label: "Country API", blurb: "250 countries, ISO codes, dial codes" },
-  { slug: "state-api", label: "State API", blurb: "5,308 states with ISO 3166-2" },
-  { slug: "city-api", label: "City API", blurb: "153,765 cities with coordinates" },
-];
 
 /**
  * Renders one resource landing page: country, state or city.
@@ -22,7 +18,7 @@ const SIBLINGS = [
  * @param {{page: object}} props - The resource description to render.
  */
 export default function ApiLanding({ page }) {
-  const siblings = SIBLINGS.filter((s) => s.slug !== page.slug);
+  const siblings = API_LANDING_PAGES.filter((s) => s.slug !== page.slug);
 
   return (
     <>
@@ -55,12 +51,13 @@ export default function ApiLanding({ page }) {
               <b className="font-semibold text-ink">{page.count}</b> {page.countLabel}
             </div>
             <div>
-              <b className="font-semibold text-ink">{page.fieldCount}</b> fields per record
+              <b className="font-semibold text-ink">JSON</b> responses
             </div>
             <div>
               <b className="font-semibold text-ink">3,000</b> free requests / mo
             </div>
           </div>
+          <DataSources />
         </div>
 
         <div className="flex min-w-0 flex-col gap-2.5 rounded-[clamp(24px,3vw,32px)] bg-field p-2.5">
@@ -71,7 +68,7 @@ export default function ApiLanding({ page }) {
           <pre className="m-0 overflow-x-auto rounded-[20px] bg-white p-[18px] font-mono text-[12.5px] leading-[1.6] text-ink-code">
             {page.sampleRequest}
           </pre>
-          <span className="px-3 font-mono text-[12.5px] text-ink-3">Response</span>
+          <span className="px-3 font-mono text-[12.5px] text-ink-3">Community response excerpt</span>
           <pre className="m-0 overflow-x-auto rounded-[20px] bg-white p-[18px] font-mono text-[12.5px] leading-[1.6] text-ink-code">
             {page.sampleResponse}
           </pre>
@@ -83,9 +80,9 @@ export default function ApiLanding({ page }) {
           <div className="flex flex-wrap items-end justify-between gap-5">
             <h2 className="display-2 m-0 max-w-[640px]">Endpoints</h2>
             <p className="m-0 max-w-[460px] text-[17px] leading-[1.55] text-ink-2">
-              Every path below is live on <code className="font-mono text-blue">{API_BASE_URL}</code>{" "}
-              and takes your key in the{" "}
-              <code className="font-mono text-blue">{API_KEY_HEADER}</code> header.
+              These endpoints are served from <code className="break-all font-mono text-blue">{API_BASE_URL}</code>{" "}
+              and require your key in the{" "}
+              <code className="font-mono text-blue">{API_KEY_HEADER}</code> header. Availability depends on your plan.
             </p>
           </div>
 
@@ -107,11 +104,11 @@ export default function ApiLanding({ page }) {
       <section className="wrap flex flex-col gap-9 section-y">
         <div className="flex flex-wrap items-end justify-between gap-5">
           <h2 className="display-2 m-0 max-w-[640px]">
-            {page.fieldCount} fields on every {page.resource.toLowerCase()}.
+            Available fields for {page.resource.toLowerCase()} records.
           </h2>
           <p className="m-0 max-w-[420px] text-[17px] leading-[1.55] text-ink-2">
-            Take them all, or name the ones you want with{" "}
-            <code className="font-mono text-blue">?fields=</code> and keep the response small.
+            Fields depend on your plan and may be missing or null. On eligible plans, select fields with{" "}
+            <code className="font-mono text-blue">?fields=</code>. <Link href="/pricing/" className="text-blue hover:underline">Compare plan access</Link>.
           </p>
         </div>
 
@@ -160,11 +157,11 @@ export default function ApiLanding({ page }) {
             {siblings.map((sibling) => (
               <Link
                 key={sibling.slug}
-                href={`/${sibling.slug}`}
+                href={`/${sibling.slug}/`}
                 className="flex flex-col gap-1.5 rounded-[20px] border border-line bg-white p-[22px] no-underline hover:border-blue hover:no-underline"
               >
-                <span className="font-cal text-[22px] text-ink">{sibling.label} →</span>
-                <span className="text-[15px] leading-normal text-ink-2">{sibling.blurb}</span>
+                <span className="font-cal text-[22px] text-ink">{sibling.resource} API →</span>
+                <span className="text-[15px] leading-normal text-ink-2">{sibling.count} {sibling.countLabel}</span>
               </Link>
             ))}
             <Link

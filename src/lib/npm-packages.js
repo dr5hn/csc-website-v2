@@ -1,10 +1,13 @@
 // The official @countrystatecity npm packages, as published on the registry.
 //
-// Names and descriptions were checked against https://registry.npmjs.org on
-// 11 Oct 2026. Versions are deliberately left out: they move faster than this
-// page does, and a stale version number reads as an abandoned project.
+// Distinguish bundled snapshots, CDN-loaded snapshots and authenticated API tools.
+// Versions are omitted because they change independently of the marketing site.
 
 export const NPM_PACKAGES = [
+  {
+    name: "@countrystatecity/sdk",
+    description: "The official JavaScript/TypeScript REST API client. Makes network requests and requires a CSC API key; endpoints and quotas follow your API plan.",
+  },
   {
     name: "@countrystatecity/countries",
     description:
@@ -48,7 +51,7 @@ export const NPM_PACKAGES = [
   {
     name: "@countrystatecity/cli",
     description:
-      "The official command-line client: search the data, explore the hierarchy and generate request code.",
+      "The official API command-line client: authenticate with an API key, search data, explore the hierarchy and generate request code. API-backed commands need a network connection.",
   },
 ];
 
@@ -59,15 +62,15 @@ export const NPM_FAQS = [
   },
   {
     q: "Do the packages need an API key?",
-    a: "No. The data ships inside the package and resolves locally, so there is no network call and nothing to authenticate. A key is only needed for the hosted API.",
+    a: "Bundled data packages work locally without an API key. countries-browser and geojson load snapshots from a CDN and need a network connection when loading. The SDK and API-backed CLI commands call the hosted API and require a key; usage follows your plan.",
   },
   {
     q: "How do the packages relate to the API?",
-    a: "They are built from the same dataset. The packages give you a snapshot that updates when you upgrade; the API gives you the current data on every request, plus search, autocomplete and nearby lookups.",
+    a: "Data packages provide versioned snapshots of the open database. The SDK and CLI access the hosted API instead. Available fields and endpoints depend on your API plan, and API data and package snapshots can differ by release.",
   },
   {
     q: "Is the data open source?",
-    a: "Yes. The underlying dataset is the countries-states-cities-database project on GitHub, and the packages are published from it.",
+    a: "The underlying database and offline data packages use ODbL-1.0. The npm SDK and CLI use MIT. Review the licence of each package and the database attribution and share-alike requirements before use.",
   },
   {
     q: "What about bundle size?",

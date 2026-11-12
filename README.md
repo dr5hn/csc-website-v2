@@ -1,30 +1,30 @@
 # CSC Ecosystem Website
 
-The world's most comprehensive geographical database providing accurate country, state, and city data to developers worldwide. This repository contains the official website and marketing platform for CSC Database.
+Open geographic data for countries, states and cities, with coverage that varies by record and release. This repository contains the official website and marketing platform for CSC Database.
 
 ## 🌍 About CSC Database
 
 CSC Database is a comprehensive geographical database that provides:
 
-- **Global Coverage**: Complete data for countries, states, and cities worldwide
+- **Global Coverage**: Country, state and city records, with versioned releases and community corrections
 - **Multiple Access Methods**: REST API, GraphQL API, and direct database downloads
 - **Various Formats**: JSON, CSV, SQL, XML, YAML, MongoDB exports
-- **Open Source**: MIT licensed for unlimited commercial use
-- **Developer Friendly**: Sub-200ms response times with 99.9% uptime SLA
+- **Open Source**: Database and offline data packages under ODbL-1.0; npm SDK and CLI under MIT
+- **Developer Friendly**: A free API tier, documented endpoints and plan-specific capabilities
 - **Community Driven**: Crowdsourced updates and contributions
 
 ## ✨ Features
 
 ### 🚀 API Access
 - Fast REST and GraphQL endpoints
-- Real-time geographical data queries
-- Sub-200ms response times
+- JSON responses from the currently served API dataset
+- Request quotas and field availability depend on your API plan
 - Comprehensive country, state, and city coverage
 
 ### 📊 Database Repository
 - Open-source geographical database
-- 9+ export formats available
-- MIT licensed for commercial use
+- 12 database download formats and 13 Export Tool formats
+- ODbL-1.0 permits commercial use with attribution and applicable share-alike requirements
 - Regular updates and community contributions
 
 ### 📥 Export Tool
