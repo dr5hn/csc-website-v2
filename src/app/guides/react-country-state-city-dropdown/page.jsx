@@ -104,6 +104,7 @@ export default async function ReactDropdownGuide() {
       </section>
 
       <footer className="flex flex-col gap-3 border-t border-hair pt-6 text-sm leading-normal text-ink-3">
+        <p className="m-0">For local SQL queries and checked parent relationships, follow the <Link href="/guides/import-country-state-city-csv-sql/" className={LINK}>country, state and city CSV import guide</Link>.</p>
         <p className="m-0">Data attribution: <a href="https://github.com/dr5hn/countries-states-cities-database" className={LINK}>Countries States Cities Database</a>, distributed under <a href="https://opendatacommons.org/licenses/odbl/1-0/" className={LINK}>ODbL-1.0</a>. Preserve the supplied package notices when redistributing data.</p>
         <p className="m-0">References: <a href="https://github.com/dr5hn/countrystatecity-npm/tree/main/packages/countries-browser" className={LINK}>browser package documentation</a>, <a href="https://cdn.jsdelivr.net/npm/@countrystatecity/countries-browser@3.0.1/dist/data/version.json" className={LINK}>tested snapshot provenance</a>, <a href="https://react.dev/reference/react-dom/components/select" className={LINK}>React controlled selects</a> and <a href="https://react.dev/reference/react/useEffect" className={LINK}>Effect cleanup</a>.</p>
       </footer>

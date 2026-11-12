@@ -10,6 +10,7 @@
     "build": "NODE_ENV=production next build",
     "start": "next start",
     "test": "node --test \"src/**/*.test.mjs\"",
+    "test:imports": "python3 -B -m unittest discover -s scripts/tests -p test_csv_import.py",
     "lint": "eslint .",
     "stats:refresh": "node scripts/refresh-adoption-stats.mjs",
     "social-images": "node scripts/generate-social-images.mjs"

@@ -1,4 +1,5 @@
 import CodePanel from "@/components/ui/code-panel";
+import Link from "next/link";
 
 const TABS = [
   { label: "Git", code: "git clone https://github.com/dr5hn/countries-states-cities-database.git\ncd countries-states-cities-database" },
@@ -30,6 +31,7 @@ export default function DatabaseSetup() {
           Read the licence →
         </a>
       </div>
+      <Link href="/guides/import-country-state-city-csv-sql/" className="col-span-full text-blue hover:underline">Import country, state and city CSV into SQL with verified example code →</Link>
     </section>
   );
 }

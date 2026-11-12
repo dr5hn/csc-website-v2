@@ -24,6 +24,7 @@ jobs:
       - run: npm ci --prefer-online
       - run: npm run lint
       - run: npm test
+      - run: npm run test:imports
       - run: npm run build
       # Full audit also includes an unpatched braces advisory in Next's lint tooling.
       - run: npm audit --omit=dev --audit-level=moderate
