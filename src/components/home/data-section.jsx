@@ -52,6 +52,7 @@ export default function DataSection() {
           See what each level returns in the <Link href="/country-api" className={LINK}>Country API</Link>,{" "}
           <Link href="/state-api" className={LINK}>State API</Link> and <Link href="/city-api" className={LINK}>City API</Link>{" "}
           guides, or use the data offline with the <Link href="/npm-packages" className={LINK}>npm packages</Link>.
+          {" "}For a working example, follow the <Link href="/guides/react-country-state-city-dropdown/" className={LINK}>React country, state and city dropdown guide</Link>.
         </p>
       <DataSources />
         <div className="flex flex-wrap gap-2">

@@ -10,6 +10,7 @@ const ROUTES = [
   { path: "/state-api/", priority: 0.9, changeFrequency: "weekly" },
   { path: "/city-api/", priority: 0.9, changeFrequency: "weekly" },
   { path: "/npm-packages/", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/guides/react-country-state-city-dropdown/", priority: 0.8, changeFrequency: "monthly" },
   { path: "/product/export-tool/", priority: 0.9, changeFrequency: "weekly" },
   { path: "/product/database/", priority: 0.8, changeFrequency: "weekly" },
   { path: "/product/update-tool/", priority: 0.7, changeFrequency: "weekly" },

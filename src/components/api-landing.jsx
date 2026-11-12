@@ -135,6 +135,7 @@ export default function ApiLanding({ page }) {
               </li>
             ))}
           </ul>
+          <Link href="/guides/react-country-state-city-dropdown/" className="text-blue hover:underline">Build a React location dropdown with the browser package →</Link>
         </div>
       </section>
 

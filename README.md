@@ -15,6 +15,13 @@ CSC Database is a comprehensive geographical database that provides:
 
 ## ✨ Features
 
+### Implementation guides
+
+The React dropdown guide at `/guides/react-country-state-city-dropdown/` runs the same
+`public/examples/react-location-dropdown.jsx` file that visitors can copy or download.
+It uses the pinned browser package, loads CDN data only after starting the demo, and includes
+dependent-selection resets, stale-response cleanup, retries and unassigned state links.
+
 ### Download statistics
 
 The homepage and ecosystem page render download counts from `public/adoption-stats.json` at build time.
