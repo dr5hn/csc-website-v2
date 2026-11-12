@@ -22,6 +22,13 @@ The React dropdown guide at `/guides/react-country-state-city-dropdown/` runs th
 It uses the pinned browser package, loads CDN data only after starting the demo, and includes
 dependent-selection resets, stale-response cleanup, retries and unassigned state links.
 
+The CSV-to-SQLite guide at `/guides/import-country-state-city-csv-sql/` publishes a Python
+standard-library importer and SQL queries from `public/examples/`. Run `npm run test:imports`
+with Python 3.9+ to check the importer against temporary fixtures; CI runs this alongside the
+Node tests. The importer verifies a pinned release, preserves IDs and nullable links, and creates
+a new SQLite projection without replacing an existing destination. Full-release verification is
+performed separately against the pinned public downloads; regression tests require no network.
+
 ### Download statistics
 
 The homepage and ecosystem page render download counts from `public/adoption-stats.json` at build time.

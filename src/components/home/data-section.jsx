@@ -53,6 +53,7 @@ export default function DataSection() {
           <Link href="/state-api" className={LINK}>State API</Link> and <Link href="/city-api" className={LINK}>City API</Link>{" "}
           guides, or use the data offline with the <Link href="/npm-packages" className={LINK}>npm packages</Link>.
           {" "}For a working example, follow the <Link href="/guides/react-country-state-city-dropdown/" className={LINK}>React country, state and city dropdown guide</Link>.
+          {" "}For local queries, <Link href="/guides/import-country-state-city-csv-sql/" className={LINK}>import CSV into SQL</Link> with checked relationships.
         </p>
       <DataSources />
         <div className="flex flex-wrap gap-2">
