@@ -1,4 +1,5 @@
 import DataSection from "@/components/home/data-section";
+import AdoptionStats from "@/components/adoption-stats";
 import EcosystemTeaser from "@/components/home/ecosystem-teaser";
 import HomeHero from "@/components/home/hero";
 import PricingPanel from "@/components/home/pricing-panel";
@@ -16,6 +17,7 @@ export default function Home() {
     <>
       <ScrollTracker pageName="Home" />
       <HomeHero />
+      <AdoptionStats />
       <EcosystemTeaser />
       <DataSection />
       <Testimonials />

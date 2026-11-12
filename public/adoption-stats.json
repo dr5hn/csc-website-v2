@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "npm": {
+    "start": "2026-10-12",
+    "end": "2026-11-10",
+    "updatedAt": "2026-11-12T11:44:31.584Z",
+    "packages": [
+      {
+        "name": "@countrystatecity/sdk",
+        "downloads": 19
+      },
+      {
+        "name": "@countrystatecity/countries",
+        "downloads": 146252
+      },
+      {
+        "name": "@countrystatecity/countries-browser",
+        "downloads": 45188
+      },
+      {
+        "name": "@countrystatecity/timezones",
+        "downloads": 2741
+      },
+      {
+        "name": "@countrystatecity/currencies",
+        "downloads": 1067
+      },
+      {
+        "name": "@countrystatecity/phonecodes",
+        "downloads": 666
+      },
+      {
+        "name": "@countrystatecity/postalcodes",
+        "downloads": 1590
+      },
+      {
+        "name": "@countrystatecity/geojson",
+        "downloads": 779
+      },
+      {
+        "name": "@countrystatecity/translations",
+        "downloads": 1021
+      },
+      {
+        "name": "@countrystatecity/cli",
+        "downloads": 40
+      }
+    ],
+    "downloads": 199363
+  },
+  "pypi": {
+    "start": "2026-10-12",
+    "end": "2026-11-10",
+    "updatedAt": "2026-11-12T11:44:31.584Z",
+    "packages": [
+      {
+        "name": "countrystatecity-api",
+        "downloads": 46
+      },
+      {
+        "name": "countrystatecity-countries",
+        "downloads": 11720
+      },
+      {
+        "name": "countrystatecity-timezones",
+        "downloads": 472
+      },
+      {
+        "name": "countrystatecity-currencies",
+        "downloads": 490
+      },
+      {
+        "name": "countrystatecity-translations",
+        "downloads": 486
+      },
+      {
+        "name": "countrystatecity-phonecodes",
+        "downloads": 482
+      },
+      {
+        "name": "countrystatecity-regions",
+        "downloads": 479
+      },
+      {
+        "name": "countrystatecity-postal-codes",
+        "downloads": 3766
+      }
+    ],
+    "downloads": 17941
+  },
+  "github": {
+    "downloads": 66091,
+    "releases": 142,
+    "assets": 3760,
+    "updatedAt": "2026-11-12T11:44:31.584Z"
+  }
+}

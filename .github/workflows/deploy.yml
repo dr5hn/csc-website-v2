@@ -4,6 +4,15 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
+  schedule:
+    - cron: '17 6 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-production
+  cancel-in-progress: false
 
 env:
   DEPLOY_DIR: /var/www/csc-website
@@ -26,8 +35,11 @@ jobs:
     - name: Install dependencies and build static export
       run: |
         npm ci
+        npm run stats:refresh
         npm run build
         echo "✅ Next.js static export built successfully"
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
 
     - name: Setup SSH
       uses: webfactory/ssh-agent@v0.10.0
