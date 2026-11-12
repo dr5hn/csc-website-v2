@@ -108,7 +108,8 @@ export default function ApiPlans() {
                 track="api"
                 className={cn(
                   buttonVariants({ variant: hi ? "white" : free ? "default" : "outline", size: free ? "lg" : "sm" }),
-                  "mt-auto w-full py-[13px]",
+                  "mt-auto w-full",
+                  !free && "py-[13px]",
                   hi && "ring-0"
                 )}
               >
@@ -128,15 +129,15 @@ export default function ApiPlans() {
         <dl className="m-0 mt-3 flex flex-col gap-3 text-[15px] leading-[1.55] text-ink-2">
           <div>
             <dt className="font-semibold text-ink">Requests / month</dt>
-            <dd className="m-0">The number of API calls your key can make in a billing month. Each call counts once, whatever it returns.</dd>
+            <dd className="m-0">The number of API requests included each calendar month (UTC), shared across all keys on your account. Returning many locations in a single response still uses one request. The allowance resets at 00:00 UTC on the first of each month.</dd>
           </div>
           <div>
             <dt className="font-semibold text-ink">Daily limit</dt>
-            <dd className="m-0">A cap on calls per day, so a single busy day cannot use up the whole month. Once you reach a limit, further requests are rejected until it resets.</dd>
+            <dd className="m-0">The maximum requests per UTC day, shared across your account’s keys. It resets at 00:00 UTC. If you reach either your daily or monthly limit, further requests are rejected until that allowance resets or you upgrade.</dd>
           </div>
           <div>
             <dt className="font-semibold text-ink">Origin whitelisting</dt>
-            <dd className="m-0">[confirm wording with the app team: restricts which domains or IP addresses can use your key, up to the number shown on each plan.]</dd>
+            <dd className="m-0">An optional restriction on an API key: allow requests only from domains or IP addresses you configure in the dashboard, within your plan’s combined entry allowance. Domain rules check the request’s Origin or Referer header; IP rules check the client IP. If both are configured, both must match. An API key is still required.</dd>
           </div>
         </dl>
       </details>

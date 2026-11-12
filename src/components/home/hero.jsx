@@ -54,8 +54,7 @@ export default function HomeHero() {
     setLevel(i);
   };
 
-  // Clicking the map itself zooms one level in (wrapping back to World), because visitors click it
-  // expecting something to happen. The level buttons stay the keyboard path, so the map is not a tab stop.
+  /** Advance one level, wrap at World and stop autoplay after user interaction. */
   const zoomIn = () => pick((level + 1) % LEVELS.length);
 
   const onLevelKey = (event) => {
@@ -137,8 +136,7 @@ export default function HomeHero() {
         </div>
 
         <div
-          className="relative h-[clamp(170px,22vw,300px)] cursor-pointer touch-pan-y overflow-hidden"
-          onClick={zoomIn}
+          className="relative h-[clamp(170px,22vw,300px)] touch-pan-y overflow-hidden"
         >
           <div className="absolute inset-x-3 top-1/2 aspect-[3001/627] -translate-y-1/2">
             <div
@@ -163,6 +161,12 @@ export default function HomeHero() {
             <div className="font-mono text-xs text-ink-3">{L.coord}</div>
             <div className="font-cal text-xl">{L.place}</div>
           </div>
+          <button
+            type="button"
+            aria-label={`Zoom map to ${LEVELS[(level + 1) % LEVELS.length].label}`}
+            onClick={zoomIn}
+            className="absolute inset-0 cursor-pointer focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-blue"
+          />
         </div>
 
         <div className="mx-2.5 mb-2.5 overflow-hidden rounded-[22px] bg-white">
