@@ -37,6 +37,7 @@ const COLUMNS = [
     t: "Resources",
     links: [
       { t: "Docs", href: "https://docs.countrystatecity.in/" },
+      { t: "React dropdown guide", href: "/guides/react-country-state-city-dropdown/" },
       { t: "Status", href: "https://status.countrystatecity.in/" },
       { t: "Playground", href: "https://playground.countrystatecity.in/" },
       { t: "Database demo", href: "https://demo.countrystatecity.in/" },

@@ -1,4 +1,5 @@
 import CtaLink from "@/components/cta-link";
+import Link from "next/link";
 import Tag from "@/components/ui/tag";
 import { buttonVariants } from "@/components/ui/button";
 import { NPM_PACKAGES, NPM_FAQS } from "@/lib/npm-packages";
@@ -41,6 +42,7 @@ export default function NpmPackagesLanding() {
         <pre className="m-0 w-fit max-w-full overflow-x-auto rounded-[20px] bg-field px-[22px] py-4 font-mono text-[13.5px] text-ink-code">
           npm install @countrystatecity/countries
         </pre>
+        <Link href="/guides/react-country-state-city-dropdown/" className="text-blue hover:underline">Build a country, state and city dropdown in React →</Link>
       </section>
 
       <section className="border-y border-hair bg-mist">
