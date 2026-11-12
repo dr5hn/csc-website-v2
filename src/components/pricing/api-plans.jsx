@@ -107,17 +107,40 @@ export default function ApiPlans() {
                 location={`pricing_api_${key}`}
                 track="api"
                 className={cn(
-                  buttonVariants({ variant: hi ? "white" : free ? "default" : "outline", size: "sm" }),
-                  "mt-auto w-full py-[13px]",
+                  buttonVariants({ variant: hi ? "white" : free ? "default" : "outline", size: free ? "lg" : "sm" }),
+                  "mt-auto w-full",
+                  !free && "py-[13px]",
                   hi && "ring-0"
                 )}
               >
-                {blurb?.cta ?? "Get started"}
+                {blurb?.cta ?? "Get started"}{free && " →"}
               </CtaLink>
             </div>
           );
         })}
       </div>
+
+      <details className="group rounded-[20px] border border-line bg-white px-[22px] py-[18px]">
+        <summary className="cursor-pointer list-none text-base font-semibold text-ink">
+          What do requests / month, the daily limit and origin whitelisting mean?
+          <span aria-hidden="true" className="ml-2 font-mono text-blue group-open:hidden">+</span>
+          <span aria-hidden="true" className="ml-2 hidden font-mono text-blue group-open:inline">−</span>
+        </summary>
+        <dl className="m-0 mt-3 flex flex-col gap-3 text-[15px] leading-[1.55] text-ink-2">
+          <div>
+            <dt className="font-semibold text-ink">Requests / month</dt>
+            <dd className="m-0">The number of API requests included each calendar month (UTC), shared across all keys on your account. Returning many locations in a single response still uses one request. The allowance resets at 00:00 UTC on the first of each month.</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-ink">Daily limit</dt>
+            <dd className="m-0">The maximum requests per UTC day, shared across your account’s keys. It resets at 00:00 UTC. If you reach either your daily or monthly limit, further requests are rejected until that allowance resets or you upgrade.</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-ink">Origin whitelisting</dt>
+            <dd className="m-0">An optional restriction on an API key: allow requests only from domains or IP addresses you configure in the dashboard, within your plan’s combined entry allowance. Domain rules check the request’s Origin or Referer header; IP rules check the client IP. If both are configured, both must match. An API key is still required.</dd>
+          </div>
+        </dl>
+      </details>
 
       <div className="flex flex-wrap items-center justify-between gap-3.5 rounded-[20px] border border-line bg-mist px-[22px] py-[18px]">
         <span className="text-base">
