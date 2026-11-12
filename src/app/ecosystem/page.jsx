@@ -1,4 +1,5 @@
 import CtaLink from "@/components/cta-link";
+import AdoptionStats from "@/components/adoption-stats";
 import EcosystemChannels from "@/components/ecosystem/channels";
 import EcosystemHero from "@/components/ecosystem/hero";
 import EcosystemPackages from "@/components/ecosystem/packages";
@@ -35,6 +36,7 @@ export default function EcosystemPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Ecosystem", path: "/ecosystem/" }])} />
       <ScrollTracker pageName="Ecosystem" />
       <EcosystemHero />
+      <AdoptionStats />
       <EcosystemChannels />
       <EcosystemPackages />
       <CtaPanel

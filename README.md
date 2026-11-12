@@ -15,6 +15,22 @@ CSC Database is a comprehensive geographical database that provides:
 
 ## ✨ Features
 
+### Download statistics
+
+The homepage and ecosystem page render download counts from `public/adoption-stats.json` at build time.
+Run `npm run stats:refresh` to refresh the snapshot. The website deployment runs this daily at 06:17 UTC
+and before production builds; ordinary local/CI builds use the checked-in snapshot without provider requests.
+
+npm and PyPI totals cover the official packages already listed on the website over the same 30 complete UTC days,
+ending two days before refresh to allow for reporting lag. PyPI Stats excludes known mirrors. GitHub totals cover
+data-file assets across every published database release, including prereleases, excluding checksums, notices,
+migration archives, Git clones, raw-file requests and source archives. These are file downloads, not unique users.
+
+If a provider fails or returns invalid data, its last successful whole metric and date are retained from the deployed
+snapshot (or the repository snapshot when unavailable). GitHub Actions uses its read-only token only during refresh.
+Same-day snapshots are reused across deployments. No visitor-side requests or application-backend changes are needed.
+The public JSON includes per-package totals for auditing.
+
 ### 🚀 API Access
 - Fast REST and GraphQL endpoints
 - JSON responses from the currently served API dataset
