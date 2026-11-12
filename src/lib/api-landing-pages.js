@@ -1,10 +1,7 @@
-// Content for the per-resource API landing pages (/country-api, /state-api, /city-api).
-//
-// Each entry describes one resource of the Country State City API. Endpoints,
-// field names and example values are taken from the published OpenAPI spec
-// (https://raw.githubusercontent.com/dr5hn/csc-swagger-playground/main/config.json,
-// version 2.4.1) so the pages cannot drift into describing fields that do not
-// exist. When the spec gains or renames a field, update it here too.
+// Marketing examples are excerpts of Community-plan responses. Field and endpoint
+// availability follows the API plan; shared coverage bounds live in stats.js.
+import { TEXT_STATS } from "./stats.js";
+import { LOCATION_SAMPLES } from "../data/location-samples.js";
 
 export const API_BASE_URL = "https://api.countrystatecity.in/v1";
 export const API_KEY_HEADER = "X-CSCAPI-KEY";
@@ -25,13 +22,12 @@ export const COUNTRY_API = {
   eyebrow: "Country API",
   headline: "Every country, in one endpoint.",
   summary:
-    "A REST endpoint for every sovereign state and dependent territory, with ISO 3166-1 codes, dial codes, currencies, capitals, regions and coordinates. Plain JSON over REST or GraphQL, and the free tier needs no card.",
-  count: "250",
+    "A REST endpoint for every sovereign state and dependent territory, with ISO 3166-1 codes, dial codes, currencies, capitals, regions and coordinates. JSON over REST, with GraphQL on eligible paid plans. The free tier needs no card.",
+  count: TEXT_STATS.countries,
   countLabel: "countries and territories",
-  fieldCount: 31,
-  metaTitle: "Country API: 250 Countries with ISO Codes",
+  metaTitle: `Country API: ${TEXT_STATS.countries} Countries with ISO Codes`,
   metaDescription:
-    "Free country API returning 250 countries with ISO2, ISO3, numeric codes, dial codes, currencies, capitals, flags and coordinates. 31 fields per country, JSON over REST and GraphQL.",
+    `Country API covering ${TEXT_STATS.countries} countries and territories with ISO codes, dial codes, currencies and coordinates. JSON responses and a free tier.`,
   keywords: [
     "country api",
     "countries api",
@@ -41,34 +37,14 @@ export const COUNTRY_API = {
     "country code api",
   ],
   endpoints: [
-    { method: "GET", path: "/countries", description: "Every country, newest data first" },
+    { method: "GET", path: "/countries", description: "List countries and territories" },
     { method: "GET", path: "/countries/{ciso}", description: "One country by ISO2 code or numeric id" },
     { method: "GET", path: "/iso/country", description: "Look a country up by any ISO code" },
     { method: "GET", path: "/iso/country/convert", description: "Convert between ISO2, ISO3 and numeric" },
     { method: "GET", path: "/subregions/{id}/countries", description: "Countries within a UN subregion" },
   ],
   sampleRequest: curlExample("/countries/IN"),
-  sampleResponse: `{
-  "id": 101,
-  "name": "India",
-  "iso2": "IN",
-  "iso3": "IND",
-  "numeric_code": "356",
-  "phonecode": "91",
-  "capital": "New Delhi",
-  "currency": "INR",
-  "currency_name": "Indian rupee",
-  "currency_symbol": "₹",
-  "tld": ".in",
-  "nationality": "Indian",
-  "native": "भारत",
-  "region": "Asia",
-  "subregion": "Southern Asia",
-  "latitude": "20.00000000",
-  "longitude": "77.00000000",
-  "emoji": "🇮🇳",
-  "wikiDataId": "Q668"
-}`,
+  sampleResponse: JSON.stringify({ id: 101, name: "India", iso2: "IN", iso3: "IND", phonecode: "91", capital: "New Delhi", currency: "INR", latitude: "20.00000000", longitude: "77.00000000" }, null, 2),
   fields: [
     { name: "id", note: "Stable numeric identifier" },
     { name: "name", note: "English name" },
@@ -85,13 +61,13 @@ export const COUNTRY_API = {
     { name: "native", note: "Name in the local script" },
     { name: "region", note: "UN region" },
     { name: "subregion", note: "UN subregion" },
-    { name: "timezones", note: "Every zone the country spans" },
+    { name: "timezones", note: "Published timezone entries, when available" },
     { name: "latitude", note: "Centroid latitude" },
     { name: "longitude", note: "Centroid longitude" },
     { name: "emoji", note: "Flag emoji" },
     { name: "emojiU", note: "Flag emoji code points" },
-    { name: "population", note: "Latest published figure" },
-    { name: "gdp", note: "Latest published figure" },
+    { name: "population", note: "When available; may be null" },
+    { name: "gdp", note: "When available; may be null" },
     { name: "area_sq_km", note: "Land area" },
     { name: "postal_code_format", note: "Expected postcode shape" },
     { name: "postal_code_regex", note: "Validation pattern" },
@@ -107,11 +83,11 @@ export const COUNTRY_API = {
   faqs: [
     {
       q: "Is the country API free?",
-      a: "Yes. The free tier covers 3,000 requests a month and needs only an API key, no card. Paid plans start at $5 and raise the limit; the data and the fields are identical on every tier.",
+      a: "Community includes 3,000 requests per calendar month and 100 per day with basic fields, an API key and no card. Paid plans add higher limits, extra fields and endpoints. GraphQL and field selection depend on your plan; compare the current plans for availability.",
     },
     {
       q: "How many countries does it return?",
-      a: "250 entries, covering the 193 UN member states plus observer states, dependent territories and special administrative regions. Each carries its own ISO 3166-1 codes.",
+      a: `${TEXT_STATS.countries} country and territory records. Check the countries endpoint for the current entries and codes. Coverage and downloadable snapshots can differ by release.`,
     },
     {
       q: "Can I get the data offline instead of over HTTP?",
@@ -119,7 +95,7 @@ export const COUNTRY_API = {
     },
     {
       q: "How often does the country data change?",
-      a: "Country-level fields change rarely, but currencies, capitals and dial codes do move. Changes are published through the /changes feed so you can diff rather than re-import.",
+      a: "Maintainers publish corrections to the underlying dataset and API. The /changes feed supports incremental syncing on eligible plans; check the current documentation for availability and retention.",
     },
   ],
 };
@@ -130,13 +106,12 @@ export const STATE_API = {
   eyebrow: "State API",
   headline: "The layer most country datasets skip.",
   summary:
-    "First-level administrative divisions for all 250 countries, with ISO 3166-2 codes, the official division type and the parent country. The piece most country-only datasets leave out.",
-  count: "5,308",
+    "States, provinces and other administrative divisions linked to their parent country. Subdivision codes, division types and other fields depend on the record and your plan.",
+  count: TEXT_STATS.states,
   countLabel: "states and regions",
-  fieldCount: 19,
-  metaTitle: "State API: 5,308 States with ISO 3166-2 Codes",
+  metaTitle: `State API: ${TEXT_STATS.states} States and Regions`,
   metaDescription:
-    "State API returning 5,308 states, provinces, regions and territories across 250 countries, each with ISO 3166-2 codes, division type, parent country and coordinates.",
+    `State API covering ${TEXT_STATS.states} states and regions across ${TEXT_STATS.countries} countries and territories. JSON data with parent-country links and a free tier.`,
   keywords: [
     "state api",
     "states api",
@@ -153,19 +128,7 @@ export const STATE_API = {
     { method: "GET", path: "/timezone/{ciso}/{siso}", description: "Timezone for a given state" },
   ],
   sampleRequest: curlExample("/countries/IN/states/MH"),
-  sampleResponse: `{
-  "id": 4008,
-  "name": "Maharashtra",
-  "iso2": "MH",
-  "iso3166_2": "IN-MH",
-  "country_code": "IN",
-  "type": "state",
-  "level": 1,
-  "latitude": "19.75147980",
-  "longitude": "75.71388840",
-  "timezone": "Asia/Kolkata",
-  "wikiDataId": "Q1191"
-}`,
+  sampleResponse: JSON.stringify({ id: 4008, name: "Maharashtra", iso2: "MH", country_id: 101, country_code: "IN" }, null, 2),
   fields: [
     { name: "id", note: "Stable numeric identifier" },
     { name: "name", note: "English name" },
@@ -181,7 +144,7 @@ export const STATE_API = {
     { name: "latitude", note: "Centroid latitude" },
     { name: "longitude", note: "Centroid longitude" },
     { name: "timezone", note: "IANA zone" },
-    { name: "population", note: "Latest published figure" },
+    { name: "population", note: "When available; may be null" },
     { name: "translations", note: "Name in other languages" },
     { name: "wikiDataId", note: "Wikidata item" },
   ],
@@ -194,19 +157,19 @@ export const STATE_API = {
   faqs: [
     {
       q: "Which countries have state data?",
-      a: "All 250. Coverage is the country's own first-level divisions, so the count varies from one (for small territories) to several hundred, and the type field says what they are called locally.",
+      a: "Coverage varies by country and territory. Records can represent different administrative levels. Use /countries/{ciso}/states to inspect the current entries for a country; some places may have no listed divisions.",
     },
     {
       q: "Do you return ISO 3166-2 codes?",
-      a: "Yes, in the iso3166_2 field, alongside the bare subdivision code in iso2. Use iso3166_2 when you need a globally unique value.",
+      a: "The iso3166_2 field contains a subdivision code when available, alongside iso2. Some records lack a code, and field access depends on your plan.",
     },
     {
       q: "What does the type field contain?",
-      a: "The official name of the division: state, province, region, canton, prefecture, emirate and so on. It comes from the country's own statistical authority, not from a translation.",
+      a: "A division classification such as state, province, region or prefecture, when available. Values and administrative levels vary by record and country; access to this field depends on your plan.",
     },
     {
       q: "Can I fetch every state in one request?",
-      a: "Yes, GET /states returns them all. For a country-by-country load, GET /countries/{ciso}/states is smaller and usually what a dropdown wants.",
+      a: "GET /states lists states on Starter and higher plans. Community includes /countries/{ciso}/states for a country-by-country load. Check the current plan comparison for endpoint availability.",
     },
   ],
 };
@@ -215,15 +178,14 @@ export const CITY_API = {
   slug: "city-api",
   resource: "City",
   eyebrow: "City API",
-  headline: "153,765 cities, each with a point on the map.",
+  headline: `${TEXT_STATS.cities} cities and settlements, linked by location.`,
   summary:
-    "Cities, towns and settlements worldwide, each with its parent state and country, coordinates, IANA timezone and native name. Includes nearby search and autocomplete, so you can build a real location picker rather than a long select box.",
-  count: "153,765",
+    "Cities, towns and settlements linked to countries and states. Community returns basic city fields; richer fields, nearby search and autocomplete are available on eligible paid plans.",
+  count: TEXT_STATS.cities,
   countLabel: "cities and settlements",
-  fieldCount: 19,
-  metaTitle: "City API: 153,765 Cities with Coordinates",
+  metaTitle: `City API: ${TEXT_STATS.cities} Cities and Settlements`,
   metaDescription:
-    "City API returning 153,765 cities and towns with latitude, longitude, IANA timezone, parent state and country, native names and translations. Includes nearby search and autocomplete.",
+    `City API covering ${TEXT_STATS.cities} cities and settlements. Free basic JSON access; coordinates, translations, autocomplete and nearby search on eligible plans.`,
   keywords: [
     "city api",
     "cities api",
@@ -240,18 +202,7 @@ export const CITY_API = {
     { method: "GET", path: "/timezone/{ciso}/{siso}/{city_id}", description: "Timezone for a given city" },
   ],
   sampleRequest: curlExample("/countries/IN/states/MH/cities"),
-  sampleResponse: `{
-  "id": 57606,
-  "name": "Mumbai",
-  "native": "मुंबई",
-  "kind": "settlement",
-  "state_code": "MH",
-  "country_code": "IN",
-  "latitude": "19.07283000",
-  "longitude": "72.88261000",
-  "timezone": "Asia/Kolkata",
-  "wikiDataId": "Q1156"
-}`,
+  sampleResponse: JSON.stringify([{ id: LOCATION_SAMPLES[0].st[0].ci[0][1], name: LOCATION_SAMPLES[0].st[0].ci[0][0], kind: "settlement" }], null, 2),
   fields: [
     { name: "id", note: "Stable numeric identifier" },
     { name: "name", note: "English name" },
@@ -267,7 +218,7 @@ export const CITY_API = {
     { name: "latitude", note: "Point latitude" },
     { name: "longitude", note: "Point longitude" },
     { name: "timezone", note: "IANA zone" },
-    { name: "population", note: "Latest published figure" },
+    { name: "population", note: "When available; may be null" },
     { name: "translations", note: "Name in other languages" },
     { name: "wikiDataId", note: "Wikidata item" },
   ],
@@ -280,19 +231,19 @@ export const CITY_API = {
   faqs: [
     {
       q: "How many cities does the API cover?",
-      a: "153,765 cities, towns and settlements across 250 countries. Each one carries its parent state and country, so you never have to guess which Springfield you have.",
+      a: `${TEXT_STATS.cities} cities and settlements across ${TEXT_STATS.countries} countries and territories. Coverage varies by release. Parent links help identify places with the same name; returned fields depend on your plan.`,
     },
     {
       q: "Is there an autocomplete endpoint?",
-      a: "Yes. GET /search/autocomplete is built for type-ahead and returns ranked matches across countries, states and cities in one response.",
+      a: "GET /search/autocomplete returns ranked suggestions across countries, states and cities. It is available on Supporter and higher plans; basic city-list endpoints are also available on Community.",
     },
     {
       q: "Do cities come with coordinates and timezones?",
-      a: "Yes, latitude and longitude on every record and an IANA timezone such as Asia/Kolkata, which is what date libraries expect.",
+      a: "Coordinates and IANA timezones are included when populated and available on your plan. Some values may be missing or null; Community city responses contain basic fields rather than coordinates.",
     },
     {
       q: "Can I find cities near a point?",
-      a: "Yes, GET /search/nearby takes a latitude, a longitude and a radius, and returns the cities inside it ordered by distance.",
+      a: "On Supporter and higher plans, GET /search/nearby accepts coordinates and a radius and returns matching places ordered by distance. Check the endpoint documentation for accepted parameters and limits.",
     },
   ],
 };
