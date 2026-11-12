@@ -14,7 +14,7 @@ const TRACKERS = {
 };
 
 /**
- * Link for calls to action. Adds website/page attribution or retains valid inbound attribution on app.countrystatecity.in
+ * Link for calls to action. Carries inbound attribution onto app.countrystatecity.in
  * URLs, opens other sites in a new tab and reports the click to analytics.
  *
  * @param {string} location - Where the link sits, e.g. "home_hero". Used as the GA4 button_location.
@@ -22,7 +22,7 @@ const TRACKERS = {
  */
 export default function CtaLink({ href, location, track, children, onClick, ...props }) {
   const attribution = useInboundAttribution();
-  const finalHref = isAppUrl(href) ? withAttribution(href, { source: "website", campaign: location, ...attribution }) : href;
+  const finalHref = isAppUrl(href) ? withAttribution(href, attribution) : href;
   const isExternal = /^(https?:)?\/\//.test(href) || href.startsWith("mailto:");
   const external = isExternal && !href.startsWith("mailto:");
 

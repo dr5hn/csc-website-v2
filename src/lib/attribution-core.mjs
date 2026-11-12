@@ -9,7 +9,7 @@
 export const ATTRIBUTION_KEYS = ["source", "campaign", "package"];
 
 /** Task 06's approved source names. Anything else is discarded, not forwarded. */
-export const ALLOWED_SOURCES = ["npm", "github", "cli", "sdk_docs", "playground", "website"];
+export const ALLOWED_SOURCES = ["npm", "github", "cli", "sdk_docs", "playground"];
 
 /** Caps outbound URL growth and keeps junk out of downstream event logs. */
 export const MAX_VALUE_LENGTH = 64;

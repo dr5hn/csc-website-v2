@@ -118,17 +118,6 @@ describe("withAttribution", () => {
     assert.equal(withAttribution(HERO, { source: "not-allowed" }), HERO);
   });
 
-  it("forwards website page attribution and preserves an inbound acquisition source", () => {
-    const website = new URL(withAttribution(HERO, { source: "website", campaign: "city-api_hero" }));
-    assert.equal(website.searchParams.get("source"), "website");
-    assert.equal(website.searchParams.get("campaign"), "city-api_hero");
-    assert.equal(website.searchParams.get("utm_content"), "hero_signup");
-    const inbound = new URL(withAttribution(HERO, { source: "website", campaign: "city-api_hero", ...FULL }));
-    assert.equal(inbound.searchParams.get("source"), "npm");
-    assert.equal(inbound.searchParams.get("campaign"), "sdk_api_migration");
-    assert.equal(inbound.searchParams.get("package"), "countries");
-  });
-
   it("preserves existing query params", () => {
     const url = new URL(withAttribution(HERO, FULL));
     assert.equal(url.searchParams.get("utm_content"), "hero_signup");
