@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { readFile } from "node:fs/promises";
-import { PACKAGES, downloadWindow, packageDownloads, releaseDownloads, refreshMetrics, validMetric } from "./adoption-stats.mjs";
+import { PACKAGES, downloadWindow, packageDownloads, releaseDownloads, refreshMetrics, scheduledRefreshNeeded, validMetric } from "./adoption-stats.mjs";
 
 const now = new Date("2026-11-12T06:17:00.000Z");
 const window = { start: "2026-10-12", end: "2026-11-10" };
@@ -98,6 +98,25 @@ test("same-day valid snapshots need no provider requests", async () => {
   const previous = await refreshMetrics({}, provider, now);
   const next = await refreshMetrics(previous, async () => { throw new Error("must not fetch"); }, now);
   assert.deepEqual(next, previous);
+});
+
+/** Catch-up runs skip fresh data but retry stale, unavailable or malformed published snapshots. */
+test("scheduled refresh requires all three metrics to be fresh and valid", async () => {
+  const snapshot = await refreshMetrics({}, provider, now);
+  assert.equal(await scheduledRefreshNeeded(async () => snapshot, now), false);
+  assert.equal(await scheduledRefreshNeeded(async () => snapshot, new Date("2026-11-13T06:17:00Z")), true);
+  for (const key of ["npm", "pypi", "github"]) {
+    for (const patch of [undefined, { ...snapshot[key], updatedAt: "2026-11-11T06:17:00.000Z" }, { ...snapshot[key], downloads: -1 }]) {
+      assert.equal(await scheduledRefreshNeeded(async () => ({ ...snapshot, [key]: patch }), now), true, key);
+    }
+  }
+  const oldWindow = { ...snapshot.npm, start: "2026-10-11", end: "2026-11-09" };
+  assert.equal(validMetric("npm", oldWindow), true);
+  assert.equal(await scheduledRefreshNeeded(async () => ({ ...snapshot, npm: oldWindow }), now), true);
+  for (const invalid of [null, {}, { ...snapshot, version: 2 }]) {
+    assert.equal(await scheduledRefreshNeeded(async () => invalid, now), true);
+  }
+  assert.equal(await scheduledRefreshNeeded(async () => { throw new Error("HTTP 503"); }, now), true);
 });
 
 /** Cached JSON is a trust boundary and cannot silently omit packages or substitute totals. */

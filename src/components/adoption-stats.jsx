@@ -43,7 +43,7 @@ export default function AdoptionStats() {
             Package totals use the displayed UTC dates, with a short allowance for reporting lag.
             GitHub totals include data files from all published database releases, including prereleases, and exclude checksums,
             notices, migration archives, source archives, Git clones and raw-file traffic.
-            Statistics refresh daily; provider outages retain the last successful values and their update dates.{" "}
+            Updates are scheduled daily with catch-up attempts; provider outages retain the last successful values and their update dates.{" "}
             <a href="/adoption-stats.json" className="text-blue hover:underline">View the counts and package breakdown →</a>
           </p>
         </details>

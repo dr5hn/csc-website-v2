@@ -5,7 +5,7 @@ on:
     branches: [ main ]
   workflow_dispatch:
   schedule:
-    - cron: '17 6 * * *'
+    - cron: '17 6,9,12 * * *'
 
 permissions:
   contents: read
@@ -18,7 +18,25 @@ env:
   DEPLOY_DIR: /var/www/csc-website
 
 jobs:
+  check-refresh:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    outputs:
+      refresh: ${{ steps.check.outputs.refresh }}
+    steps:
+    - uses: actions/checkout@v5
+    - uses: actions/setup-node@v5
+      with:
+        node-version: '26'
+    - name: Check published download statistics
+      id: check
+      run: node scripts/check-adoption-refresh.mjs
+
   build-and-deploy:
+    needs: check-refresh
+    # Push/manual deployments still run when the schedule-only check is skipped.
+    # A failed check also permits a recovery build; cancellation stops deployment.
+    if: ${{ !cancelled() && (github.event_name != 'schedule' || needs.check-refresh.outputs.refresh != 'false') }}
     runs-on: ubuntu-latest
 
     steps:
