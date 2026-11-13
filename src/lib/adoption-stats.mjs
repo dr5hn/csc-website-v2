@@ -30,6 +30,24 @@ export function validMetric(key, value) {
     entries.reduce((total, entry) => total + entry.downloads, 0) === value.downloads;
 }
 
+/** Reuse a metric only for today's UTC date and the current reporting window. */
+function metricIsFresh(key, value, now) {
+  const window = downloadWindow(now);
+  return validMetric(key, value) && value.updatedAt.slice(0, 10) === now.toISOString().slice(0, 10) &&
+    (key === "github" || (value.start === window.start && value.end === window.end));
+}
+
+/** Skip a scheduled deployment only when every published metric is already fresh. */
+export async function scheduledRefreshNeeded(request, now = new Date()) {
+  try {
+    const snapshot = await request("https://countrystatecity.in/adoption-stats.json");
+    return snapshot?.version !== 1 || !["npm", "pypi", "github"].every((key) => metricIsFresh(key, snapshot[key], now));
+  } catch {
+    // An unavailable snapshot must not prevent a recovery attempt.
+    return true;
+  }
+}
+
 /** Aggregate every configured package over the same explicit 30-day window. */
 export async function packageDownloads(key, request, window, updatedAt) {
   const packages = [];
@@ -93,8 +111,7 @@ export async function refreshMetrics(previous, request, now = new Date()) {
   const window = downloadWindow(now);
   const outcomes = await Promise.allSettled(["npm", "pypi", "github"].map((key) => {
     const cached = previous?.[key];
-    if (validMetric(key, cached) && cached.updatedAt.slice(0, 10) === now.toISOString().slice(0, 10) &&
-        (key === "github" || (cached.start === window.start && cached.end === window.end))) return cached;
+    if (metricIsFresh(key, cached, now)) return cached;
     return key === "github" ? releaseDownloads(request, now.toISOString()) : packageDownloads(key, request, window, now.toISOString());
   }));
   for (const [i, key] of ["npm", "pypi", "github"].entries()) {

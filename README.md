@@ -32,8 +32,11 @@ performed separately against the pinned public downloads; regression tests requi
 ### Download statistics
 
 The homepage and ecosystem page render download counts from `public/adoption-stats.json` at build time.
-Run `npm run stats:refresh` to refresh the snapshot. The website deployment runs this daily at 06:17 UTC
-and before production builds; ordinary local/CI builds use the checked-in snapshot without provider requests.
+Run `npm run stats:refresh` to refresh the snapshot. Website refreshes are scheduled daily at 06:17 UTC,
+with catch-up attempts at 09:17 and 12:17 UTC. GitHub's scheduler is best effort; delayed or missed runs are possible.
+Scheduled runs skip building and deploying when all published metrics are already fresh for the UTC day and reporting
+window. Missing, invalid or stale metrics trigger a recovery build. Push/manual production builds always run the refresh;
+ordinary local/CI builds use the checked-in snapshot without provider requests.
 
 npm and PyPI totals cover the official packages already listed on the website over the same 30 complete UTC days,
 ending two days before refresh to allow for reporting lag. PyPI Stats excludes known mirrors. GitHub totals cover
