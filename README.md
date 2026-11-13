@@ -15,6 +15,13 @@ CSC Database is a comprehensive geographical database that provides:
 
 ## ✨ Features
 
+### Machine-readable index
+
+`/llms.txt` is generated as a plain-text static file by `src/app/llms.txt/route.js` during each build.
+It reuses the website's coverage bounds and complete npm/Python package catalogs, distinguishes local
+snapshots from CDN and authenticated API access, and links to implementation guides and primary references.
+It requires no runtime server or visitor-side requests.
+
 ### Implementation guides
 
 The React dropdown guide at `/guides/react-country-state-city-dropdown/` runs the same
