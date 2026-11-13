@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { TEXT_STATS } from "@/lib/stats";
 
 const TYPE_COLOUR = { int: "text-blue", str: "text-ok", dec: "text-[#7a5af0]", fk: "text-live-ink", obj: "text-ink-3" };
@@ -5,9 +6,10 @@ const TYPE_COLOUR = { int: "text-blue", str: "text-ok", dec: "text-[#7a5af0]", f
 const TABLES = [
   { name: "countries", count: TEXT_STATS.countries, head: "bg-blue text-white", fields: [["id", "int"], ["name", "str"], ["iso2 · iso3", "str"], ["phonecode", "str"], ["currency", "str"], ["region_id", "fk → regions"], ["timezones", "obj"]] },
   { name: "states", count: TEXT_STATS.states, head: "bg-field text-ink", fields: [["id", "int"], ["name", "str"], ["iso2", "str"], ["country_id", "fk → countries"], ["type", "str"], ["latitude · longitude", "dec"], ["timezone", "str"]] },
-  { name: "cities", count: TEXT_STATS.cities, head: "bg-field text-ink", fields: [["id", "int"], ["name", "str"], ["state_id", "fk → states"], ["country_id", "fk → countries"], ["latitude · longitude", "dec"], ["timezone", "str"], ["wikiDataId", "str"]] },
+  { name: "cities", count: TEXT_STATS.cities, head: "bg-field text-ink", fields: [["id", "int"], ["name", "str"], ["state_id", "fk → states (nullable)"], ["country_id", "fk → countries"], ["latitude · longitude", "dec"], ["timezone", "str"], ["wikiDataId", "str"]] },
 ];
 
+/** Show the core hierarchy without implying a complete or always non-null export schema. */
 export default function DatabaseSchema() {
   return (
     <section className="border-y border-hair bg-mist">
@@ -15,11 +17,11 @@ export default function DatabaseSchema() {
         <div className="flex flex-wrap items-end justify-between gap-5">
           <div className="flex max-w-[640px] flex-col gap-3.5">
             <div className="eyebrow">Schema</div>
-            <h2 className="display-2 m-0">Three tables, linked by ID.</h2>
+            <h2 className="display-2 m-0">Core tables, linked by ID.</h2>
           </div>
           <p className="m-0 max-w-[420px] text-[17px] leading-[1.55] text-ink-2">
-            Every city points to its state and country, so joins and dropdowns work the same in every format. Regions and subregions
-            sit above countries.
+            Country, state and city IDs link the core records. Some cities have no state link; use a left join to keep them.
+            This simplified view omits other tables and columns, which vary by release and export format.
           </p>
         </div>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-3">
@@ -40,6 +42,9 @@ export default function DatabaseSchema() {
             </div>
           ))}
         </div>
+        <Link href="/guides/import-country-state-city-csv-sql/#queries" className="text-blue underline underline-offset-4 hover:text-blue-deep">
+          See the CSV-to-SQLite example with null state links →
+        </Link>
       </div>
     </section>
   );
