@@ -5,9 +5,10 @@ const TABS = [
   { label: "Git", code: "git clone https://github.com/dr5hn/countries-states-cities-database.git\ncd countries-states-cities-database" },
   { label: "npm", code: "npm install @countrystatecity/countries\n# or, in the browser\nnpm install @countrystatecity/countries-browser" },
   { label: "PyPI", code: "pip install countrystatecity-countries" },
-  { label: "CLI", code: "npm install -g @countrystatecity/cli\ncsc search cities --country IN --state MH" },
+  { label: "CLI", code: "npm install -g @countrystatecity/cli\n# Hosted API access; an API key and plan quotas apply\ncsc auth login\ncsc search cities --country IN --state MH" },
 ];
 
+/** Show setup prerequisites and direct readers to the database licence. */
 export default function DatabaseSetup() {
   return (
     <section className="wrap-flush grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-3 pb-[clamp(56px,7vw,104px)]">
@@ -18,7 +19,7 @@ export default function DatabaseSetup() {
           {[
             "Use it in commercial products.",
             "Credit CountryStateCity where the data appears.",
-            "Share changes to the data itself under the same licence.",
+            "Review applicable share-alike requirements.",
           ].map((line) => (
             <li key={line} className="flex gap-2.5">
               <span aria-hidden="true" className="text-ok">✓</span>
@@ -27,7 +28,7 @@ export default function DatabaseSetup() {
           ))}
         </ul>
         <span className="font-mono text-[13px] text-ink-2">Data and data packages: ODbL-1.0</span>
-        <a href="https://docs.countrystatecity.in/" target="_blank" rel="noopener noreferrer" className="mt-auto text-[15px] font-semibold">
+        <a href="https://opendatacommons.org/licenses/odbl/1-0/" target="_blank" rel="noopener noreferrer" className="mt-auto text-[15px] font-semibold">
           Read the licence →
         </a>
       </div>
