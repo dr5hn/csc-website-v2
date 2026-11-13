@@ -22,6 +22,10 @@ It reuses the website's coverage bounds and complete npm/Python package catalogs
 snapshots from CDN and authenticated API access, and links to implementation guides and primary references.
 It requires no runtime server or visitor-side requests.
 
+Public HTML pages belong in `src/app/sitemap.js` using their canonical URLs. The sitemap regression
+test compares the complete page tree with the sitemap and fails CI for missing, duplicate or obsolete
+entries. After publishing new pages, submit the sitemap in Search Console and inspect important URLs.
+
 ### Implementation guides
 
 The React dropdown guide at `/guides/react-country-state-city-dropdown/` runs the same
