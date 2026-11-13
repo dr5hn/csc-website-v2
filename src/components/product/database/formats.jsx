@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 
 const RELEASES_URL = "https://github.com/dr5hn/countries-states-cities-database/releases/latest/download/";
 
+/** Link each published release format to its asset and appropriate import tooling. */
 export default function DatabaseFormats() {
   const [filter, setFilter] = useState("All");
   const rows = DATABASE_FORMATS.filter((f) => filter === "All" || f.group === filter);
@@ -40,7 +41,9 @@ export default function DatabaseFormats() {
         ))}
       </div>
       <div className="px-2 text-sm text-ink-3">
-        JSON and SQL world files include countries, states and cities. Other formats link to city files; additional files are on GitHub releases. Need only some fields or countries?{" "}
+        JSON and SQL world files include countries, states and cities. Extract the MongoDB archive and restore its BSON files with{" "}
+        <CtaLink href="https://www.mongodb.com/docs/database-tools/mongorestore/" location="database_formats_mongorestore" className="text-blue hover:text-blue-deep hover:underline">mongorestore</CtaLink>.
+        {" "}Other formats link to city files; additional files are on GitHub releases. Need only some fields or countries?{" "}
         <CtaLink href="https://export.countrystatecity.in/" location="database_formats_export" track="export" className="text-blue hover:text-blue-deep hover:underline">
           Use the Export Tool
         </CtaLink>
