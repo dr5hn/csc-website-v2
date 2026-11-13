@@ -5,8 +5,8 @@ import CtaPanel from "@/components/ui/cta-panel";
 
 const VALUES = [
   ["Community-owned", "The data is open under ODbL-1.0 and improved by the people who use it."],
-  ["Developer empathy", "Real examples, stable IDs and docs that respect your time."],
-  ["Global by default", "Every country, in every format, with translations."],
+  ["Developer empathy", "Real examples, versioned releases and docs that respect your time."],
+  ["Global by default", "Multiple formats and translated names where available."],
   ["Trust and reliability", "Public releases, source-linked corrections and a public API status page."],
 ];
 
