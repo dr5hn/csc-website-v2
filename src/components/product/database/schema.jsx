@@ -42,6 +42,22 @@ export default function DatabaseSchema() {
             </div>
           ))}
         </div>
+        <div className="flex max-w-[900px] flex-col gap-3 text-[17px] leading-[1.6] text-ink-2">
+          <h3 className="m-0 text-xl font-semibold text-ink">Coverage and place types</h3>
+          <p className="m-0">
+            This is a worldwide location dataset, not a guarantee that every city or village is listed.
+            City records can represent settlements, neighbourhoods or administrative units; classifications and coverage vary by country and release.
+            Review the{" "}
+            <a href="https://github.com/dr5hn/countries-states-cities-database/blob/master/TYPE_FIELD.md" target="_blank" rel="noopener noreferrer" className="text-blue underline underline-offset-4 hover:text-blue-deep">
+              place-type definitions
+            </a>{" "}
+            before filtering rows for your application.
+          </p>
+          <p className="m-0">
+            Keep country and state IDs with city names so places with the same name stay distinct.
+            Check the fields in your chosen release rather than assuming every format has the same columns or every value is populated.
+          </p>
+        </div>
         <Link href="/guides/import-country-state-city-csv-sql/#queries" className="text-blue underline underline-offset-4 hover:text-blue-deep">
           See the CSV-to-SQLite example with null state links →
         </Link>

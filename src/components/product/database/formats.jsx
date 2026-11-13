@@ -17,8 +17,23 @@ export default function DatabaseFormats() {
   return (
     <section id="formats" className="wrap-flush flex scroll-mt-28 flex-col gap-6 py-[clamp(56px,7vw,104px)]">
       <div className="flex flex-wrap items-end justify-between gap-4 px-2">
-        <h2 className="display-2 m-0">Pick a format.</h2>
+        <h2 className="display-2 m-0">Download a world cities database.</h2>
         <Segmented label="Filter formats" items={FORMAT_FILTERS} value={filter} onChange={setFilter} />
+      </div>
+      <div className="flex max-w-[900px] flex-col gap-3 px-2 text-[17px] leading-[1.6] text-ink-2">
+        <p className="m-0">
+          Choose CSV for city rows in a spreadsheet or an import pipeline, or Parquet for column-based analysis.
+          Need the country → state → city hierarchy together? Choose the nested JSON download or a world database file.
+          The CSV and Parquet buttons below download cities; get the matching country and state files from the source commit for that release.
+        </p>
+        <p className="m-0">
+          For SQL, select your database engine: MySQL, PostgreSQL, SQLite and SQL Server have separate exports.
+          Decompress the downloaded file before importing it with your engine’s tools. For a checked CSV import,
+          follow the{" "}
+          <CtaLink href="/guides/import-country-state-city-csv-sql/" location="database_formats_import_guide" className="text-blue underline underline-offset-4 hover:text-blue-deep">
+            CSV-to-SQLite guide
+          </CtaLink>.
+        </p>
       </div>
       <div className="overflow-hidden rounded-3xl border border-line">
         {rows.map((f, i) => (
@@ -43,7 +58,11 @@ export default function DatabaseFormats() {
       <div className="px-2 text-sm text-ink-3">
         JSON and SQL world files include countries, states and cities. Extract the MongoDB archive and restore its BSON files with{" "}
         <CtaLink href="https://www.mongodb.com/docs/database-tools/mongorestore/" location="database_formats_mongorestore" className="text-blue hover:text-blue-deep hover:underline">mongorestore</CtaLink>.
-        {" "}Other formats link to city files; additional files are on GitHub releases. Need only some fields or countries?{" "}
+        {" "}Other formats link to city files; additional files are on{" "}
+        <CtaLink href="https://github.com/dr5hn/countries-states-cities-database/releases/latest" location="database_formats_release" track="github" className="text-blue underline underline-offset-4 hover:text-blue-deep">
+          GitHub releases
+        </CtaLink>.
+        {" "}Need only some fields or countries?{" "}
         <CtaLink href="https://export.countrystatecity.in/" location="database_formats_export" track="export" className="text-blue hover:text-blue-deep hover:underline">
           Use the Export Tool
         </CtaLink>
