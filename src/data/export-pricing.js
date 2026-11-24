@@ -1,6 +1,7 @@
 // Shared export tool pricing data.
 // Source of truth: csc-export-tool/src/config/pricing.js — keep these in sync
 // whenever credit pricing changes in the main app.
+// Prepared for csc-export-tool PR #86; release together after explicit launch approval.
 export const EXPORT_CREDITS_URL = "https://export.countrystatecity.in/dashboard/credits";
 
 export const exportPricingPlans = [
@@ -24,9 +25,9 @@ export const exportPricingPlans = [
   },
   {
     name: "Starter Pack",
-    price: "$20",
+    price: "$30",
     credits: "10 Credits",
-    pricePerCredit: "$2.00/credit",
+    pricePerCredit: "$3.00/credit",
     description: "Perfect for small to medium exports.",
     features: [
       "All export formats supported",
@@ -42,9 +43,9 @@ export const exportPricingPlans = [
   },
   {
     name: "Basic Pack",
-    price: "$30",
+    price: "$40",
     credits: "20 Credits",
-    pricePerCredit: "$1.50/credit",
+    pricePerCredit: "$2.00/credit",
     description: "Best value for regular usage.",
     features: [
       "All export formats supported",
@@ -60,10 +61,10 @@ export const exportPricingPlans = [
   },
   {
     name: "Standard Pack",
-    price: "$40",
+    price: "$50",
     credits: "30 Credits",
-    pricePerCredit: "$1.33/credit",
-    description: "33% savings compared to Custom Credits.",
+    pricePerCredit: "$1.67/credit",
+    description: "44% savings compared to Custom Credits.",
     features: [
       "All export formats supported",
       "Access to all data types",
@@ -75,14 +76,14 @@ export const exportPricingPlans = [
     target: "_blank",
     accent: "blue",
     popular: false,
-    badge: "Save 33%",
+    badge: "Save 44%",
   },
   {
     name: "Premium Pack",
-    price: "$50",
+    price: "$60",
     credits: "40 Credits",
-    pricePerCredit: "$1.25/credit",
-    description: "38% savings — best value for heavy users.",
+    pricePerCredit: "$1.50/credit",
+    description: "50% savings — best value for heavy users.",
     features: [
       "All export formats supported",
       "Access to all data types",
@@ -101,9 +102,9 @@ export const exportPricingPlans = [
 // Custom credits option
 export const customCreditsOption = {
   name: "Custom Credits",
-  price: "$2.00",
-  pricePerCredit: "$2.00 per credit",
-  description: "Buy exactly what you need — $2 per credit",
+  price: "$3.00",
+  pricePerCredit: "$3.00 per credit",
+  description: "Buy exactly what you need — $3 per credit",
   features: [
     "Buy exactly what you need",
     "Perfect for small top-ups",
