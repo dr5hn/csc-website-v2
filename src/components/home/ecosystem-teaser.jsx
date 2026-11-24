@@ -14,7 +14,7 @@ const CHANNELS = [
   { name: "npm", tag: "10 packages", desc: "An official API SDK, a CLI and eight offline data packages.", cmd: "npm i @countrystatecity/sdk", href: "https://www.npmjs.com/org/countrystatecity" },
   { name: "PyPI", tag: "8 packages", desc: "A typed sync + async API client, plus offline data packages.", cmd: "pip install countrystatecity-api", href: "https://pypi.org/org/countrystatecity/" },
   { name: "CLI", tag: "Tool", desc: "Search, explore and generate dropdowns or seeds from your terminal.", cmd: "csc search states --country IN", href: "https://www.npmjs.com/package/@countrystatecity/cli" },
-  { name: "Export Tool", tag: "Files", desc: "Pick data, fields and format. 5 free credits to start.", cmd: "13 formats · CSV to GeoJSON", href: "/product/export-tool" },
+  { name: "Export Tool", tag: "Files", desc: "Choose datasets and fields, including counties and postcodes.", cmd: "13 formats · CSV to GeoJSON", href: "/product/export-tool" },
   { name: "Update Tool", tag: "Community", desc: "Suggest corrections that ship in the next release.", cmd: "Submit a change →", href: "/product/update-tool" },
   { name: "Playground", tag: "Docs", desc: "Try any endpoint in the browser before writing code.", cmd: "Open playground →", href: "https://playground.countrystatecity.in/" },
   { name: "GitHub", tag: "Open data", desc: "Raw data files, releases and issues. ODbL-1.0.", cmd: "stars", href: REPO_URL },

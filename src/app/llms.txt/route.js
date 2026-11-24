@@ -15,7 +15,7 @@ export function GET() {
 > npm and Python packages, and a browser-based export tool.
 
 Operated by dr5hn. The source is the countries-states-cities-database repository on GitHub.
-Coverage varies by record and release. API data, package snapshots and database releases can differ by version.
+Coverage varies by record and release. API data, package snapshots, database releases and Export Tool downloads can use different snapshots.
 
 ## Key facts
 
@@ -55,7 +55,7 @@ ${PYPI_PACKAGES.map(({ name, desc }) => `- [${name}](https://pypi.org/project/${
 ## Database and tools
 
 - [Offline database](${SITE_URL}/product/database/): versioned data in ${TEXT_STATS.formats} formats, including SQL, JSON, CSV, XML and YAML
-- [Export tool](${SITE_URL}/product/export-tool/): select fields and filters and download a custom extract
+- [Export tool](${SITE_URL}/product/export-tool/): select countries, states, counties, cities and postcodes, choose fields and filters, and download a ZIP in one of 13 data formats with source and licence files
 - [Update tool](${SITE_URL}/product/update-tool/): submit and track corrections to the dataset
 - [Ecosystem](${SITE_URL}/ecosystem/): compare access methods and package options
 - [Download statistics](${SITE_URL}/adoption-stats.json): per-package counts, reporting periods and last successful update dates; downloads are not unique users

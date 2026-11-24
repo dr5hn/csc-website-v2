@@ -5,6 +5,7 @@ import { useState } from "react";
 import CtaLink from "@/components/cta-link";
 import { buttonVariants } from "@/components/ui/button";
 import { useExportPricing } from "@/hooks/use-export-pricing";
+import { DATASETS } from "@/lib/export-calc";
 import { cn } from "@/lib/utils";
 
 export default function ExportPacks() {
@@ -50,6 +51,7 @@ export default function ExportPacks() {
           <div className="flex flex-col gap-1">
             <span className="font-cal text-[22px]">Custom amount</span>
             <span className="text-sm text-ink-2">${perCredit.toFixed(2)} per credit, {minCredits}–{maxCredits}</span>
+            <span className="text-sm text-ink-2">Estimate for {credits} credits is ${(credits * perCredit).toFixed(2)}</span>
           </div>
           <div className="flex items-center gap-2 rounded-full bg-white p-1">
             <button type="button" aria-label="Fewer credits" disabled={credits <= minCredits} onClick={() => setCredits((c) => Math.max(minCredits, c - 1))} className="size-11 cursor-pointer rounded-full bg-field text-xl text-ink disabled:opacity-40">−</button>
@@ -57,12 +59,13 @@ export default function ExportPacks() {
             <button type="button" aria-label="More credits" disabled={credits >= maxCredits} onClick={() => setCredits((c) => Math.min(maxCredits, c + 1))} className="size-11 cursor-pointer rounded-full bg-field text-xl text-ink disabled:opacity-40">+</button>
           </div>
           <CtaLink href={customCredits.href} location="pricing_export_custom" track="export" className={buttonVariants({ size: "sm", className: "px-5 py-[13px]" })}>
-            Buy for ${(credits * perCredit).toFixed(2)}
+            Choose amount in Export Tool →
           </CtaLink>
         </div>
         <div className="flex flex-col gap-2.5 rounded-3xl border border-line p-6">
           <span className="font-cal text-[22px]">How credits work</span>
-          <span className="text-[15px] leading-normal text-ink-2">Each data type costs credits: Countries 1, States 3, Cities 4. Pick a format and download.</span>
+          <span className="text-[15px] leading-normal text-ink-2">{Object.values(DATASETS).map(({ name, credits }) => `${name} ${credits}`).join(" · ")}</span>
+          <span className="text-[15px] leading-normal text-ink-2">Add the format cost and any paid options to estimate your total.</span>
           <span className="rounded-xl bg-mist px-3 py-2.5 font-mono text-[13px] text-ink-code">Countries + States · JSON = 6 credits</span>
         </div>
       </div>

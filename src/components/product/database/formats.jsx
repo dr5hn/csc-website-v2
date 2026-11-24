@@ -62,7 +62,7 @@ export default function DatabaseFormats() {
         <CtaLink href="https://github.com/dr5hn/countries-states-cities-database/releases/latest" location="database_formats_release" track="github" className="text-blue underline underline-offset-4 hover:text-blue-deep">
           GitHub releases
         </CtaLink>.
-        {" "}Need only some fields or countries?{" "}
+        {" "}Need selected fields, geographic filters or a different format?{" "}
         <CtaLink href="https://export.countrystatecity.in/" location="database_formats_export" track="export" className="text-blue hover:text-blue-deep hover:underline">
           Use the Export Tool
         </CtaLink>

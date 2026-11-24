@@ -91,7 +91,7 @@ export const COUNTRY_API = {
     },
     {
       q: "Can I get the data offline instead of over HTTP?",
-      a: "Yes. The same dataset is published as SQL, JSON, CSV, XML and more through the export tool and the open-source database, so you can ship it inside your application.",
+      a: "Yes. Download country data in SQL, JSON, CSV, XML and more through the Export Tool or the open-source database. Check the source version on each download if you need to match a specific snapshot.",
     },
     {
       q: "How often does the country data change?",

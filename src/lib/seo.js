@@ -3,6 +3,7 @@ import { STAT_DESCRIPTIONS } from "./stats.js";
 
 export const SITE_URL = "https://countrystatecity.in";
 export const REPO_URL = "https://github.com/dr5hn/countries-states-cities-database";
+export const EXPORT_DESCRIPTION = "Download countries, states, counties, cities and postcodes in 13 formats, including CSV, JSON, Excel and SQL. Filter by region or country.";
 const ODBL_URL = "https://opendatacommons.org/licenses/odbl/1-0/";
 
 const publisher = { "@type": "Organization", name: "CSC Database", url: SITE_URL };
@@ -76,8 +77,7 @@ export function exportApplicationSchema(plans) {
     "@type": "SoftwareApplication",
     name: "CSC Export Tool",
     url: `${SITE_URL}/product/export-tool/`,
-    description:
-      "Export country, state and city data in 13 formats, filtered by region or country, with translated names and flag images.",
+    description: EXPORT_DESCRIPTION,
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Web",
     publisher,
