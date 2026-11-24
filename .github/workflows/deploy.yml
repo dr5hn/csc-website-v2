@@ -137,24 +137,25 @@ jobs:
       run: |
         echo "🔄 Switching to new release: ${{ env.TIMESTAMP }}"
         ssh root@${{ secrets.SERVER_IP }} "
+          set -e
           cd '${{ env.DEPLOY_DIR }}'
 
-          # Check if current exists and what type it is
-          if [ -e 'current' ]; then
-            if [ -L 'current' ]; then
-              echo 'Current is a symlink (correct), removing...'
-              rm -f current
-            elif [ -d 'current' ]; then
-              echo 'Current is a directory (incorrect), backing up...'
-              mv current current_backup_\$(date +%Y%m%d_%H%M%S)
-            else
-              echo 'Current is a file (unexpected), removing...'
-              rm -f current
-            fi
-          fi
+          # Keep the active release reachable until the replacement is ready.
+          test -L current || { echo 'Expected a current release symlink'; exit 1; }
+          previous_release=\$(readlink -f current)
+          case \"\$previous_release\" in
+            '${{ env.DEPLOY_DIR }}/releases/'*) ;;
+            *) echo 'Unexpected current release path'; exit 1 ;;
+          esac
+          test -f \"\$previous_release/index.html\" || exit 1
 
-          # Create new symlink directly as current
-          ln -sf 'releases/${{ env.TIMESTAMP }}' current
+          # Open tabs still need chunks from the previous build after cutover.
+          if [ -d \"\$previous_release/_next\" ]; then
+            rsync -a --ignore-existing --link-dest=\"\$previous_release/_next\" \
+              \"\$previous_release/_next/\" '${{ env.RELEASE_DIR }}/_next/'
+          fi
+          ln -s 'releases/${{ env.TIMESTAMP }}' '.current-${{ env.TIMESTAMP }}'
+          mv -Tf -- '.current-${{ env.TIMESTAMP }}' current
 
           # Verify the symlink
           if [ -L 'current' ] && [ \"\$(readlink current)\" = 'releases/${{ env.TIMESTAMP }}' ]; then
