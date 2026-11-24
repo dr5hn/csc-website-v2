@@ -6,7 +6,7 @@ const TYPE_COLOUR = { int: "text-blue", str: "text-ok", dec: "text-[#7a5af0]", f
 const TABLES = [
   { name: "countries", count: TEXT_STATS.countries, head: "bg-blue text-white", fields: [["id", "int"], ["name", "str"], ["iso2 · iso3", "str"], ["phonecode", "str"], ["currency", "str"], ["region_id", "fk → regions"], ["timezones", "obj"]] },
   { name: "states", count: TEXT_STATS.states, head: "bg-field text-ink", fields: [["id", "int"], ["name", "str"], ["iso2", "str"], ["country_id", "fk → countries"], ["type", "str"], ["latitude · longitude", "dec"], ["timezone", "str"]] },
-  { name: "cities", count: TEXT_STATS.cities, head: "bg-field text-ink", fields: [["id", "int"], ["name", "str"], ["state_id", "fk → states (nullable)"], ["country_id", "fk → countries"], ["latitude · longitude", "dec"], ["timezone", "str"], ["wikiDataId", "str"]] },
+  { name: "cities", count: TEXT_STATS.cities, head: "bg-field text-ink", fields: [["id", "int"], ["name", "str"], ["state_id", "fk → states (nullable)"], ["country_id", "fk → countries"], ["latitude · longitude", "dec"], ["timezone", "str"], ["population", "int (nullable)"], ["population_year", "int (nullable)"], ["wikiDataId", "str"]] },
 ];
 
 /** Show the core hierarchy without implying a complete or always non-null export schema. */

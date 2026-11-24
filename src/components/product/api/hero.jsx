@@ -30,7 +30,7 @@ export default function HeroApi() {
         </LiveBadge>
         <h1 className="display-1 m-0">The geography API that forgives typos.</h1>
         <p className="lead m-0">
-          Countries, states and cities with fuzzy search, autocomplete, nearby search and timezone helpers. REST or GraphQL.{" "}
+          Countries, states and cities with fuzzy search, autocomplete, nearby search and timezone helpers. REST or GraphQL. City population figures include a source reference year when known on Supporter+.{" "}
           {totalRequests.value}
           {totalRequests.suffix} requests served.
         </p>
