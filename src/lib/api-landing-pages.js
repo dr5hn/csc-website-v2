@@ -195,6 +195,7 @@ export const CITY_API = {
     "nearby cities api",
   ],
   endpoints: [
+    { method: "GET", path: "/countries/{ciso}/counties/{county_id}/cities", description: "Cities with a recorded county link" },
     { method: "GET", path: "/countries/{ciso}/cities", description: "Every city in a country" },
     { method: "GET", path: "/countries/{ciso}/states/{siso}/cities", description: "Cities within one state" },
     { method: "GET", path: "/search/autocomplete", description: "Type-ahead for a location picker" },
@@ -219,6 +220,7 @@ export const CITY_API = {
     { name: "longitude", note: "Point longitude" },
     { name: "timezone", note: "IANA zone" },
     { name: "population", note: "Source count when available; Supporter+" },
+    { name: "county_id", note: "Source county link; null if unknown; Supporter+" },
     { name: "population_year", note: "Source reference year; null when unknown; Supporter+" },
     { name: "translations", note: "Name in other languages" },
     { name: "wikiDataId", note: "Wikidata item" },
@@ -230,6 +232,10 @@ export const CITY_API = {
     "Seeding a store locator or coverage map with real coordinates rather than geocoding every row.",
   ],
   faqs: [
+    {
+      q: "Can I look up counties and their cities?",
+      a: "Yes. List counties within a country or state, look up a county by its numeric ID and country, or fetch its source-linked cities. Counties spanning multiple states keep every known membership in states; missing city county links stay null.",
+    },
     {
       q: "How many cities does the API cover?",
       a: `${TEXT_STATS.cities} cities and settlements across ${TEXT_STATS.countries} countries and territories. Coverage varies by release. Parent links help identify places with the same name; returned fields depend on your plan.`,

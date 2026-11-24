@@ -1,6 +1,8 @@
 import Tag from "@/components/ui/tag";
 
 const FEATURES = [
+  { t: "County relationships", d: "Country and state county lists, including counties spanning several states. Richer fields on Supporter+.", ep: "GET /v1/countries/NZ/counties", plan: "All plans" },
+  { t: "Postcode lookup", d: "Look up a known code on every plan. Search and cursor-based country lists on Starter+; coverage varies by country.", ep: "GET /v1/countries/IN/postcodes/110001", plan: "All plans" },
   { t: "Typo-tolerant search", d: '"Banglore" finds Bengaluru. Ranked matches across countries, states and cities.', ep: "GET /v1/search/fuzzy", plan: "Supporter+" },
   { t: "Autocomplete", d: "Ranked, labelled suggestions as the user types. Built for search boxes.", ep: "GET /v1/search/autocomplete", plan: "Supporter+" },
   { t: "Nearby search", d: "Places near a coordinate, sorted by distance.", ep: "GET /v1/search/nearby", plan: "Supporter+" },
@@ -29,7 +31,7 @@ export default function ApiFeatures() {
                 <Tag className="text-[11.5px]">{f.plan}</Tag>
               </div>
               <span className="text-[15px] leading-normal text-ink-2">{f.d}</span>
-              <span className="mt-auto font-mono text-[12.5px] text-blue">{f.ep}</span>
+              <span className="mt-auto break-all font-mono text-[12.5px] text-blue">{f.ep}</span>
             </div>
           ))}
         </div>
