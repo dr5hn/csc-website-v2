@@ -9,7 +9,7 @@ import Link from "next/link";
 const FAQS = [
   ["Can I change plans anytime?", "Yes, you can upgrade or downgrade your plan at any time. Upgrades take effect immediately, and we'll prorate the billing accordingly. Downgrades take effect at your next billing date, and you keep your current plan until then."],
   ["What happens if I exceed my request limit?", "Daily and monthly request limits are enforced on both free and paid plans. We'll email you as you approach your daily limit, and once you reach a limit, further requests are rejected until it resets. You can wait for the reset, upgrade your plan, or contact us about a custom plan for higher volumes."],
-  ["Do unused credits expire?", "No, Export Tool credits never expire. You can use them whenever you need to export data."],
+  ["Do unused credits expire?", "Export Tool credits never expire. Download saved exports from Export History within 30 days of creating them."],
   ["Is there a setup fee?", "No setup fees for any plan. You only pay for what you use."],
 ];
 

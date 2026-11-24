@@ -1,6 +1,8 @@
 // Shared export tool pricing data.
 // Source of truth: csc-export-tool/src/config/pricing.js — keep these in sync
 // whenever credit pricing changes in the main app.
+export const EXPORT_CREDITS_URL = "https://export.countrystatecity.in/dashboard/credits";
+
 export const exportPricingPlans = [
   {
     name: "Free Trial",
@@ -10,7 +12,7 @@ export const exportPricingPlans = [
     description: "Get started with your first export for free.",
     features: [
       "All export formats supported",
-      "Access to complete country, state & city data",
+      "Access to all data types",
       "Credits never expire",
       "Enough for at least one full export"
     ],
@@ -28,12 +30,12 @@ export const exportPricingPlans = [
     description: "Perfect for small to medium exports.",
     features: [
       "All export formats supported",
-      "Access to complete country, state & city data",
+      "Access to all data types",
       "Credits never expire",
       "Comfortably covers 1–2 typical exports"
     ],
     cta: "Buy 10 Credits",
-    href: "https://export.countrystatecity.in",
+    href: EXPORT_CREDITS_URL,
     target: "_blank",
     accent: "gray",
     popular: false,
@@ -51,7 +53,7 @@ export const exportPricingPlans = [
       "Best value for regular usage"
     ],
     cta: "Buy 20 Credits",
-    href: "https://export.countrystatecity.in",
+    href: EXPORT_CREDITS_URL,
     target: "_blank",
     accent: "green",
     popular: true,
@@ -69,7 +71,7 @@ export const exportPricingPlans = [
       "Valid for all exports"
     ],
     cta: "Buy 30 Credits",
-    href: "https://export.countrystatecity.in",
+    href: EXPORT_CREDITS_URL,
     target: "_blank",
     accent: "blue",
     popular: false,
@@ -88,7 +90,7 @@ export const exportPricingPlans = [
       "Valid for all exports"
     ],
     cta: "Buy 40 Credits",
-    href: "https://export.countrystatecity.in",
+    href: EXPORT_CREDITS_URL,
     target: "_blank",
     accent: "orange",
     popular: false,
@@ -108,7 +110,7 @@ export const customCreditsOption = {
     "No minimum purchase"
   ],
   cta: "Purchase Custom Credits",
-  href: "https://export.countrystatecity.in",
+  href: EXPORT_CREDITS_URL,
   target: "_blank",
   accent: "purple",
   maxCredits: 100,

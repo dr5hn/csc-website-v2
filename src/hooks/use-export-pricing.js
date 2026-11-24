@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import {
+  EXPORT_CREDITS_URL,
   exportPricingPlans as STATIC_PLANS,
   customCreditsOption as STATIC_CUSTOM,
 } from "../data/export-pricing.js";
@@ -18,7 +19,7 @@ const PLAN_COPY = {
     description: () => "Perfect for small to medium exports.",
     features: [
       "All export formats supported",
-      "Access to complete country, state & city data",
+      "Access to all data types",
       "Credits never expire",
       "Comfortably covers 1–2 typical exports",
     ],
@@ -97,7 +98,7 @@ export function buildFromApi(data) {
       description: copy.description(pct),
       features: copy.features,
       cta: `Buy ${pkg.credits} Credits`,
-      href: "https://export.countrystatecity.in",
+      href: EXPORT_CREDITS_URL,
       target: "_blank",
       accent: copy.accent,
       popular: isPopular,

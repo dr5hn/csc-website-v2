@@ -64,7 +64,7 @@ export const FAQS = [
     category: "Data Formats",
     question: "What data formats are available?",
     answer:
-      "Free database downloads ship in 12 formats: JSON, MySQL, PostgreSQL, SQLite, SQL Server, MongoDB, CSV, Parquet, XML, YAML, GeoJSON and TOON. The Export Tool offers 13 formats: CSV, Excel, Markdown, JSON, NDJSON, XML, YAML, SQL, PostgreSQL, SQL Server, SQLite3, MongoDB Extended JSON and GeoJSON. It also provides filters, translated names and optional flag images. The REST API returns JSON.",
+      "Free database downloads ship in 12 formats: JSON, MySQL, PostgreSQL, SQLite, SQL Server, MongoDB, CSV, Parquet, XML, YAML, GeoJSON and TOON. The Export Tool packages countries, states, counties, cities and postcodes into ZIP downloads using 13 data formats: CSV, Excel, Markdown, JSON, NDJSON, XML, YAML, SQL, PostgreSQL, SQL Server, SQLite3, MongoDB Extended JSON and GeoJSON. New exports include a source manifest, licence notices and migration notes. You can choose fields, apply geographic filters, translate names and add flag images when exporting countries. The REST API returns JSON.",
   },
   {
     id: 10,
